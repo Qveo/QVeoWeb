@@ -26,5 +26,3 @@ spring:
     password: root
   resources:
     static-locations: /resources/
-
-
