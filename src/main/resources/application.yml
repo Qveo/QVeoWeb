@@ -1,0 +1,30 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /qveo
+logging:
+  level:
+    org.springframework: ERROR
+    com.qveo: DEBUG
+  pattern:
+    console: "%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"
+    file: "%d %p %c{1.} [%t] %m%n"
+  file: app.log
+#===========================================================================#
+#--------------------------------- Spring ----------------------------------#
+#===========================================================================#
+spring:
+  mvc:
+    favicon:
+      enabled: true
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+  datasource:
+    url: jdbc:mysql://localhost:3306/qveo?serverTimezone=UTC
+    username: root
+    password: root
+  resources:
+    static-locations: /resources/
+
+
