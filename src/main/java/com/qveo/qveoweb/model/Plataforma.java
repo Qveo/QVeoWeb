@@ -7,7 +7,8 @@ import java.util.Collection;
 public class Plataforma {
     private Integer id;
     private String nombre;
-    private Collection<PeliculaPlataforma> peliculas;
+    private Collection<Pelicula> peliculas;
+    private Collection<Serie> series;
 
     @Id
     @Column(name = "ID")
@@ -29,32 +30,31 @@ public class Plataforma {
         this.nombre = nombre;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Plataforma that = (Plataforma) o;
-
-        if (id != null ? !id.equals(that.id) : that.id != null) return false;
-        if (nombre != null ? !nombre.equals(that.nombre) : that.nombre != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (nombre != null ? nombre.hashCode() : 0);
-        return result;
-    }
-
-    @OneToMany(mappedBy = "plataformaByIdPlataforma")
-    public Collection<PeliculaPlataforma> getPeliculas() {
+    @ManyToMany
+    @JoinTable(
+            name ="pelicula_plataforma",
+            joinColumns = @JoinColumn(name = "id_plataforma", nullable = false),
+            inverseJoinColumns = @JoinColumn(name="id_pelicula", nullable = false)
+    )
+    public Collection<Pelicula> getPeliculas() {
         return peliculas;
     }
 
-    public void setPeliculas(Collection<PeliculaPlataforma> peliculas) {
+    public void setPeliculas(Collection<Pelicula> peliculas) {
         this.peliculas = peliculas;
+    }
+
+    @ManyToMany
+    @JoinTable(
+            name ="serie_plataforma",
+            joinColumns = @JoinColumn(name = "id_plataforma", nullable = false),
+            inverseJoinColumns = @JoinColumn(name="id_serie", nullable = false)
+    )
+    public Collection<Serie> getSeries() {
+        return series;
+    }
+
+    public void setSeries(Collection<Serie> series) {
+        this.series = series;
     }
 }

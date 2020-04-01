@@ -31,26 +31,6 @@ public class Pais {
         this.nombre = nombre;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Pais pais = (Pais) o;
-
-        if (id != null ? !id.equals(pais.id) : pais.id != null) return false;
-        if (nombre != null ? !nombre.equals(pais.nombre) : pais.nombre != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (nombre != null ? nombre.hashCode() : 0);
-        return result;
-    }
-
     @OneToMany(mappedBy = "pais")
     public Collection<Actor> getActores() {
         return actores;

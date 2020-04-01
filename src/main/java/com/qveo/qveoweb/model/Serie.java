@@ -12,11 +12,12 @@ public class Serie {
     private String sinopsis;
     private Integer temporadas;
     private Integer capitulos;
-    private Collection<ActorSerie> actores;
-    private Collection<DirectorSerie> directores;
-    private Collection<GeneroSerie> generos;
-    private Collection<ListaSerie> listas;
+    private Collection<Actor> actores;
+    private Collection<Director> directores;
+    private Collection<Genero> generos;
+    private Collection<Lista> listas;
     private Pais pais;
+    private Collection<Plataforma> plataformas;
 
     @Id
     @Column(name = "ID")
@@ -78,67 +79,60 @@ public class Serie {
         this.capitulos = capitulos;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
 
-        Serie serie = (Serie) o;
-
-        if (id != null ? !id.equals(serie.id) : serie.id != null) return false;
-        if (titulo != null ? !titulo.equals(serie.titulo) : serie.titulo != null) return false;
-        if (fechaInicio != null ? !fechaInicio.equals(serie.fechaInicio) : serie.fechaInicio != null) return false;
-        if (sinopsis != null ? !sinopsis.equals(serie.sinopsis) : serie.sinopsis != null) return false;
-        if (temporadas != null ? !temporadas.equals(serie.temporadas) : serie.temporadas != null) return false;
-        if (capitulos != null ? !capitulos.equals(serie.capitulos) : serie.capitulos != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (titulo != null ? titulo.hashCode() : 0);
-        result = 31 * result + (fechaInicio != null ? fechaInicio.hashCode() : 0);
-        result = 31 * result + (sinopsis != null ? sinopsis.hashCode() : 0);
-        result = 31 * result + (temporadas != null ? temporadas.hashCode() : 0);
-        result = 31 * result + (capitulos != null ? capitulos.hashCode() : 0);
-        return result;
-    }
-
-    @OneToMany(mappedBy = "serieByIdSerie")
-    public Collection<ActorSerie> getActores() {
+    @ManyToMany
+    @JoinTable(
+            name ="actor_serie",
+            joinColumns = @JoinColumn(name = "id_serie", nullable = false),
+            inverseJoinColumns = @JoinColumn(name="id_actor", nullable = false)
+    )
+    public Collection<Actor> getActores() {
         return actores;
     }
 
-    public void setActores(Collection<ActorSerie> actores) {
+    public void setActores(Collection<Actor> actores) {
         this.actores = actores;
     }
 
-    @OneToMany(mappedBy = "serieByIdSerie")
-    public Collection<DirectorSerie> getDirectores() {
+    @ManyToMany
+    @JoinTable(
+            name ="director_serie",
+            joinColumns = @JoinColumn(name = "id_serie", nullable = false),
+            inverseJoinColumns = @JoinColumn(name="id_director", nullable = false)
+    )
+    public Collection<Director> getDirectores() {
         return directores;
     }
 
-    public void setDirectores(Collection<DirectorSerie> directores) {
+    public void setDirectores(Collection<Director> directores) {
         this.directores = directores;
     }
 
-    @OneToMany(mappedBy = "serieByIdSerie")
-    public Collection<GeneroSerie> getGeneros() {
+    @ManyToMany
+    @JoinTable(
+            name ="genero_serie",
+            joinColumns = @JoinColumn(name = "id_serie", nullable = false),
+            inverseJoinColumns = @JoinColumn(name="id_genero", nullable = false)
+    )
+    public Collection<Genero> getGeneros() {
         return generos;
     }
 
-    public void setGeneros(Collection<GeneroSerie> generos) {
+    public void setGeneros(Collection<Genero> generos) {
         this.generos = generos;
     }
 
-    @OneToMany(mappedBy = "serieByIdSerie")
-    public Collection<ListaSerie> getListas() {
+    @ManyToMany
+    @JoinTable(
+            name ="actor_serie",
+            joinColumns = @JoinColumn(name = "id_serie", nullable = false),
+            inverseJoinColumns = @JoinColumn(name="id_actor", nullable = false)
+    )
+    public Collection<Lista> getListas() {
         return listas;
     }
 
-    public void setListas(Collection<ListaSerie> listas) {
+    public void setListas(Collection<Lista> listas) {
         this.listas = listas;
     }
 
@@ -150,5 +144,20 @@ public class Serie {
 
     public void setPais(Pais pais) {
         this.pais = pais;
+    }
+
+
+    @ManyToMany
+    @JoinTable(
+            name ="serie_plataforma",
+            joinColumns = @JoinColumn(name = "id_serie", nullable = false),
+            inverseJoinColumns = @JoinColumn(name="id_plataforma", nullable = false)
+    )
+    public Collection<Plataforma> getPlataformas() {
+        return plataformas;
+    }
+
+    public void setPlataformas(Collection<Plataforma> plataformas) {
+        this.plataformas = plataformas;
     }
 }

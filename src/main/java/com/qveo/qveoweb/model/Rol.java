@@ -29,27 +29,7 @@ public class Rol {
         this.nombre = nombre;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Rol rol = (Rol) o;
-
-        if (id != null ? !id.equals(rol.id) : rol.id != null) return false;
-        if (nombre != null ? !nombre.equals(rol.nombre) : rol.nombre != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (nombre != null ? nombre.hashCode() : 0);
-        return result;
-    }
-
-    @OneToMany(mappedBy = "rolByIdRol")
+    @OneToMany(mappedBy = "rol")
     public Collection<Usuario> getUsuarios() {
         return usuarios;
     }

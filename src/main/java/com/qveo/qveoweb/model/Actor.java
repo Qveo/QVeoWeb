@@ -52,7 +52,12 @@ public class Actor {
         this.pais = pais;
     }
 
-    @ManyToMany(mappedBy = "actores")
+    @ManyToMany
+    @JoinTable(
+            name ="Actor_Pelicula",
+            joinColumns = @JoinColumn(name = "id_actor", nullable = false),
+            inverseJoinColumns = @JoinColumn(name="id_pelicula", nullable = false)
+    )
     public Collection<Pelicula> getPeliculas() {
         return peliculas;
     }
@@ -61,7 +66,12 @@ public class Actor {
         this.peliculas = peliculas;
     }
 
-    @ManyToMany(mappedBy = "actores")
+    @ManyToMany
+    @JoinTable(
+            name ="Actor_Serie",
+            joinColumns = @JoinColumn(name = "id_actor", nullable = false),
+            inverseJoinColumns = @JoinColumn(name="id_serie", nullable = false)
+    )
     public Collection<Serie> getSeries() {
         return series;
     }
