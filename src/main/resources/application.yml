@@ -26,11 +26,11 @@ spring:
     password: root
   resources:
     static-locations: /resources/
-  security:
-    user:
-      name: root
-      password: root
-      roles: manager
+#  security:
+#    user:
+#      name: root
+#      password: root
+#      roles: manager
 
 
 
