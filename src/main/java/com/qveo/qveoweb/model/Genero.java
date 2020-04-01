@@ -31,7 +31,12 @@ public class Genero {
     }
 
 
-    @OneToMany(mappedBy = "generoByIdGenero")
+    @ManyToMany
+    @JoinTable(
+            name ="genero_Pelicula",
+            joinColumns = @JoinColumn(name = "id_genero", nullable = false),
+            inverseJoinColumns = @JoinColumn(name="id_pelicula", nullable = false)
+    )
     public Collection<Pelicula> getPeliculas() {
         return peliculas;
     }
@@ -40,12 +45,17 @@ public class Genero {
         this.peliculas = peliculas;
     }
 
-    @OneToMany(mappedBy = "generoByIdGenero")
-    public Collection<GeneroSerie> getSeries() {
+    @ManyToMany
+    @JoinTable(
+            name ="genero_serie",
+            joinColumns = @JoinColumn(name = "id_genero", nullable = false),
+            inverseJoinColumns = @JoinColumn(name="id_serie", nullable = false)
+    )
+    public Collection<Serie> getSeries() {
         return series;
     }
 
-    public void setSeries(Collection<GeneroSerie> series) {
+    public void setSeries(Collection<Serie> series) {
         this.series = series;
     }
 }

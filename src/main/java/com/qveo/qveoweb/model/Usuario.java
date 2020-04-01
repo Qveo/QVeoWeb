@@ -14,8 +14,8 @@ public class Usuario {
     private Date fechaNacimiento;
     private String sexo;
     private String password;
-    private Collection<Lista> listas;
-    private Rol rolByIdRol;
+    private Lista lista;
+    private Rol rol;
 
     @Id
     @Column(name = "ID")
@@ -97,55 +97,23 @@ public class Usuario {
         this.password = password;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Usuario usuario = (Usuario) o;
-
-        if (id != null ? !id.equals(usuario.id) : usuario.id != null) return false;
-        if (nombre != null ? !nombre.equals(usuario.nombre) : usuario.nombre != null) return false;
-        if (apellidos != null ? !apellidos.equals(usuario.apellidos) : usuario.apellidos != null) return false;
-        if (email != null ? !email.equals(usuario.email) : usuario.email != null) return false;
-        if (foto != null ? !foto.equals(usuario.foto) : usuario.foto != null) return false;
-        if (fechaNacimiento != null ? !fechaNacimiento.equals(usuario.fechaNacimiento) : usuario.fechaNacimiento != null)
-            return false;
-        if (sexo != null ? !sexo.equals(usuario.sexo) : usuario.sexo != null) return false;
-        if (password != null ? !password.equals(usuario.password) : usuario.password != null) return false;
-
-        return true;
+    @OneToOne
+    @JoinColumn(name = "ID_LISTA", referencedColumnName = "ID", nullable = false)
+    public Lista getLista() {
+        return lista;
     }
 
-    @Override
-    public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (nombre != null ? nombre.hashCode() : 0);
-        result = 31 * result + (apellidos != null ? apellidos.hashCode() : 0);
-        result = 31 * result + (email != null ? email.hashCode() : 0);
-        result = 31 * result + (foto != null ? foto.hashCode() : 0);
-        result = 31 * result + (fechaNacimiento != null ? fechaNacimiento.hashCode() : 0);
-        result = 31 * result + (sexo != null ? sexo.hashCode() : 0);
-        result = 31 * result + (password != null ? password.hashCode() : 0);
-        return result;
-    }
-
-    @OneToMany(mappedBy = "usuario")
-    public Collection<Lista> getListas() {
-        return listas;
-    }
-
-    public void setListas(Collection<Lista> listas) {
-        this.listas = listas;
+    public void setLista(Lista lista) {
+        this.lista = lista;
     }
 
     @ManyToOne
     @JoinColumn(name = "ID_ROL", referencedColumnName = "ID", nullable = false)
-    public Rol getRolByIdRol() {
-        return rolByIdRol;
+    public Rol getRol() {
+        return rol;
     }
 
-    public void setRolByIdRol(Rol rolByIdRol) {
-        this.rolByIdRol = rolByIdRol;
+    public void setRol(Rol rol) {
+        this.rol = rol;
     }
 }

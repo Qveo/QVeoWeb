@@ -30,7 +30,12 @@ public class Director {
         this.nombre = nombre;
     }
 
-    @OneToMany(mappedBy = "directores")
+    @ManyToMany
+    @JoinTable(
+            name ="Director_serie",
+            joinColumns = @JoinColumn(name = "id_director", nullable = false),
+            inverseJoinColumns = @JoinColumn(name="id_serie", nullable = false)
+    )
     public Collection<Serie> getSeries() {
         return series;
     }
@@ -39,7 +44,12 @@ public class Director {
         this.series = series;
     }
 
-    @OneToMany(mappedBy = "directores")
+    @ManyToMany
+    @JoinTable(
+            name ="pelicula_director",
+            joinColumns = @JoinColumn(name = "id_director", nullable = false),
+            inverseJoinColumns = @JoinColumn(name="id_pelicula", nullable = false)
+    )
     public Collection<Pelicula> getPeliculas() {
         return peliculas;
     }

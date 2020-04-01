@@ -15,12 +15,12 @@ public class Pelicula {
     private String sinopsis;
     private String genero;
     private Date anio;
-    private Collection<ActorPelicula> actores;
-    private Collection<GeneroPelicula> peliculas;
-    private Collection<ListaPelicula> listas;
+    private Collection<Actor> actores;
+    private Collection<Genero> peliculas;
+    private Collection<Lista> listas;
     private Pais pais;
-    private Collection<PeliculaDirector> directores;
-    private Collection<PeliculaPlataforma> plataformas;
+    private Collection<Director> directores;
+    private Collection<Plataforma> plataformas;
 
     @Id
     @Column(name = "ID")
@@ -102,62 +102,45 @@ public class Pelicula {
         this.anio = anio;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Pelicula pelicula = (Pelicula) o;
-
-        if (id != null ? !id.equals(pelicula.id) : pelicula.id != null) return false;
-        if (titulo != null ? !titulo.equals(pelicula.titulo) : pelicula.titulo != null) return false;
-        if (duracion != null ? !duracion.equals(pelicula.duracion) : pelicula.duracion != null) return false;
-        if (guion != null ? !guion.equals(pelicula.guion) : pelicula.guion != null) return false;
-        if (poster != null ? !poster.equals(pelicula.poster) : pelicula.poster != null) return false;
-        if (sinopsis != null ? !sinopsis.equals(pelicula.sinopsis) : pelicula.sinopsis != null) return false;
-        if (genero != null ? !genero.equals(pelicula.genero) : pelicula.genero != null) return false;
-        if (anio != null ? !anio.equals(pelicula.anio) : pelicula.anio != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (titulo != null ? titulo.hashCode() : 0);
-        result = 31 * result + (duracion != null ? duracion.hashCode() : 0);
-        result = 31 * result + (guion != null ? guion.hashCode() : 0);
-        result = 31 * result + (poster != null ? poster.hashCode() : 0);
-        result = 31 * result + (sinopsis != null ? sinopsis.hashCode() : 0);
-        result = 31 * result + (genero != null ? genero.hashCode() : 0);
-        result = 31 * result + (anio != null ? anio.hashCode() : 0);
-        return result;
-    }
-
-    @OneToMany(mappedBy = "peliculaByIdPelicula")
-    public Collection<ActorPelicula> getActores() {
+    @ManyToMany
+    @JoinTable(
+            name ="actor_pelicula",
+            joinColumns = @JoinColumn(name = "id_pelicula", nullable = false),
+            inverseJoinColumns = @JoinColumn(name="id_actor", nullable = false)
+    )
+    public Collection<Actor> getActores() {
         return actores;
     }
 
-    public void setActores(Collection<ActorPelicula> actores) {
+    public void setActores(Collection<Actor> actores) {
         this.actores = actores;
     }
 
-    @OneToMany(mappedBy = "peliculaByIdPelicula")
-    public Collection<GeneroPelicula> getPeliculas() {
+    @ManyToMany
+    @JoinTable(
+            name ="genero_pelicula",
+            joinColumns = @JoinColumn(name = "id_pelicula", nullable = false),
+            inverseJoinColumns = @JoinColumn(name="id_genero", nullable = false)
+    )
+    public Collection<Genero> getPeliculas() {
         return peliculas;
     }
 
-    public void setPeliculas(Collection<GeneroPelicula> peliculas) {
+    public void setPeliculas(Collection<Genero> peliculas) {
         this.peliculas = peliculas;
     }
 
-    @OneToMany(mappedBy = "peliculaByIdPelicula")
-    public Collection<ListaPelicula> getListas() {
+    @ManyToMany
+    @JoinTable(
+            name ="lista_pelicula",
+            joinColumns = @JoinColumn(name = "id_pelicula", nullable = false),
+            inverseJoinColumns = @JoinColumn(name="id_lista", nullable = false)
+    )
+    public Collection<Lista> getListas() {
         return listas;
     }
 
-    public void setListas(Collection<ListaPelicula> listas) {
+    public void setListas(Collection<Lista> listas) {
         this.listas = listas;
     }
 
@@ -171,21 +154,31 @@ public class Pelicula {
         this.pais = pais;
     }
 
-    @OneToMany(mappedBy = "peliculaByIdPelicula")
-    public Collection<PeliculaDirector> getDirectores() {
+    @ManyToMany
+    @JoinTable(
+            name ="pelicula_director",
+            joinColumns = @JoinColumn(name = "id_pelicula", nullable = false),
+            inverseJoinColumns = @JoinColumn(name="id_director", nullable = false)
+    )
+    public Collection<Director> getDirectores() {
         return directores;
     }
 
-    public void setDirectores(Collection<PeliculaDirector> directores) {
+    public void setDirectores(Collection<Director> directores) {
         this.directores = directores;
     }
 
-    @OneToMany(mappedBy = "peliculaByIdPelicula")
-    public Collection<PeliculaPlataforma> getPlataformas() {
+    @ManyToMany
+    @JoinTable(
+            name ="pelicula_plataforma",
+            joinColumns = @JoinColumn(name = "id_pelicula", nullable = false),
+            inverseJoinColumns = @JoinColumn(name="id_plataforma", nullable = false)
+    )
+    public Collection<Plataforma> getPlataformas() {
         return plataformas;
     }
 
-    public void setPlataformas(Collection<PeliculaPlataforma> plataformas) {
+    public void setPlataformas(Collection<Plataforma> plataformas) {
         this.plataformas = plataformas;
     }
 }
