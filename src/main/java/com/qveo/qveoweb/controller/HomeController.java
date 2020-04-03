@@ -17,7 +17,7 @@ public class HomeController {
 		
 		logger.debug("Executing home() method via Get");
 		
-		return "index";
+		return "/WEB-INF/index.jsp";
 	}
 
 }
