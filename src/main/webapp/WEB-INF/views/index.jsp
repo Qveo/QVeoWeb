@@ -10,7 +10,7 @@
     <%@include file="/WEB-INF/views/layout/header.jsp" %>
 </header>
 <main>
-<h1>HOLIIIIIIIIIIIIIIIIIII</h1>
+
 </main>
 <footer>
     <%@include file="/WEB-INF/views/layout/footer.jsp"%>
