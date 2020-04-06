@@ -13,7 +13,6 @@ public class Pelicula {
     private String guion;
     private String poster;
     private String sinopsis;
-    private String genero;
     private Date anio;
     private Collection<Actor> actores;
     private Collection<Genero> peliculas;
@@ -80,16 +79,6 @@ public class Pelicula {
 
     public void setSinopsis(String sinopsis) {
         this.sinopsis = sinopsis;
-    }
-
-    @Basic
-    @Column(name = "GENERO")
-    public String getGenero() {
-        return genero;
-    }
-
-    public void setGenero(String genero) {
-        this.genero = genero;
     }
 
     @Basic

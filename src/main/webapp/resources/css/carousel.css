@@ -1,0 +1,14 @@
+@charset "UTF-8";
+
+.carousel .carousel-item{
+	opacity: 1 !important;
+}
+
+h3 a:link, h3 a:visited {
+  text-decoration: none;
+  color:00adb5; 
+}
+
+.carousel .carousel-item img{
+	width: 100%;
+}

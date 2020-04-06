@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/footer.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/footer.css">
     <body></body>
     <main></main>
     <footer class="page-footer">
@@ -15,7 +15,7 @@
                             <li><a class="grey-text text-lighten-3" href="#!"></a></li>
                             <li><a class="grey-text text-lighten-3" href="#!"></a></li>
                             <li><a class="grey-text text-lighten-3" href="#!"></a></li>
-                         </ul>
+                        </ul>
                 </div>
         </div>
     </div>

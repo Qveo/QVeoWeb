@@ -12,7 +12,7 @@ public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 		
-	@GetMapping({"","/home"})
+	@GetMapping({"/","/home"})
 	public String home(Model model) {
 		
 		logger.debug("Executing home() method via Get");
