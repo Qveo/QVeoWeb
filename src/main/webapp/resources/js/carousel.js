@@ -3,6 +3,6 @@ document.addEventListener('DOMContentLoaded', function () {
 	var instances = M.Carousel.init(elems, {
 		padding: 10,
 		dist: 0,
-		interval: 100
+		interval: 100,
 	});
 });

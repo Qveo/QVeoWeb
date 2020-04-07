@@ -6,6 +6,8 @@ import java.util.Collection;
 
 @Entity
 public class Usuario {
+	
+	
     private Integer id;
     private String nombre;
     private String apellidos;
