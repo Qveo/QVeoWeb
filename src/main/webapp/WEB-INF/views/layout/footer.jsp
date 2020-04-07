@@ -1,8 +1,4 @@
-<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/footer.css">
-    <body></body>
-    <main></main>
-    <footer class="page-footer">
-    <div class="container">
+    <div class="container footer">
         <div class="row">
                 <div class="col l6 s12">
                         <h5 class="white-text">Footer</h5>
@@ -21,8 +17,7 @@
     </div>
     <div class="footer-copyright">
         <div class="container">
-        © 2014 Copyright Text
+        © 2020 Copyright Qveo
         <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
         </div>
     </div>
-</footer>
