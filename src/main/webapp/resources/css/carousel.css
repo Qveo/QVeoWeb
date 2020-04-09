@@ -2,6 +2,7 @@
 
 .carousel .carousel-item{
 	opacity: 1 !important;
+
 }
 
 h3 a:link, h3 a:visited {
@@ -11,4 +12,5 @@ h3 a:link, h3 a:visited {
 
 .carousel .carousel-item img{
 	width: 100%;
+    display: inline;
 }

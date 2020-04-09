@@ -5,6 +5,7 @@
     <title>QVeo web</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
           rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,400;1,700;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet"
@@ -31,8 +32,8 @@
         <div class="col s12">
             <div class="carousel">
                 <c:forEach items="${plataforma.peliculas}" var="pelicula">
-                    <div class="carousel-item" style='background-image: url("${pelicula.poster}")'>
-                        <a class="carousel-item" href="#modal${pelicula.id}">
+                    <div class="carousel-item">
+                        <a href="#modal${pelicula.id}">
                             <img src="${pageContext.request.contextPath}${pelicula.poster}">
                         </a>
                     </div>
