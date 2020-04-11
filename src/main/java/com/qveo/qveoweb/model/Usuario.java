@@ -16,10 +16,30 @@ public class Usuario {
     private Date fechaNacimiento;
     private String sexo;
     private String password;
-    private Lista lista;
     private Rol rol;
 
-    @Id
+    public Usuario() {
+	}
+    
+    
+
+	public Usuario(Integer id, String nombre, String apellidos, String email, String foto, Date fechaNacimiento,
+			String sexo, String password, Rol rol) {
+		this.id = id;
+		this.nombre = nombre;
+		this.apellidos = apellidos;
+		this.email = email;
+		this.foto = foto;
+		this.fechaNacimiento = fechaNacimiento;
+		this.sexo = sexo;
+		this.password = password;
+		this.rol = rol;
+	}
+
+
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "ID")
     public Integer getId() {
         return id;
@@ -98,17 +118,6 @@ public class Usuario {
     public void setPassword(String password) {
         this.password = password;
     }
-
-    @OneToOne
-    @JoinColumn(name = "ID_LISTA", referencedColumnName = "ID", nullable = false)
-    public Lista getLista() {
-        return lista;
-    }
-
-    public void setLista(Lista lista) {
-        this.lista = lista;
-    }
-
     @ManyToOne
     @JoinColumn(name = "ID_ROL", referencedColumnName = "ID", nullable = false)
     public Rol getRol() {
@@ -118,4 +127,5 @@ public class Usuario {
     public void setRol(Rol rol) {
         this.rol = rol;
     }
+
 }
