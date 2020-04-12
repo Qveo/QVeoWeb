@@ -16,7 +16,9 @@ public class Usuario {
     private Date fechaNacimiento;
     private String sexo;
     private String password;
+    private Lista lista;
     private Rol rol;
+    
 
     public Usuario() {
 	}
@@ -118,6 +120,16 @@ public class Usuario {
     public void setPassword(String password) {
         this.password = password;
     }
+    
+    @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
+    public Lista getLista() {
+        return lista;
+    }
+
+    public void setLista(Lista lista) {
+        this.lista = lista;
+    }
+    
     @ManyToOne
     @JoinColumn(name = "ID_ROL", referencedColumnName = "ID", nullable = false)
     public Rol getRol() {

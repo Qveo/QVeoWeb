@@ -20,7 +20,8 @@ public class Pelicula {
     private Pais pais;
     private Collection<Director> directores;
     private Collection<Plataforma> plataformas;
-
+ 
+    
     @Id
     @Column(name = "ID")
     public Integer getId() {
@@ -119,12 +120,7 @@ public class Pelicula {
         this.peliculas = peliculas;
     }
 
-    @ManyToMany
-    @JoinTable(
-            name ="lista_pelicula",
-            joinColumns = @JoinColumn(name = "id_pelicula", nullable = false),
-            inverseJoinColumns = @JoinColumn(name="id_lista", nullable = false)
-    )
+    @ManyToMany(mappedBy="peliculas")
     public Collection<Lista> getListas() {
         return listas;
     }

@@ -122,12 +122,7 @@ public class Serie {
         this.generos = generos;
     }
 
-    @ManyToMany
-    @JoinTable(
-            name ="actor_serie",
-            joinColumns = @JoinColumn(name = "id_serie", nullable = false),
-            inverseJoinColumns = @JoinColumn(name="id_actor", nullable = false)
-    )
+    @ManyToMany(mappedBy="series")
     public Collection<Lista> getListas() {
         return listas;
     }

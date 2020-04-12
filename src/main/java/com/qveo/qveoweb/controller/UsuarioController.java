@@ -15,7 +15,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
+import com.qveo.qveoweb.model.Lista;
 import com.qveo.qveoweb.model.Usuario;
+import com.qveo.qveoweb.service.ListaService;
 import com.qveo.qveoweb.service.UsuarioService;
 
 
@@ -50,9 +52,10 @@ public class UsuarioController {
 	
 	@RequestMapping(value="/usuario/form/add",method=RequestMethod.POST)
 	public String addUser(@ModelAttribute("nuevoUsuario") Usuario usuario) {
-		
+
+	
 		usuarioService.addUsuario(usuario);
-		//return "usuarioConfirmado";
+		
 		return  "redirect:/usuario/list";
 	}
 	

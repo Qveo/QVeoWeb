@@ -9,8 +9,20 @@ public class Lista {
     private Usuario usuario;
     private Collection<Pelicula> peliculas;
     private Collection<Serie> series;
+    
+    
+    public Lista() {
+    	
+    }
 
-    @Id
+	public Lista(Usuario usuario, Collection<Pelicula> peliculas, Collection<Serie> series) {
+		this.usuario = usuario;
+		this.peliculas = peliculas;
+		this.series = series;
+	}
+
+	@Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "ID")
     public Integer getId() {
         return id;
@@ -33,9 +45,9 @@ public class Lista {
 
     @ManyToMany
     @JoinTable(
-            name ="lista_Pelicula",
-            joinColumns = @JoinColumn(name = "id_lista", nullable = false),
-            inverseJoinColumns = @JoinColumn(name="id_pelicula", nullable = false)
+            name ="lista_pelicula",
+            joinColumns = @JoinColumn(name = "id_lista", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name="id_pelicula", referencedColumnName = "id")
     )
     public Collection<Pelicula> getPeliculas() {
         return peliculas;
@@ -45,11 +57,11 @@ public class Lista {
         this.peliculas = peliculas;
     }
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name ="lista_serie",
-            joinColumns = @JoinColumn(name = "id_lista", nullable = false),
-            inverseJoinColumns = @JoinColumn(name="id_serie", nullable = false)
+            joinColumns = @JoinColumn(name = "id_lista",referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name="id_serie", referencedColumnName = "id")
     )
     public Collection<Serie> getSeries() {
         return series;
