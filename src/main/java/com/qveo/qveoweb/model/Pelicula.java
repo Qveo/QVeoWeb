@@ -13,10 +13,10 @@ public class Pelicula {
     private String guion;
     private String poster;
     private String sinopsis;
-    private String genero;
+
     private Date anio;
     private Collection<Actor> actores;
-    private Collection<Genero> peliculas;
+    private Collection<Genero> generos;
     private Collection<Lista> listas;
     private Pais pais;
     private Collection<Director> directores;
@@ -82,15 +82,7 @@ public class Pelicula {
         this.sinopsis = sinopsis;
     }
 
-    @Basic
-    @Column(name = "GENERO")
-    public String getGenero() {
-        return genero;
-    }
 
-    public void setGenero(String genero) {
-        this.genero = genero;
-    }
 
     @Basic
     @Column(name = "ANIO")
@@ -122,12 +114,12 @@ public class Pelicula {
             joinColumns = @JoinColumn(name = "id_pelicula", nullable = false),
             inverseJoinColumns = @JoinColumn(name="id_genero", nullable = false)
     )
-    public Collection<Genero> getPeliculas() {
-        return peliculas;
+    public Collection<Genero> getGeneros() {
+        return generos;
     }
 
-    public void setPeliculas(Collection<Genero> peliculas) {
-        this.peliculas = peliculas;
+    public void setPeliculas(Collection<Genero> generos) {
+        this.generos = generos;
     }
 
     @ManyToMany

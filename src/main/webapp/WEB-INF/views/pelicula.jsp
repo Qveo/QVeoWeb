@@ -20,12 +20,90 @@
 	 <div class="row">
 
       <div class="col s3 izq ">
-         <h3> ${objeto}</h3>
+         <img src="img/rick.jpg" alt="rick" width="70%" height="70%" class="izq">
+         
+         <div>
+			  
+			  
+			 	  <span>Genero:</span>
+			 	  
+			 	  <c:forEach items="${peliculas.generos}" var="genero">
+                     
+                      <a class="genero">${genero.nombre}</a>
+                   </c:forEach> 
+                   
+                   
+			   </div>
+			   <div>
+			   <span>Duracion:${peliculas.duracion}</span>
+			   </div>
+			   <div>
+			   <span>Guion:${peliculas.guion}</span>
+			   </div>		
+			   		
+			   		
+                    
+                     <p>Director:
+                     <c:forEach items="${peliculas.directores}" var="director">
+                     
+                     ${director.nombre}
+                     
+                       </c:forEach>
+                     </p>
+                     
+                     <p>Plataformas:
+                      <c:forEach items="${peliculas.plataformas}" var="plataforma">
+                     
+                     ${plataforma.nombre}
+                     
+                       </c:forEach>
+                     </p>
+                     
+                   
+                    <p>Reparto:
+                    <ul>
+                     <c:forEach items="${peliculas.actores}" var="actores">
+                     
+                       <li>${actores.nombre}</li>
+                     
+                      </c:forEach>
+                        
+                    </ul>
+                    </p>
+               
+                   
       </div>
 
       <div class="col derecha">
+      
+      
       	
-        	<h3> ${objeto}</h3>
+        	<h2>${peliculas.titulo}<span class="fechaInicio">(${peliculas.anio})</span></h2>
+        	
+        	<div>
+                        <ul>
+                            <li> <a>Agregar</a></li>
+                            <li> <a>Ir a la plataforma</a></li>
+                        </ul>
+                    </div>
+        	
+        	<h5>Sinopsis</h5>
+                        <p>${peliculas.sinopsis}</p>
+                        
+              <table>
+                        <tr>
+                            <td>Comentario 1</td>
+                            <td>Fecha</td>
+                        </tr>
+                        <tr>
+                            <td>Comentario 2</td>
+                            <td>Fecha</td>
+                        </tr>
+                        <tr>
+                            <td>Comentario 3</td>
+                            <td>Fecha</td>
+                        </tr>
+                    </table>
         
       </div>
 
