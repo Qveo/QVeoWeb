@@ -1,0 +1,33 @@
+main{
+    padding-top: 10vh;
+    background-color: #393e46;
+ 	color: #00adb5;
+}
+ 
+nav{
+    position: fixed;
+    background-color: #222831;
+    color: #00adb5;
+}
+
+.footer{
+    background-color: #222831;
+}
+
+.carousel{
+    padding-top: -10vh;
+    height: 307px;
+}
+
+.derecha{
+	height:400px;
+	width:74%;
+	margin-bottom:10px;
+	padding-right:10px;
+	background-color: #222831;
+	
+}
+.izq{
+		height:400px;
+		
+}
