@@ -18,6 +18,7 @@ public class Serie {
     private Collection<Lista> listas;
     private Pais pais;
     private Collection<Plataforma> plataformas;
+    private String poster;
 
     @Id
     @Column(name = "ID")
@@ -45,7 +46,8 @@ public class Serie {
         return fechaInicio;
     }
 
-    public void setFechaInicio(Date fechaInicio) {
+   
+	public void setFechaInicio(Date fechaInicio) {
         this.fechaInicio = fechaInicio;
     }
 
@@ -155,4 +157,15 @@ public class Serie {
     public void setPlataformas(Collection<Plataforma> plataformas) {
         this.plataformas = plataformas;
     }
+    
+    @Basic
+    @Column(name = "POSTER")
+    public String getPoster() {
+		return poster;
+	}
+
+	public void setPoster(String poster) {
+		this.poster = poster;
+	}
+
 }

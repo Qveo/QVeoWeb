@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
 <meta charset="ISO-8859-1">
@@ -19,124 +20,128 @@
 </header>
 
 <main>
-	 <section>
-            <div class="row">
+	<div class="row">
+			<div class="col s1"></div>
+			<div class="col s10 derecha ">
+				<div class="col s4 bord">
+				<img
+					src="${pageContext.request.contextPath}${series.poster}"
+					alt="rick" width="80%">
+				
+				</div>
+				<div class="col s8">
+				<h2>${series.titulo}
+					<span class="fechaInicio">(<fmt:formatDate pattern = "yyyy" value = "${series.fechaInicio}" />)</span>
+				</h2>
+				<div>
+					<ul>
+					<li> <span>Temporada:${series.temporadas}</span></li>
+					<li><span>Capitulos:${series.capitulos}</span></li>
+					<li></li>
+					<li> <span>Pais:${series.pais.nombre}</span></li>
+					</ul>
+					
+				</div>
 
-                <div class="col s4">
-                
-                     <img src="img/rick.jpg" alt="rick" width="70%" height="70%" class="izq">
-                </div>
-	
-			<div class="col s6">
-			  <h2>${series.titulo}<span class="fechaInicio">(${series.fechaInicio})</span></h2>
-			  
-			  <div>
-			  
-			  
-			 	  <span>Genero:</span>
-			 	  
-			 	  <c:forEach items="${series.generos}" var="genero">
-                     
-                      <a class="genero">${genero.nombre}</a>
-                   </c:forEach> 
-                   
-                   
-			   </div>
-			   <div>
-			   <span>Temporada:${series.temporadas}</span>
-			   </div>
-			   <div>
-			   <span>Capitulos:${series.capitulos}</span>
-			    <span>Pais:${series.pais.nombre}</span>
-			   </div>		
-			   		
-			   		<div>
-                        <ul>
-                            <li> <a>Agregar</a></li>
-                            <li> <a>Ir a la plataforma</a></li>
-                        </ul>
-                    </div>
-                   
-                 
-                        <h5>Sinopsis</h5>
-                        <p>${series.sinopsis}</p>
-                     <p>Director:
-                     <c:forEach items="${series.directores}" var="director">
-                     
-                     ${director.nombre}
-                     
+				<div>
+					<ul>
+						<li><a>Agregar</a></li>
+						<li><a>Ir a la plataforma</a></li>
+					</ul>
+				</div>
+
+				<h5>Sinopsis</h5>
+				<p>${series.sinopsis}</p>
+
+				<div>
+
+					<label>Director:</label>
+					<ul>
+						 <c:forEach items="${series.directores}" var="director">
+                     <li>
+                     		<div class="col s2">
+	                     		<img src="${pageContext.request.contextPath}${director.foto}" alt="${director.nombre}" width="80%">
+	                     		<div>
+	                    			<a href="#"> ${director.nombre}</a>
+	                    		</div>
+                    		</div>
+                     </li>
                        </c:forEach>
-                     </p>
+					</ul>
+
+				</div>
+
+				<table>
+					<tr>
+						<td>Comentario 1</td>
+						<td>Fecha</td>
+					</tr>
+					<tr>
+						<td>Comentario 2</td>
+						<td>Fecha</td>
+					</tr>
+					<tr>
+						<td>Comentario 3</td>
+						<td>Fecha</td>
+					</tr>
+				</table>
+				</div>
+				</div>
+			
+			<div class="col s1"></div>
+			
+			</div>
+
+			<div class="row">
+				<div class="col s1"></div>
+				<div class="col s10 ">
+					<span>Genero:</span>
+					<ul>
+						  <c:forEach items="${series.generos}" var="genero">
                      
-                     <p>Plataformas:
-                      <c:forEach items="${series.plataformas}" var="plataforma">
+                			    <li><a class="genero">${genero.nombre}</a></li>
+                		   </c:forEach> 
+					</ul>
+
+			
+				
+				<div>
+					<span>Plataformas: 
+					<c:forEach items="${series.plataformas}" var="plataforma">
                      
                      ${plataforma.nombre}
                      
                        </c:forEach>
-                     </p>
+					</span>
+				</div>
+				
+				
 
-			</div>
-			
-            </div>
+				<div>
+					<label>Reparto:</label>
 
-        	<div class="row">
-        	
-        	<div class="col s2"></div>
-        	
-        	<div class="col s8">
-                    <h3>Casting</h3>
-                    <ul>
-                     <c:forEach items="${series.actores}" var="actores">
-                     
-                       <li>${actores.nombre}</li>
-                     
+					<ul>
+						 <c:forEach items="${series.actores}" var="actores">
+							 <li>
+	                    		 <div class="col s2">
+			                    	 <img src="${pageContext.request.contextPath}${actores.foto}" alt="${actores.nombre}" width="80%">
+			                      <div>
+			                      	 <a href="#">${actores.nombre}</a>
+			                      	 </div>
+	                    		 </div>
+	                    	 <li>
                       </c:forEach>
                         
-                    </ul>
-                </div>
-        	
-        	<div class="col s2"></div>
-        	</div>
+					</ul>
 
-        
-        
+				</div>
+				
+				</div>
+			</div>
 
-        	<div class="row">
-        	
-        	<div class="col s2"></div>
-        	
-        	<div class="col s8">
-                     <h3>Comentarios</h3>
-                <div>
-                    <table>
-                        <tr>
-                            <td>Comentario 1</td>
-                            <td>Fecha</td>
-                        </tr>
-                        <tr>
-                            <td>Comentario 2</td>
-                            <td>Fecha</td>
-                        </tr>
-                        <tr>
-                            <td>Comentario 3</td>
-                            <td>Fecha</td>
-                        </tr>
-                    </table>
-                </div>
-                </div> 
-                <div class="col s2"></div>
-        	</div> 
-        	 <div class="row">
-        	 	<div class="col s2"></div>
-	                <div class="col s7">
-	                    <textarea rows="4" cols="50" maxlength="50">
-	                    Enter text here...</textarea>
-	                </div>
-	             <div class="col s2"></div>
-                </div>
+		<div class="col s1"></div>
 
-        </section>
+
 </main>
 
 <footer>

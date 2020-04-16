@@ -1,0 +1,17 @@
+.border{
+	border: 2px solid white;
+	padding: 4px;
+}
+
+.fondo{
+	color: red;
+}
+
+input.checkbox {
+    display: inline-block;
+     visibility: visible;
+}
+
+select {
+ visibility: visible;
+}

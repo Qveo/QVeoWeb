@@ -9,7 +9,8 @@ public class Director {
     private String nombre;
     private Collection<Serie> series;
     private Collection<Pelicula> peliculas;
-
+    private String foto;
+    
     @Id
     @Column(name = "ID")
     public Integer getId() {
@@ -57,4 +58,15 @@ public class Director {
     public void setPeliculas(Collection<Pelicula> peliculas) {
         this.peliculas = peliculas;
     }
+    
+    @Basic
+    @Column(name = "FOTO")
+	public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
+    
 }

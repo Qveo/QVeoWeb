@@ -11,7 +11,8 @@ public class Actor {
     private Pais pais;
     private Collection<Pelicula> peliculas;
     private Collection<Serie> series;
-
+    private String foto;
+    
     @Id
     @Column(name = "ID")
     public Integer getId() {
@@ -79,4 +80,16 @@ public class Actor {
     public void setSeries(Collection<Serie> series) {
         this.series = series;
     }
+
+    @Basic
+    @Column(name = "FOTO")
+	public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
+    
+    
 }
