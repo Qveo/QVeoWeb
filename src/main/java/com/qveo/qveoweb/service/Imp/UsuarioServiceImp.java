@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional
 public class UsuarioServiceImp implements UsuarioService {
 
     @Autowired
@@ -30,26 +31,50 @@ public class UsuarioServiceImp implements UsuarioService {
     ListaDao listaDao;
 
 	@Override
-	public List<Usuario> getAllUsuarios() {
+	public List<Usuario> findAllUsuarios() {
 		return usuarioDao.findAll();
 	}
 	
-	@Transactional
-	public boolean addUsuario(Usuario usuario) {
+	public void saveUser(Usuario usuario) {
 		
 		Rol rol = rolDao.findById(1);
 		
 		Lista lista = new Lista(usuario, new ArrayList<Pelicula>(), new ArrayList<Serie>());
-		
-		//lista.setUsuario(usuario);
 		
 		usuario.setLista(lista);
 		
 		usuario.setRol(rol);
 		
 		usuarioDao.save(usuario);
-		
-		return true;
 	}
+
+	@Override
+	public Usuario findById(Integer id) {
+		
+		Usuario entity = usuarioDao.findById(id).get();
+		return entity;
+	}
+
+	@Override
+	public void deleteUser(Integer id) {
+		usuarioDao.deleteById(id);
+		
+	}
+
+	@Override
+	public void editUser(Usuario usuarioEditado) {
+		Usuario entity = usuarioDao.findById(usuarioEditado.getId()).get();
+		if(entity != null) {
+			entity.setNombre(usuarioEditado.getNombre());
+			entity.setApellidos(usuarioEditado.getApellidos());
+			entity.setEmail(usuarioEditado.getEmail());
+			entity.setPassword(usuarioEditado.getPassword());
+			entity.setFoto(usuarioEditado.getFoto());
+			entity.setFechaNacimiento(usuarioEditado.getFechaNacimiento());
+			entity.setSexo(usuarioEditado.getSexo());
+		}
+		
+	}
+
 
 }

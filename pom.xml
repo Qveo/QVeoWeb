@@ -73,9 +73,9 @@
             <version>9.0.16</version>
         </dependency>
 <!-- 		<dependency> -->
-<!-- 			<groupId>org.springframework.security</groupId> -->
-<!-- 			<artifactId>spring-security-test</artifactId> -->
-<!-- 			<scope>test</scope> -->
+<!-- 		    <groupId>org.hibernate</groupId> -->
+<!-- 		    <artifactId>hibernate-validator</artifactId> -->
+<!-- 		    <version>6.1.3.Final</version> -->
 <!-- 		</dependency> -->
 
 	</dependencies>

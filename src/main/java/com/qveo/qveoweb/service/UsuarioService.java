@@ -6,6 +6,9 @@ import com.qveo.qveoweb.model.Usuario;
 
 public interface UsuarioService {
 
-    List<Usuario> getAllUsuarios();
-    public boolean addUsuario(Usuario usuario);
+    List<Usuario> findAllUsuarios();
+    public void saveUser(Usuario usuario);
+    public Usuario findById(Integer id);
+    public void editUser(Usuario usuario);
+	public void deleteUser(Integer id);
 }

@@ -1,6 +1,12 @@
 package com.qveo.qveoweb.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 import java.sql.Date;
 import java.util.Collection;
 
@@ -9,10 +15,15 @@ public class Usuario {
 	
 	
     private Integer id;
+    @NotBlank(message="El nombre es obligatorio")
+    @Size(min=2, max=50, message="No puede superar los 50 caracteres")
     private String nombre;
+    @NotBlank(message="El apellido es obligatorio")
     private String apellidos;
+    @NotEmpty @Email(message="El email debe ser válido")
     private String email;
     private String foto;
+    @NotNull(message="La fecha es obligatoria")
     private Date fechaNacimiento;
     private String sexo;
     private String password;

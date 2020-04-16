@@ -20,14 +20,34 @@
 		<table border="1">
 			<tr>
 				<th>Nombre</th>
+				<th>Apellidos</th>
+				<th>Email</th>
+				<th>Fecha de Nacimiento</th>
+				<th>Sexo</th>
+				<th>Rol</th>
+				<th>Editar</th>
+				<th>Eliminar</th>
 			</tr>
 			<c:forEach items="${usuarios}" var="usuario">
 				<tr>
 					<td>${usuario.nombre}</td>
+					<td>${usuario.apellidos}</td>
+					<td>${usuario.email}</td>
+					<td>${usuario.fechaNacimiento}</td>
+					<td>${usuario.sexo}</td>
+					<td>${usuario.rol.nombre}</td>
+					<td><a href="/qveo/usuario/edit/${usuario.id}" >Editar</a></td>
+					<td><a href="/qveo/usuario/delete/${usuario.id}" >Eliminar</a></td>
 				</tr>
 
 			</c:forEach>
 		</table>
+		
+		<div class="row">
+			<div class="col s2">
+				<a href="/qveo/usuario/form"><i class="">Nuevo Usuario</i></a>
+			</div>
+		</div>
 
 
 	</main>
