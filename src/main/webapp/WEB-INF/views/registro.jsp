@@ -11,6 +11,8 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/general.css">
+	<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/registro.css">
 </head>
 <body>
 	<header>
@@ -29,53 +31,39 @@
 			</c:choose>
 			<form:form method="POST" action="${action}"
 				modelAttribute="nuevoUsuario" enctype="multipart/form-data"
-				class="col s12">
+				class="col s12 white-text">
 
 				<div class="row">
-					<div class="col s2"></div>
-					<div class="input-field col s8">
+					<div class="input-field col s12 m6 l6 offset-l3">
 						<form:input path="nombre" id="first_name" class="validate" />
 						<form:label path="nombre">Nombre</form:label>
 						<form:errors path="nombre" style="color:red"></form:errors>
 					</div>
-					<div class="col s2"></div>
-				</div>
-				<div class="row">
-					<div class="col s2"></div>
-					<div class="input-field col s8">
+					<div class="input-field col s12 m6 l6 offset-l3">
 						<form:input path="apellidos" id="last_name" class="validate" />
 						<form:label path="apellidos">Apellidos</form:label>
 						<form:errors path="apellidos" style="color:red"></form:errors>
 					</div>
-					<div class="col s2"></div>
 				</div>
 				<div class="row">
-					<div class="col s2"></div>
-					<div class="input-field col s8">
+					<div class="input-field col s12 m6 l6 offset-l3">
 						<form:input id="email" type="email" path="email" class="validate" />
 						<form:label path="email">Email</form:label>
+						<span class="helper-text" data-error="email inválido" data-success="Perfecto!"></span>
 						<form:errors path="email" style="color:red"></form:errors>
 					</div>
-					<div class="col s2"></div>
-				</div>
-				<div class="row">
-					<div class="col s2"></div>
-					<div class="input-field col s8">
+					<div class="input-field col s12 m6 l6 offset-l3">
 						<form:password id="password" path="password" class="validate" />
 						<form:label path="password">Password</form:label>
 					</div>
-					<div class="col s2"></div>
 				</div>
 				<div class="row">
-					<div class="col s2"></div>
-					<div class="col s8">
+					<div class="col s12 m12 l6 offset-l3">
 						<form:label path="sexo">Género</form:label>
 					</div>
-					<div class="col s2"></div>
 				</div>
 				<div class="row">
-					<div class="col s2"></div>
-					<div class="col s8">
+					<div class="col s12 m12 l6 offset-l3">
 						<form:label for="mas" path="sexo">
 							<form:radiobutton id="mas" path="sexo" value="M" />
 							<span>Masculino</span>
@@ -85,29 +73,23 @@
 							<span>Femenino</span>
 						</form:label>
 					</div>
-					<div class="col s2"></div>
 				</div>
 				<div class="row">
-					<div class="col s2"></div>
-					<div class="col s8">
+					<div class="col s12 m12 l6 offset-l3">
 						<form:label path="fechaNacimiento">Fecha de Nacimiento</form:label>
 						<form:input id="date" type="date" path="fechaNacimiento" />
 						<form:errors path="fechaNacimiento" style="color:red"></form:errors>
 					</div>
-					<div class="col s2"></div>
 				</div>
 				<div class="row">
-					<div class="col s2"></div>
-					<div class="col s8">
+					<div class="col s12 m12 l6 offset-l3">
 						<form:label path="foto">Imagen de perfil</form:label>
 						<input type="file" name="file" />
 						<form:errors path="foto" style="color:red"></form:errors>
 					</div>
-					<div class="col s2"></div>
 				</div>
 				<div class="row">
-					<div class="col s2"></div>
-					<div class="col s8">
+					<div class="col s12 m12 l6 offset-l3">
 						<c:choose>
 							<c:when test="${edit}">
 								<button class="btn waves-effect waves-light" type="submit"
@@ -124,7 +106,6 @@
 							</c:otherwise>
 						</c:choose>
 					</div>
-					<div class="col s2"></div>
 				</div>
 			</form:form>
 		</div>

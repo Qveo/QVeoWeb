@@ -11,13 +11,16 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/general.css">
+	<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/tabla.css">
 </head>
 <body>
 	<header>
 		<%@include file="/WEB-INF/views/layout/header.jsp"%>
 	</header>
 	<main>
-		<table border="1">
+		<table class="centered highlight responsive-table">
+		<thead>
 			<tr>
 				<th>Nombre</th>
 				<th>Apellidos</th>
@@ -28,6 +31,8 @@
 				<th>Editar</th>
 				<th>Eliminar</th>
 			</tr>
+			</thead>
+			<tbody>
 			<c:forEach items="${usuarios}" var="usuario">
 				<tr>
 					<td>${usuario.nombre}</td>
@@ -41,6 +46,7 @@
 				</tr>
 
 			</c:forEach>
+			</tbody>
 		</table>
 		
 		<div class="row">
