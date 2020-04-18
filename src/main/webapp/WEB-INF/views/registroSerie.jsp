@@ -9,21 +9,21 @@
 	
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
           rel="stylesheet">
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<!--     <link rel="stylesheet" -->
+<!--           href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/general.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/serieRegistro.css">
 
 </head>
 <body>
 <header>
-    <%@include file="/WEB-INF/views/layout/header.jsp" %>
+<%--     <%@include file="/WEB-INF/views/layout/header.jsp" %> --%>
 </header>
 
 <main>
 	<section>
 	<div class="row">
-	<form:form method="POST" action="/serie/create" modelAttribute="serieNueva" enctype="multipart/form-data" class="col s12">
+	<form:form method="POST" action="/qveo/serie/form/add" modelAttribute="serieNueva" enctype="multipart/form-data" class="col s12">
 	<div class="row">
 		<div class="col s2"></div>
 		<div class="input-field col s8">
@@ -54,8 +54,8 @@
 	<div class="row">
 		<div class="col s2"></div>
 		<div class="input-field col s8">
-			<form:input path="capitulos" id="capitulos" />
 			<form:label path="capitulos">Capitulos</form:label>
+			<form:input path="capitulos" id="capitulos" />
 		</div>
 		<div class="col s2"></div>
 	</div>
@@ -88,21 +88,11 @@
 	<div class="row">
 		<div class="col s2"></div>
 		<div class="col s8">
-		
-			<label><input type="checkbox"/><span>Filled in</span></label>
+			<c:forEach items="${generos}" var="genero">
 			<form:label path="generos">
-				<form:checkbox path="generos" value="Java"/>  Java 
-			</form:label>
-			
-			<!--<c:forEach items="${generos}" var="genero">
-
-				<form:label path="generos" for="${genero.nombre}">
-				<form:checkbox path="generos" id="${genero.id}" value="${genero.id}"/>
-				<span>${genero.nombre}</span>
-				
-				</form:label>
-
-			</c:forEach>-->
+				<form:checkbox path="generos" value="${genero.id}"/> ${genero.nombre}
+				</form:label>	
+			</c:forEach>
 			
 		</div>
 		<div class="col s2"></div>
@@ -120,13 +110,56 @@
 	<div class="row">
 		<div class="col s2"></div>
 		<div class="col s8">
+
 		<form:select path="pais">
-			<form:option value="0" selected="true" label="Escoja un pais" />
-				<c:forEach items="${paises}" var="pais">
-					<form:option value="${pais.id}" label="${pais.nombre}" />
-				</c:forEach>
+			<form:option value="0" disabled="true">Elija un pais</form:option>
+			<c:forEach items="${paises}" var="pais">
+				<form:option value="${pais.id}">${pais.nombre}</form:option>
+			</c:forEach>
 		</form:select>
+
 			</div>
+		<div class="col s2"></div>
+	</div>
+	
+	<div class="row">
+		<div class="col s2"></div>
+		<div class="col s8">
+			<form:label path="directores">Director</form:label>
+		</div>
+		<div class="col s2"></div>
+	</div>
+	
+	<div class="row">
+		<div class="col s2"></div>
+		<div class="col s8">
+			<c:forEach items="${directores}" var="director">
+				<form:label path="directores">
+				<form:checkbox path="directores" value="${director.id}"/>${director.nombre}
+				</form:label>	
+			</c:forEach>
+		</div>
+		<div class="col s2"></div>
+	</div>
+	
+	<div class="row">
+		<div class="col s2"></div>
+		<div class="col s8">
+			<form:label path="plataformas">Plataformas</form:label>
+		</div>
+		<div class="col s2"></div>
+	</div>
+	
+	<div class="row">
+		<div class="col s2"></div>
+		<div class="col s8">
+			<c:forEach items="${plataformas}" var="plataforma">
+				<form:label path="plataformas">
+				<form:checkbox path="plataformas" value="${plataforma.id}"/> ${plataforma.nombre}
+				</form:label>	
+
+			</c:forEach>
+		</div>
 		<div class="col s2"></div>
 	</div>
 	

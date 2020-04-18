@@ -19,8 +19,31 @@ public class Serie {
     private Pais pais;
     private Collection<Plataforma> plataformas;
     private String poster;
+    
+    
 
-    @Id
+    public Serie() {
+	}
+    
+	public Serie(String titulo, Date fechaInicio, String sinopsis, Integer temporadas, Integer capitulos,
+			Collection<Director> directores, Collection<Genero> generos, Pais pais, Collection<Plataforma> plataformas,
+			String poster) {
+		this.titulo = titulo;
+		this.fechaInicio = fechaInicio;
+		this.sinopsis = sinopsis;
+		this.temporadas = temporadas;
+		this.capitulos = capitulos;
+		this.directores = directores;
+		this.generos = generos;
+		this.pais = pais;
+		this.plataformas = plataformas;
+		this.poster = poster;
+	}
+
+
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "ID")
     public Integer getId() {
         return id;
@@ -166,6 +189,13 @@ public class Serie {
 
 	public void setPoster(String poster) {
 		this.poster = poster;
+	}
+
+	@Override
+	public String toString() {
+		return "Serie [titulo=" + titulo + ", fechaInicio=" + fechaInicio + ", sinopsis=" + sinopsis + ", temporadas="
+				+ temporadas + ", capitulos=" + capitulos + ", directores=" + directores + ", generos=" + generos
+				+ ", pais=" + pais + ", plataformas=" + plataformas + ", poster=" + poster + "]";
 	}
 
 }

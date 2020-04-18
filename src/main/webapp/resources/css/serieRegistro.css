@@ -6,12 +6,9 @@
 .fondo{
 	color: red;
 }
-
-input.checkbox {
-    display: inline-block;
-     visibility: visible;
+.generoName {
+	padding-left: 2%;
 }
-
 select {
- visibility: visible;
+	visibility: visible;
 }

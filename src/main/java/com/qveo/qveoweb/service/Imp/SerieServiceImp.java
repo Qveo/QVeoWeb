@@ -20,10 +20,13 @@ public class SerieServiceImp implements SerieService{
 
 	@Autowired
 	SerieDao serieDao;
+	// src/main/webapp/resources/img/series
+	// resources/img/series
+	public static String directorioSerie="src/main/webapp/resources/img/series/";
 	
-	public static String directorioSerie="";
+	public String rutaguardar="/resources/img/series/";
 	
-	public String rutaguardar;
+	public String nombreFichero="";
 	
 	@Override
 	public Optional<Serie> getSerie(Integer id) {
@@ -32,21 +35,27 @@ public class SerieServiceImp implements SerieService{
 	}
 
 	@Override
-	public void save(Serie serieNew, MultipartFile file) throws IOException {
+	public void save(Serie serieNew) throws IOException {
 		
-	if(file != null) {
+/*	if(file != null) {
 		saveImg(file);
-		//serieNew.setPoster();
-	}
-	Serie serie= serieDao.save(serieNew);	
+		serieNew.setPoster(nombreFichero);
+	}*/
+		
+	serieNew.setPoster(rutaguardar+serieNew.getTitulo());
+	
+	serieDao.save(serieNew);	
+	
+	//nombreFichero="";
 	}
 
 	@Override
 	public void saveImg(MultipartFile file) throws IOException {
 		try {
 			byte[] bytes= file.getBytes();
-			rutaguardar=directorioSerie+file.getOriginalFilename();
-			Path path= Paths.get(rutaguardar);
+			nombreFichero=rutaguardar+file.getOriginalFilename();
+					
+			Path path= Paths.get(rutaguardar+file.getOriginalFilename());
 			Files.write(path, bytes);
 			
 		}catch(NoSuchFieldError e) {
