@@ -4,6 +4,8 @@ import javax.persistence.*;
 import java.sql.Date;
 import java.sql.Time;
 import java.util.Collection;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity
 public class Pelicula {
@@ -169,5 +171,10 @@ public class Pelicula {
 
     public void setPlataformas(Collection<Plataforma> plataformas) {
         this.plataformas = plataformas;
+    }
+
+
+    public String plataformasConcatenadas(){        
+        return plataformas.stream().map(Plataforma::getNombre).collect(Collectors.joining(", "));
     }
 }
