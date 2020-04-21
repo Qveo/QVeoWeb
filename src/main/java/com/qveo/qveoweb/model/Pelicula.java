@@ -1,6 +1,9 @@
 package com.qveo.qveoweb.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+
 import java.sql.Date;
 import java.sql.Time;
 import java.util.Collection;
@@ -8,7 +11,11 @@ import java.util.Collection;
 @Entity
 public class Pelicula {
     private Integer id;
+    
+    /*@NotNull*/
     private String titulo;
+    
+   /* @Pattern(regexp = "[\\d]")*/
     private Time duracion;
     private String guion;
     private String poster;
