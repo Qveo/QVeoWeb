@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <html>
 <head>
 <meta charset="ISO-8859-1">
@@ -102,12 +103,36 @@
 					<div class="row">
 						<div class="col s2"></div>
 						<div class="col s8">
-							<c:forEach items="${generos}" var="genero">
+							<c:choose>
+								<c:when test="${editar}">
+									<c:forEach items="${generos}" var="genero">
+										<c:forEach items="${serieNueva.generos}" var="generoRegist"></c:forEach>
+										<c:if test="${fn:contains(genero,generoRegist)}">
+											<form:label for="${genero.nombre}" path="generos">
+												<form:checkbox id="${genero.nombre}" path="generos"
+													value="${genero.id}" checked="checked" />
+												<span>${genero.nombre}</span>
+											</form:label>
+										</c:if>
+										<c:if test="${not(fn:contains(generoRegist,genero))}">
+											<form:label for="${genero.nombre}" path="generos">
+												<form:checkbox id="${genero.nombre}" path="generos"
+													value="${genero.id}" />
+												<span>${genero.nombre}</span>
+											</form:label>
+										</c:if>
+									</c:forEach>
+								</c:when>
+								<c:otherwise>
+									<c:forEach items="${generos}" var="genero">
 										<form:label for="${genero.nombre}" path="generos">
-											<form:checkbox id="${genero.nombre}" path="generos" value="${genero.id}" />
+											<form:checkbox id="${genero.nombre}" path="generos"
+												value="${genero.id}" />
 											<span>${genero.nombre}</span>
 										</form:label>
-							</c:forEach>
+									</c:forEach>
+								</c:otherwise>
+							</c:choose>
 						</div>
 						<div class="col s2"></div>
 					</div>

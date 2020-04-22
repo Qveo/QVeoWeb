@@ -29,7 +29,7 @@ import com.qveo.qveoweb.service.SerieService;
 
 
 @Controller
-public class SerieControlller {
+public class SerieController {
 	
 	@Autowired
 	SerieService serieService;
