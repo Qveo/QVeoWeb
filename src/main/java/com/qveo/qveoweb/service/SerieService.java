@@ -10,7 +10,8 @@ import com.qveo.qveoweb.model.Serie;
 
 public interface SerieService {
 	Optional<Serie> getSerie(Integer id);
-	public void save(Serie serieNew) throws IOException;
-	public void saveImg(MultipartFile file) throws IOException;
+	public void save(Serie serieNew);
+	public void saveImg(MultipartFile file,String titulo) throws IOException;
+	
 	
 }

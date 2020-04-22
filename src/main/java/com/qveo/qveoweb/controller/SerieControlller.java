@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.Collection;
 import java.util.List;
 import javax.validation.Valid;
+
+import org.omg.CORBA.PUBLIC_MEMBER;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -45,11 +47,9 @@ public class SerieControlller {
 	DirectorService directorService;
 	
 	@GetMapping("/serie/{id}")
-	public String Serie(@PathVariable String id, Model model) {
-		
-		int idI=Integer.parseInt(id);
-		
-		Serie series=serieService.getSerie(idI).get();
+	public String Serie(@PathVariable Integer id, Model model) {
+
+		Serie series=serieService.getSerie(id).get();
 				
 		model.addAttribute("series", series);
 	
@@ -74,25 +74,17 @@ public class SerieControlller {
 	}
 	
 	@PostMapping("/serie/form/add")
-	public String Serieadd(@Valid @ModelAttribute("serieNueva") Serie serieNew , BindingResult br, @RequestParam("poster") MultipartFile file , Model model ) {
+	public String addSerie(@Valid @ModelAttribute("serieNueva") Serie serieNew , BindingResult br , @RequestParam(value="posters") MultipartFile file) {
 		try {
-			System.out.println(serieNew.toString());
-			
+		
 			if(br.hasErrors()) {
-				List<Genero> generos=generoService.getAllGenero();
-				List<Pais> paises=paisService.getAllPais();
-				List<Plataforma> plataformas=plataformaSerive.getAllPlataformas();
-				List<Director> directores=directorService.getAllDirector();
-				
-				model.addAttribute("paises", paises);
-				model.addAttribute("generos", generos);
-				model.addAttribute("plataformas", plataformas);
-				model.addAttribute("directores", directores);
-				
-				return "registroSerie";
+				System.out.println(br.getAllErrors());
+				return "redirect:/serie/form";
 			}
+			String titulo=serieNew.getTitulo();
 			
 			serieService.save(serieNew);
+			serieService.saveImg(file, titulo);
 			
 		}catch (IOException e) {
 			e.printStackTrace();
@@ -101,5 +93,41 @@ public class SerieControlller {
 		
 		return "lista";
 	}
-
+	
+	@GetMapping("/serie/edit/{id}")
+	public String editarSerie(Model model, @PathVariable("id") Integer id) {
+		
+		List<Genero> generos=generoService.getAllGenero();
+		List<Pais> paises=paisService.getAllPais();
+		List<Plataforma> plataformas=plataformaSerive.getAllPlataformas();
+		List<Director> directores=directorService.getAllDirector();	
+		
+		Serie serieEditar=serieService.getSerie(id).get();
+		
+		model.addAttribute("editar", true);
+		model.addAttribute("serieNueva", serieEditar);
+		model.addAttribute("paises", paises);
+		model.addAttribute("generos", generos);
+		model.addAttribute("plataformas", plataformas);
+		model.addAttribute("directores", directores);
+	
+		return "registroSerie";
+	}
+	
+	
+	@PostMapping("/serie/update/{id}")
+	public String updateSerie(@Valid @ModelAttribute("serieNueva") Serie serieAct, BindingResult br ,@PathVariable("id") Integer id ,@RequestParam(value="posters") MultipartFile file) {
+		
+		if(br.hasErrors()) {
+			System.out.println(br.getAllErrors());
+			return "redirect:/serie/form";
+		}
+		
+		//serieService.editarSerie(serieAct);
+		//String titulo=serieNew.getTitulo();
+		//serieService.actImg(file, titulo);
+		
+		return "redirect:/serie/{id}";
+	}
+	
 }
