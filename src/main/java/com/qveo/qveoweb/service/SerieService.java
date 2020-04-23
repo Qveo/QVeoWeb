@@ -11,7 +11,7 @@ import com.qveo.qveoweb.model.Serie;
 public interface SerieService {
 	Optional<Serie> getSerie(Integer id);
 	public void save(Serie serieNew);
-	public void saveImg(MultipartFile file,String titulo) throws IOException;
-	
-	
+	public void saveImg(MultipartFile file,String titulo,boolean actFile) throws IOException;
+	public void editarSerie(Serie serieAct,boolean actPoster,String extension);
+	public String obtenerExtension(MultipartFile file);
 }

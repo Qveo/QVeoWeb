@@ -80,6 +80,9 @@
 						<div class="col s8">
 							<form:label path="poster">Poster</form:label>
 							<input type="file" name="posters">
+							<div class="col s4">
+							<img alt="${serieNueva.titulo}" src="${pageContext.request.contextPath}${serieNueva.poster}" width="80%">
+							</div>
 						</div>
 						<div class="col s2"></div>
 					</div>
@@ -106,15 +109,14 @@
 							<c:choose>
 								<c:when test="${editar}">
 									<c:forEach items="${generos}" var="genero">
-										<c:forEach items="${serieNueva.generos}" var="generoRegist"></c:forEach>
-										<c:if test="${fn:contains(genero,generoRegist)}">
+										<c:if test="${fn:contains(serieNueva.generos,genero)}">
 											<form:label for="${genero.nombre}" path="generos">
 												<form:checkbox id="${genero.nombre}" path="generos"
 													value="${genero.id}" checked="checked" />
 												<span>${genero.nombre}</span>
 											</form:label>
 										</c:if>
-										<c:if test="${not(fn:contains(generoRegist,genero))}">
+										<c:if test="${not(fn:contains(serieNueva.generos,genero))}">
 											<form:label for="${genero.nombre}" path="generos">
 												<form:checkbox id="${genero.nombre}" path="generos"
 													value="${genero.id}" />
@@ -195,11 +197,20 @@
 							<c:choose>
 								<c:when test="${editar}">
 									<c:forEach items="${directores}" var="director">
+									<c:if test="${fn:contains(serieNueva.directores,director)}">
 										<form:label for="${director.nombre}" path="directores">
+											<form:checkbox id="${director.nombre}" path="directores"
+												value="${director.id}"  checked="checked"/>
+											<span>${director.nombre}</span>
+										</form:label>
+									</c:if>
+									<c:if test="${not(fn:contains(serieNueva.directores,director))}">
+									<form:label for="${director.nombre}" path="directores">
 											<form:checkbox id="${director.nombre}" path="directores"
 												value="${director.id}" />
 											<span>${director.nombre}</span>
 										</form:label>
+									</c:if>
 									</c:forEach>
 								</c:when>
 								<c:otherwise>
@@ -230,12 +241,23 @@
 							<c:choose>
 								<c:when test="${editar}">
 									<c:forEach items="${plataformas}" var="plataforma">
+										<c:if test="${fn:contains(serieNueva.plataformas,plataforma)}">
+									
 										<form:label for="${plataforma.nombre}" path="plataformas">
+											<form:checkbox id="${plataforma.nombre}" path="plataformas"
+												value="${plataforma.id}"  checked="checked"  />
+											<span>${plataforma.nombre}</span>
+										</form:label>
+
+									</c:if>
+									<c:if test="${not(fn:contains(serieNueva.plataformas,plataforma))}">
+									
+									<form:label for="${plataforma.nombre}" path="plataformas">
 											<form:checkbox id="${plataforma.nombre}" path="plataformas"
 												value="${plataforma.id}" />
 											<span>${plataforma.nombre}</span>
 										</form:label>
-
+									</c:if>
 									</c:forEach>
 								</c:when>
 								<c:otherwise>

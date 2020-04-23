@@ -2,9 +2,12 @@ package com.qveo.qveoweb.service.Imp;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
+import java.nio.file.StandardOpenOption;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,23 +49,61 @@ public class SerieServiceImp implements SerieService {
 	}
 
 	@Override
-	public void saveImg(MultipartFile file, String titulo) throws IOException {
+	public void saveImg(MultipartFile file, String titulo,boolean ActFile) throws IOException {
 		try {
 			byte[] bytes = file.getBytes();
 
-			String extension = file.getOriginalFilename().split("\\.")[1];
+			String extension = obtenerExtension(file);
 
 			String fichero = directorioSerie + titulo.trim().toLowerCase().replaceAll("\\s+", "_") + "." + extension;
 
+			if(ActFile == false) {
 			Path path = Paths.get(fichero);
 
 			Files.write(path, bytes);
+			}else {
+				
+				/*Elimina y luego la crea
+				 * 
+				 * crea de nuevo*/
+				 Path path = Paths.get(fichero);
 
+				Files.write(path, bytes);
+			}
+			
 		} catch (NoSuchFieldError e) {
 			System.err.println("Error de ficheros ---------------------------------");
 			e.printStackTrace();
 		}
 	}
 
+	@Override
+	public void editarSerie(Serie serieAct, boolean actPoster,String extension) {
+		Serie serieModificar=serieDao.findById(serieAct.getId()).get();
+		if(serieModificar != null) {
+			serieModificar.setTitulo(serieAct.getTitulo());
+			serieModificar.setFechaInicio(serieAct.getFechaInicio());
+			serieModificar.setSinopsis(serieAct.getSinopsis());
+			serieModificar.setTemporadas(serieAct.getTemporadas());
+			serieModificar.setCapitulos(serieAct.getCapitulos());
+			serieModificar.setActores(serieAct.getActores());
+			serieModificar.setDirectores(serieAct.getDirectores());
+			serieModificar.setGeneros(serieAct.getGeneros());
+			serieModificar.setPais(serieAct.getPais());
+			serieModificar.setPlataformas(serieAct.getPlataformas());
+//			if(actPoster== true) {
+//			nombreFichero = rutaguardar + serieAct.getTitulo().trim().toLowerCase().replaceAll("\\s+", "_")+ "." + extension;
+//			serieModificar.setPoster(nombreFichero);
+//			nombreFichero = "";
+//			serieDao.save(serieModificar);
+//			}
+		}
+		
+	}
+	
+	public String obtenerExtension(MultipartFile file) {
+		return file.getOriginalFilename().split("\\.")[1];
+		
+	}
 
 }

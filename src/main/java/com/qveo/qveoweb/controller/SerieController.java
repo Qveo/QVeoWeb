@@ -84,7 +84,7 @@ public class SerieController {
 			String titulo=serieNew.getTitulo();
 			
 			serieService.save(serieNew);
-			serieService.saveImg(file, titulo);
+			serieService.saveImg(file, titulo,false);
 			
 		}catch (IOException e) {
 			e.printStackTrace();
@@ -120,14 +120,30 @@ public class SerieController {
 		
 		if(br.hasErrors()) {
 			System.out.println(br.getAllErrors());
+			System.out.println("p");
 			return "redirect:/serie/form";
 		}
 		
-		//serieService.editarSerie(serieAct);
-		//String titulo=serieNew.getTitulo();
+		try {
+		if(file.isEmpty()) {
+			String extesion="";
+			serieService.editarSerie(serieAct,false,extesion);
+			System.out.println("Entras aqui si fiechero vacio");
+		}else {
+			System.out.println("Entras aqui si no esta vacio");
+			String titulo=serieAct.getTitulo();
+			String extesion=serieService.obtenerExtension(file);
+			serieService.editarSerie(serieAct,true, extesion);
+			serieService.saveImg(file, titulo,true);	
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		//serieService.actImg(file, titulo);
 		
-		return "redirect:/serie/{id}";
+		return "redirect:/home";
 	}
 	
 }
