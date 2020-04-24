@@ -3,6 +3,8 @@ package com.qveo.qveoweb.controller;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.List;
+
+import javax.persistence.criteria.CriteriaBuilder.In;
 import javax.validation.Valid;
 
 import org.omg.CORBA.PUBLIC_MEMBER;
@@ -56,6 +58,13 @@ public class SerieController {
 		return "serie";
 	}
 	
+	@GetMapping("/serie/list")
+	public String listaSerie(Model model) {
+		List<Serie> series= serieService.findAllSerie();
+		model.addAttribute("series", series);
+		return "listaSerie";
+	}
+	
 	@GetMapping("/serie/form")
 	public String SerieFormulario(Model model) {
 		
@@ -91,7 +100,7 @@ public class SerieController {
 		}
 		
 		
-		return "lista";
+		return "redirect:/serie/list";
 	}
 	
 	@GetMapping("/serie/edit/{id}")
@@ -121,7 +130,7 @@ public class SerieController {
 		if(br.hasErrors()) {
 			System.out.println(br.getAllErrors());
 			System.out.println("p");
-			return "redirect:/serie/form";
+			return "redirect:/serie/edit/{id}";
 		}
 		
 		try {
@@ -143,7 +152,14 @@ public class SerieController {
 		
 		//serieService.actImg(file, titulo);
 		
-		return "redirect:/home";
+		return "redirect:/serie/list";
 	}
+	@GetMapping("/serie/delete/{id}")
+	public String deleteSerie(@PathVariable("id") Integer id) {
+		
+		serieService.deleteSerie(id);
+		return "redirect:/serie/list";
+	}
+	
 	
 }

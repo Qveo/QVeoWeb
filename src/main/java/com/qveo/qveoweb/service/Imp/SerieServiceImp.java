@@ -8,6 +8,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.nio.file.StandardOpenOption;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,12 @@ public class SerieServiceImp implements SerieService {
 	public String rutaguardar = "/resources/img/series/";
 
 	public String nombreFichero = "";
+	
+	@Override
+	public List<Serie> findAllSerie() {
+		// TODO Auto-generated method stub
+		return serieDao.findAll();
+	}
 
 	@Override
 	public Optional<Serie> getSerie(Integer id) {
@@ -105,5 +112,13 @@ public class SerieServiceImp implements SerieService {
 		return file.getOriginalFilename().split("\\.")[1];
 		
 	}
+
+	@Override
+	public void deleteSerie(Integer id) {
+		serieDao.deleteById(id);
+		
+	}
+
+
 
 }

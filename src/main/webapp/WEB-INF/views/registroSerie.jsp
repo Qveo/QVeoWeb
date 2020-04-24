@@ -80,9 +80,13 @@
 						<div class="col s8">
 							<form:label path="poster">Poster</form:label>
 							<input type="file" name="posters">
+							
+								<c:if test="${editar}">
 							<div class="col s4">
 							<img alt="${serieNueva.titulo}" src="${pageContext.request.contextPath}${serieNueva.poster}" width="80%">
 							</div>
+							</c:if>
+							
 						</div>
 						<div class="col s2"></div>
 					</div>
@@ -275,7 +279,7 @@
 						</div>
 						<div class="col s2"></div>
 					</div>
-
+	
 					<div class="row">
 						<div class="col s2"></div>
 						<div class="col s8">

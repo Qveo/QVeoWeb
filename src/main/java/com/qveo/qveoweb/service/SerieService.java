@@ -2,6 +2,7 @@ package com.qveo.qveoweb.service;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.web.multipart.MultipartFile;
@@ -14,4 +15,8 @@ public interface SerieService {
 	public void saveImg(MultipartFile file,String titulo,boolean actFile) throws IOException;
 	public void editarSerie(Serie serieAct,boolean actPoster,String extension);
 	public String obtenerExtension(MultipartFile file);
+	List<Serie> findAllSerie();
+	void deleteSerie(Integer id);
+		
+	
 }
