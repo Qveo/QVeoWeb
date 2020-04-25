@@ -1,6 +1,5 @@
 package com.qveo.qveoweb.service.Imp;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -18,68 +17,80 @@ import com.qveo.qveoweb.model.Pelicula;
 import com.qveo.qveoweb.service.PeliculaService;
 
 @Service
-public class PeliculaServiceImp implements PeliculaService{
+public class PeliculaServiceImp implements PeliculaService {
 
 	@Autowired
 	PeliculaDao peliculaDao;
-	// src/main/webapp/resources/img/series
-	// resources/img/series
-	public static String directorioPelicula="src/main/webapp/resources/img/pelicula/";
-	
-	public String rutaguardar="/resources/img/pelicula/";
-	
-	public String nombreFichero="";
-	
+
+	public static String directorioPelicula = "src/main/webapp/resources/img/";
+
+	public String rutaguardar = "/resources/img/pelicula/";
+
+	public String nombreFichero = "";
+
 	@Override
 	@Transactional(readOnly = true)
 	public List<Pelicula> findAll() {
 		// TODO Auto-generated method stub
 		return (List<Pelicula>) peliculaDao.findAll();
 	}
-	
+
 	@Override
 	@Transactional(readOnly = true)
 	public Optional<Pelicula> getPelicula(Integer id) {
-				
+
 		return peliculaDao.findById(id);
 	}
 
 	@Override
 	@Transactional
 	public void save(Pelicula peliculaNew) throws IOException {
-		
-		
-	peliculaNew.setPoster(rutaguardar+peliculaNew.getTitulo());
-	
-	peliculaDao.save(peliculaNew);	
-	
-	//nombreFichero="";
-	}
 
+		peliculaDao.save(peliculaNew);
+
+		// nombreFichero="";
+	}
+	
 	@Override
-	@Transactional
-	public void saveImg(MultipartFile file) throws IOException {
+	public void saveImg(MultipartFile file, String titulo,boolean ActFile) throws IOException {
 		try {
-			byte[] bytes= file.getBytes();
-			nombreFichero=rutaguardar+file.getOriginalFilename();
-					
-			Path path= Paths.get(rutaguardar+file.getOriginalFilename());
+			byte[] bytes = file.getBytes();
+
+			String extension = obtenerExtension(file);
+
+			String fichero = directorioPelicula + titulo.trim().toLowerCase().replaceAll("\\s+", "_") + "." + extension;
+
+			if(ActFile == false) {
+			Path path = Paths.get(fichero);
+
 			Files.write(path, bytes);
+			}else {
+				
+				/*Elimina y luego la crea
+				 * 
+				 * crea de nuevo*/
+				 Path path = Paths.get(fichero);
+
+				Files.write(path, bytes);
+			}
 			
-		}catch(NoSuchFieldError e) {
+		} catch (NoSuchFieldError e) {
 			System.err.println("Error de ficheros ---------------------------------");
 			e.printStackTrace();
 		}
-		
 	}
 	
+	public String obtenerExtension(MultipartFile file) {
+		return file.getOriginalFilename().split("\\.")[1];
+		
+	}
+
+
 	@Override
 	@Transactional
 	public void delete(Integer id) {
 		peliculaDao.deleteById(id);
-		
+
 	}
-	
-	
 
 }

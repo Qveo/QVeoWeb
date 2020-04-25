@@ -9,5 +9,4 @@ import java.util.List;
 
 @Repository
 public interface PlataformaDao extends JpaRepository<Plataforma, Integer> {
-    List<Plataforma> findAll();
 }

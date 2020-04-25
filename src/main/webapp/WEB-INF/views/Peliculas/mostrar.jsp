@@ -68,7 +68,7 @@
 				<div class="col s10 ">
 					<span>Genero:</span>
 					<ul>
-						<c:forEach items="${peliculas.peliculas}" var="genero">
+						<c:forEach items="${peliculas.generos}" var="genero">
 
 							<li><a class="genero">${genero.nombre}</a></li>
 						</c:forEach>

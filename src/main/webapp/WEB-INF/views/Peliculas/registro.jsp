@@ -58,16 +58,26 @@
 					</div>
 				</div>
 
-				<div class="col s2"></div>
-		</div>
+			
 		<div class="row">
 
 			<div class="input-field col s12">
 				<span>Paises</span> <br>
-				<form:select path="pais" multiple="false">
-					<form:options items="${paises}" path="pais" />
+				<form:select path="pais." multiple="false">
+					<form:options path="pais" items="${paises}"/>
+						<%-- itemLabel="nombre" --%> 
 				</form:select>
 			</div>
+		</div>
+		
+		<div class="file-field input-field">
+						<div class="btn">
+							<span>File</span>
+							<form:input path="poster" type="file" />
+						</div>
+						<div class="file-path-wrapper">
+							<form:input path="poster" class="file-path validate" type="text" />
+						</div>
 		</div>
 
 

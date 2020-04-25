@@ -9,6 +9,6 @@ import org.springframework.stereotype.Repository;
 import com.qveo.qveoweb.model.Genero;
 
 @Repository
-public interface GeneroDao extends JpaRepository<Genero	, Integer>{
+public interface GeneroDao extends JpaRepository<Genero, Integer>{
 	
 }
