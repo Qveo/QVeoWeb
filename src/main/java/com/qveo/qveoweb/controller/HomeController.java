@@ -27,7 +27,7 @@ public class HomeController {
 	@GetMapping({"/","/home"})
 	public String home(Model model) {
 		
-		logger.debug("Executing home() method via Get");
+		//logger.debug("Executing home() method via Get");
 
 		List<Plataforma> plataformas = plataformaService.getAllPlataformas();
 

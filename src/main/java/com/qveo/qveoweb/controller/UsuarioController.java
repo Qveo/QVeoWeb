@@ -14,6 +14,9 @@ import java.util.List;
 import javax.validation.Valid;
 import com.qveo.qveoweb.model.Usuario;
 import com.qveo.qveoweb.service.UsuarioService;
+import java.io.IOException;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 
 
@@ -30,7 +33,7 @@ public class UsuarioController {
 
 		modelo.addAttribute("usuarios", usuarios);
 
-		return "listaUsuarios";
+		return "usuario/listaUsuarios";
 	}
 
 	@RequestMapping(value="/usuario/form", method=RequestMethod.GET)
@@ -38,17 +41,24 @@ public class UsuarioController {
 
 		modelo.addAttribute("nuevoUsuario", new Usuario());
 
-		return "registro";
+		return "usuario/registro";
 	}
 
 	@RequestMapping(value="/usuario/form/add",method=RequestMethod.POST)
 	public String addUser(@Valid @ModelAttribute("nuevoUsuario") Usuario usuario,
-			BindingResult br) {
-
-		if(br.hasErrors()) return "registro";
-
-		usuarioService.saveUser(usuario);
-
+			BindingResult br, @RequestParam(value="file") MultipartFile file){
+            try {
+               if(br.hasErrors()) return "registro";
+               
+               usuarioService.saveUser(usuario);
+               usuarioService.saveImg(file, usuario ,false);
+               
+            
+            } catch (IOException e) {
+                
+                e.printStackTrace();
+            }
+		
 		return  "redirect:/usuario/list";
 	}
 
@@ -59,7 +69,7 @@ public class UsuarioController {
 
 		modelo.addAttribute("nuevoUsuario", usuario);
 		modelo.addAttribute("edit", true);
-		return "registro";	
+		return "usuario/registro";	
 	}
 
 	@RequestMapping(value="/usuario/update/{id}", method=RequestMethod.POST)
@@ -67,9 +77,10 @@ public class UsuarioController {
 			BindingResult br, @PathVariable("id") Integer id) {
 
 		if (br.hasErrors()) {
-			return "registro";
+			return "usuario/registro";
 		}
 		
+                //usuarioService.saveUser(usuario);
 		usuarioService.editUser(usuario);
 
 		return "redirect:/usuario/list";
