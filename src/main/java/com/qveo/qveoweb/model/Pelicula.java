@@ -10,6 +10,8 @@ import java.util.Collection;
 
 @Entity
 public class Pelicula {
+	
+	
     private Integer id;
     
     /*@NotNull*/
@@ -18,17 +20,18 @@ public class Pelicula {
    /* @Pattern(regexp = "[\\d]")*/
     private Time duracion;
     private String guion;
-    private String poster;
+    //private String poster;
     private String sinopsis;
     private Date anio;
     private Collection<Actor> actores;
-    private Collection<Genero> peliculas;
+    private Collection<Genero> generos;
     private Collection<Lista> listas;
     private Pais pais;
     private Collection<Director> directores;
     private Collection<Plataforma> plataformas;
 
-    @Id
+	@Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "ID")
     public Integer getId() {
         return id;
@@ -68,15 +71,15 @@ public class Pelicula {
         this.guion = guion;
     }
 
-    @Basic
-    @Column(name = "POSTER")
-    public String getPoster() {
-        return poster;
-    }
-
-    public void setPoster(String poster) {
-        this.poster = poster;
-    }
+//    @Basic
+//    @Column(name = "POSTER")
+//    public String getPoster() {
+//        return poster;
+//    }
+//
+//    public void setPoster(String poster) {
+//        this.poster = poster;
+//    }
 
     @Basic
     @Column(name = "SINOPSIS")
@@ -118,12 +121,12 @@ public class Pelicula {
             joinColumns = @JoinColumn(name = "id_pelicula", nullable = false),
             inverseJoinColumns = @JoinColumn(name="id_genero", nullable = false)
     )
-    public Collection<Genero> getPeliculas() {
-        return peliculas;
+    public Collection<Genero> getGeneros() {
+        return generos;
     }
 
-    public void setPeliculas(Collection<Genero> peliculas) {
-        this.peliculas = peliculas;
+    public void setGeneros(Collection<Genero> peliculas) {
+        this.generos = peliculas;
     }
 
     @ManyToMany
@@ -177,4 +180,12 @@ public class Pelicula {
     public void setPlataformas(Collection<Plataforma> plataformas) {
         this.plataformas = plataformas;
     }
+
+	@Override
+	public String toString() {
+		return "Pelicula [id=" + id + ", titulo=" + titulo + ", duracion=" + duracion + ", guion=" + guion + ", poster="
+				 + ", sinopsis=" + sinopsis + ", anio=" + anio + ", actores=" + actores + ", generos=" + generos
+				+ ", listas=" + listas + ", pais=" + pais + ", directores=" + directores + ", plataformas="
+				+ plataformas + "]";
+	}
 }
