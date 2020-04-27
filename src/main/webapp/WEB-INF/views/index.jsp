@@ -6,7 +6,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
           rel="stylesheet">
     <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+          href="${pageContext.request.contextPath}/resources/css/materialize.css">
     <link rel="stylesheet"
           href="${pageContext.request.contextPath}/resources/css/carousel.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/general.css">
@@ -50,7 +50,7 @@
 
 </body>
 <script
-        src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        src="${pageContext.request.contextPath}/resources/js/materialize.js"></script>
 <script
         src="${pageContext.request.contextPath}/resources/js/carousel.js"></script>
 </html>
