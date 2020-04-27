@@ -37,9 +37,9 @@ public class PeliculaServiceImp implements PeliculaService {
 
 	@Override
 	@Transactional(readOnly = true)
-	public Optional<Pelicula> getPelicula(Integer id) {
+	public Pelicula getPelicula(Integer id) {
 
-		return peliculaDao.findById(id);
+		return peliculaDao.findById(id).orElse(null);
 	}
 
 	@Override
@@ -51,40 +51,6 @@ public class PeliculaServiceImp implements PeliculaService {
 		// nombreFichero="";
 	}
 	
-	@Override
-	public void saveImg(MultipartFile file, String titulo,boolean ActFile) throws IOException {
-		try {
-			byte[] bytes = file.getBytes();
-
-			String extension = obtenerExtension(file);
-
-			String fichero = directorioPelicula + titulo.trim().toLowerCase().replaceAll("\\s+", "_") + "." + extension;
-
-			if(ActFile == false) {
-			Path path = Paths.get(fichero);
-
-			Files.write(path, bytes);
-			}else {
-				
-				/*Elimina y luego la crea
-				 * 
-				 * crea de nuevo*/
-				 Path path = Paths.get(fichero);
-
-				Files.write(path, bytes);
-			}
-			
-		} catch (NoSuchFieldError e) {
-			System.err.println("Error de ficheros ---------------------------------");
-			e.printStackTrace();
-		}
-	}
-	
-	public String obtenerExtension(MultipartFile file) {
-		return file.getOriginalFilename().split("\\.")[1];
-		
-	}
-
 
 	@Override
 	@Transactional

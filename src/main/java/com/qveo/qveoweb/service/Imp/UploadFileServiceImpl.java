@@ -13,9 +13,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.FileSystemUtils;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.qveo.qveoweb.dao.PeliculaDao;
 import com.qveo.qveoweb.service.IUploadFileService;
 
 @Service
@@ -23,7 +25,7 @@ public class UploadFileServiceImpl implements IUploadFileService {
 
 	private final Logger log = LoggerFactory.getLogger(getClass());
 
-	private final static String UPLOADS_FOLDER = "src/main/webapp/resources/img";
+	private final static String UPLOADS_FOLDER = "src/main/webapp/resources/img/peliculas";
 
 	@Override
 	public Resource load(String filename) throws MalformedURLException {
@@ -37,6 +39,9 @@ public class UploadFileServiceImpl implements IUploadFileService {
 		}
 		return recurso;
 	}
+	
+
+
 
 	@Override
 	public String copy(MultipartFile file) throws IOException {
@@ -54,6 +59,8 @@ public class UploadFileServiceImpl implements IUploadFileService {
 	public boolean delete(String filename) {
 		Path rootPath = getPath(filename);
 		File archivo = rootPath.toFile();
+		
+		log.info("pathBorrar: " + rootPath);
 
 		if (archivo.exists() && archivo.canRead()) {
 			if (archivo.delete()) {

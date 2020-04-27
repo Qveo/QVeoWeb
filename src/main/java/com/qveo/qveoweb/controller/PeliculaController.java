@@ -35,7 +35,6 @@ import com.qveo.qveoweb.service.PeliculaService;
 import com.qveo.qveoweb.service.PlataformaService;
 
 @Controller
-@SessionAttributes("pelicula")
 @RequestMapping("/peliculas")
 public class PeliculaController {
 
@@ -74,7 +73,7 @@ public class PeliculaController {
 
 		int idI = Integer.parseInt(id);
 
-		Pelicula pelicula = peliculaService.getPelicula(idI).get();
+		Pelicula pelicula = peliculaService.getPelicula(idI);
 
 		mod.addAttribute("peliculas", pelicula);
 		mod.addAttribute("Titulo", "Datos de la pelicula");
@@ -105,20 +104,33 @@ public class PeliculaController {
 	@RequestMapping(value = "/form/{id}", method = RequestMethod.GET)
 	public String editar(Model mod, @PathVariable(value = "id") Integer id) {
 
+		Pelicula pelicula = null;
+
+		if (id > 0) {
+			pelicula = peliculaService.getPelicula(id);
+			if (pelicula == null) {
+
+				return "redirect:/listar";
+			}
+		} else {
+
+			return "redirect:/listar";
+		}
+
 		List<Genero> generos = generoService.getAllGenero();
 		List<Pais> paises = paisService.getAllPais();
 		List<Plataforma> plataformas = plataformaSerive.getAllPlataformas();
 		List<Director> directores = directorService.getAllDirector();
 		List<Actor> actores = actorServ.getAllActor();
-		Pelicula peliculaEd = peliculaService.getPelicula(id).get();
+
 
 		mod.addAttribute("edit", true);
-		mod.addAttribute("peliculaNueva", peliculaEd);
 		mod.addAttribute("directores", directores);
 		mod.addAttribute("actores", actores);
 		mod.addAttribute("paises", paises);
 		mod.addAttribute("generos", generos);
 		mod.addAttribute("plataformas", plataformas);
+		mod.addAttribute("peliculaNueva", pelicula);
 
 		mod.addAttribute("title", "Editar Pelicula");
 
@@ -126,10 +138,10 @@ public class PeliculaController {
 	}
 
 	@RequestMapping(value = "/form", method = RequestMethod.POST)
-	public String guardar(@Valid @ModelAttribute("peliculaNueva") Pelicula pelicula,
-			 BindingResult br, Model mod, SessionStatus status) {
+	public String guardar(@Valid @ModelAttribute("peliculaNueva") Pelicula pelicula, BindingResult br, Model mod,
+			@RequestParam("foto") MultipartFile foto, SessionStatus status) {
 
-		System.out.println(pelicula.toString());
+		
 		try {
 			if (br.hasErrors()) {
 
@@ -148,25 +160,32 @@ public class PeliculaController {
 				mod.addAttribute("peliculaNueva", pelicula);
 				return "Peliculas/registro";
 			}
+			
+			System.out.println(pelicula.toString());
 
-//			if (!foto.isEmpty()) {
-//
-//				if (pelicula.getId() != null && pelicula.getId() > 0 && pelicula.getPoster() != null
-//						&& pelicula.getPoster().length() > 0) {
-//
-//					uploadFileService.delete(pelicula.getPoster());
-//				}
-//
-//				String uniqueFilename = null;
-//				try {
-//					uniqueFilename = uploadFileService.copy(foto);
-//				} catch (IOException e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				}
-//
-//				pelicula.setPoster(uniqueFilename);
-//			}
+			if (!foto.isEmpty()) {
+				System.out.println("Hola");
+					
+					String rutaFoto = peliculaService.getPelicula(pelicula.getId()).getPoster();
+					System.out.println(rutaFoto);
+				
+				if (pelicula.getId() != null && pelicula.getId() > 0 && rutaFoto != null
+						&& rutaFoto.length() > 0) {
+					System.out.println("VIVA ESPAÑAAAAAAAAAAAAAAAAA");
+
+					uploadFileService.delete(rutaFoto);
+				} 
+
+				String uniqueFilename = null; 
+				try {
+					uniqueFilename = uploadFileService.copy(foto);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				System.out.println(uniqueFilename);
+				pelicula.setPoster("/resources/img/peliculas/" + uniqueFilename);
+			}
 			peliculaService.save(pelicula);
 			status.setComplete();
 		} catch (IOException e) {
@@ -179,6 +198,11 @@ public class PeliculaController {
 	public String eliminar(@PathVariable(value = "id") Integer id) {
 
 		if (id > 0) {
+
+			Pelicula pelicula = peliculaService.getPelicula(id);
+
+			uploadFileService.delete(pelicula.getPoster());
+
 			peliculaService.delete(id);
 		}
 		return "redirect:listar";

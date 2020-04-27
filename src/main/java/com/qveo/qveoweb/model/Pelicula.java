@@ -20,7 +20,7 @@ public class Pelicula {
    /* @Pattern(regexp = "[\\d]")*/
     private Time duracion;
     private String guion;
-    //private String poster;
+    private String poster;
     private String sinopsis;
     private Date anio;
     private Collection<Actor> actores;
@@ -71,15 +71,15 @@ public class Pelicula {
         this.guion = guion;
     }
 
-//    @Basic
-//    @Column(name = "POSTER")
-//    public String getPoster() {
-//        return poster;
-//    }
-//
-//    public void setPoster(String poster) {
-//        this.poster = poster;
-//    }
+    @Basic
+    @Column(name = "POSTER")
+    public String getPoster() {
+        return poster;
+    }
+
+    public void setPoster(String poster) {
+        this.poster = poster;
+    }
 
     @Basic
     @Column(name = "SINOPSIS")

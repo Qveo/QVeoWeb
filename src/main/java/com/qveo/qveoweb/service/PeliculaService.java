@@ -12,9 +12,9 @@ import com.qveo.qveoweb.model.Pelicula;
 public interface PeliculaService {
 	
 	public List<Pelicula> findAll();
-	Optional<Pelicula> getPelicula(Integer id);
+	public Pelicula getPelicula(Integer id);
 	public void save(Pelicula pelicula) throws IOException;
 	public void delete(Integer id);
-	public void saveImg(MultipartFile file,String titulo,boolean actFile) throws IOException;
+
 	
 }
