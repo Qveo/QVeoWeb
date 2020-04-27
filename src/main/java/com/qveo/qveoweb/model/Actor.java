@@ -1,18 +1,44 @@
 package com.qveo.qveoweb.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 import java.util.Collection;
 
 @Entity
 public class Actor {
     private Integer id;
+    @NotBlank(message = "El  nombre es obligatorio")
+    @Size(min = 5,max=40,message = "No puede superar los 100 caracteres")
     private String nombre;
+    @NotBlank(message = "El sexo es obligatorio")
     private String sexo;
+    @NotNull(message = "Escoja un pais de la lista")
     private Pais pais;
     private Collection<Pelicula> peliculas;
     private Collection<Serie> series;
+    private String foto;
+    
 
-    @Id
+    public Actor() {
+	}
+    
+	public Actor(String nombre, String sexo, Pais pais, Collection<Pelicula> peliculas, Collection<Serie> series,
+			String foto) {
+		this.nombre = nombre;
+		this.sexo = sexo;
+		this.pais = pais;
+		this.peliculas = peliculas;
+		this.series = series;
+		this.foto = foto;
+	}
+
+
+
+	@Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "ID")
     public Integer getId() {
         return id;
@@ -79,4 +105,15 @@ public class Actor {
     public void setSeries(Collection<Serie> series) {
         this.series = series;
     }
+
+    @Basic
+    @Column(name = "FOTO")
+	public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
+        
 }
