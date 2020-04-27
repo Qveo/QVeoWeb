@@ -48,6 +48,7 @@
 						<form:label path="nombre">Nombre</form:label>
 						<form:input path="nombre" id="nombre" class="validate"/>
 						<form:errors path="nombre" style="color:red"></form:errors>
+						<div style="color:red">${errorNombre}</div>
 					</div>
 					<div class="col s2"></div>
 				</div>
@@ -84,6 +85,7 @@
 							</c:choose>
 						</form:select>
 						<form:errors path="pais" style="color:red"></form:errors>
+						<div style="color:red">${errorPais}</div>
 					</div>
 				</div>
 				<div class="row">
@@ -105,6 +107,7 @@
 							<span>Femenino</span>
 						</form:label>
 						<form:errors path="sexo" style="color:red"></form:errors>
+						<div style="color:red">${errorSexo}</div>
 					</div>
 					<div class="col s2"></div>
 				</div>
@@ -118,7 +121,6 @@
 								<img alt="${actorNuevo.nombre}"
 									src="${pageContext.request.contextPath}${actorNuevo.foto}"
 									width="80%">
-									<p style="color:red">Pintate los labios maria</p>
 							</div>
 						</c:if>
 					</div>

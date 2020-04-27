@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 import com.qveo.qveoweb.model.Actor;
 import com.qveo.qveoweb.model.Pais;
 import com.qveo.qveoweb.service.ActorService;
@@ -46,8 +48,10 @@ public class ActorController {
 
 	@PostMapping("/actor/form/add")
 	public String addActor(@Valid @ModelAttribute("actorNuevo") Actor actorNuevo, BindingResult br,
-			@RequestParam(value = "fotoActor") MultipartFile file) throws IOException {
+			@RequestParam(value = "fotoActor") MultipartFile file, Model model) throws IOException {
 		if (br.hasErrors()) {
+			List<Pais> paises = paisService.getAllPais();
+			model.addAttribute("paises", paises);
 			return "actor/registro";
 		}
 
@@ -70,15 +74,20 @@ public class ActorController {
 	}
 
 	@PostMapping("/actor/update/{id}")
-	public String updateActor(@Valid @ModelAttribute("actorNuevo") Actor actorAct, BindingResult br, Model model) {
+	public String updateActor(@Valid @ModelAttribute("actorNuevo") Actor actorAct, BindingResult br, RedirectAttributes redirectAttrs) {
 		if (br.hasErrors()) {
-			
-			List<Pais> paises = paisService.getAllPais();
 		
-			model.addAttribute("editar", true);
-			model.addAttribute("paises", paises);
-						
-			return "actor/registro";
+			if (br.hasFieldErrors("nombre")) {
+				redirectAttrs.addFlashAttribute("errorNombre", "El campo nombre no debe ser mayor de  100 caracteres");
+			}
+			if (br.hasFieldErrors("pais")) {
+				redirectAttrs.addFlashAttribute("errorPais", "Escoja un pais de la lista");
+			}
+			if (br.hasFieldErrors("sexo")) {
+				redirectAttrs.addFlashAttribute("errorSexo", "El campo sexo es obligatoirio");
+			}
+							
+			return "redirect:/actor/edit/"+actorAct.getId();
 		}
 
 		actorService.editarActor(actorAct);
