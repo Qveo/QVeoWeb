@@ -16,10 +16,10 @@ public class Pelicula {
     private Date anio;
     private Collection<Actor> actores;
     private Collection<Genero> peliculas;
-    private Collection<Lista> listas;
     private Pais pais;
     private Collection<Director> directores;
     private Collection<Plataforma> plataformas;
+    private Collection<Usuario> usuarios;
 
     @Id
     @Column(name = "ID")
@@ -119,20 +119,6 @@ public class Pelicula {
         this.peliculas = peliculas;
     }
 
-    @ManyToMany
-    @JoinTable(
-            name ="lista_pelicula",
-            joinColumns = @JoinColumn(name = "id_pelicula", nullable = false),
-            inverseJoinColumns = @JoinColumn(name="id_lista", nullable = false)
-    )
-    public Collection<Lista> getListas() {
-        return listas;
-    }
-
-    public void setListas(Collection<Lista> listas) {
-        this.listas = listas;
-    }
-
     @ManyToOne
     @JoinColumn(name = "ID_PAIS", referencedColumnName = "ID", nullable = false)
     public Pais getPais() {
@@ -170,4 +156,13 @@ public class Pelicula {
     public void setPlataformas(Collection<Plataforma> plataformas) {
         this.plataformas = plataformas;
     }
+    
+    @ManyToMany(mappedBy = "peliculas")
+	public Collection<Usuario> getUsuarios() {
+		return usuarios;
+	}
+
+	public void setUsuarios(Collection<Usuario> usuarios) {
+		this.usuarios = usuarios;
+	}
 }
