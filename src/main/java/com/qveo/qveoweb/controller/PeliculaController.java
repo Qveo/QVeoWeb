@@ -37,6 +37,8 @@ import com.qveo.qveoweb.service.PlataformaService;
 @Controller
 @RequestMapping("/peliculas")
 public class PeliculaController {
+	
+	Boolean editar = false;
 
 	@Autowired
 	PeliculaService peliculaService;
@@ -105,6 +107,7 @@ public class PeliculaController {
 	public String editar(Model mod, @PathVariable(value = "id") Integer id) {
 
 		Pelicula pelicula = null;
+		editar=true;
 
 		if (id > 0) {
 			pelicula = peliculaService.getPelicula(id);
@@ -164,8 +167,8 @@ public class PeliculaController {
 			System.out.println(pelicula.toString());
 
 			if (!foto.isEmpty()) {
-				System.out.println("Hola");
-					
+				
+				if(editar == true) {	
 					String rutaFoto = peliculaService.getPelicula(pelicula.getId()).getPoster();
 					String ruta = rutaFoto.substring(rutaFoto.lastIndexOf('/') + 1);
 					System.out.println(ruta);
@@ -176,6 +179,7 @@ public class PeliculaController {
 
 					uploadFileService.delete(ruta);
 				} 
+				}
 
 				String uniqueFilename = null; 
 				try {
