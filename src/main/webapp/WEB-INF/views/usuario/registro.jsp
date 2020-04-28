@@ -49,7 +49,7 @@
                             <div class="input-field col s12 m6 l6 offset-l3">
                             <form:input id="email" type="email" path="email" class="validate" />
                             <form:label path="email">Email</form:label>
-                                <span class="helper-text" data-error="email inválido" data-success="Perfecto!"></span>
+                            <span class="helper-text" data-error="email inválido" data-success="Perfecto!"></span>
                             <form:errors path="email" style="color:red"></form:errors>
                             </div>
                             <div class="input-field col s12 m6 l6 offset-l3">
@@ -76,11 +76,15 @@
                     </div>
                     <div class="row">
                         <div class="col s12 m12 l6 offset-l3">
-                            <form:label path="fechaNacimiento">Fecha de Nacimiento</form:label>
+                            <form:label for="date" path="fechaNacimiento">Fecha de Nacimiento</form:label>
                             <form:input id="date" type="date" path="fechaNacimiento" />
                             <form:errors path="fechaNacimiento" style="color:red"></form:errors>
                             </div>
                         </div>
+                        <form:select path="pais" multiple="false">
+                                    <form:option value="">--Select--</form:option>
+                                    <form:options items="${paises}" itemLabel="nombre" />
+                                </form:select>
                     <!-- Imagen de usuario -->
                     
                     <c:if test="${edit}"> 
@@ -139,5 +143,11 @@
     </body>
     <script
     src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function() {
+		var elems = document.querySelectorAll('select');
+		var instances = M.FormSelect.init(elems);
+	});
+    </script>
 </body>
 </html>

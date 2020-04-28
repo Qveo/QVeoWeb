@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
+         <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -44,11 +45,11 @@
                             <td>${usuario.nombre}</td>
                             <td>${usuario.apellidos}</td>
                             <td>${usuario.email}</td>
-                            <td>${usuario.fechaNacimiento}</td>
+                            <td><fmt:formatDate pattern = "dd/MM/yyyy" value = "${usuario.fechaNacimiento}" /></td>
                             <td>${usuario.sexo}</td>
                             <td>${usuario.rol.nombre}</td>
                             <td><a href="/qveo/usuario/edit/${usuario.id}" ><i class="material-icons editar">edit</i></a></td>
-                            <td><a href="/qveo/usuario/delete/${usuario.id}" ><a><i class="material-icons eliminar">delete</i></a></td>
+                            <td><a href="/qveo/usuario/delete/${usuario.id}" ><i class="material-icons eliminar">delete</i></a></td>
                         </tr>
                     </c:forEach>
                 </tbody>

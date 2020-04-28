@@ -1,11 +1,22 @@
 package com.qveo.qveoweb.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 
-import java.sql.Date;
+import java.util.Date;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Collection;
 
 @Entity
@@ -32,8 +43,29 @@ public class Usuario {
 	private Collection<Plataforma> plataformas;
     private Collection<Pelicula> peliculas;
     private Collection<Serie> series;
+    
+    public Usuario() {
+    	
+    }
 
-    @Id
+    public Usuario(String nombre,String apellidos,String email, String foto,Date fechaNacimiento, String sexo, String password, Rol rol,
+			Pais pais, Date fechaAlta) {
+		this.nombre = nombre;
+		this.apellidos = apellidos;
+		this.email = email;
+		this.foto = foto;
+		this.fechaNacimiento = fechaNacimiento;
+		this.sexo = sexo;
+		this.password = password;
+		this.rol = rol;
+		this.pais = pais;
+		this.fechaAlta = fechaAlta;
+		this.plataformas = new ArrayList<>();
+		this.peliculas = new ArrayList<>();
+		this.series = new ArrayList<>();
+	}
+
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
     public Integer getId() {
@@ -86,6 +118,8 @@ public class Usuario {
 
     @Basic
     @Column(name = "FECHA_NACIMIENTO")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    //@Temporal(TemporalType.DATE)
     public Date getFechaNacimiento() {
         return fechaNacimiento;
     }
@@ -136,7 +170,7 @@ public class Usuario {
 	
 	@CreatedDate
 	@Column(name = "FECHA_ALTA")
-	//@Temporal(TemporalType.TIMESTAMP)
+	@Temporal(TemporalType.TIMESTAMP)
 	public Date getFechaAlta() {
 		return fechaAlta;
 	}

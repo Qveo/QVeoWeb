@@ -3,10 +3,8 @@ package com.qveo.qveoweb.service.Imp;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.qveo.qveoweb.dao.ListaDao;
 import com.qveo.qveoweb.dao.RolDao;
 import com.qveo.qveoweb.dao.UsuarioDao;
-import com.qveo.qveoweb.model.Lista;
 import com.qveo.qveoweb.model.Pelicula;
 import com.qveo.qveoweb.model.Rol;
 import com.qveo.qveoweb.model.Serie;
@@ -33,9 +31,6 @@ public class UsuarioServiceImp implements UsuarioService {
     @Autowired
     RolDao rolDao;
 
-    @Autowired
-    ListaDao listaDao;
-
     private final String rutaGuardar = "src/main/webapp/resources/img/";
 
     private final String rutaUsuario = "/resources/img/";
@@ -54,9 +49,6 @@ public class UsuarioServiceImp implements UsuarioService {
 
         Rol rol = rolDao.findById(1);
         usuario.setRol(rol);
-
-        Lista lista = new Lista(usuario);
-        usuario.setLista(lista);
 
         usuarioDao.save(usuario);
     }
