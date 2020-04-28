@@ -1,10 +1,15 @@
 package com.qveo.qveoweb.model;
 
 import javax.persistence.*;
+
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
 import java.sql.Date;
 import java.util.Collection;
 
 @Entity
+@EntityListeners(AuditingEntityListener.class)
 public class Usuario {
     private Integer id;
     private String nombre;
@@ -16,7 +21,8 @@ public class Usuario {
     private String password;
     private Rol rol;
     private Pais pais;
-    private Collection<Plataforma> plataformas;
+    private Date fechaAlta;
+	private Collection<Plataforma> plataformas;
     private Collection<Pelicula> peliculas;
     private Collection<Serie> series;
 
@@ -121,6 +127,17 @@ public class Usuario {
 		this.pais = pais;
 	}
 	
+	@CreatedDate
+	@Column(name = "FECHA_ALTA")
+	//@Temporal(TemporalType.TIMESTAMP)
+	public Date getFechaAlta() {
+		return fechaAlta;
+	}
+	
+	public void setFechaAlta(Date fechaAlta) {
+		this.fechaAlta = fechaAlta;
+	}
+	
 	@ManyToMany
     @JoinTable(
             name ="usuario_plataforma",
@@ -162,4 +179,5 @@ public class Usuario {
 	public void setSeries(Collection<Serie> series) {
 		this.series = series;
 	}
+	
 }
