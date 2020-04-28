@@ -7,15 +7,10 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
-
 import java.util.Date;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -119,7 +114,7 @@ public class Usuario {
     @Basic
     @Column(name = "FECHA_NACIMIENTO")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    //@Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.DATE)
     public Date getFechaNacimiento() {
         return fechaNacimiento;
     }
