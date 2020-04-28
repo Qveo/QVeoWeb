@@ -1,0 +1,14 @@
+.highlight {
+    background-color: #eeeeee !important;
+}
+
+.highlight>thead>tr{
+	background-color: #00adb5 !important;
+}
+
+.highlight>tbody>tr:hover{
+	background-color: #ddd !important;
+}
+table.highlight>tbody>tr {
+    color: #000 !important;
+}

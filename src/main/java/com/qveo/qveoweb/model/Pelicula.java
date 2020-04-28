@@ -19,7 +19,6 @@ public class Pelicula {
     private Pais pais;
     private Collection<Director> directores;
     private Collection<Plataforma> plataformas;
-    private Collection<Usuario> usuarios;
 
     @Id
     @Column(name = "ID")
