@@ -1,9 +1,8 @@
 main{
     padding-top: 10vh;
     background-color: #393e46;
- 	color: #00adb5;
 }
- 
+
 nav{
     position: fixed;
     background-color: #222831;
@@ -18,5 +17,3 @@ nav{
     padding-top: -10vh;
     height: 307px;
 }
-
-
