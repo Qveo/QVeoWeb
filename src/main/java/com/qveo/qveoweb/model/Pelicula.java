@@ -4,7 +4,9 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
-import java.sql.Date;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.util.Date;
 import java.sql.Time;
 import java.util.Collection;
 
@@ -22,6 +24,7 @@ public class Pelicula {
     private String guion;
     private String poster;
     private String sinopsis;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date anio;
     private Collection<Actor> actores;
     private Collection<Genero> generos;
