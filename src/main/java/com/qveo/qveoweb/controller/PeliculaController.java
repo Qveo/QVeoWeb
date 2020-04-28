@@ -167,13 +167,14 @@ public class PeliculaController {
 				System.out.println("Hola");
 					
 					String rutaFoto = peliculaService.getPelicula(pelicula.getId()).getPoster();
-					System.out.println(rutaFoto);
+					String ruta = rutaFoto.substring(rutaFoto.lastIndexOf('/') + 1);
+					System.out.println(ruta);
 				
-				if (pelicula.getId() != null && pelicula.getId() > 0 && rutaFoto != null
-						&& rutaFoto.length() > 0) {
+				if (pelicula.getId() != null && pelicula.getId() > 0 && ruta != null
+						&& ruta.length() > 0) {
 					System.out.println("VIVA ESPAÑAAAAAAAAAAAAAAAAA");
 
-					uploadFileService.delete(rutaFoto);
+					uploadFileService.delete(ruta);
 				} 
 
 				String uniqueFilename = null; 

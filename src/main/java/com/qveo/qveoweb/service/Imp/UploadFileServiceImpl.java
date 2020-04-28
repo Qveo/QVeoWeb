@@ -6,18 +6,14 @@ import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.UUID;
+
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.FileSystemUtils;
 import org.springframework.web.multipart.MultipartFile;
-
-import com.qveo.qveoweb.dao.PeliculaDao;
 import com.qveo.qveoweb.service.IUploadFileService;
 
 @Service
@@ -57,10 +53,13 @@ public class UploadFileServiceImpl implements IUploadFileService {
 
 	@Override
 	public boolean delete(String filename) {
+		
 		Path rootPath = getPath(filename);
+		log.info("pathBorrar1: " + rootPath);
+		
 		File archivo = rootPath.toFile();
 		
-		log.info("pathBorrar: " + rootPath);
+		log.info("pathBorrar2: " + rootPath);
 
 		if (archivo.exists() && archivo.canRead()) {
 			if (archivo.delete()) {
@@ -73,4 +72,6 @@ public class UploadFileServiceImpl implements IUploadFileService {
 	public Path getPath(String filename) {
 		return Paths.get(UPLOADS_FOLDER).resolve(filename).toAbsolutePath();
 	}
+	
+
 }
