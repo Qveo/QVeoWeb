@@ -61,10 +61,10 @@ public class PeliculaController {
 	@Autowired
 	private IUploadFileService uploadFileService;
 
-	@GetMapping("/list")
+	@GetMapping("/listar")
 	public String listar(Model mod) {
 
-		mod.addAttribute("titulo", "Listado de clientes");
+		mod.addAttribute("titulo", "Listado de peliculas");
 		mod.addAttribute("peliculas", peliculaService.findAll());
 
 		return "Peliculas/listar";
@@ -85,6 +85,8 @@ public class PeliculaController {
 
 	@RequestMapping("/form")
 	public String crear(Model mod) {
+		
+		editar = false;
 
 		List<Genero> genero = generoService.getAllGenero();
 		List<Pais> paises = paisService.getAllPais();
@@ -196,10 +198,10 @@ public class PeliculaController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return "redirect:listar";
+		return "redirect:/peliculas/listar";
 	}
 
-	@RequestMapping(value = "/eliminar/{id}")
+	@RequestMapping(value = "/delete/{id}")
 	public String eliminar(@PathVariable(value = "id") Integer id) {
 
 		if (id > 0) {
@@ -210,7 +212,7 @@ public class PeliculaController {
 
 			peliculaService.delete(id);
 		}
-		return "redirect:listar";
+		return "redirect:/peliculas/listar";
 	}
 
 }

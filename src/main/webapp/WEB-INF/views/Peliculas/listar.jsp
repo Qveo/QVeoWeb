@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,33 +23,31 @@
         <main>
             <div class="row">
                 <div class="col s12">
-                    <a href="/qveo/usuario/form"><i class="waves-effect waves-light btn agregar-usuario">Nueva pelicula</i></a>
+                    <a href="/qveo/peliculas/form"><i class="waves-effect waves-light btn agregar-usuario">Nueva pelicula</i></a>
                 </div>
             </div>
             <table class="centered highlight responsive-table">
                 <thead>
                     <tr>
-                        <th>Nombre</th>
-                        <th>Apellidos</th>
-                        <th>Email</th>
-                        <th>Fecha de Nacimiento</th>
-                        <th>Sexo</th>
-                        <th>Rol</th>
+                    	<th>Poster</th>
+                        <th>Titulo</th>
+                        <th>Duraci&oacuten</th>
+                        <th>A&ntildeo</th>
+                        <th>Pais</th>
                         <th>Editar</th>
                         <th>Eliminar</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <c:forEach items="${usuarios}" var="usuario">
+                    <c:forEach items="${peliculas}" var="pelicula">
                         <tr>
-                            <td>${usuario.nombre}</td>
-                            <td>${usuario.apellidos}</td>
-                            <td>${usuario.email}</td>
-                            <td>${usuario.fechaNacimiento}</td>
-                            <td>${usuario.sexo}</td>
-                            <td>${usuario.rol.nombre}</td>
-                            <td><a href="/qveo/usuario/edit/${usuario.id}" ><i class="material-icons editar">edit</i></a></td>
-                            <td><a href="/qveo/usuario/delete/${usuario.id}" ><a><i class="material-icons eliminar">delete</i></a></td>
+                           <td><img alt="${pelicula.titulo}" src="${pageContext.request.contextPath}${pelicula.poster}"></td>
+                            <td>${pelicula.titulo}</td>
+                            <td>${pelicula.duracion}</td>
+                            <td><fmt:formatDate value="${pelicula.anio}" pattern="yyyy-MM-dd"/></td>
+                            <td>${pelicula.pais.nombre}</td>
+                            <td><a href="/qveo/peliculas/form/${pelicula.id}" ><i class="material-icons editar">edit</i></a></td>
+                            <td><a href="/qveo/peliculas/delete/${pelicula.id}" ><i class="material-icons eliminar">delete</i></a></td>
                         </tr>
                     </c:forEach>
                 </tbody>
