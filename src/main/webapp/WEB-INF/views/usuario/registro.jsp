@@ -36,26 +36,26 @@
 				<div class="row">
 					<div class="input-field col s12 m6 l6 offset-l3">
 						<form:input path="nombre" id="first_name" class="validate" />
-						<form:label path="nombre">Nombre</form:label>
+						<form:label for="first_name" path="nombre">Nombre</form:label>
 						<form:errors path="nombre" style="color:red"></form:errors>
 					</div>
 					<div class="input-field col s12 m6 l6 offset-l3">
 						<form:input path="apellidos" id="last_name" class="validate" />
-						<form:label path="apellidos">Apellidos</form:label>
+						<form:label for="last_name" path="apellidos">Apellidos</form:label>
 						<form:errors path="apellidos" style="color:red"></form:errors>
 					</div>
 				</div>
 				<div class="row">
 					<div class="input-field col s12 m6 l6 offset-l3">
 						<form:input id="email" type="email" path="email" class="validate" />
-						<form:label path="email">Email</form:label>
+						<form:label for="email" path="email">Email</form:label>
 						<span class="helper-text" data-error="email inválido"
 							data-success="Perfecto!"></span>
 						<form:errors path="email" style="color:red"></form:errors>
 					</div>
 					<div class="input-field col s12 m6 l6 offset-l3">
 						<form:password id="password" path="password" class="validate" />
-						<form:label path="password">Password</form:label>
+						<form:label for="password" path="password">Password</form:label>
 					</div>
 				</div>
 				<div class="row">
@@ -78,7 +78,7 @@
 				<div class="row">
 					<div class="col s12 m12 l6 offset-l3">
 						<form:label for="date" path="fechaNacimiento">Fecha de Nacimiento</form:label>
-						<form:input id="date" type="date" path="fechaNacimiento" />
+						<form:input id="date" class="datepicker" path="fechaNacimiento"/>
 						<form:errors path="fechaNacimiento" style="color:red"></form:errors>
 					</div>
 				</div>
@@ -90,6 +90,20 @@
 						</form:select>
 					</div>
 				</div>
+				<!-- plataformas de usuario -->
+				<div class="row">
+				<div class="col s12 m12 l6 ">
+<!-- 				<div class="chips"> -->
+					<c:forEach items="${plataformas}" var="plataforma">
+						<form:label for="${plataforma.nombre}" path="plataformas">
+						<form:checkbox id="${plataforma.nombre}" value="${plataforma.id}" path="plataformas"/>
+						<span>${plataforma.nombre}</span>
+						</form:label>
+					</c:forEach>
+<!-- 				</div> -->
+				</div>
+				</div>
+				
 				<!-- Imagen de usuario -->
 
 				<c:if test="${edit}">
@@ -113,11 +127,22 @@
 						</div>
 					</div>
 				</c:if>
+				<!-- foto -->
 				<div class="row">
 					<div class="col s12 m12 l6 offset-l3">
-						<form:label path="foto">Imagen de perfil</form:label>
-						<input type="file" name="file" />
-						<form:errors path="foto" style="color:red"></form:errors>
+						<div class="file-field input-field">
+							<div class="btn">
+								<form:label path="foto">
+									<span>Imagen de perfil</span>
+								</form:label>
+								<input type="file" name="file" />
+								<form:errors path="foto" style="color:red"></form:errors>
+							</div>
+							<div class="file-path-wrapper">
+								<input class="file-path validate" type="text"
+									placeholder="Suba aqui su foto">
+							</div>
+						</div>
 					</div>
 				</div>
 				<div class="row">
@@ -149,6 +174,7 @@
 </body>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/serie_registro.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/jquery.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/usuario/registro.js"></script>
 </body>
 </html>

@@ -1,29 +1,25 @@
 package com.qveo.qveoweb.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.propertyeditors.CustomDateEditor;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.validation.Valid;
 
 import com.qveo.qveoweb.model.Pais;
+import com.qveo.qveoweb.model.Plataforma;
 import com.qveo.qveoweb.model.Usuario;
 import com.qveo.qveoweb.service.PaisService;
+import com.qveo.qveoweb.service.PlataformaService;
 import com.qveo.qveoweb.service.UsuarioService;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -38,6 +34,9 @@ public class UsuarioController {
 	
 	@Autowired
 	private PaisService paisService;
+	
+	@Autowired
+	private PlataformaService plataformaService;
 
 	@RequestMapping(value="/usuario/list", method=RequestMethod.GET)
 	public String listarUsuarios(Model modelo){
@@ -53,8 +52,12 @@ public class UsuarioController {
 	public String mostrarFormulario(Model modelo) {
 
 		modelo.addAttribute("nuevoUsuario", new Usuario());
+		
 		List<Pais> paises = paisService.getAllPais();
 		modelo.addAttribute("paises", paises);
+		
+		List<Plataforma> plataformas = plataformaService.getAllPlataformas();
+		modelo.addAttribute("plataformas", plataformas);
 
 		return "usuario/registro";
 	}
@@ -111,11 +114,5 @@ public class UsuarioController {
 		return "redirect:/usuario/list";
 
 	}
-/*	
-	@InitBinder     
-	public void initBinder(WebDataBinder binder){
-	     binder.registerCustomEditor(Date.class, new CustomDateEditor(new SimpleDateFormat("dd/MM/yyyy"), true, 10));   
-	}
-*/
 
 }
