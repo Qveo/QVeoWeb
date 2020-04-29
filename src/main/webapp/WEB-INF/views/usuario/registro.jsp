@@ -19,7 +19,7 @@
 		<%@include file="/WEB-INF/views/layout/header.jsp"%>
 	</header>
 	<main>
-		<div class="row">
+		<div class="container">
 			<c:choose>
 				<c:when test="${edit}">
 					<c:set var="action" scope="session"
@@ -92,16 +92,21 @@
 				</div>
 				<!-- plataformas de usuario -->
 				<div class="row">
-				<div class="col s12 m12 l6 ">
-<!-- 				<div class="chips"> -->
-					<c:forEach items="${plataformas}" var="plataforma">
-						<form:label for="${plataforma.nombre}" path="plataformas">
-						<form:checkbox id="${plataforma.nombre}" value="${plataforma.id}" path="plataformas"/>
-						<span>${plataforma.nombre}</span>
-						</form:label>
-					</c:forEach>
-<!-- 				</div> -->
+					<div class="col s12 m12 l6 offset-l3">
+						<form:label path="plataformas">Plataformas</form:label>
+					</div>
 				</div>
+				<div class="row">
+					<div class="col s12 m12 l6 offset-l3">
+<!-- 				<div class="chips"> -->
+						<c:forEach items="${plataformas}" var="plataforma">
+							<form:label for="${plataforma.nombre}" path="plataformas">
+								<form:checkbox id="${plataforma.nombre}" value="${plataforma.id}" path="plataformas"/>
+								<span>${plataforma.nombre}</span>
+							</form:label>
+						</c:forEach>
+<!-- 				</div> -->
+					</div>
 				</div>
 				
 				<!-- Imagen de usuario -->
@@ -145,6 +150,7 @@
 						</div>
 					</div>
 				</div>
+				
 				<div class="row">
 					<div class="col s12 m12 l6 offset-l3">
 						<c:choose>
@@ -174,7 +180,7 @@
 </body>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/jquery.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/jquery.min.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/js/usuario/registro.js"></script>
 </body>
 </html>
