@@ -193,6 +193,12 @@ public class PeliculaController {
 				System.out.println(uniqueFilename);
 				pelicula.setPoster("/resources/img/peliculas/" + uniqueFilename);
 			}
+			
+			if(editar == true) {
+				if(foto.isEmpty()) {
+					pelicula.setPoster(peliculaService.getPelicula(pelicula.getId()).getPoster());
+				}
+			}
 			peliculaService.save(pelicula);
 			status.setComplete();
 		} catch (IOException e) {
