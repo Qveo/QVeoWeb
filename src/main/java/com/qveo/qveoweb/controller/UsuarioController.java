@@ -48,7 +48,7 @@ public class UsuarioController {
 	public String addUser(@Valid @ModelAttribute("nuevoUsuario") Usuario usuario,
 			BindingResult br, @RequestParam(value="file") MultipartFile file){
             try {
-               if(br.hasErrors()) return "registro";
+               if(br.hasErrors()) return "usuario/registro";
                
                usuarioService.saveUser(usuario);
                usuarioService.saveImg(file, usuario ,false);
