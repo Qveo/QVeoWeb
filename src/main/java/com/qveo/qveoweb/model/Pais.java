@@ -1,6 +1,7 @@
 package com.qveo.qveoweb.model;
 
 import javax.persistence.*;
+
 import java.util.Collection;
 
 @Entity

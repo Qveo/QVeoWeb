@@ -63,10 +63,11 @@ public class UsuarioController {
 	}
 
 	@RequestMapping(value="/usuario/form/add", method=RequestMethod.POST)
-	public String addUser(@ModelAttribute("nuevoUsuario") Usuario usuario,
+	public String addUser(@Valid @ModelAttribute("nuevoUsuario") Usuario usuario,
 			BindingResult br, @RequestParam(value="file") MultipartFile file){
             try {
                if(br.hasErrors()) {
+            	   System.out.println(br.getAllErrors());
             	   return "usuario/registro";
                }
              

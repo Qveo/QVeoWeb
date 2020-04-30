@@ -31,8 +31,10 @@ public class Usuario {
     @NotNull(message="La fecha es obligatoria")
     private Date fechaNacimiento;
     private String sexo;
+    @NotNull(message="La contraseña es obligatoria")
     private String password;
     private Rol rol;
+    @NotNull(message="El pais es obligatoria")
     private Pais pais;
     private Date fechaAlta;
 	private Collection<Plataforma> plataformas;

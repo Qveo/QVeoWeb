@@ -98,7 +98,8 @@
 					</div>
 				</div>
 				<div class="row">
-					<div class="chips chips-autocomplete"></div>
+					<div class="chips chips-autocomplete">
+					</div>
 <!-- 					<div class="col s12 m12 l6 offset-l3"> -->
 <!-- 						<div class="chips chips-initial"> -->
 							<c:forEach items="${plataformas}" var="plataforma">
@@ -114,7 +115,6 @@
 				<c:if test="${edit}">
 					<div class="row">
 						<div class="col s12 m8 offset-m2 l6 offset-l3">
-							<!--<div class="card-panel grey lighten-5 z-depth-1">-->
 							<div class="row valign-wrapper">
 								<div class="col s6">
 									<img width="200px"
@@ -126,7 +126,6 @@
 										${nuevoUsuario.id} </span>
 								</div>
 							</div>
-							<!--</div>-->
 						</div>
 					</div>
 				</c:if>
