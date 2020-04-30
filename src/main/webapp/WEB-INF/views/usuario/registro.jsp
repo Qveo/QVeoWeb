@@ -31,7 +31,7 @@
 			</c:choose>
 			<form:form method="POST" action="${action}"
 				modelAttribute="nuevoUsuario" enctype="multipart/form-data"
-				class="col s12 white-text">
+				class="col s12 m12 l6 offset-l3 white-text">
 
 				<div class="row">
 					<div class="input-field col s12 m6 l6 offset-l3">
@@ -45,6 +45,7 @@
 						<form:errors path="apellidos" style="color:red"></form:errors>
 					</div>
 				</div>
+				
 				<div class="row">
 					<div class="input-field col s12 m6 l6 offset-l3">
 						<form:input id="email" type="email" path="email" class="validate" />
@@ -97,24 +98,21 @@
 					</div>
 				</div>
 				<div class="row">
-					<div class="col s12 m12 l6 offset-l3">
-<!-- 				<div class="chips"> -->
-						<c:forEach items="${plataformas}" var="plataforma">
-							<form:label for="${plataforma.nombre}" path="plataformas">
-								<form:checkbox id="${plataforma.nombre}" value="${plataforma.id}" path="plataformas"/>
-								<span>${plataforma.nombre}</span>
-							</form:label>
-						</c:forEach>
-<!-- 				</div> -->
+					<div class="chips chips-autocomplete"></div>
+<!-- 					<div class="col s12 m12 l6 offset-l3"> -->
+<!-- 						<div class="chips chips-initial"> -->
+							<c:forEach items="${plataformas}" var="plataforma">
+<%-- 								<form:label for="${plataforma.nombre}" path="plataformas"> --%>
+									<div id="${plataforma.nombre}" class="plataformas" style="display: none">${plataforma.id}</div>
+<%-- 								</form:label> --%>
+							</c:forEach>
+<!-- 						</div> -->
 					</div>
-				</div>
-				
+
 				<!-- Imagen de usuario -->
 
 				<c:if test="${edit}">
 					<div class="row">
-
-
 						<div class="col s12 m8 offset-m2 l6 offset-l3">
 							<!--<div class="card-panel grey lighten-5 z-depth-1">-->
 							<div class="row valign-wrapper">
@@ -150,7 +148,6 @@
 						</div>
 					</div>
 				</div>
-				
 				<div class="row">
 					<div class="col s12 m12 l6 offset-l3">
 						<c:choose>
@@ -161,7 +158,7 @@
 								</button>
 							</c:when>
 							<c:otherwise>
-								<button class="btn waves-effect waves-light" type="submit"
+								<button id="boton" class="btn waves-effect waves-light" type="submit"
 									name="action">
 									Registrarse <i class="material-icons right">send</i>
 								</button>
@@ -178,9 +175,9 @@
 	</footer>
 
 </body>
+	<script src="${pageContext.request.contextPath}/resources/js/jquery.js"></script>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/jquery.min.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/js/usuario/registro.js"></script>
 </body>
 </html>
