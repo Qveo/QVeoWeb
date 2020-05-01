@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-
+/*
 @Service
 public class PeliculaServiceImpl implements PeliculaService {
 
@@ -22,21 +22,24 @@ public class PeliculaServiceImpl implements PeliculaService {
 
     @Autowired
     PlataformaDao plataformaDao;
-
-    @Override
-    public Map<Plataforma, List<Pelicula>> getPeliculaForCarousel() {
+/*
+//    @Override
+//    public Map<Plataforma, List<Pelicula>> getPeliculaForCarousel() {
         List<Plataforma> plataformas = plataformaDao.findAll();
 
         List<Pelicula> peliculas = peliculaDao.findByPlataformasIn(plataformas);
 
-        Map<Plataforma, List<Pelicula>> plataformaListMap = new HashMap<>();
+       // Map<Plataforma, List<Pelicula>> plataformaListMap = new HashMap<>();
 
-        plataformas.forEach(plataforma ->{
-            plataformaListMap.put(plataforma, peliculas.stream()
-                    .filter(pelicula -> pelicula.getPlataformas().contains(plataforma))
-                    .collect(Collectors.toList()));
-        });
+//        plataformas.forEach(plataforma ->{
+//            plataformaListMap.put(plataforma, peliculas.stream()
+//                    .filter(pelicula -> pelicula.getPlataformas().contains(plataforma))
+//                    .collect(Collectors.toList()));
+//        });
 
         return plataformaListMap;
+
     }
+   
 }
+*/

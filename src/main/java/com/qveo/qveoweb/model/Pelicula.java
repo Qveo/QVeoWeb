@@ -18,8 +18,9 @@ public class Pelicula {
     private Collection<Genero> peliculas;
     private Pais pais;
     private Collection<Director> directores;
-    private Collection<Plataforma> plataformas;
     private Collection<Usuario> usuarios;
+    @OneToMany(mappedBy = "plataforma")
+    private Collection<PeliculaPlataforma> peliculaPlataformas;
 
     @Id
     @Column(name = "ID")
@@ -142,22 +143,16 @@ public class Pelicula {
     public void setDirectores(Collection<Director> directores) {
         this.directores = directores;
     }
-
-    @ManyToMany
-    @JoinTable(
-            name ="pelicula_plataforma",
-            joinColumns = @JoinColumn(name = "id_pelicula", nullable = false),
-            inverseJoinColumns = @JoinColumn(name="id_plataforma", nullable = false)
-    )
-    public Collection<Plataforma> getPlataformas() {
-        return plataformas;
-    }
-
-    public void setPlataformas(Collection<Plataforma> plataformas) {
-        this.plataformas = plataformas;
-    }
     
-    @ManyToMany(mappedBy = "peliculas")
+    public Collection<PeliculaPlataforma> getPeliculaPlataformas() {
+		return peliculaPlataformas;
+	}
+
+	public void setPeliculaPlataformas(Collection<PeliculaPlataforma> peliculaPlataformas) {
+		this.peliculaPlataformas = peliculaPlataformas;
+	}
+
+	@ManyToMany(mappedBy = "peliculas")
 	public Collection<Usuario> getUsuarios() {
 		return usuarios;
 	}

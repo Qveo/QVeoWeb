@@ -1,15 +1,19 @@
 package com.qveo.qveoweb.model;
 
 import javax.persistence.*;
+
+import java.util.ArrayList;
 import java.util.Collection;
+
 
 @Entity
 public class Plataforma {
     private Integer id;
     private String nombre;
-    private Collection<Pelicula> peliculas;
     private Collection<Serie> series;
     private Collection<Usuario> usuarios;
+    @OneToMany(mappedBy = "pelicula")
+    private Collection<PeliculaPlataforma> peliculaPlataformas = new ArrayList<>();
 
     @Id
     @Column(name = "ID")
@@ -31,21 +35,16 @@ public class Plataforma {
         this.nombre = nombre;
     }
 
-    @ManyToMany
-    @JoinTable(
-            name ="pelicula_plataforma",
-            joinColumns = @JoinColumn(name = "id_plataforma", nullable = false),
-            inverseJoinColumns = @JoinColumn(name="id_pelicula", nullable = false)
-    )
-    public Collection<Pelicula> getPeliculas() {
-        return peliculas;
-    }
 
-    public void setPeliculas(Collection<Pelicula> peliculas) {
-        this.peliculas = peliculas;
-    }
+    public Collection<PeliculaPlataforma> getPeliculaPlataformas() {
+		return peliculaPlataformas;
+	}
 
-    @ManyToMany
+	public void setPeliculaPlataformas(Collection<PeliculaPlataforma> peliculaPlataformas) {
+		this.peliculaPlataformas = peliculaPlataformas;
+	}
+
+	@ManyToMany
     @JoinTable(
             name ="serie_plataforma",
             joinColumns = @JoinColumn(name = "id_plataforma", nullable = false),

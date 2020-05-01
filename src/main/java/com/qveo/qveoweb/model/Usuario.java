@@ -5,7 +5,7 @@ import javax.persistence.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.Collection;
 
 @Entity
@@ -129,7 +129,7 @@ public class Usuario {
 	
 	@CreatedDate
 	@Column(name = "FECHA_ALTA")
-	//@Temporal(TemporalType.TIMESTAMP)
+	@Temporal(TemporalType.TIMESTAMP)
 	public Date getFechaAlta() {
 		return fechaAlta;
 	}
