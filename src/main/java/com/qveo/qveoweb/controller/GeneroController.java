@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.qveo.qveoweb.dao.GeneroDao;
 import com.qveo.qveoweb.model.Genero;
@@ -37,17 +38,17 @@ public class GeneroController {
 		return "genero/registro";
 	}
 	
-	@PostMapping("/genero/form/add")
-	public String addGenero(@Valid @ModelAttribute("generoNuevo") Genero generoNuevo, BindingResult br) {
-		
-		if (br.hasErrors()) {
-			return "redirect:/genero/form";
-		}
-
-		generoService.save(generoNuevo);
-		
-		return "redirect:/genero/list";
-	}
+//	@PostMapping("/genero/form/add")
+//	public String addGenero(@Valid @ModelAttribute("generoNuevo") Genero generoNuevo, BindingResult br) {
+//		
+//		if (br.hasErrors()) {
+//			return "genero/registro";
+//		}
+//
+//		generoService.save(generoNuevo);
+//		
+//		return "redirect:/genero/list";
+//	}
 	
 	@GetMapping("/genero/edit/{id}")
 	public String editarGenero(Model model,@PathVariable("id") Integer id) {
@@ -58,16 +59,28 @@ public class GeneroController {
 		return "genero/registro";
 	}
 	
-	@PostMapping("/genero/update/{id}")
-	public String updateGenero(@Valid @ModelAttribute("generoNuevo") Genero generoAct,BindingResult br) {
+//	@PostMapping("/genero/update/{id}")
+//	public String updateGenero(@Valid @ModelAttribute("generoNuevo") Genero generoAct,BindingResult br,RedirectAttributes redirectAttrs){
+//	
+//		
+//		if (br.hasErrors()) {
+//			if (br.hasFieldErrors("nombre")) {
+//				redirectAttrs.addFlashAttribute("errorNombre", "El genero debe ser entre 5 a 30 caractes");
+//			}
+//			return "redirect:/genero/edit/"+generoAct.getId();
+//		}
+//		
+//		generoService.editarGenero(generoAct);
+//		
+//		return "redirect:/genero/list";
+//	}
 	
-		
+	@PostMapping("/genero/form")
+	public String guardar(@Valid @ModelAttribute("generoNuevo") Genero generoAct,BindingResult br,RedirectAttributes redirectAttrs) {
 		if (br.hasErrors()) {
-			System.out.println("Aqui");
-			return "redirect:/genero/edit/"+generoAct.getId();
+		return "genero/registro";
 		}
-		System.out.println("LOp");
-		generoService.editarGenero(generoAct);
+		generoService.save(generoAct);
 		
 		return "redirect:/genero/list";
 	}

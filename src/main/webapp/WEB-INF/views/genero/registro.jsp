@@ -34,10 +34,10 @@
 		<c:choose>
 					<c:when test="${editar}">
 						<c:set var="action" scope="session"
-							value="/qveo/genero/update/${generoNuevo.id}" />
+							value="/qveo/genero/form" />
 					</c:when>
 					<c:otherwise>
-						<c:set var="action" scope="session" value="/qveo/genero/form/add" />
+						<c:set var="action" scope="session" value="/qveo/genero/form" />
 					</c:otherwise>
 				</c:choose>
 			<div class="row">
@@ -47,6 +47,8 @@
 						modelAttribute="generoNuevo" class="col s12">
 						<form:label path="nombre">Nombre del Genero</form:label>
 						<form:input path="nombre" id="nombre" />
+						<form:errors path="nombre" style="color:red"></form:errors>
+						<div style="color:red">${errorNombre}</div>
 						<c:choose>
 								<c:when test="${editar}">
 									<button class="btn waves-effect waves-light" type="submit"

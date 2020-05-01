@@ -10,5 +10,5 @@ public interface GeneroService {
 	void save(Genero generoNuevo);
 	void deleteGenero(Integer id);
 	Optional<Genero> getGenero(Integer id);
-	void editarGenero(Genero generoAct);
+	
 }

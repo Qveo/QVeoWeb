@@ -38,14 +38,4 @@ public class GeneroServiceImp implements GeneroService{
 		return generoDao.findById(id);
 	}
 
-	@Override
-	public void editarGenero(Genero generoAct) {
-		Genero genero=generoDao.findById(generoAct.getId()).get();
-		if(genero != null) {
-			genero.setNombre(generoAct.getNombre());
-			generoDao.save(genero);
-		}
-		
-	}
-
 }

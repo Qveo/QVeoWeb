@@ -1,11 +1,16 @@
 package com.qveo.qveoweb.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
 import java.util.Collection;
 
 @Entity
 public class Genero {
     private Integer id;
+    @NotBlank(message = "El campo es obligatorio")
+    @Size(min = 5,max = 30, message = "Nombre genero debe ser entre 5 a 30 caracteres")
     private String nombre;
     private Collection<Pelicula> peliculas;
     private Collection<Serie> series;
