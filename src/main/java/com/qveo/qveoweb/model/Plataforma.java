@@ -13,7 +13,7 @@ public class Plataforma {
     private Collection<Serie> series;
     private Collection<Usuario> usuarios;
     @OneToMany(mappedBy = "pelicula")
-    private Collection<PeliculaPlataforma> peliculaPlataformas = new ArrayList<>();
+    private Collection<PeliculaPlataforma> peliculaPlataformas;
 
     @Id
     @Column(name = "ID")

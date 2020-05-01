@@ -7,26 +7,30 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class PeliculaPlataformaId implements Serializable {
 	
-	private Long peliculaId;
-	private Long plataformaId;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private Integer peliculaId;
+	private Integer plataformaId;
 	
 	public PeliculaPlataformaId() {
 		
 	}
-	public PeliculaPlataformaId(Long peliculaId, Long plataformaId) {
+	public PeliculaPlataformaId(Integer peliculaId, Integer plataformaId) {
 		this.peliculaId = peliculaId;
 		this.plataformaId = plataformaId;
 	}
-	public Long getPeliculaId() {
+	public Integer getPeliculaId() {
 		return peliculaId;
 	}
-	public void setPeliculaId(Long peliculaId) {
+	public void setPeliculaId(Integer peliculaId) {
 		this.peliculaId = peliculaId;
 	}
-	public Long getPlataformaId() {
+	public Integer getPlataformaId() {
 		return plataformaId;
 	}
-	public void setPlataformaId(Long plataformaId) {
+	public void setPlataformaId(Integer plataformaId) {
 		this.plataformaId = plataformaId;
 	}
 

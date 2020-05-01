@@ -3,6 +3,7 @@ package com.qveo.qveoweb.model;
 import javax.persistence.*;
 import java.sql.Date;
 import java.sql.Time;
+import java.util.ArrayList;
 import java.util.Collection;
 
 @Entity
@@ -20,7 +21,7 @@ public class Pelicula {
     private Collection<Director> directores;
     private Collection<Usuario> usuarios;
     @OneToMany(mappedBy = "plataforma")
-    private Collection<PeliculaPlataforma> peliculaPlataformas;
+    private Collection<PeliculaPlataforma> peliculaPlataformas = new ArrayList<>();
 
     @Id
     @Column(name = "ID")
