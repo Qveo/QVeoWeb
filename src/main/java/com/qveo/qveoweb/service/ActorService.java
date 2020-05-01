@@ -12,8 +12,6 @@ public interface ActorService {
 
 	List<Actor> findAllActor();
 	void save(Actor actorNuevo);
-	void saveImg(MultipartFile file,String titulo) throws IOException ;
 	void deleteActor(Integer id);
 	Optional<Actor> getActor(Integer id);
-	void editarActor(Actor actorAct);
 }

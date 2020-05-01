@@ -32,10 +32,10 @@
 			<c:choose>
 				<c:when test="${editar}">
 					<c:set var="action" scope="session"
-						value="/qveo/actor/update/${actorNuevo.id}" />
+						value="/qveo/actor/form/" />
 				</c:when>
 				<c:otherwise>
-					<c:set var="action" scope="session" value="/qveo/actor/form/add" />
+					<c:set var="action" scope="session" value="/qveo/actor/form/" />
 				</c:otherwise>
 			</c:choose>
 			<form:form method="POST" action="${action}"
@@ -116,8 +116,9 @@
 					<div class="col s8">
 						<form:label path="foto">Foto</form:label>
 						<input type="file" name="fotoActor">
-						<c:if test="${editar}">
+						<c:if test="${editar == true}">
 							<div class="col s4">
+							<form:input path="id" type="hidden"/>
 								<img alt="${actorNuevo.nombre}"
 									src="${pageContext.request.contextPath}${actorNuevo.foto}"
 									width="80%">
