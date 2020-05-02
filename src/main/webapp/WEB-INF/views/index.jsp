@@ -12,6 +12,7 @@
           href="${pageContext.request.contextPath}/resources/css/carousel.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/general.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/menu.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/header.css">
 </head>
 <body>
 <header>
