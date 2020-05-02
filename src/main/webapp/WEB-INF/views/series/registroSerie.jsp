@@ -29,12 +29,12 @@
 				<c:choose>
 					<c:when test="${editar}">
 						<c:set var="action" scope="session"
-							value="/qveo/serie/update/${serieNueva.id}" />
+							value="/qveo/serie/form" />
 					</c:when>
-					<c:otherwise>
-						<c:set var="action" scope="session" value="/qveo/serie/form/add" />
-					</c:otherwise>
-				</c:choose>
+ 					<c:otherwise>
+					<c:set var="action" scope="session" value="/qveo/serie/form" /> 
+ 					</c:otherwise> 
+ 				</c:choose> 
 
 				<form:form method="POST" action="${action}"
 					modelAttribute="serieNueva" enctype="multipart/form-data"
@@ -44,6 +44,7 @@
 						<div class="input-field col s8">
 							<form:label path="titulo">Titulo</form:label>
 							<form:input path="titulo" id="titulo" />
+							<form:errors path="titulo" style="color:red"></form:errors>
 						</div>
 						<div class="col s2"></div>
 					</div>
@@ -62,6 +63,7 @@
 						<div class="input-field col s8">
 							<form:label path="temporadas">Temporada</form:label>
 							<form:input path="temporadas" id="temporadas" />
+							<form:errors path="temporadas" style="color:red"></form:errors>
 						</div>
 						<div class="col s2"></div>
 					</div>
@@ -71,6 +73,7 @@
 						<div class="input-field col s8">
 							<form:label path="capitulos">Capitulos</form:label>
 							<form:input path="capitulos" id="capitulos" />
+							<form:errors path="temporadas" style="color:red"></form:errors>
 						</div>
 						<div class="col s2"></div>
 					</div>
@@ -80,13 +83,16 @@
 						<div class="col s8">
 							<form:label path="poster">Poster</form:label>
 							<input type="file" name="posters">
-							
-								<c:if test="${editar}">
-							<div class="col s4">
-							<img alt="${serieNueva.titulo}" src="${pageContext.request.contextPath}${serieNueva.poster}" width="80%">
-							</div>
+
+							<c:if test="${editar== true}">
+								<form:input path="id" type="hidden" />
+								<div class="col s4">
+									<img alt="${serieNueva.titulo}"
+										src="${pageContext.request.contextPath}${serieNueva.poster}"
+										width="80%">
+								</div>
 							</c:if>
-							
+
 						</div>
 						<div class="col s2"></div>
 					</div>
@@ -182,6 +188,7 @@
 
 								</c:choose>
 							</form:select>
+							<form:errors path="pais" style="color:red"></form:errors>
 						</div>
 						<div class="col s2"></div>
 					</div>
@@ -201,20 +208,21 @@
 							<c:choose>
 								<c:when test="${editar}">
 									<c:forEach items="${directores}" var="director">
-									<c:if test="${fn:contains(serieNueva.directores,director)}">
-										<form:label for="${director.nombre}" path="directores">
-											<form:checkbox id="${director.nombre}" path="directores"
-												value="${director.id}"  checked="checked"/>
-											<span>${director.nombre}</span>
-										</form:label>
-									</c:if>
-									<c:if test="${not(fn:contains(serieNueva.directores,director))}">
-									<form:label for="${director.nombre}" path="directores">
-											<form:checkbox id="${director.nombre}" path="directores"
-												value="${director.id}" />
-											<span>${director.nombre}</span>
-										</form:label>
-									</c:if>
+										<c:if test="${fn:contains(serieNueva.directores,director)}">
+											<form:label for="${director.nombre}" path="directores">
+												<form:checkbox id="${director.nombre}" path="directores"
+													value="${director.id}" checked="checked" />
+												<span>${director.nombre}</span>
+											</form:label>
+										</c:if>
+										<c:if
+											test="${not(fn:contains(serieNueva.directores,director))}">
+											<form:label for="${director.nombre}" path="directores">
+												<form:checkbox id="${director.nombre}" path="directores"
+													value="${director.id}" />
+												<span>${director.nombre}</span>
+											</form:label>
+										</c:if>
 									</c:forEach>
 								</c:when>
 								<c:otherwise>
@@ -246,22 +254,23 @@
 								<c:when test="${editar}">
 									<c:forEach items="${plataformas}" var="plataforma">
 										<c:if test="${fn:contains(serieNueva.plataformas,plataforma)}">
-									
-										<form:label for="${plataforma.nombre}" path="plataformas">
-											<form:checkbox id="${plataforma.nombre}" path="plataformas"
-												value="${plataforma.id}"  checked="checked"  />
-											<span>${plataforma.nombre}</span>
-										</form:label>
 
-									</c:if>
-									<c:if test="${not(fn:contains(serieNueva.plataformas,plataforma))}">
-									
-									<form:label for="${plataforma.nombre}" path="plataformas">
-											<form:checkbox id="${plataforma.nombre}" path="plataformas"
-												value="${plataforma.id}" />
-											<span>${plataforma.nombre}</span>
-										</form:label>
-									</c:if>
+											<form:label for="${plataforma.nombre}" path="plataformas">
+												<form:checkbox id="${plataforma.nombre}" path="plataformas"
+													value="${plataforma.id}" checked="checked" />
+												<span>${plataforma.nombre}</span>
+											</form:label>
+
+										</c:if>
+										<c:if
+											test="${not(fn:contains(serieNueva.plataformas,plataforma))}">
+
+											<form:label for="${plataforma.nombre}" path="plataformas">
+												<form:checkbox id="${plataforma.nombre}" path="plataformas"
+													value="${plataforma.id}" />
+												<span>${plataforma.nombre}</span>
+											</form:label>
+										</c:if>
 									</c:forEach>
 								</c:when>
 								<c:otherwise>
@@ -279,7 +288,7 @@
 						</div>
 						<div class="col s2"></div>
 					</div>
-	
+
 					<div class="row">
 						<div class="col s2"></div>
 						<div class="col s8">
@@ -324,7 +333,6 @@
 			var elems = document.querySelectorAll('select');
 			var instances = M.FormSelect.init(elems);
 		});
-		
 	</script>
 </body>
 </html>

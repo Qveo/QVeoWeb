@@ -1,21 +1,36 @@
 package com.qveo.qveoweb.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 import java.sql.Date;
 import java.util.Collection;
 
 @Entity
 public class Serie {
     private Integer id;
+    @NotNull(message = "No puede el titulo estar vacio")
+    @Size(min = 2, max=40,message = "El titulo debe ser entre 2 a 40 caracteres")
     private String titulo;
     private Date fechaInicio;
+    @NotNull(message = "No puede estar vacia la sinopsis")
+    @Size(min=10, max=400,message = "La sinopsis debe ser de 400 caracteres")
     private String sinopsis;
+    @NotNull(message = "Debe especificar la cantidad de temporadas")
+    @Min(value =1,message = "La temporada minimo debe ser 1") @Max(value = 20, message = "Las temporadas maximas debe ser 20")
     private Integer temporadas;
+    @NotNull(message = "Debe especificar la cantidad de capitulos")
+    @Min(value =1,message = "Los capitulos minimo debe ser 1") @Max(value = 300, message = "Los capitulos puede ser de 300")
     private Integer capitulos;
     private Collection<Actor> actores;
     private Collection<Director> directores;
     private Collection<Genero> generos;
     private Collection<Lista> listas;
+    @NotNull(message = "Escoja un pais de la lista")
     private Pais pais;
     private Collection<Plataforma> plataformas;
     private String poster;
