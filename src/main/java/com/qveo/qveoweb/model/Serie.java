@@ -15,9 +15,9 @@ public class Serie {
     private Collection<Actor> actores;
     private Collection<Director> directores;
     private Collection<Genero> generos;
-    private Collection<Lista> listas;
     private Pais pais;
     private Collection<Plataforma> plataformas;
+    private Collection<Usuario> usuarios;
 
     @Id
     @Column(name = "ID")
@@ -122,20 +122,6 @@ public class Serie {
         this.generos = generos;
     }
 
-    @ManyToMany
-    @JoinTable(
-            name ="actor_serie",
-            joinColumns = @JoinColumn(name = "id_serie", nullable = false),
-            inverseJoinColumns = @JoinColumn(name="id_actor", nullable = false)
-    )
-    public Collection<Lista> getListas() {
-        return listas;
-    }
-
-    public void setListas(Collection<Lista> listas) {
-        this.listas = listas;
-    }
-
     @ManyToOne
     @JoinColumn(name = "ID_PAIS", referencedColumnName = "ID", nullable = false)
     public Pais getPais() {
@@ -160,4 +146,13 @@ public class Serie {
     public void setPlataformas(Collection<Plataforma> plataformas) {
         this.plataformas = plataformas;
     }
+    
+    @ManyToMany(mappedBy = "series")
+	public Collection<Usuario> getUsuarios() {
+		return usuarios;
+	}
+
+	public void setUsuarios(Collection<Usuario> usuarios) {
+		this.usuarios = usuarios;
+	}
 }
