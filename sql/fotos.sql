@@ -35,9 +35,9 @@ UPDATE `qveo`.`serie` SET `POSTER` = '/resources/img/series/code_black.jpg' WHER
 UPDATE `qveo`.`plataforma` SET `LOGO` = '/resources/img/plataforma/hbo.jpg' WHERE (`ID` = '1');
 UPDATE `qveo`.`plataforma` SET `LOGO` = '/resources/img/plataforma/netflix.jpg' WHERE (`ID` = '2');
 UPDATE `qveo`.`plataforma` SET `LOGO` = '/resources/img/plataforma/amazon.jpg' WHERE (`ID` = '3');
-INSERT INTO `qveo`.`plataforma` (`NOMBRE`, `LOGO`) VALUES ('Disney Plus', '/resources/img/plataforma/disney.jpg');
-INSERT INTO `qveo`.`plataforma` (`NOMBRE`, `LOGO`) VALUES ('Filmin', '/resources/img/plataforma/filmin.jpg');
-INSERT INTO `qveo`.`plataforma` (`NOMBRE`, `LOGO`) VALUES ('Movistar', '/resources/img/plataforma/movistar.jpg');
+UPDATE `qveo`.`plataforma` SET `LOGO` =  '/resources/img/plataforma/disney.jpg' WHERE (`ID` = '4');
+UPDATE `qveo`.`plataforma` SET `LOGO` = '/resources/img/plataforma/filmin.jpg' WHERE (`ID` = '5');
+UPDATE `qveo`.`plataforma` SET `LOGO` = '/resources/img/plataforma/movistar.jpg' WHERE (`ID` = '6');
 
 /* Fotos director */
 /*ALTER TABLE qveo.director ADD COLUMN FOTO VARCHAR(100) AFTER NOMBRE;*/
