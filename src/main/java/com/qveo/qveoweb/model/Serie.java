@@ -3,7 +3,6 @@ package com.qveo.qveoweb.model;
 import javax.persistence.*;
 import java.sql.Date;
 import java.util.Collection;
-import java.util.stream.Collectors;
 
 @Entity
 public class Serie {
@@ -11,15 +10,14 @@ public class Serie {
     private String titulo;
     private Date fechaInicio;
     private String sinopsis;
-    private String poster;
     private Integer temporadas;
     private Integer capitulos;
     private Collection<Actor> actores;
     private Collection<Director> directores;
     private Collection<Genero> generos;
-    private Collection<Lista> listas;
     private Pais pais;
     private Collection<Plataforma> plataformas;
+    private Collection<Usuario> usuarios;
 
     @Id
     @Column(name = "ID")
@@ -62,16 +60,6 @@ public class Serie {
     }
 
     @Basic
-    @Column(name = "POSTER")
-    public String getPoster() {
-        return poster;
-    }
-
-    public void setPoster(String poster) {
-        this.poster = poster;
-    }
-
-    @Basic
     @Column(name = "TEMPORADAS")
     public Integer getTemporadas() {
         return temporadas;
@@ -94,9 +82,9 @@ public class Serie {
 
     @ManyToMany
     @JoinTable(
-            name = "actor_serie",
+            name ="actor_serie",
             joinColumns = @JoinColumn(name = "id_serie", nullable = false),
-            inverseJoinColumns = @JoinColumn(name = "id_actor", nullable = false)
+            inverseJoinColumns = @JoinColumn(name="id_actor", nullable = false)
     )
     public Collection<Actor> getActores() {
         return actores;
@@ -108,9 +96,9 @@ public class Serie {
 
     @ManyToMany
     @JoinTable(
-            name = "director_serie",
+            name ="director_serie",
             joinColumns = @JoinColumn(name = "id_serie", nullable = false),
-            inverseJoinColumns = @JoinColumn(name = "id_director", nullable = false)
+            inverseJoinColumns = @JoinColumn(name="id_director", nullable = false)
     )
     public Collection<Director> getDirectores() {
         return directores;
@@ -122,9 +110,9 @@ public class Serie {
 
     @ManyToMany
     @JoinTable(
-            name = "genero_serie",
+            name ="genero_serie",
             joinColumns = @JoinColumn(name = "id_serie", nullable = false),
-            inverseJoinColumns = @JoinColumn(name = "id_genero", nullable = false)
+            inverseJoinColumns = @JoinColumn(name="id_genero", nullable = false)
     )
     public Collection<Genero> getGeneros() {
         return generos;
@@ -132,20 +120,6 @@ public class Serie {
 
     public void setGeneros(Collection<Genero> generos) {
         this.generos = generos;
-    }
-
-    @ManyToMany
-    @JoinTable(
-            name = "actor_serie",
-            joinColumns = @JoinColumn(name = "id_serie", nullable = false),
-            inverseJoinColumns = @JoinColumn(name = "id_actor", nullable = false)
-    )
-    public Collection<Lista> getListas() {
-        return listas;
-    }
-
-    public void setListas(Collection<Lista> listas) {
-        this.listas = listas;
     }
 
     @ManyToOne
@@ -161,9 +135,9 @@ public class Serie {
 
     @ManyToMany
     @JoinTable(
-            name = "serie_plataforma",
+            name ="serie_plataforma",
             joinColumns = @JoinColumn(name = "id_serie", nullable = false),
-            inverseJoinColumns = @JoinColumn(name = "id_plataforma", nullable = false)
+            inverseJoinColumns = @JoinColumn(name="id_plataforma", nullable = false)
     )
     public Collection<Plataforma> getPlataformas() {
         return plataformas;
@@ -172,8 +146,13 @@ public class Serie {
     public void setPlataformas(Collection<Plataforma> plataformas) {
         this.plataformas = plataformas;
     }
+    
+    @ManyToMany(mappedBy = "series")
+	public Collection<Usuario> getUsuarios() {
+		return usuarios;
+	}
 
-    public String plataformasConcatenadas(){
-        return plataformas.stream().map(Plataforma::getNombre).collect(Collectors.joining(", "));
-    }
+	public void setUsuarios(Collection<Usuario> usuarios) {
+		this.usuarios = usuarios;
+	}
 }

@@ -5,14 +5,11 @@
     <title>QVeo web</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
           rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,400;1,700;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+          href="${pageContext.request.contextPath}/resources/css/materialize.css">
     <link rel="stylesheet"
           href="${pageContext.request.contextPath}/resources/css/carousel.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/general.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/menu.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/header.css">
 </head>
 <body>
 <header>
@@ -25,7 +22,7 @@
     <div class="row">
         <div class="col s12">
             <h3>
-                <a href="#">Peliculas y series de ${plataforma.nombre}</a>
+                <a href="#">Peliculas de ${plataforma.nombre}</a>
             </h3>
         </div>
     </div>
@@ -33,17 +30,10 @@
     <div class="row">
         <div class="col s12">
             <div class="carousel">
-                <c:forEach items="${plataforma.peliculas}" var="pelicula">
-                    <div class="carousel-item">
-                        <a class="waves-effect waves-light modal-trigger" href="#modal-pelicula${plataforma.id}-${pelicula.id}">
-                            <img src="${pageContext.request.contextPath}${pelicula.poster}"/>
-                        </a>
-                    </div>
-                </c:forEach>
-                <c:forEach items="${plataforma.series}" var="serie">
-                    <div class="carousel-item">
-                        <a class="waves-effect waves-light modal-trigger" href="#modal-serie${plataforma.id}-${serie.id}">
-                            <img src="${pageContext.request.contextPath}${serie.poster}">
+                <c:forEach items="${plataforma.peliculaPlataformas}" var="peliculaPlataformas">
+                    <div class="carousel-item" style='background-image: url("${peliculaPlataformas.pelicula.poster}")'>
+                        <a class="carousel-item" href="#modal${peliculaPlataformas.pelicula.id}">
+                            <img src="${pageContext.request.contextPath}${peliculaPlataformas.pelicula.poster}">
                         </a>
                     </div>
                 </c:forEach>
@@ -58,35 +48,9 @@
     <%@include file="/WEB-INF/views/layout/footer.jsp" %>
 </footer>
 
-<c:forEach items="${plataformas}" var="plataforma">
-    <c:forEach items="${plataforma.peliculas}" var="pelicula">
-        <div id="modal-pelicula${plataforma.id}-${pelicula.id}" class="modal bottom-sheet">
-            <div class="modal-content">
-                <img src="${pageContext.request.contextPath}${pelicula.poster}"/>
-                <h4>${pelicula.titulo}</h4>
-                <h5>${pelicula.plataformasConcatenadas()}</h5>
-            </div>
-        </div>
-    </c:forEach>
-    <c:forEach items="${plataforma.series}" var="serie">
-        <div id="modal-serie${plataforma.id}-${serie.id}" class="modal bottom-sheet">
-            <div class="modal-content">
-                <img src="${pageContext.request.contextPath}${serie.poster}"/>
-                <h4>${serie.titulo}</h4>
-                <h5>${serie.plataformasConcatenadas()}</h5>
-            </div>
-        </div>
-    </c:forEach>
-</c:forEach>
-
 </body>
-<script src="${pageContext.request.contextPath}/resources/vendor/js/jquery-3.4.1.min.js"></script>
 <script
-        src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-<script
-        src="${pageContext.request.contextPath}/resources/js/header.js"></script>
+        src="${pageContext.request.contextPath}/resources/js/materialize.js"></script>
 <script
         src="${pageContext.request.contextPath}/resources/js/carousel.js"></script>
-<script
-        src="${pageContext.request.contextPath}/resources/js/menu.js"></script>
 </html>
