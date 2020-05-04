@@ -9,6 +9,7 @@ public class Plataforma {
     private String nombre;
     private Collection<Pelicula> peliculas;
     private Collection<Serie> series;
+    private Collection<Usuario> usuarios;
 
     @Id
     @Column(name = "ID")
@@ -57,4 +58,13 @@ public class Plataforma {
     public void setSeries(Collection<Serie> series) {
         this.series = series;
     }
+    
+    @ManyToMany(mappedBy = "plataformas")
+	public Collection<Usuario> getUsuarios() {
+		return usuarios;
+	}
+
+	public void setUsuarios(Collection<Usuario> usuarios) {
+		this.usuarios = usuarios;
+	}
 }

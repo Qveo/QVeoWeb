@@ -1,6 +1,7 @@
 package com.qveo.qveoweb.model;
 
 import javax.persistence.*;
+
 import java.util.Collection;
 
 @Entity
@@ -10,8 +11,10 @@ public class Pais {
     private Collection<Actor> actores;
     private Collection<Pelicula> peliculas;
     private Collection<Serie> series;
+    private Collection<Usuario> usuarios;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
     public Integer getId() {
         return id;
@@ -57,4 +60,13 @@ public class Pais {
     public void setSeries(Collection<Serie> series) {
         this.series = series;
     }
+    
+    @OneToMany(mappedBy = "pais")
+	public Collection<Usuario> getUsuarios() {
+		return usuarios;
+	}
+	
+	public void setUsuarios(Collection<Usuario> usuarios) {
+		this.usuarios = usuarios;
+	}
 }
