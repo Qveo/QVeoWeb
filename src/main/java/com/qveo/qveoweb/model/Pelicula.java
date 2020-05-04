@@ -6,6 +6,7 @@ import java.sql.Time;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Entity
 public class Pelicula {
@@ -164,4 +165,9 @@ public class Pelicula {
 	public void setUsuarios(Collection<Usuario> usuarios) {
 		this.usuarios = usuarios;
 	}
+
+    public String plataformasConcatenadas(){
+        return peliculaPlataformas.stream().map(PeliculaPlataforma::getPlataforma).map(Plataforma::getNombre).collect(Collectors.joining(", "));
+    }
 }
+
