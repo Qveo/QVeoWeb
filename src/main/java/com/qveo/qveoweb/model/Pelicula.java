@@ -4,6 +4,8 @@ import javax.persistence.*;
 import java.sql.Date;
 import java.sql.Time;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Pelicula {
@@ -18,10 +20,11 @@ public class Pelicula {
     private Collection<Genero> peliculas;
     private Pais pais;
     private Collection<Director> directores;
-    private Collection<Plataforma> plataformas;
     private Collection<Usuario> usuarios;
+    private Set<PeliculaPlataforma> peliculaPlataformas = new HashSet<PeliculaPlataforma>();
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
     public Integer getId() {
         return id;
@@ -142,22 +145,18 @@ public class Pelicula {
     public void setDirectores(Collection<Director> directores) {
         this.directores = directores;
     }
-
-    @ManyToMany
-    @JoinTable(
-            name ="pelicula_plataforma",
-            joinColumns = @JoinColumn(name = "id_pelicula", nullable = false),
-            inverseJoinColumns = @JoinColumn(name="id_plataforma", nullable = false)
-    )
-    public Collection<Plataforma> getPlataformas() {
-        return plataformas;
-    }
-
-    public void setPlataformas(Collection<Plataforma> plataformas) {
-        this.plataformas = plataformas;
-    }
     
-    @ManyToMany(mappedBy = "peliculas")
+
+    @OneToMany(mappedBy = "pelicula")
+	public Set<PeliculaPlataforma> getPeliculaPlataformas() {
+		return peliculaPlataformas;
+	}
+
+	public void setPeliculaPlataformas(Set<PeliculaPlataforma> peliculaPlataformas) {
+		this.peliculaPlataformas = peliculaPlataformas;
+	}
+
+	@ManyToMany(mappedBy = "peliculas")
 	public Collection<Usuario> getUsuarios() {
 		return usuarios;
 	}

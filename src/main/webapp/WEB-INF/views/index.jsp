@@ -30,10 +30,10 @@
     <div class="row">
         <div class="col s12">
             <div class="carousel">
-                <c:forEach items="${plataforma.peliculas}" var="pelicula">
-                    <div class="carousel-item" style='background-image: url("${pelicula.poster}")'>
-                        <a class="carousel-item" href="#modal${pelicula.id}">
-                            <img src="${pageContext.request.contextPath}${pelicula.poster}">
+                <c:forEach items="${plataforma.peliculaPlataformas}" var="peliculaPlataformas">
+                    <div class="carousel-item" style='background-image: url("${peliculaPlataformas.pelicula.poster}")'>
+                        <a class="carousel-item" href="#modal${peliculaPlataformas.pelicula.id}">
+                            <img src="${pageContext.request.contextPath}${peliculaPlataformas.pelicula.poster}">
                         </a>
                     </div>
                 </c:forEach>
