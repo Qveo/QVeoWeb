@@ -1,14 +1,18 @@
+body{
+    font-family: 'Lato', sans-serif;
+}
 main{
     padding-top: 10vh;
     background-color: #393e46;
 }
 
 nav{
+    position: fixed;
     background-color: #222831;
     color: #00adb5;
 }
 
-.footer{
+footer{
     background-color: #222831;
 }
 
