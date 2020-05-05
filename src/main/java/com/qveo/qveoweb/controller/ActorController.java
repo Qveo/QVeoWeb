@@ -151,7 +151,10 @@ public class ActorController {
 	@GetMapping("/actor/delete/{id}")
 	public String deleteActor(@PathVariable("id") Integer id) {
 
+		String rutaFoto = actorService.getActor(id).get().getFoto();
+		String ruta = rutaFoto.substring(rutaFoto.lastIndexOf('/') + 1);
 		actorService.deleteActor(id);
+		uploadFileService.delete(ruta,3);
 		
 		return "redirect:/actor/list";
 

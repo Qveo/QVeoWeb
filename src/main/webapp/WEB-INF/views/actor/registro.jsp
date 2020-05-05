@@ -156,12 +156,7 @@
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/js/jquery.js"></script>
-	<script>
-		document.addEventListener('DOMContentLoaded', function() {
-			var elems = document.querySelectorAll('select');
-			var instances = M.FormSelect.init(elems);
-		});
-	</script>
+<script src="${pageContext.request.contextPath}/resources/vendor/actorjs/actor.js"></script>
 
 </body>
 
