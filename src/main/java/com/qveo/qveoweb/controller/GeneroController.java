@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
-import com.qveo.qveoweb.dao.GeneroDao;
 import com.qveo.qveoweb.model.Genero;
 import com.qveo.qveoweb.service.GeneroService;
 
