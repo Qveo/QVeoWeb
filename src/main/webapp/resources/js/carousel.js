@@ -1,3 +1,7 @@
+$(document).ready(function(){
+	$('.modal').modal();
+});
+
 document.addEventListener('DOMContentLoaded', function () {
 	var elems = document.querySelectorAll('.carousel');
 	var instances = M.Carousel.init(elems, {
@@ -5,4 +9,5 @@ document.addEventListener('DOMContentLoaded', function () {
 		dist: 0,
 		interval: 100
 	});
+
 });
