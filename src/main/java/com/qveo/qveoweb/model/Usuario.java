@@ -1,10 +1,15 @@
 package com.qveo.qveoweb.model;
 
 import javax.persistence.*;
-import java.sql.Date;
+
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import java.util.Date;
 import java.util.Collection;
 
 @Entity
+@EntityListeners(AuditingEntityListener.class)
 public class Usuario {
 	
 	
@@ -16,32 +21,15 @@ public class Usuario {
     private Date fechaNacimiento;
     private String sexo;
     private String password;
-    private Lista lista;
     private Rol rol;
-    
+    private Pais pais;
+    private Date fechaAlta;
+	private Collection<Plataforma> plataformas;
+    private Collection<Pelicula> peliculas;
+    private Collection<Serie> series;
 
-    public Usuario() {
-	}
-    
-    
-
-	public Usuario(Integer id, String nombre, String apellidos, String email, String foto, Date fechaNacimiento,
-			String sexo, String password, Rol rol) {
-		this.id = id;
-		this.nombre = nombre;
-		this.apellidos = apellidos;
-		this.email = email;
-		this.foto = foto;
-		this.fechaNacimiento = fechaNacimiento;
-		this.sexo = sexo;
-		this.password = password;
-		this.rol = rol;
-	}
-
-
-
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
     public Integer getId() {
         return id;
@@ -120,16 +108,7 @@ public class Usuario {
     public void setPassword(String password) {
         this.password = password;
     }
-    
-    @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
-    public Lista getLista() {
-        return lista;
-    }
 
-    public void setLista(Lista lista) {
-        this.lista = lista;
-    }
-    
     @ManyToOne
     @JoinColumn(name = "ID_ROL", referencedColumnName = "ID", nullable = false)
     public Rol getRol() {
@@ -139,5 +118,66 @@ public class Usuario {
     public void setRol(Rol rol) {
         this.rol = rol;
     }
+    
+    @ManyToOne()
+    @JoinColumn(name = "ID_PAIS", referencedColumnName = "ID", nullable = false)
+	public Pais getPais() {
+		return pais;
+	}
 
+		this.pais = pais;
+	public void setPais(Pais pais) {
+	
+	}
+	@Column(name = "FECHA_ALTA")
+	@CreatedDate
+	public Date getFechaAlta() {
+	@Temporal(TemporalType.TIMESTAMP)
+		return fechaAlta;
+	}
+	
+	public void setFechaAlta(Date fechaAlta) {
+	
+	}
+		this.fechaAlta = fechaAlta;
+	@ManyToMany
+    @JoinTable(
+            name ="usuario_plataforma",
+            inverseJoinColumns = @JoinColumn(name="id_plataforma", nullable = false)
+            joinColumns = @JoinColumn(name = "id_usuario", nullable = false),
+	public Collection<Plataforma> getPlataformas() {
+    )
+	}
+		return plataformas;
+
+	public void setPlataformas(Collection<Plataforma> plataformas) {
+	}
+		this.plataformas = plataformas;
+	@ManyToMany
+    @JoinTable(
+            name ="usuario_pelicula",
+            inverseJoinColumns = @JoinColumn(name="id_pelicula", nullable = false)
+            joinColumns = @JoinColumn(name = "id_usuario", nullable = false),
+    )
+	public Collection<Pelicula> getPeliculas() {
+	}
+		return peliculas;
+
+		this.peliculas = peliculas;
+	public void setPeliculas(Collection<Pelicula> peliculas) {
+	}
+	
+	@ManyToMany
+    @JoinTable(
+            name ="usuario_serie",
+            joinColumns = @JoinColumn(name = "id_usuario", nullable = false),
+            inverseJoinColumns = @JoinColumn(name="id_serie", nullable = false)
+    )
+	public Collection<Serie> getSeries() {
+		return series;
+	}
+
+	public void setSeries(Collection<Serie> series) {
+		this.series = series;
+	}
 }

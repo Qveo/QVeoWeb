@@ -15,7 +15,7 @@ UPDATE `qveo`.`pelicula` SET `POSTER` = '/resources/img/peliculas/la_purga_elect
 UPDATE `qveo`.`pelicula` SET `POSTER` = '/resources/img/peliculas/el_hobbit_la_desolacion_de_smaug.jpg' WHERE (`ID` = '13');
 
 /* Fotos series */
-ALTER TABLE qveo.serie ADD COLUMN POSTER VARCHAR(100) AFTER TITULO;
+/*ALTER TABLE qveo.serie ADD COLUMN POSTER VARCHAR(100) AFTER TITULO;*/
 
 UPDATE `qveo`.`serie` SET `POSTER` = '/resources/img/series/knightfall.jpg' WHERE (`ID` = '1');
 UPDATE `qveo`.`serie` SET `POSTER` = '/resources/img/series/rick_and_morty.jpg' WHERE (`ID` = '2');
@@ -30,17 +30,17 @@ UPDATE `qveo`.`serie` SET `POSTER` = '/resources/img/series/ozark.jpg' WHERE (`I
 UPDATE `qveo`.`serie` SET `POSTER` = '/resources/img/series/code_black.jpg' WHERE (`ID` = '11');
 
 /* Logo plataforma */
-ALTER TABLE qveo.plataforma ADD COLUMN LOGO VARCHAR(100) AFTER NOMBRE;
+/*ALTER TABLE qveo.plataforma ADD COLUMN LOGO VARCHAR(100) AFTER NOMBRE;*/
 
 UPDATE `qveo`.`plataforma` SET `LOGO` = '/resources/img/plataforma/hbo.jpg' WHERE (`ID` = '1');
 UPDATE `qveo`.`plataforma` SET `LOGO` = '/resources/img/plataforma/netflix.jpg' WHERE (`ID` = '2');
 UPDATE `qveo`.`plataforma` SET `LOGO` = '/resources/img/plataforma/amazon.jpg' WHERE (`ID` = '3');
-INSERT INTO `qveo`.`plataforma` (`NOMBRE`, `LOGO`) VALUES ('Disney Plus', '/resources/img/plataforma/disney.jpg');
-INSERT INTO `qveo`.`plataforma` (`NOMBRE`, `LOGO`) VALUES ('Filmin', '/resources/img/plataforma/filmin.jpg');
-INSERT INTO `qveo`.`plataforma` (`NOMBRE`, `LOGO`) VALUES ('Movistar', '/resources/img/plataforma/movistar.jpg');
+UPDATE `qveo`.`plataforma` SET `LOGO` =  '/resources/img/plataforma/disney.jpg' WHERE (`ID` = '4');
+UPDATE `qveo`.`plataforma` SET `LOGO` = '/resources/img/plataforma/filmin.jpg' WHERE (`ID` = '5');
+UPDATE `qveo`.`plataforma` SET `LOGO` = '/resources/img/plataforma/movistar.jpg' WHERE (`ID` = '6');
 
 /* Fotos director */
-ALTER TABLE qveo.director ADD COLUMN FOTO VARCHAR(100) AFTER NOMBRE;
+/*ALTER TABLE qveo.director ADD COLUMN FOTO VARCHAR(100) AFTER NOMBRE;*/
 
 UPDATE `qveo`.`director` SET `FOTO` = '/resources/img/directores/eric_darnell.jpg' WHERE (`ID` = '1');
 UPDATE `qveo`.`director` SET `FOTO` = '/resources/img/directores/tom_mcgrath.jpg' WHERE (`ID` = '2');
@@ -72,7 +72,7 @@ UPDATE `qveo`.`director` SET `FOTO` = '/resources/img/directores/' WHERE (`ID` =
 UPDATE `qveo`.`director` SET `FOTO` = '/resources/img/directores/' WHERE (`ID` = '28');
 
 /* Foto actor */
-ALTER TABLE qveo.actor ADD COLUMN FOTO VARCHAR(100) AFTER NOMBRE;
+/*ALTER TABLE qveo.actor ADD COLUMN FOTO VARCHAR(100) AFTER NOMBRE;*/
 
 UPDATE `qveo`.`actor` SET `FOTO` = '/resources/img/actores/ben_stiller.jpg' WHERE (`ID` = '1');
 UPDATE `qveo`.`actor` SET `FOTO` = '/resources/img/actores/chris_rock.jpg' WHERE (`ID` = '2');

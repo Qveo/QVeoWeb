@@ -7,5 +7,5 @@ import java.util.List;
 import java.util.Map;
 
 public interface PeliculaService {
-    Map<Plataforma, List<Pelicula>> getPeliculaForCarousel();
+    //Map<Plataforma, List<Pelicula>> getPeliculaForCarousel();
 }
