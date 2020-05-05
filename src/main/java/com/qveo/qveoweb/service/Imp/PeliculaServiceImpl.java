@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 
 @Service
 public class PeliculaServiceImpl implements PeliculaService {
-
+/*
     @Autowired
     PeliculaDao peliculaDao;
 
@@ -39,4 +39,5 @@ public class PeliculaServiceImpl implements PeliculaService {
 
         return plataformaListMap;
     }
+*/
 }

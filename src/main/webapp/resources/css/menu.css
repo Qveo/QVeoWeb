@@ -1,0 +1,24 @@
+body, h1 {
+    margin: 0;
+    padding: 0;
+    font-family:arial,helvetica;
+}
+#content {
+    overflow-x: none;
+    position: relative;
+    left: 0px;
+}
+#menu {
+    background-color:rgb(31,30,27); color : white;
+    position: fixed;
+    width: 240px;
+    height: 100%;
+    top: 0;
+    z-index: 1000;
+    left:-240px;
+}
+#content, #menu {
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
