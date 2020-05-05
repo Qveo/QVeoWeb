@@ -166,8 +166,13 @@ public class SerieController {
 	
 	@GetMapping("/serie/delete/{id}")
 	public String deleteSerie(@PathVariable("id") Integer id) {
+
+		String rutaFoto = serieService.getSerie(id).get().getPoster();
+		String ruta = rutaFoto.substring(rutaFoto.lastIndexOf('/') + 1);
 		
 		serieService.deleteSerie(id);
+		uploadFileService.delete(ruta,1);
+		
 		return "redirect:/serie/listar";
 	}
 	

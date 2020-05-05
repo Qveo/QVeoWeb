@@ -125,46 +125,47 @@ public class Usuario {
 		return pais;
 	}
 
-		this.pais = pais;
 	public void setPais(Pais pais) {
-	
+		this.pais = pais;
 	}
-	@Column(name = "FECHA_ALTA")
+	
 	@CreatedDate
-	public Date getFechaAlta() {
+	@Column(name = "FECHA_ALTA")
 	@Temporal(TemporalType.TIMESTAMP)
+	public Date getFechaAlta() {
 		return fechaAlta;
 	}
 	
 	public void setFechaAlta(Date fechaAlta) {
-	
-	}
 		this.fechaAlta = fechaAlta;
+	}
+	
 	@ManyToMany
     @JoinTable(
             name ="usuario_plataforma",
-            inverseJoinColumns = @JoinColumn(name="id_plataforma", nullable = false)
             joinColumns = @JoinColumn(name = "id_usuario", nullable = false),
-	public Collection<Plataforma> getPlataformas() {
+            inverseJoinColumns = @JoinColumn(name="id_plataforma", nullable = false)
     )
-	}
+	public Collection<Plataforma> getPlataformas() {
 		return plataformas;
+	}
 
 	public void setPlataformas(Collection<Plataforma> plataformas) {
-	}
 		this.plataformas = plataformas;
+	}
+	
 	@ManyToMany
     @JoinTable(
             name ="usuario_pelicula",
-            inverseJoinColumns = @JoinColumn(name="id_pelicula", nullable = false)
             joinColumns = @JoinColumn(name = "id_usuario", nullable = false),
+            inverseJoinColumns = @JoinColumn(name="id_pelicula", nullable = false)
     )
 	public Collection<Pelicula> getPeliculas() {
-	}
 		return peliculas;
+	}
 
-		this.peliculas = peliculas;
 	public void setPeliculas(Collection<Pelicula> peliculas) {
+		this.peliculas = peliculas;
 	}
 	
 	@ManyToMany
@@ -180,4 +181,5 @@ public class Usuario {
 	public void setSeries(Collection<Serie> series) {
 		this.series = series;
 	}
+   
 }

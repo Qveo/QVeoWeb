@@ -16,7 +16,7 @@
 	href="${pageContext.request.contextPath}/resources/css/general.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/serieRegistro.css">
-
+	
 </head>
 <body>
 	<header>
@@ -52,8 +52,8 @@
 					<div class="row">
 						<div class="col s2"></div>
 						<div class="col s8">
-							<form:label path="fechaInicio">Fecha de lanzamiento</form:label>
-							<form:input type="date" id="fechaInicio" path="fechaInicio" />
+							<form:label path="fechaInicio" for="date">Fecha de lanzamiento</form:label>
+							<form:input id="fechaInicio" path="fechaInicio"  class="datepicker"  />
 						</div>
 						<div class="col s2"></div>
 					</div>
@@ -321,18 +321,12 @@
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/js/jquery.js"></script>
-	<script>
-		$('input[type=checkbox]').each(function() {
-
-			var name = $(this).attr('name');
-			$('[name="' + '_' + name + '"]').remove();
-
-		});
-
-		document.addEventListener('DOMContentLoaded', function() {
-			var elems = document.querySelectorAll('select');
-			var instances = M.FormSelect.init(elems);
-		});
-	</script>
+	<script src="${pageContext.request.contextPath}/resources/vendor/js/serie.js"></script>
+<!-- 	<script type="text/javascript"> -->
+// 	document.addEventListener('DOMContentLoaded', function() {
+// 		var elems = document.querySelectorAll('select');
+// 		var instances = M.FormSelect.init(elems);
+// 	});
+<!-- 	</script> -->
 </body>
 </html>

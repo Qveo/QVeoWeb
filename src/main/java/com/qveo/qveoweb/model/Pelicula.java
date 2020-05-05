@@ -122,19 +122,6 @@ public class Pelicula {
         this.peliculas = peliculas;
     }
 
-    @ManyToMany
-    @JoinTable(
-            name ="lista_pelicula",
-            joinColumns = @JoinColumn(name = "id_pelicula", nullable = false),
-            inverseJoinColumns = @JoinColumn(name="id_lista", nullable = false)
-    )
-    public Collection<Lista> getListas() {
-        return listas;
-    }
-
-    public void setListas(Collection<Lista> listas) {
-        this.listas = listas;
-    }
 
     @ManyToOne
     @JoinColumn(name = "ID_PAIS", referencedColumnName = "ID", nullable = false)

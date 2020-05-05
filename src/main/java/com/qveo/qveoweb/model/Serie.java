@@ -168,19 +168,7 @@ public class Serie {
         this.generos = generos;
     }
 
-    @ManyToMany
-    @JoinTable(
-            name ="actor_serie",
-            joinColumns = @JoinColumn(name = "id_serie", nullable = false),
-            inverseJoinColumns = @JoinColumn(name="id_actor", nullable = false)
-    )
-    public Collection<Lista> getListas() {
-        return listas;
-    }
 
-    public void setListas(Collection<Lista> listas) {
-        this.listas = listas;
-    }
 
     @ManyToOne
     @JoinColumn(name = "ID_PAIS", referencedColumnName = "ID", nullable = false)
@@ -205,5 +193,18 @@ public class Serie {
 
     public void setPlataformas(Collection<Plataforma> plataformas) {
         this.plataformas = plataformas;
+    }
+    
+    @ManyToMany(mappedBy = "series")
+    public Collection<Usuario> getUsuarios() {
+        return usuarios;
+    }
+
+    public void setUsuarios(Collection<Usuario> usuarios) {
+        this.usuarios = usuarios;
+    }
+
+    public String plataformasConcatenadas(){
+        return plataformas.stream().map(Plataforma::getNombre).collect(Collectors.joining(", "));
     }
 }

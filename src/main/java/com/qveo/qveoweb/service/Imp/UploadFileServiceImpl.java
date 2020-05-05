@@ -32,11 +32,10 @@ public class UploadFileServiceImpl implements IUploadFileService {
 		String extension=uniqueFilename.substring(uniqueFilename.lastIndexOf(".") + 1);
 		
 		String nombreFinal=nombre+"."+extension;
-		System.out.println(nombreFinal);
-		
+				
 		Path rootPath = getPath(nombreFinal,accion);
 
-		log.info("rootPath: " + rootPath);
+//		log.info("rootPath: " + rootPath);
 
 		Files.copy(file.getInputStream(), rootPath);
 
@@ -49,11 +48,11 @@ public class UploadFileServiceImpl implements IUploadFileService {
 		
 		Path rootPath = getPath(filename,accion);
 		
-		log.info("pathBorrar1: " + rootPath);
+//		log.info("pathBorrar1: " + rootPath);
 		
 		File archivo = rootPath.toFile();
 		
-		log.info("pathBorrar2: " + rootPath);
+//		log.info("pathBorrar2: " + rootPath);
 
 		if (archivo.exists() && archivo.canRead()) {
 			if (archivo.delete()) {
