@@ -31,7 +31,7 @@
 				</div>
 				<div class="col s8">
 				<h2>${series.titulo}
-					<span class="fechaInicio">(<fmt:formatDate pattern = "yyyy" value = "${series.fechaInicio}" />)</span>
+					<span>(<fmt:formatDate pattern = "yyyy" value = "${series.fechaInicio}" />)</span>
 				</h2>
 				<div>
 					<ul>

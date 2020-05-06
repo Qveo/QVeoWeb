@@ -20,24 +20,25 @@
 		<%@include file="/WEB-INF/views/layout/header.jsp"%>
 	</header>
 	<main>
-	<section>
-	<div class="row">
+		<section>
+			<div class="row">
 				<div class="col s1"></div>
 				<div class="col s6 ">
-		<c:forEach items="${series}" var="serie">
-		<span>${serie.titulo}</span>
-		<span>${serie.temporadas}</span>
-		</c:forEach>
-		</div>
-		<div class="row">
-			<div class="col s1"></div>
-			<div class="col s6 ">
-				<c:forEach items="${series}" var="serie">
-					<label>${serie.titulo}</label>
-					<label>${serie.temporadas}</label>
-				</c:forEach>
+					<c:forEach items="${series}" var="serie">
+						<span>${serie.titulo}</span>
+						<span>${serie.temporadas}</span>
+					</c:forEach>
+				</div>
 			</div>
-		</div>
+			<div class="row">
+				<div class="col s1"></div>
+				<div class="col s6 ">
+					<c:forEach items="${series}" var="serie">
+						<label>${serie.titulo}</label>
+						<label>${serie.temporadas}</label>
+					</c:forEach>
+				</div>
+			</div>
 		</section>
 	</main>
 	<footer>

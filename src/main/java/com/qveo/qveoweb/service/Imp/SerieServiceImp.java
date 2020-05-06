@@ -1,5 +1,6 @@
 package com.qveo.qveoweb.service.Imp;
 
+import java.sql.Date;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
@@ -49,5 +50,7 @@ public class SerieServiceImp implements SerieService {
 	public List<Serie> buscarSerie(Collection<Genero> generos) {
 		List<Serie> serie=serieDao.findByGenerosIn(generos);		return serie;
 	}
+	
+	
 
 }
