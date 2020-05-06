@@ -10,5 +10,5 @@ import com.qveo.qveoweb.model.Genero;
 
 @Repository
 public interface GeneroDao extends JpaRepository<Genero	, Integer>{
-	
+	List<Genero> findAll();
 }

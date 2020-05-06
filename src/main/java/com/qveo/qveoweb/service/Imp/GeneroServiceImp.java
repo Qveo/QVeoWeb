@@ -16,7 +16,7 @@ public class GeneroServiceImp implements GeneroService{
 	GeneroDao generoDao;
 
 	@Override
-	public List<Genero> getAllGenero() {
+	public List<Genero> getAllGeneros() {
 		
 		return generoDao.findAll();
 	}

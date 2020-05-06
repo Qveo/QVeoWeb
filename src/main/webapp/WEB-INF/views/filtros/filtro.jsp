@@ -21,8 +21,9 @@
 	</header>
 
 	<main>
-		<section>
-			<form:form method="POST" action="/qveo/filtros">
+	<h1>hola mundo</h1>
+<!-- 		<section> -->
+			<form:form method="POST" action="/qveo/filtros" modelAttribute="seriesBuscar">
 				<div class="row">
 					<div class="col s1"></div>
 					<div class="col s10 ">
@@ -33,7 +34,7 @@
 					<div class="col s1"></div>
 					<div class="col s6 ">
 						<form:select path="generos" multiple="true">
-                            <form:option value="">Genros</form:option>
+                            <form:option value="">Generos</form:option>
                             <form:options items="${generos}" itemLabel="nombre" />
                         </form:select>
 
@@ -49,7 +50,7 @@
 					</div>
 				</div>
 			</form:form>
-		</section>
+<!-- 		</section> -->
 
 
 	</main>

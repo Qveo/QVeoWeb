@@ -57,7 +57,7 @@ public class SerieController {
 	public String Serie(@PathVariable Integer id, Model model) {
 
 		Serie series=serieService.getSerie(id).get();
-				
+		
 		model.addAttribute("series", series);
 	
 		return "series/serie";
@@ -73,7 +73,7 @@ public class SerieController {
 	@GetMapping("/serie/form")
 	public String SerieFormulario(Model model) {
 		editar=false;
-		List<Genero> generos=generoService.getAllGenero();
+		List<Genero> generos=generoService.getAllGeneros();
 		List<Pais> paises=paisService.getAllPais();
 		List<Plataforma> plataformas=plataformaSerive.getAllPlataformas();
 		List<Director> directores=directorService.getAllDirector();
@@ -90,7 +90,7 @@ public class SerieController {
 	@GetMapping("/serie/edit/{id}")
 	public String editarSerie(Model model, @PathVariable("id") Integer id) {
 		editar=true;		
-		List<Genero> generos=generoService.getAllGenero();
+		List<Genero> generos=generoService.getAllGeneros();
 		List<Pais> paises=paisService.getAllPais();
 		List<Plataforma> plataformas=plataformaSerive.getAllPlataformas();
 		List<Director> directores=directorService.getAllDirector();	
@@ -112,7 +112,7 @@ public class SerieController {
 		
 		if(br.hasErrors()) {
 			
-			List<Genero> generos=generoService.getAllGenero();
+			List<Genero> generos=generoService.getAllGeneros();
 			List<Pais> paises=paisService.getAllPais();
 			List<Plataforma> plataformas=plataformaSerive.getAllPlataformas();
 			List<Director> directores=directorService.getAllDirector();	

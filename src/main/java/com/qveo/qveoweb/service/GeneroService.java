@@ -6,7 +6,5 @@ import com.qveo.qveoweb.model.Genero;
 
 public interface GeneroService {
 	
-	List<Genero> getAllGenero();
-	
-	
+	List<Genero> getAllGeneros();
 }

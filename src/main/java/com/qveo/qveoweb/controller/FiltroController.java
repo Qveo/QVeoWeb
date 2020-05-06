@@ -28,22 +28,24 @@ public class FiltroController {
 	@GetMapping("/filtro")
 	public String buscador( Model model) {
 		
-		List<Genero> generos=generoService.getAllGenero();
+		model.addAttribute("seriesBuscar", new Serie());
 		
-		model.addAttribute("generos", generos);
+		List<Genero> generos = generoService.getAllGeneros();
+		
+		model.addAttribute("generos",generos);
 		
 		return "filtros/filtro";
 	}
 	
 	@PostMapping("/filtros")
-	public String filtrar(@ModelAttribute("generosBuscar") Genero generos) {
+	public String filtrar(@ModelAttribute("seriesBuscar") Serie serie, Model model) {
 
 		
 		
-		//List<Serie> series=serieService.buscarSerie(generoBuscar);
+		List<Serie> series=serieService.buscarSerie(serie.getGeneros());
 
 		
-		//model.addAttribute("series", series);
+		model.addAttribute("series", series);
 		
 		return "filtros/filtrado";
 	}
