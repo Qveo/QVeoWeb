@@ -54,7 +54,6 @@
 
 
 	</main>
-
 	<footer>
 		<%@include file="/WEB-INF/views/layout/footer.jsp"%>
 	</footer>
