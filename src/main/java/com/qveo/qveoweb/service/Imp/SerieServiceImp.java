@@ -1,5 +1,6 @@
 package com.qveo.qveoweb.service.Imp;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.qveo.qveoweb.dao.SerieDao;
+import com.qveo.qveoweb.model.Genero;
 import com.qveo.qveoweb.model.Serie;
 import com.qveo.qveoweb.service.SerieService;
 
@@ -43,6 +45,9 @@ public class SerieServiceImp implements SerieService {
 		
 	}
 
-
+	//@Transactional(readOnly = true)
+	public List<Serie> buscarSerie(Collection<Genero> generos) {
+		List<Serie> serie=serieDao.findByGenerosIn(generos);		return serie;
+	}
 
 }
