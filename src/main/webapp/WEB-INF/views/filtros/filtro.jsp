@@ -21,8 +21,38 @@
 	</header>
 
 	<main>
+		<!-- 		<section> -->
+		<%-- 			<form:form method="POST" action="/qveo/filtros"> --%>
+		<!-- 				<div class="row"> -->
+		<!-- 					<div class="col s1"></div> -->
+		<!-- 					<div class="col s10 "> -->
+		<!-- 						<span>Genero</span> -->
+		<!-- 					</div> -->
+		<!-- 				</div> -->
+		<!-- 				<div class="row"> -->
+		<!-- 					<div class="col s1"></div> -->
+		<!-- 					<div class="col s6 "> -->
+		<%-- 						<form:select path="generos" multiple="true"> --%>
+		<%--                             <form:option value="">Genros</form:option> --%>
+		<%--                             <form:options items="${generos}" itemLabel="nombre" /> --%>
+		<%--                         </form:select> --%>
+
+		<!-- 					</div> -->
+		<!-- 				</div> -->
+		<!-- 				<div class="row"> -->
+		<!-- 					<div class="col s1"></div> -->
+		<!-- 					<div class="col s6 "> -->
+		<!-- 						<button class="btn waves-effect waves-light" type="submit" -->
+		<!-- 							name="action"> -->
+		<!-- 							Buscar <i class="material-icons right">send</i> -->
+		<!-- 						</button> -->
+		<!-- 					</div> -->
+		<!-- 				</div> -->
+		<%-- 			</form:form> --%>
+		<!-- 		</section> -->
+
 		<section>
-			<form:form method="POST" action="/qveo/filtros">
+			<form method="POST" action="/qveo/filtros">
 				<div class="row">
 					<div class="col s1"></div>
 					<div class="col s10 ">
@@ -32,11 +62,11 @@
 				<div class="row">
 					<div class="col s1"></div>
 					<div class="col s6 ">
-						<form:select path="generos" multiple="true">
-                            <form:option value="">Genros</form:option>
-                            <form:options items="${generos}" itemLabel="nombre" />
-                        </form:select>
-
+						<select multiple="true" name="generosBuscar">
+							<c:forEach items="${generos}" var="genero">
+								<option value="${genero.id}">${genero.nombre}</option>
+							</c:forEach>
+						</select>
 					</div>
 				</div>
 				<div class="row">
@@ -48,12 +78,9 @@
 						</button>
 					</div>
 				</div>
-			</form:form>
+			</form>
 		</section>
-
-
 	</main>
-
 	<footer>
 		<%@include file="/WEB-INF/views/layout/footer.jsp"%>
 	</footer>
