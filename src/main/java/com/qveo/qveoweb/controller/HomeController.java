@@ -29,7 +29,7 @@ public class HomeController {
 		
 		//logger.debug("Executing home() method via Get");
 
-		List<Plataforma> plataformas = plataformaService.getAllPlataformas();
+		List<Plataforma> plataformas = plataformaService.findAll();
 
 		model.addAttribute("plataformas", plataformas);
 		

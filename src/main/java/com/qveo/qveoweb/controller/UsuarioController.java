@@ -56,7 +56,7 @@ public class UsuarioController {
 		List<Pais> paises = paisService.getAllPais();
 		modelo.addAttribute("paises", paises);
 		
-		List<Plataforma> plataformas = plataformaService.getAllPlataformas();
+		List<Plataforma> plataformas = plataformaService.findAll();
 		modelo.addAttribute("plataformas", plataformas);
 
 		return "usuario/registro";

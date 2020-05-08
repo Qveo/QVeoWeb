@@ -21,7 +21,7 @@ spring:
       prefix: /WEB-INF/views/
       suffix: .jsp
   datasource:
-    url: jdbc:mysql://localhost:3306/qveo2?serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/qveo?serverTimezone=UTC
     username: root
     password: root
 #    driver.class-name: com.mysql.jdbc.Driver
