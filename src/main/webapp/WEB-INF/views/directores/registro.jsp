@@ -38,13 +38,13 @@
 				<div class="col s2"></div>
 				<div class="col s8">
 					<form:label path="foto">Foto</form:label>
-					<input type="file" name="retrato">
+					<input type="file" name="retrato"> <span style="color: red">${fotoerror}</span>
 
 					<c:if test="${edit}">
 						<div class="col s4">
 							<img alt="${directorNuevo.nombre}"
 								src="${pageContext.request.contextPath}${directorNuevo.foto}"
-								width="80%">
+								width="80%"> <span style="color: red">${fotoerror}</span>
 						</div>
 					</c:if>
 

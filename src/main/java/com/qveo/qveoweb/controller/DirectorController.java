@@ -8,7 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.qveo.qveoweb.model.Director;
 import com.qveo.qveoweb.service.DirectorService;
 import com.qveo.qveoweb.service.UploadFileService;
+import com.qveo.qveoweb.validation.DirectorValidador;
 
 @Controller
 @RequestMapping("/directores")
@@ -27,13 +29,21 @@ public class DirectorController {
 
 	Boolean editar = false;
 
-	
+	@Autowired
+	private DirectorValidador validador;
 	
 	@Autowired
 	UploadFileService uploadFileService;
 	
 	@Autowired
 	DirectorService dirService;
+	
+	
+	@InitBinder
+	public void InitBinder(WebDataBinder binder) {
+		binder.setValidator(validador);
+	}
+	
 
 	@RequestMapping(value = "/listar", method = RequestMethod.GET)
 	public String listado(Model mod) {
@@ -93,7 +103,7 @@ public class DirectorController {
 
 	}
 
-	@RequestMapping(value = "/form")
+	@RequestMapping(value = "/form", method=RequestMethod.POST)
 	public String guardar(@Valid @ModelAttribute("directorNuevo") Director director, BindingResult br, Model mod,
 			@RequestParam("retrato") MultipartFile foto, SessionStatus status) {
 
@@ -138,6 +148,15 @@ public class DirectorController {
 				}
 			}
 			
+			if (foto.isEmpty()) {
+				System.out.println(director.getNombre());
+				System.out.println(director.getFoto());
+
+				mod.addAttribute("titulo", "Formulario del director");
+				mod.addAttribute("fotoerror", "Introduce una foto, por favor");
+				return "directores/registro";
+				
+			}
 			System.out.println(director);
 
 			dirService.save(director);
