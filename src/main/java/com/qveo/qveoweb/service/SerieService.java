@@ -15,6 +15,4 @@ public interface SerieService {
 	List<Integer> buscarAllYears();
 	List<Serie> buscarPorYear(String[] years);
 	List<Serie> busquedaCompleta(String[] years,Collection<Genero> generos);
-	
-	
 }

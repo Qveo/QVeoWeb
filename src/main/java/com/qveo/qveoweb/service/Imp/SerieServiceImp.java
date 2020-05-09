@@ -111,36 +111,39 @@ public class SerieServiceImp implements SerieService {
 
 	@Override
 	public List<Serie> busquedaCompleta(String[] years, Collection<Genero> generos) {
-		List<Serie> serieFiltra= new ArrayList<Serie>(); 
+		List<Serie> serieFiltra = new ArrayList<Serie>();
+
+//		List<Serie> seriesGenero = serieDao.findByGenerosIn(generos);
+//
+//		for (Serie serie : seriesGenero) {
+//			for (String year : years) {
+//				DateFormat format = new SimpleDateFormat("yyyy");
+//				String fecha = format.format(serie.getFechaInicio());
+//				if (year.equals(fecha)) {
+//					serieFiltra.add(serie);
+//				}
+//			}
+//		}
 		
-		List<Serie> seriesGenero=serieDao.findByGenerosIn(generos);
+		Date fechaInicio = null;
+		Date fechafinal = null;
+		if (years.length == 1) {
+			fechaInicio = Date.valueOf(years[0] + "-1-1");
+			fechafinal = Date.valueOf(years[0] + "-12-31");
+			serieFiltra = serieDao.findByGenerosAndFechaInicioBetween(generos, fechaInicio, fechafinal);
+		}
 		
-		for (Serie serie : seriesGenero) {
+		if (years.length >= 2) {
+			
 			for (String year : years) {
-				DateFormat format= new SimpleDateFormat("yyyy");
-				String fecha=format.format(serie.getFechaInicio());
-				if(year.equals(fecha)) {
-					serieFiltra.add(serie);
-				}
+				fechaInicio = Date.valueOf(years[0] + "-1-1");
+				fechafinal = Date.valueOf(years[0] + "-12-31");
+				serieFiltra = serieDao.findByGenerosAndFechaInicioBetween(generos, fechaInicio, fechafinal);
 			}
 		}
 
-		
 		return serieFiltra;
-//		List<Serie> seriefiltrada = null;
-//		Date fechaInicio = null;
-//		Date fechafinal = null;
-//		if (years.length == 1) {
-//
-//			fechaInicio = Date.valueOf(years[0] + "-1-1");
-//			fechafinal = Date.valueOf(years[0] + "-12-31");
-//
-//			seriefiltrada = serieDao.findByGenerosAndFechaInicioBetween(generos, fechaInicio, fechafinal);
-//					
-//
-//		}
 
 	}
-	
 
 }

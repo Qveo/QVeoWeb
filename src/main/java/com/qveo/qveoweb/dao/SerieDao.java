@@ -17,6 +17,5 @@ public interface SerieDao extends JpaRepository<Serie, Integer>{
 	
 	List<Serie> findByFechaInicioBetween(Date fechaInicio, Date fechafinal);	
 	
-	//List<Serie> findByGenerosAndFechaInicioBetween(Collection<Genero> generos,Date fechaInicio, Date fechafinal);
-		
+	List<Serie> findByGenerosAndFechaInicioBetween(Collection<Genero> generos,Date fechaInicio, Date fechafinal);
 }

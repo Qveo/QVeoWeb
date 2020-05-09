@@ -76,24 +76,24 @@ public class FiltroController {
 		}
 
 		if (serie.getGeneros().isEmpty() && dates != null) {
-			List<Serie> series=serieService.buscarPorYear(dates);
+			List<Serie> series = serieService.buscarPorYear(dates);
 			model.addAttribute("series", series);
 			model.addAttribute("cartel", "Condicional years");
-			
+
 		} else if (!serie.getGeneros().isEmpty() && dates == null) {
-			List<Serie> series=serieService.buscarSerie(serie.getGeneros());
-			
+			List<Serie> series = serieService.buscarSerie(serie.getGeneros());
+
 			model.addAttribute("series", series);
-			
+
 			model.addAttribute("cartel", "Condicional  generos");
-			
+
 		} else if (!serie.getGeneros().isEmpty() && dates != null) {
-			List<Serie> series=serieService.busquedaCompleta(dates, serie.getGeneros());
-			
+			List<Serie> series = serieService.busquedaCompleta(dates, serie.getGeneros());
+
 			model.addAttribute("series", series);
-			
+
 			model.addAttribute("cartel", "Condicional ambas");
-			
+
 		} else {
 
 			return "redirect:/filtro";
