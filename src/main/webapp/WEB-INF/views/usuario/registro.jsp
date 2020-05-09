@@ -1,11 +1,11 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>  
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <html>
 <head>
-<title>Registro nuevo usuario</title>
+<title>${titulo}</title>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">
 <link rel="stylesheet"
@@ -93,15 +93,20 @@
 				<!-- pais usuario -->
 				<div class="row">
 					<div class="col s12 m12 l6 offset-l3">
+						<form:label path="pais">Pais</form:label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col s12 m12 l6 offset-l3">
 						<form:select path="pais" multiple="false">
 							<form:option value="">Pais de residencia</form:option>
 							<form:options items="${paises}" itemLabel="nombre" />
 						</form:select>
 					</div>
 				</div>
-				
+
 				<!-- plataformas de usuario -->
-				<%@include file="/WEB-INF/views/layout/chipsPlataforma.jsp" %>
+				<%@include file="/WEB-INF/views/layout/chipsPlataforma.jsp"%>
 
 				<!-- Imagen de usuario -->
 				<c:if test="${edit}">
@@ -122,7 +127,7 @@
 						</div>
 					</div>
 				</c:if>
-				<!-- foto -->
+				<!-- subida de foto -->
 				<div class="row">
 					<div class="col s12 m12 l6 offset-l3">
 						<div class="file-field input-field">
@@ -130,8 +135,7 @@
 								<form:label path="foto">
 									<span>Imagen de perfil</span>
 								</form:label>
-								<input type="file" name="file" required />
-								<form:errors path="foto" class="error"></form:errors>
+								<input type="file" name="file" /> <span style="color: red">${fotoerror}</span>
 							</div>
 							<div class="file-path-wrapper">
 								<input class="file-path validate" type="text"
@@ -144,8 +148,9 @@
 				<c:if test="${edit}">
 					<div class="row">
 						<div class="input-field col s12 m12 l6 offset-l3">
-							<input type="text" disabled value="${nuevoUsuario.fechaAlta}" id="fechaAlta" class="validate">
-							<label for="fechaAlta">Fecha Alta</label>
+							<input type="text" disabled value="${nuevoUsuario.fechaAlta}"
+								id="fechaAlta" class="validate"> <label for="fechaAlta">Fecha
+								Alta</label>
 						</div>
 					</div>
 				</c:if>
@@ -153,6 +158,7 @@
 					<div class="col s12 m12 l6 offset-l3">
 						<c:choose>
 							<c:when test="${edit}">
+								<a href="/qveo/usuario/list" class="waves-effect waves-light btn">Volver atrás</a>
 								<button class="btn waves-effect waves-light botones"
 									name="action">
 									Actualizar <i class="material-icons right">send</i>

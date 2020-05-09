@@ -1,55 +1,47 @@
-$(document)
-		.ready(
-				function() {
-
-					$('.modal').modal();
+$(document).ready(function() {
+	$('.modal').modal();
 					/*
-					 * $('.confirmar').modal({ onOpenStart: function(modal,
-					 * trigger){
+					 * $('.confirmar').modal({ onOpenStart : function(modal,
+					 * trigger) {
 					 * 
 					 * let cajaOpciones = trigger.parentNode.parentNode; let id =
 					 * cajaOpciones.getAttribute('id');
 					 * 
-					 * $(".eliminar-usuario").click({param1: id, param2:
-					 * cajaOpciones}, function(event) {
+					 * $(".eliminar-usuario").click({ param1 : id, param2 :
+					 * cajaOpciones }, function(event) {
 					 * 
 					 * event.data.param2.parentNode.parentNode.remove();
 					 * borrarUsuario(event.data.param1);
 					 * 
-					 * }); } });
+					 * });
+					 *  } });
 					 */
+	$('.eliminar').click(function(event) {
 
-					$('.eliminar')
-							.click(
-									function(event) {
+		if (confirm("¿Estás seguro/a?")) {
 
-										if (confirm("¿Estás seguro/a?")) {
+			let cajaOpciones = event.target.parentNode.parentNode.parentNode;
+			let id = cajaOpciones
+					.getAttribute('id');
+			console.log(id);
+			cajaOpciones.parentNode.parentNode
+					.remove();
+			borrarUsuario(id);
+		}
+	});
 
-											let cajaOpciones = event.target.parentNode.parentNode.parentNode;
-											let id = cajaOpciones
-													.getAttribute('id');
-											console.log(id);
-											cajaOpciones.parentNode.parentNode
-													.remove();
-											borrarUsuario(id);
-										}
-									});
+	$(".mostrar-usuario").click(function(event) {
 
-					$(".mostrar-usuario")
-							.click(
-									function(event) {
+		let id = event.target.parentNode.parentNode.parentNode.getAttribute('id');
+		mostrarUsuario(id);
+		
+		});
 
-										let id = event.target.parentNode.parentNode.parentNode
-												.getAttribute('id');
-										mostrarUsuario(id);
+	$("#usuario-nombre").keyup(function(event) {
+			mostrarUsuarios();
+	});
 
-									});
-
-					$("#usuario-nombre").keyup(function(event) {
-						mostrarUsuarios();
-					});
-
-				});
+});
 
 function mostrarUsuario(id) {
 
@@ -113,23 +105,23 @@ function mostrarUsuario(id) {
 		error : function(e) {
 
 			console.log("ERROR : ", e);
-
-		}
-	});
-
-}
+	
+			}
+		});
+	
+	}
 
 function borrarUsuario(id) {
 	$.ajax({
 		type : 'GET',
-		url : '/qveo/ajax/usuario/delete/' + id,
-		success : function(data) {
+	url : '/qveo/ajax/usuario/delete/' + id,
+	success : function(data) {
 
-			console.log("SUCCESS : ", data);
-		},
-		error : function(e) {
+		console.log("SUCCESS : ", data);
+	},
+	error : function(e) {
 
-			console.log("ERROR : ", e);
+		console.log("ERROR : ", e);
 		}
 	});
 }
@@ -139,33 +131,33 @@ function mostrarUsuarios() {
 	let busqueda = {};
 
 	busqueda["nombre"] = $("#usuario-nombre").val();
-	console.log(busqueda);
+console.log(busqueda);
 
-	$.ajax({
-		type : 'POST',
-		contentType : 'application/json',
-		url : '/qveo/ajax/usuarios/',
-		data : JSON.stringify(busqueda),
-		dataType : 'json',
-		success : function(data) {
+$.ajax({
+	type : 'POST',
+	contentType : 'application/json',
+	url : '/qveo/ajax/usuarios/',
+	data : JSON.stringify(busqueda),
+	dataType : 'json',
+	success : function(data) {
 
-			let filas = $('.row.cuerpo');
+		let filas = $('.row.cuerpo');
 
-			// Oculamos todas las filas
-			for (let i = 0; i < filas.length; i++) {
-				$("#" + filas[i].id).hide();
-			}
+		// Oculamos todas las filas
+		for (let i = 0; i < filas.length; i++) {
+			$("#" + filas[i].id).hide();
+		}
 
-			// Mostramos las filas necesarias
-			for (let i = 0; i < data.length; i++) {
-				$("#" + data[i].nombre + '-' + data[i].id).show();
-			}
+		// Mostramos las filas necesarias
+		for (let i = 0; i < data.length; i++) {
+			$("#" + data[i].nombre + '-' + data[i].id).show();
+		}
 
-			console.log("SUCCESS : ", data);
-		},
-		error : function(e) {
+		console.log("SUCCESS : ", data);
+	},
+	error : function(e) {
 
-			console.log("ERROR : ", e);
+		console.log("ERROR : ", e);
 		}
 	});
 }
