@@ -1,5 +1,6 @@
 package com.qveo.qveoweb.dao;
 
+import java.sql.Date;
 import java.util.Collection;
 import java.util.List;
 
@@ -13,5 +14,9 @@ import com.qveo.qveoweb.model.Serie;
 public interface SerieDao extends JpaRepository<Serie, Integer>{
 	
 	List<Serie> findByGenerosIn(Collection<Genero> generos);
+	
+	List<Serie> findByFechaInicioBetween(Date fechaInicio, Date fechafinal);	
+	
+	//List<Serie> findByGenerosAndFechaInicioBetween(Collection<Genero> generos,Date fechaInicio, Date fechafinal);
 		
 }

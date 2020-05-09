@@ -3,7 +3,6 @@ package com.qveo.qveoweb.service;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
-
 import com.qveo.qveoweb.model.Genero;
 import com.qveo.qveoweb.model.Serie;
 
@@ -13,5 +12,9 @@ public interface SerieService {
 	void save(Serie serieNew);
 	void deleteSerie(Integer id);
 	List<Serie> buscarSerie(Collection<Genero> generos);
+	List<Integer> buscarAllYears();
+	List<Serie> buscarPorYear(String[] years);
+	List<Serie> busquedaCompleta(String[] years,Collection<Genero> generos);
+	
 	
 }

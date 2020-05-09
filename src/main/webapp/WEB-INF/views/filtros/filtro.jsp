@@ -34,27 +34,23 @@
 				<div class="row">
 					<div class="col s1"></div>
 					<div class="col s6 ">
-						<form:select path="generos" multiple="true">
-                            <form:option value="">Generos</form:option>
-                            <c:forEach items="${serieMostrar}" var="serieYear">
-                           
-                           
-                            <form:option value=""><fmt:formatDate pattern = "yyyy" value = "${serieYear.fechaInicio}" /></form:option>
+						<select multiple="true" name="years">
+                            <c:forEach items="${fechas}" var="fecha">
+							 <option value="${fecha}">${fecha}</option>
                             </c:forEach>
-                        </form:select>
-<!-- <fmt:formatDate pattern = "yyyy" value = "${series.fechaInicio}" /> -->
+                        </select>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col s1"></div>
 					<div class="col s6 ">
-					<span>Año filtrado</span>
+					<span>Genero</span>
 					</div>
 					</div>
 					<div class="row">
 					<div class="col s1"></div>
 					<div class="col s6 ">
-					<form:select path="fechaInicio" multiple="true">
+					<form:select path="generos" multiple="true">
                             <form:option value="">Genero</form:option>
                             <form:options items="${generos}" itemLabel="nombre" />
                         </form:select>

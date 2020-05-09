@@ -39,6 +39,12 @@
 					</c:forEach>
 				</div>
 			</div>
+			<div class="row">
+				<div class="col s1"></div>
+				<div class="col s6 ">
+				<p style="color:red">${cartel}</p>
+				</div>
+				</div>
 		</section>
 	</main>
 	<footer>
