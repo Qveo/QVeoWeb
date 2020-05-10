@@ -36,10 +36,4 @@ public class HomeController {
 		return "index";
 	}
 
-	@GetMapping("/usuario")
-	public String usuario(Model model){
-		logger.debug("Executing usuario() method via Get");
-		return "adminUsuario";
-	}
-
 }
