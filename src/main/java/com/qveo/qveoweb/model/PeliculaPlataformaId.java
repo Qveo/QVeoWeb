@@ -37,37 +37,4 @@ public class PeliculaPlataformaId implements Serializable {
 	public void setPlataformaId(Long plataformaId) {
 		this.plataformaId = plataformaId;
 	}
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((peliculaId == null) ? 0 : peliculaId.hashCode());
-		result = prime * result + ((plataformaId == null) ? 0 : plataformaId.hashCode());
-		return result;
-	}
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		PeliculaPlataformaId other = (PeliculaPlataformaId) obj;
-		if (peliculaId == null) {
-			if (other.peliculaId != null)
-				return false;
-		} else if (!peliculaId.equals(other.peliculaId))
-			return false;
-		if (plataformaId == null) {
-			if (other.plataformaId != null)
-				return false;
-		} else if (!plataformaId.equals(other.plataformaId))
-			return false;
-		return true;
-	}
-	
-	
-	
-
 }
