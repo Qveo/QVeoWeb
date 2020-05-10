@@ -56,6 +56,21 @@
                         </form:select>
 					</div>
 					</div>
+						<div class="row">
+					<div class="col s1"></div>
+					<div class="col s6 ">
+					<span>Plataformas</span>
+					</div>
+					</div>
+					<div class="row">
+					<div class="col s1"></div>
+					<div class="col s6 ">
+					<form:select path="plataformas" multiple="true">
+                            <form:option value="">plataformas</form:option>
+                            <form:options items="${plataformas}" itemLabel="nombre" />
+                        </form:select>
+					</div>
+					</div>
 				<div class="row">
 					<div class="col s1"></div>
 					<div class="col s6 ">

@@ -21,8 +21,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.qveo.qveoweb.model.Genero;
+import com.qveo.qveoweb.model.Plataforma;
 import com.qveo.qveoweb.model.Serie;
 import com.qveo.qveoweb.service.GeneroService;
+import com.qveo.qveoweb.service.PlataformaService;
 import com.qveo.qveoweb.service.SerieService;
 
 @Controller
@@ -34,18 +36,24 @@ public class FiltroController {
 	@Autowired
 	GeneroService generoService;
 
+	@Autowired
+	PlataformaService plataformaSerice;
+	
 	@GetMapping("/filtro")
 	public String buscador(Model model) {
 
 		model.addAttribute("seriesBuscar", new Serie());
 
 		List<Genero> generos = generoService.getAllGeneros();
+		
+		List<Plataforma> plataformas=plataformaSerice.getAllPlataformas();
 
 		List<Serie> series = serieService.findAllSerie();
 
 		List<Integer> fecha = serieService.buscarAllYears();
 
 		model.addAttribute("fechas", fecha);
+		model.addAttribute("plataformas", plataformas);
 		model.addAttribute("serieMostrar", series);
 
 		model.addAttribute("generos", generos);
@@ -74,31 +82,50 @@ public class FiltroController {
 
 			return "filtros/filtro";
 		}
-
-		if (serie.getGeneros().isEmpty() && dates != null) {
+		
+	/*	if (serie.getGeneros().isEmpty() && dates != null) {
 			List<Serie> series = serieService.buscarPorYear(dates);
 			model.addAttribute("series", series);
 			model.addAttribute("cartel", "Condicional years");
 
 		} else if (!serie.getGeneros().isEmpty() && dates == null) {
 			List<Serie> series = serieService.buscarSerie(serie.getGeneros());
+		
 
 			model.addAttribute("series", series);
 
 			model.addAttribute("cartel", "Condicional  generos");
 
-		} else if (!serie.getGeneros().isEmpty() && dates != null) {
-			List<Serie> series = serieService.busquedaCompleta(dates, serie.getGeneros());
+	} else if (!serie.getGeneros().isEmpty() && dates != null) {
+			//List<Serie> series = serieService.busquedaCompleta(dates, serie.getGeneros());
 
-			model.addAttribute("series", series);
+			//model.addAttribute("series", series);
 
-			model.addAttribute("cartel", "Condicional ambas");
+		model.addAttribute("cartel", "Condicional ambas");
 
-		} else {
+	} else {
 
 			return "redirect:/filtro";
-		}
+	}*/
+		
+		//Filtro por plataformaas
+		/*List<Serie> series = serieService.buscarPorPlataforma(serie.getPlataformas());
+		model.addAttribute("series", series);*/
+		
+		//Filtro plataforma y genero
+		/*List<Serie> series = serieService.buscarPorGeneroPlataforma(serie.getPlataformas(), serie.getGeneros());
+		model.addAttribute("series", series);*/
+		
+		//Filtro Gnero y años
+		/*List<Serie> series = serieService.busquedaGeneroYears(dates, serie.getGeneros());
 
+		model.addAttribute("series", series);*/
+		
+		//Filtro por plataforma y aaños
+		/*List<Serie> series = serieService.buscarPlataformaYears(serie.getPlataformas(),dates);
+
+		model.addAttribute("series", series);*/
+		
 		return "filtros/filtrado";
 	}
 

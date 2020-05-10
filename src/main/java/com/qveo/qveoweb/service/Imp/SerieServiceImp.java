@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.qveo.qveoweb.dao.SerieDao;
 import com.qveo.qveoweb.model.Genero;
+import com.qveo.qveoweb.model.Plataforma;
 import com.qveo.qveoweb.model.Serie;
 import com.qveo.qveoweb.service.SerieService;
 
@@ -110,40 +111,85 @@ public class SerieServiceImp implements SerieService {
 	}
 
 	@Override
-	public List<Serie> busquedaCompleta(String[] years, Collection<Genero> generos) {
+	public List<Serie> buscarPlataforma(Collection<Plataforma> plataforma) {
+		List<Serie> serie = serieDao.findByPlataformasIn(plataforma);
+		return serie;
+	}
+
+	@Override
+	public List<Serie> buscarGeneroPlataforma(Collection<Plataforma> plataforma, Collection<Genero> generos) {
+		List<Serie> serie= serieDao.findByPlataformasInAndGenerosIn(plataforma, generos);
+		return serie;
+	}
+
+	@Override 
+	public List<Serie> buscarPlataformaYears(Collection<Plataforma> plataforma, String[] years) {
 		List<Serie> serieFiltra = new ArrayList<Serie>();
 
-//		List<Serie> seriesGenero = serieDao.findByGenerosIn(generos);
-//
-//		for (Serie serie : seriesGenero) {
-//			for (String year : years) {
-//				DateFormat format = new SimpleDateFormat("yyyy");
-//				String fecha = format.format(serie.getFechaInicio());
-//				if (year.equals(fecha)) {
-//					serieFiltra.add(serie);
-//				}
-//			}
-//		}
-		
 		Date fechaInicio = null;
 		Date fechafinal = null;
 		if (years.length == 1) {
 			fechaInicio = Date.valueOf(years[0] + "-1-1");
 			fechafinal = Date.valueOf(years[0] + "-12-31");
-			serieFiltra = serieDao.findByGenerosAndFechaInicioBetween(generos, fechaInicio, fechafinal);
+			serieFiltra.addAll(serieDao.findByPlataformasInAndFechaInicioBetween(plataforma, fechaInicio, fechafinal));
 		}
-		
+
 		if (years.length >= 2) {
-			
+
 			for (String year : years) {
-				fechaInicio = Date.valueOf(years[0] + "-1-1");
-				fechafinal = Date.valueOf(years[0] + "-12-31");
-				serieFiltra = serieDao.findByGenerosAndFechaInicioBetween(generos, fechaInicio, fechafinal);
+				fechaInicio = Date.valueOf(year + "-1-1");
+				fechafinal = Date.valueOf(year + "-12-31");
+				serieFiltra.addAll(serieDao.findByPlataformasInAndFechaInicioBetween(plataforma, fechaInicio, fechafinal));
 			}
+
 		}
+		List<Serie> borrador = serieFiltra;
+		serieFiltra = null;
+		borrador.stream().distinct().collect(Collectors.toList());
+		serieFiltra = new ArrayList<Serie>(new HashSet<>(borrador));
 
 		return serieFiltra;
-
 	}
+
+	@Override
+	public List<Serie> busquedaGeneroYears(String[] years, Collection<Genero> generos) {
+		List<Serie> serieFiltra = new ArrayList<Serie>();
+
+		Date fechaInicio = null;
+		Date fechafinal = null;
+		if (years.length == 1) {
+			fechaInicio = Date.valueOf(years[0] + "-1-1");
+			fechafinal = Date.valueOf(years[0] + "-12-31");
+			serieFiltra.addAll(serieDao.findByGenerosInAndFechaInicioBetween(generos, fechaInicio, fechafinal));
+		}
+
+		if (years.length >= 2) {
+
+			for (String year : years) {
+				fechaInicio = Date.valueOf(year + "-1-1");
+				fechafinal = Date.valueOf(year + "-12-31");
+				serieFiltra.addAll(serieDao.findByGenerosInAndFechaInicioBetween(generos, fechaInicio, fechafinal));
+			}
+
+		}
+		List<Serie> borrador = serieFiltra;
+		serieFiltra = null;
+		borrador.stream().distinct().collect(Collectors.toList());
+		serieFiltra = new ArrayList<Serie>(new HashSet<>(borrador));
+
+		return serieFiltra;
+	}
+
+	/**
+	 * Estas aqui ksjalkdjsaldlaksndlsan
+	 * hijo puta 
+	 */
+	@Override
+	public List<Serie> busquedaCompletaSerie(Collection<Genero> generos, Collection<Plataforma> plataforma,
+			String[] years) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 }
