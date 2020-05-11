@@ -23,6 +23,7 @@ public class Pelicula {
     private Collection<Director> directores;
     private Collection<Usuario> usuarios;
     private Set<PeliculaPlataforma> peliculaPlataformas = new HashSet<PeliculaPlataforma>();
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")

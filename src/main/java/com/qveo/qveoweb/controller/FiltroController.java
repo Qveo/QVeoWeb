@@ -70,19 +70,22 @@ public class FiltroController {
 	@GetMapping("/filtro2")
 	public String buscadorPeli(Model model) {
 
-		model.addAttribute("peliculaBuscar", new Pelicula());
-		List<Genero> generos = generoService.getAllGeneros();
-		List<Integer> fecha = peliculaService.buscarAllYears();
-		model.addAttribute("fechas", fecha);
+		//model.addAttribute("peliculaBuscar", new Pelicula());
+		//List<Genero> generos = generoService.getAllGeneros();
+		//List<Integer> fecha = peliculaService.buscarAllYears();
+		//model.addAttribute("fechas", fecha);
 
-		List<PeliculaPlataforma> peliculaPlataforma = peliPlataService.getAllPeliculasPlataformas();
+		//List<PeliculaPlataforma> peliculaPlataformas = peliPlataService.getAllPeliculasPlataformas();
+		model.addAttribute("peliculaBuscar", new PeliculaPlataforma());
+		
+		List<Plataforma> plataformas = plataformaSerice.getAllPlataformas();
 
-		model.addAttribute("peliculaplataformas", peliculaPlataforma);
+		model.addAttribute("plataformas", plataformas);
 
-		model.addAttribute("generos", generos);
+		//model.addAttribute("generos", generos);
 
-		List<Pelicula> peliculas = peliculaService.findAll();
-		model.addAttribute("peliculaMostrar", peliculas);
+		//List<Pelicula> peliculas = peliculaService.findAll();
+		//model.addAttribute("peliculaMostrar", peliculas);
 
 		return "filtros/filtro2";
 	}
@@ -137,7 +140,7 @@ public class FiltroController {
 		//List<Serie> series = serieService.buscarPorYear(dates);
 		
 		//-------->Filtrar por plataforma
-		//List<Serie> series =serieService.buscarPlataforma(serie.getPlataformas());
+		List<Serie> series =serieService.buscarPlataforma(serie.getPlataformas());
 		
 		//-------->Filtrar por años y generos
 		//List<Serie> series = serieService.busquedaGeneroYears(dates, serie.getGeneros());
@@ -150,9 +153,9 @@ public class FiltroController {
 		//List<Serie> series =serieService.buscarPlataformaYears(serie.getPlataformas(), dates);
 		
 		///--------->Filtrar por plataforma y años
-		/*List<Serie> series =serieService.busquedaCompletaSerie(serie.getGeneros(), serie.getPlataformas(), dates);
+		//List<Serie> series =serieService.busquedaCompletaSerie(serie.getGeneros(), serie.getPlataformas(), dates);
 		
-		model.addAttribute("series", series);*/
+		model.addAttribute("series", series);
 	
 		return "filtros/filtrado";
 	}
@@ -161,9 +164,8 @@ public class FiltroController {
 	 * Post controler para series
 	 */
 	@PostMapping("/filtrosP")
-	public String filtrar(@ModelAttribute(name = "peliculaBuscar") Pelicula pelicula,
-			@RequestParam(name = "years", required = false) String[] dates, Model model, BindingResult br) {
-
+	public String filtrar(@ModelAttribute(name = "peliculaBuscar") PeliculaPlataforma peliculaPlataforma, Model model) {
+/*
 		if (br.hasErrors()) {
 
 			model.addAttribute("peliculaBuscar", new Pelicula());
@@ -181,7 +183,8 @@ public class FiltroController {
 
 			return "filtros/filtro";
 		}
-		System.out.println(pelicula.getPeliculaPlataformas().isEmpty());
+*/
+		//System.out.println(pelicula.getPeliculaPlataformas().isEmpty());
 		
 		
 		//--->Filtro de pelicula por genero
@@ -191,8 +194,11 @@ public class FiltroController {
 		//List<Pelicula> peliculas=peliculaService.buscarPeliYears(dates);
 		
 		//--->Filtro de pelicula por genero y años
-		/*List<Pelicula> peliculas=peliculaService.buscarPeliGeneroYears(pelicula.getPeliculas(), dates);
-		model.addAttribute("peliculas", peliculas);*/
+		//List<Pelicula> peliculas=peliculaService.buscarPeliGeneroYears(pelicula.getPeliculas(), dates);
+		
+		//-------->Filtrar por plataforma
+		//List<Pelicula> peliculas = peliculaService.buscarPeliPlataforma(pelicula.getPeliculaPlataformas());
+		model.addAttribute("peliculas", peliculaPlataforma);
 
 		return "filtros/filtradoP";
 	}

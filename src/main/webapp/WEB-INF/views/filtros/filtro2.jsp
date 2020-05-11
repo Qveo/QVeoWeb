@@ -26,37 +26,37 @@
 		<section>
 			<form:form method="POST" action="/qveo/filtrosP"
 				modelAttribute="peliculaBuscar">
-				<div class="row">
-					<div class="col s1"></div>
-					<div class="col s10 ">
-						<span>A&ntilde;o</span>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col s1"></div>
-					<div class="col s6 ">
-						<select multiple="true" name="years">
-							<c:forEach items="${fechas}" var="fecha">
-								<option value="${fecha}">${fecha}</option>
-							</c:forEach>
-						</select>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col s1"></div>
-					<div class="col s6 ">
-						<span>Genero</span>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col s1"></div>
-					<div class="col s6 ">
-						<form:select path="peliculas" multiple="true">
-							<form:option value="">Genero</form:option>
-							<form:options items="${generos}" itemLabel="nombre" itemValue="id"/>
-						</form:select>
-					</div>
-				</div>
+<!-- 				<div class="row"> -->
+<!-- 					<div class="col s1"></div> -->
+<!-- 					<div class="col s10 "> -->
+<!-- 						<span>A&ntilde;o</span> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 				<div class="row"> -->
+<!-- 					<div class="col s1"></div> -->
+<!-- 					<div class="col s6 "> -->
+<!-- 						<select multiple="true" name="years"> -->
+<%-- 							<c:forEach items="${fechas}" var="fecha"> --%>
+<%-- 								<option value="${fecha}">${fecha}</option> --%>
+<%-- 							</c:forEach> --%>
+<!-- 						</select> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 				<div class="row"> -->
+<!-- 					<div class="col s1"></div> -->
+<!-- 					<div class="col s6 "> -->
+<!-- 						<span>Genero</span> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 				<div class="row"> -->
+<!-- 					<div class="col s1"></div> -->
+<!-- 					<div class="col s6 "> -->
+<%-- 						<form:select path="peliculas" multiple="true"> --%>
+<%-- 							<form:option value="">Genero</form:option> --%>
+<%-- 							<form:options items="${generos}" itemLabel="nombre" itemValue="id"/> --%>
+<%-- 						</form:select> --%>
+<!-- 					</div> -->
+<!-- 				</div> -->
 				<div class="row">
 					<div class="col s1"></div>
 					<div class="col s6 ">
@@ -66,15 +66,22 @@
 				<div class="row">
 					<div class="col s1"></div>
 					<div class="col s6 ">
-						<form:select path="peliculaPlataformas" multiple="true">
-							<%-- 							<form:options items="${plataformas}" itemLabel="nombre" --%>
-							<%-- 								itemValue="id" /> --%>
-							<c:forEach items="${peliculaplataformas}"
-								var="peliculaplataforma">
-								<form:option value="${peliculaplataforma.plataforma.id}">${peliculaplataforma.plataforma.nombre}</form:option>
+<%-- 							<form:options items="${plataformas}" itemLabel="nombre" --%>
+<%-- 								itemValue="id" /> --%>
+						<form:select path="plataforma" multiple="multiple">
+							<c:forEach items="${plataformas}" var="plataforma">
+							
+<%-- 								<c:forEach items="${plataforma.peliculaPlataformas}" var="peliculaPlataforma"> --%>
+								
+								
+								<form:option value="${plataforma.id}">${plataforma.nombre}</form:option>
+<%-- 								</c:forEach> --%>
 							</c:forEach>
-
 						</form:select>
+						
+						<%-- 							<form:select path="peliculaPlataformas" multiple="true"> --%>
+<%-- 							<form:options items="${peliculaMostrar.peliculaPlataformas}" itemLabel="nombre" /> --%>
+<%-- 							</form:select> --%>
 					</div>
 				</div>
 				<div class="row">

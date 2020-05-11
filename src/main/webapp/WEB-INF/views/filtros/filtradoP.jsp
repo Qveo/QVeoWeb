@@ -24,9 +24,8 @@
 			<div class="row">
 				<div class="col s1"></div>
 				<div class="col s6 ">
-					<c:forEach items="${peliculas}" var="pelicula">
-						<label>${pelicula.titulo}</label>
-						<label>${pelicula.duracion}</label>
+					<c:forEach items="${peliculas.plataforma.peliculaPlataformas}" var="peliculaPlataforma">
+						<label>${peliculaPlataforma.pelicula.titulo}</label>
 					</c:forEach>
 				</div>
 			</div>

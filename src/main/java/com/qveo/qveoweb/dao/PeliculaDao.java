@@ -21,7 +21,7 @@ public interface PeliculaDao extends JpaRepository<Pelicula, Integer> {
 		       
 	List<Pelicula> findByPeliculasInAndAnioBetween(Collection<Genero> peliculas,Date fechaInferior, Date fechaSuperior);
 	
-	List<Pelicula> findByPeliculaPlataformasIn(Collection<Plataforma> plataformas);
+	List<Pelicula> findByPeliculaPlataformasIn(Collection<PeliculaPlataforma> peliculaPlataformas);
 	
 
 }

@@ -4,6 +4,7 @@ import com.qveo.qveoweb.dao.PeliculaDao;
 import com.qveo.qveoweb.dao.PlataformaDao;
 import com.qveo.qveoweb.model.Genero;
 import com.qveo.qveoweb.model.Pelicula;
+import com.qveo.qveoweb.model.PeliculaPlataforma;
 import com.qveo.qveoweb.model.Plataforma;
 import com.qveo.qveoweb.service.PeliculaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -137,6 +138,12 @@ public class PeliculaServiceImpl implements PeliculaService {
 		peliculaFiltrada = new ArrayList<Pelicula>(new HashSet<>(borradoList));
 
 		return peliculaFiltrada;
+	}
+
+	@Override
+	public List<Pelicula> buscarPeliPlataforma(Collection<PeliculaPlataforma> peliculaPlataformas) {
+		
+		return peliculaDao.findByPeliculaPlataformasIn(peliculaPlataformas);
 	}
 
 	/*
