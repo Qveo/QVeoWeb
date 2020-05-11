@@ -22,10 +22,10 @@
 	</header>
 
 	<main>
-		<h1>hola mundo Series</h1>
+		<h1>hola mundo Pelicula</h1>
 		<section>
-			<form:form method="POST" action="/qveo/filtros"
-				modelAttribute="seriesBuscar">
+			<form:form method="POST" action="/qveo/filtrosP"
+				modelAttribute="peliculaBuscar">
 				<div class="row">
 					<div class="col s1"></div>
 					<div class="col s10 ">
@@ -51,9 +51,9 @@
 				<div class="row">
 					<div class="col s1"></div>
 					<div class="col s6 ">
-						<form:select path="generos" multiple="true">
+						<form:select path="peliculas" multiple="true">
 							<form:option value="">Genero</form:option>
-							<form:options items="${generos}" itemLabel="nombre" />
+							<form:options items="${generos}" itemLabel="nombre" itemValue="id"/>
 						</form:select>
 					</div>
 				</div>
@@ -66,8 +66,14 @@
 				<div class="row">
 					<div class="col s1"></div>
 					<div class="col s6 ">
-						<form:select path="plataformas" multiple="true">
-							<form:options items="${plataformas}" itemLabel="nombre" />
+						<form:select path="peliculaPlataformas" multiple="true">
+							<%-- 							<form:options items="${plataformas}" itemLabel="nombre" --%>
+							<%-- 								itemValue="id" /> --%>
+							<c:forEach items="${peliculaplataformas}"
+								var="peliculaplataforma">
+								<form:option value="${peliculaplataforma.plataforma.id}">${peliculaplataforma.plataforma.nombre}</form:option>
+							</c:forEach>
+
 						</form:select>
 					</div>
 				</div>
@@ -82,7 +88,6 @@
 				</div>
 			</form:form>
 		</section>
-
 		<section>
 			<table class="centered highlight responsive-table">
 				<thead>
@@ -93,17 +98,16 @@
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach items="${serieMostrar}" var="serie">
+					<c:forEach items="${peliculaMostrar}" var="peli">
 						<tr>
-							<td><img alt="${serie.titulo}"
-								src="${pageContext.request.contextPath}${serie.poster}"
+							<td><img alt="${peli.titulo}"
+								src="${pageContext.request.contextPath}${peli.poster}"
 								width="20%"></td>
-							<td>${serie.titulo}</td>
-							<td>${serie.fechaInicio}</td>
+							<td>${peli.titulo}</td>
+							<td>${peli.anio}</td>
 						</tr>
 					</c:forEach>
 				</tbody>
-
 			</table>
 		</section>
 

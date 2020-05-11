@@ -73,20 +73,19 @@ public class SerieServiceImp implements SerieService {
 	}
 
 	public int getYear(Date date2) {
-		int year = 0;
 
-		Date date = date2;
 		Calendar cal = Calendar.getInstance();
 
-		cal.setTime(date);
-		year = cal.get(Calendar.YEAR);
+		cal.setTime(date2);
+		
+		int year = cal.get(Calendar.YEAR);
 
 		return year;
 	}
 
 	@Override
 	public List<Serie> buscarPorYear(String[] years) {
-		List<Serie> seriefiltrada = null;
+		List<Serie> seriefiltrada = new ArrayList<Serie>();
 		Date fechaInicio = null;
 		Date fechafinal = null;
 		if (years.length == 1) {
@@ -180,15 +179,36 @@ public class SerieServiceImp implements SerieService {
 		return serieFiltra;
 	}
 
-	/**
-	 * Estas aqui ksjalkdjsaldlaksndlsan
-	 * hijo puta 
-	 */
 	@Override
 	public List<Serie> busquedaCompletaSerie(Collection<Genero> generos, Collection<Plataforma> plataforma,
 			String[] years) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Serie> serieFiltra = new ArrayList<Serie>();
+		
+		Date fechaInicio = null;
+		Date fechafinal = null;
+		
+		if (years.length == 1) {
+			fechaInicio = Date.valueOf(years[0] + "-1-1");
+			fechafinal = Date.valueOf(years[0] + "-12-31");
+			serieFiltra.addAll(serieDao.findByPlataformasInAndGenerosInAndFechaInicioBetween(plataforma,generos, fechaInicio, fechafinal));
+		}
+
+		if (years.length >= 2) {
+
+			for (String year : years) {
+				fechaInicio = Date.valueOf(year + "-1-1");
+				fechafinal = Date.valueOf(year + "-12-31");
+				serieFiltra.addAll(serieDao.findByPlataformasInAndGenerosInAndFechaInicioBetween(plataforma,generos, fechaInicio, fechafinal));
+			}
+
+		}
+		
+		List<Serie> borrador = serieFiltra;
+		serieFiltra = null;
+		borrador.stream().distinct().collect(Collectors.toList());
+		serieFiltra = new ArrayList<Serie>(new HashSet<>(borrador));
+		
+		return serieFiltra;
 	}
 
 

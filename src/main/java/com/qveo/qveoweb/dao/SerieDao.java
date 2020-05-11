@@ -26,5 +26,5 @@ public interface SerieDao extends JpaRepository<Serie, Integer>{
 	
 	List<Serie> findByPlataformasInAndFechaInicioBetween(Collection<Plataforma> plataformas,Date fechaInicio, Date fechafinal);
 	
-	
+	List<Serie> findByPlataformasInAndGenerosInAndFechaInicioBetween(Collection<Plataforma> plataformas,Collection<Genero> generos,Date fechaInicio, Date fechafinal);
 }
