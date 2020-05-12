@@ -1,7 +1,8 @@
 package com.qveo.qveoweb.controller;
 
 import java.io.IOException;
-
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -10,7 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,19 +29,20 @@ import com.qveo.qveoweb.model.Pais;
 import com.qveo.qveoweb.model.Plataforma;
 import com.qveo.qveoweb.model.Genero;
 import com.qveo.qveoweb.model.Pelicula;
+
 import com.qveo.qveoweb.service.ActorService;
 import com.qveo.qveoweb.service.DirectorService;
 import com.qveo.qveoweb.service.GeneroService;
 import com.qveo.qveoweb.service.IUploadFileService;
 import com.qveo.qveoweb.service.PaisService;
+
 import com.qveo.qveoweb.service.PeliculaService;
 import com.qveo.qveoweb.service.PlataformaService;
+import com.qveo.qveoweb.validation.PeliculaValidador;
 
 @Controller
 @RequestMapping("/peliculas")
 public class PeliculaController {
-	
-	Boolean editar = false;
 
 	@Autowired
 	PeliculaService peliculaService;
@@ -59,7 +63,15 @@ public class PeliculaController {
 	DirectorService directorService;
 
 	@Autowired
+	PeliculaValidador peliculaValid;
+
+	@Autowired
 	private IUploadFileService uploadFileService;
+
+	@InitBinder
+	public void InitBinder(WebDataBinder binder) {
+		binder.setValidator(peliculaValid);
+	}
 
 	@GetMapping("/listar")
 	public String listar(Model mod) {
@@ -67,7 +79,7 @@ public class PeliculaController {
 		mod.addAttribute("titulo", "Listado de peliculas");
 		mod.addAttribute("peliculas", peliculaService.findAll());
 
-		return "Peliculas/listar";
+		return "peliculas/listar";
 	}
 
 	@GetMapping("/{id}")
@@ -80,13 +92,11 @@ public class PeliculaController {
 		mod.addAttribute("peliculas", pelicula);
 		mod.addAttribute("Titulo", "Datos de la pelicula");
 
-		return "Peliculas/mostrar";
+		return "peliculas/mostrar";
 	}
 
 	@RequestMapping("/form")
 	public String crear(Model mod) {
-		
-		editar = false;
 
 		List<Genero> genero = generoService.getAllGenero();
 		List<Pais> paises = paisService.getAllPais();
@@ -102,14 +112,13 @@ public class PeliculaController {
 		mod.addAttribute("generos", genero);
 		mod.addAttribute("plataformas", plataformas);
 
-		return "Peliculas/registro";
+		return "peliculas/registro";
 	}
 
 	@RequestMapping(value = "/form/{id}", method = RequestMethod.GET)
 	public String editar(Model mod, @PathVariable(value = "id") Integer id) {
 
 		Pelicula pelicula = null;
-		editar=true;
 
 		if (id > 0) {
 			pelicula = peliculaService.getPelicula(id);
@@ -128,7 +137,6 @@ public class PeliculaController {
 		List<Director> directores = directorService.getAllDirector();
 		List<Actor> actores = actorServ.getAllActor();
 
-
 		mod.addAttribute("edit", true);
 		mod.addAttribute("directores", directores);
 		mod.addAttribute("actores", actores);
@@ -139,14 +147,13 @@ public class PeliculaController {
 
 		mod.addAttribute("title", "Editar Pelicula");
 
-		return "Peliculas/registro";
+		return "peliculas/registro";
 	}
 
 	@RequestMapping(value = "/form", method = RequestMethod.POST)
 	public String guardar(@Valid @ModelAttribute("peliculaNueva") Pelicula pelicula, BindingResult br, Model mod,
 			@RequestParam("foto") MultipartFile foto, SessionStatus status) {
 
-		
 		try {
 			if (br.hasErrors()) {
 
@@ -163,41 +170,28 @@ public class PeliculaController {
 				mod.addAttribute("generos", peliculas);
 				mod.addAttribute("plataformas", plataformas);
 				mod.addAttribute("peliculaNueva", pelicula);
-				return "Peliculas/registro";
+				return "peliculas/registro";
 			}
-			
+
 			System.out.println(pelicula.toString());
-
+			String uniqueFilename = null;
 			if (!foto.isEmpty()) {
-				
-				if(editar == true) {	
-					String rutaFoto = peliculaService.getPelicula(pelicula.getId()).getPoster();
-					String ruta = rutaFoto.substring(rutaFoto.lastIndexOf('/') + 1);
-					System.out.println(ruta);
-				
-				if (pelicula.getId() != null && pelicula.getId() > 0 && ruta != null
-						&& ruta.length() > 0) {
-					System.out.println("VIVA ESPAÑAAAAAAAAAAAAAAAAA");
 
-					uploadFileService.delete(ruta);
-				} 
-				}
-
-				String uniqueFilename = null; 
+				
 				try {
-					uniqueFilename = uploadFileService.copy(foto);
+					uniqueFilename = uploadFileService.copy(foto, 2, pelicula.getId());
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+
 				System.out.println(uniqueFilename);
+				 pelicula.setPoster("/resources/img/peliculas/" + uniqueFilename);
+			} else if (foto.isEmpty()) {
+
+				uniqueFilename = uploadFileService.defaultFoto(2, pelicula.getId());
+				
 				pelicula.setPoster("/resources/img/peliculas/" + uniqueFilename);
-			}
-			
-			if(editar == true) {
-				if(foto.isEmpty()) {
-					pelicula.setPoster(peliculaService.getPelicula(pelicula.getId()).getPoster());
-				}
 			}
 			peliculaService.save(pelicula);
 			status.setComplete();
@@ -214,7 +208,7 @@ public class PeliculaController {
 
 			Pelicula pelicula = peliculaService.getPelicula(id);
 
-			uploadFileService.delete(pelicula.getPoster());
+			uploadFileService.delete(pelicula.getPoster(), 2);
 
 			peliculaService.delete(id);
 		}

@@ -50,22 +50,22 @@ public class PeliculaServiceImp implements PeliculaService {
 		return peliculaDao.findById(id).orElse(null);
 	}
 	
-	 @Override
-	    public Map<Plataforma, List<Pelicula>> getPeliculaForCarousel() {
-	        List<Plataforma> plataformas = plataformaDao.findAll();
-
-	        List<Pelicula> peliculas = peliculaDao.findByPlataformasIn(plataformas);
-
-	        Map<Plataforma, List<Pelicula>> plataformaListMap = new HashMap<>();
-
-	        plataformas.forEach(plataforma ->{
-	            plataformaListMap.put(plataforma, peliculas.stream()
-	                    .filter(pelicula -> pelicula.getPlataformas().contains(plataforma))
-	                    .collect(Collectors.toList()));
-	        });
-
-	        return plataformaListMap;
-	    }
+//	 @Override
+//	    public Map<Plataforma, List<Pelicula>> getPeliculaForCarousel() {
+//	        List<Plataforma> plataformas = plataformaDao.findAll();
+//
+//	        List<Pelicula> peliculas = peliculaDao.findByPlataformasIn(plataformas);
+//
+//	        Map<Plataforma, List<Pelicula>> plataformaListMap = new HashMap<>();
+//
+//	        plataformas.forEach(plataforma ->{
+//	            plataformaListMap.put(plataforma, peliculas.stream()
+//	                    .filter(pelicula -> pelicula.getPlataformas().contains(plataforma))
+//	                    .collect(Collectors.toList()));
+//	        });
+//
+//	        return plataformaListMap;
+//	    }
 
 	@Override
 	@Transactional

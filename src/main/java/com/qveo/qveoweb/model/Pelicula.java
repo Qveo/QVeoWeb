@@ -7,7 +7,11 @@ import javax.validation.constraints.Pattern;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 import java.sql.Time;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Collection;
 
 @Entity
@@ -132,20 +136,7 @@ public class Pelicula {
         this.generos = peliculas;
     }
 
-    @ManyToMany
-    @JoinTable(
-            name ="lista_pelicula",
-            joinColumns = @JoinColumn(name = "id_pelicula", nullable = false),
-            inverseJoinColumns = @JoinColumn(name="id_lista", nullable = false)
-    )
-    public Collection<Lista> getListas() {
-        return listas;
-    }
-
-    public void setListas(Collection<Lista> listas) {
-        this.listas = listas;
-    }
-
+    
     @ManyToOne
     @JoinColumn(name = "ID_PAIS", referencedColumnName = "ID", nullable = false)
     public Pais getPais() {
@@ -184,6 +175,7 @@ public class Pelicula {
         this.plataformas = plataformas;
     }
 
+
 	@Override
 	public String toString() {
 		return "Pelicula [id=" + id + ", titulo=" + titulo + ", duracion=" + duracion + ", guion=" + guion + ", poster="
@@ -191,4 +183,6 @@ public class Pelicula {
 				+ ", listas=" + listas + ", pais=" + pais + ", directores=" + directores + ", plataformas="
 				+ plataformas + "]";
 	}
+	
+
 }

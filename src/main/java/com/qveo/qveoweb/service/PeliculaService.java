@@ -17,7 +17,7 @@ public interface PeliculaService {
 	public Pelicula getPelicula(Integer id);
 	public void save(Pelicula pelicula) throws IOException;
 	public void delete(Integer id);
-	Map<Plataforma, List<Pelicula>> getPeliculaForCarousel();
+	
 
 	
 }

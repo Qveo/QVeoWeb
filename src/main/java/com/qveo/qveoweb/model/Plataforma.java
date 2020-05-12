@@ -1,16 +1,29 @@
 package com.qveo.qveoweb.model;
 
 import javax.persistence.*;
+
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
+
 
 @Entity
 public class Plataforma {
+	
     private Integer id;
     private String nombre;
-    private Collection<Pelicula> peliculas;
     private Collection<Serie> series;
+    private Collection<Usuario> usuarios;   
+    private Collection<Pelicula> peliculas;
+    private String logo;
 
-    @Id
+    
+    
+    public Plataforma() {
+	}
+
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
     public Integer getId() {
         return id;

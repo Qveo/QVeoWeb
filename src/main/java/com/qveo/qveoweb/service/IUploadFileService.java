@@ -8,11 +8,15 @@ import java.net.MalformedURLException;
 import org.springframework.core.io.Resource;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.qveo.qveoweb.model.Pelicula;
+
 public interface IUploadFileService {
 
-	public Resource load(String filename) throws MalformedURLException;
 
-	public String copy(MultipartFile file) throws IOException;
 
-	public boolean delete(String filename);
+	public String copy(MultipartFile file, Integer accion, Integer id) throws IOException;
+	
+	public String defaultFoto(Integer accion, Integer id) throws IOException;
+
+	public boolean delete(String filename,  Integer accion);
 }
