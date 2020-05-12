@@ -1,14 +1,7 @@
 package com.qveo.qveoweb.service.Imp;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,6 +12,7 @@ import com.qveo.qveoweb.dao.PeliculaDao;
 import com.qveo.qveoweb.dao.PlataformaDao;
 import com.qveo.qveoweb.model.Pelicula;
 import com.qveo.qveoweb.model.Plataforma;
+import com.qveo.qveoweb.service.IUploadFileService;
 import com.qveo.qveoweb.service.PeliculaService;
 
 @Service
@@ -26,6 +20,9 @@ public class PeliculaServiceImp implements PeliculaService {
 
 	@Autowired
 	PeliculaDao peliculaDao;
+	
+	@Autowired
+	IUploadFileService uploadFileService;
 	
 	@Autowired
     PlataformaDao plataformaDao;
@@ -50,26 +47,29 @@ public class PeliculaServiceImp implements PeliculaService {
 		return peliculaDao.findById(id).orElse(null);
 	}
 	
-//	 @Override
-//	    public Map<Plataforma, List<Pelicula>> getPeliculaForCarousel() {
-//	        List<Plataforma> plataformas = plataformaDao.findAll();
-//
-//	        List<Pelicula> peliculas = peliculaDao.findByPlataformasIn(plataformas);
-//
-//	        Map<Plataforma, List<Pelicula>> plataformaListMap = new HashMap<>();
-//
-//	        plataformas.forEach(plataforma ->{
-//	            plataformaListMap.put(plataforma, peliculas.stream()
-//	                    .filter(pelicula -> pelicula.getPlataformas().contains(plataforma))
-//	                    .collect(Collectors.toList()));
-//	        });
-//
-//	        return plataformaListMap;
-//	    }
 
 	@Override
 	@Transactional
-	public void save(Pelicula peliculaNew) throws IOException {
+	public void save(Pelicula peliculaNew, MultipartFile foto) throws IOException {
+		
+		String uniqueFilename = null;
+		if (!foto.isEmpty()) {				
+			try {
+				uniqueFilename = uploadFileService.copy(foto, 2, peliculaNew.getId());
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+			System.out.println(uniqueFilename);
+		
+		} else if (foto.isEmpty()) {
+
+			uniqueFilename = uploadFileService.defaultFoto(2, peliculaNew.getId());
+			
+			peliculaNew.setPoster("/resources/img/peliculas/" + uniqueFilename);
+			
+			
+		}
 
 		peliculaDao.save(peliculaNew);
 

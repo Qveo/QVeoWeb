@@ -174,26 +174,8 @@ public class PeliculaController {
 			}
 
 			System.out.println(pelicula.toString());
-			String uniqueFilename = null;
-			if (!foto.isEmpty()) {
 
-				
-				try {
-					uniqueFilename = uploadFileService.copy(foto, 2, pelicula.getId());
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-
-				System.out.println(uniqueFilename);
-				 pelicula.setPoster("/resources/img/peliculas/" + uniqueFilename);
-			} else if (foto.isEmpty()) {
-
-				uniqueFilename = uploadFileService.defaultFoto(2, pelicula.getId());
-				
-				pelicula.setPoster("/resources/img/peliculas/" + uniqueFilename);
-			}
-			peliculaService.save(pelicula);
+			peliculaService.save(pelicula, foto);
 			status.setComplete();
 		} catch (IOException e) {
 			e.printStackTrace();

@@ -15,7 +15,7 @@ public interface PeliculaService {
 	
 	public List<Pelicula> findAll();
 	public Pelicula getPelicula(Integer id);
-	public void save(Pelicula pelicula) throws IOException;
+	public void save(Pelicula pelicula, MultipartFile foto) throws IOException;
 	public void delete(Integer id);
 	
 
