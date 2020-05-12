@@ -157,7 +157,7 @@ public class PeliculaController {
 	@RequestMapping(value = "/form", method = RequestMethod.POST)
 	public String guardar(@Valid @ModelAttribute("peliculaNueva") PeliculaPlataforma pelicula, BindingResult br,
 			Model mod, @RequestParam("foto") MultipartFile foto, SessionStatus status) {
-
+		try {
 		if (br.hasErrors()) {
 
 			List<Genero> peliculas = generoService.getAllGenero();
@@ -177,9 +177,13 @@ public class PeliculaController {
 		}
 
 		System.out.println(pelicula.getPelicula().toString() + pelicula.getPlataforma());
+		peliculaService.save(pelicula.getPelicula(), foto);
 		peliculaPlat.save(pelicula);
-//			peliculaService.save(pelicula.getPelicula(), foto);
 //			status.setComplete();
+		}catch(Exception e){
+			 e.printStackTrace();
+		}
+
 		return "redirect:/peliculas/listar";
 	}
 
