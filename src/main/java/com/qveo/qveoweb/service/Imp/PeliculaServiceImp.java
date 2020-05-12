@@ -20,12 +20,12 @@ public class PeliculaServiceImp implements PeliculaService {
 
 	@Autowired
 	PeliculaDao peliculaDao;
-	
+
 	@Autowired
 	IUploadFileService uploadFileService;
-	
+
 	@Autowired
-    PlataformaDao plataformaDao;
+	PlataformaDao plataformaDao;
 
 	public static String directorioPelicula = "src/main/webapp/resources/img/";
 
@@ -46,36 +46,33 @@ public class PeliculaServiceImp implements PeliculaService {
 
 		return peliculaDao.findById(id).orElse(null);
 	}
-	
 
 	@Override
 	@Transactional
 	public void save(Pelicula peliculaNew, MultipartFile foto) throws IOException {
-		
-		String uniqueFilename = null;
-		if (!foto.isEmpty()) {				
+
+		peliculaDao.save(peliculaNew);
+
+		if (!foto.isEmpty()) {
 			try {
-				uniqueFilename = uploadFileService.copy(foto, 2, peliculaNew.getId());
+				String uniqueFilename = null;
+
+				uniqueFilename = uploadFileService.copy(foto, 2, peliculaNew.getId(), peliculaNew.getTitulo());
+				peliculaNew.setPoster("/resources/img/peliculas/" + uniqueFilename);
+				System.out.println(uniqueFilename);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 
-			System.out.println(uniqueFilename);
-		
 		} else if (foto.isEmpty()) {
-
+			String uniqueFilename = null;
 			uniqueFilename = uploadFileService.defaultFoto(2, peliculaNew.getId());
-			
 			peliculaNew.setPoster("/resources/img/peliculas/" + uniqueFilename);
-			
-			
-		}
 
-		peliculaDao.save(peliculaNew);
+		}
 
 		// nombreFichero="";
 	}
-	
 
 	@Override
 	@Transactional

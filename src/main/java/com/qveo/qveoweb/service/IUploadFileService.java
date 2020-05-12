@@ -14,7 +14,7 @@ public interface IUploadFileService {
 
 
 
-	public String copy(MultipartFile file, Integer accion, Integer id) throws IOException;
+	public String copy(MultipartFile file, Integer accion, Integer id, String titulo) throws IOException;
 	
 	public String defaultFoto(Integer accion, Integer id) throws IOException;
 

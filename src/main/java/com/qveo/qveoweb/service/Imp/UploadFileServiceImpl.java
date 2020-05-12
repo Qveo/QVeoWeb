@@ -21,7 +21,6 @@ import com.qveo.qveoweb.service.PeliculaService;
 
 @Service
 public class UploadFileServiceImpl implements IUploadFileService {
-	
 
 	private final Logger log = LoggerFactory.getLogger(getClass());
 
@@ -31,82 +30,89 @@ public class UploadFileServiceImpl implements IUploadFileService {
 	PeliculaService peliculaService;
 
 	@Override
-	public String copy(MultipartFile file, Integer accion, Integer id) throws IOException {
-		
-			String nombre = String.valueOf(id);
+	public String copy(MultipartFile file, Integer accion, Integer id, String titulo) throws IOException {
 
-			String uniqueFilename = null;
+		String nombre = String.valueOf(id);
 
-			uniqueFilename = file.getOriginalFilename();
+		String nombre2 = titulo.trim().toLowerCase().replaceAll("\\s+", "_");
 
-			String extension = uniqueFilename.substring(uniqueFilename.lastIndexOf(".") + 1);
+		String uniqueFilename = null;
 
-			String nombreFinal = nombre + "." + extension;
+		uniqueFilename = file.getOriginalFilename();
 
-			Path rootPath = getPath(nombreFinal, accion);
+		String extension = uniqueFilename.substring(uniqueFilename.lastIndexOf(".") + 1);
 
-			log.info("rootPath: " + rootPath);
+		String nombreFinal = nombre2 + "_" + nombre + "." + extension;
 
-			Files.deleteIfExists(rootPath);
+		Path rootPath = getPath(nombreFinal, accion);
 
-			Files.copy(file.getInputStream(), rootPath);
+		log.info("rootPath: " + rootPath);
 
-			return nombreFinal;
-		
+		Files.deleteIfExists(rootPath);
+
+		Files.copy(file.getInputStream(), rootPath);
+
+		return nombreFinal;
+
 	}
-	
+
 	@Override
 	public String defaultFoto(Integer accion, Integer id) throws IOException {
-		
+
 		String nombreFinal = null;
-		
+
 		switch (accion) {
 		case 1:
-			
+
 			break;
 
 		case 2:
-			if(peliculaService.getPelicula(id).getPoster() != null) {
+			if (peliculaService.getPelicula(id).getPoster() != null) {
 				String nombre = peliculaService.getPelicula(id).getPoster();
-				 nombreFinal = nombre.substring(nombre.lastIndexOf('/') + 1);
-			} else if(peliculaService.getPelicula(id).getPoster() == null && peliculaService.getPelicula(id).getPoster() != "/resources/img/peliculas/defaultFoto.png") {
+				nombreFinal = nombre.substring(nombre.lastIndexOf('/') + 1);
+			} else if (peliculaService.getPelicula(id).getPoster() == null
+					&& peliculaService.getPelicula(id).getPoster() != "/resources/img/peliculas/defaultFoto.png") {
 				nombreFinal = "defaultFoto.png";
 				System.out.println(nombreFinal);
 				System.out.println("Hola");
 			}
-			
+
 			break;
 		case 3:
-			
+
 			break;
 		case 4:
-			
+
 			break;
 		case 5:
-			
+
 			break;
 		case 6:
-			
+
 			break;
 		}
-		
+
 		return nombreFinal;
 	}
 
 	@Override
 	public boolean delete(String filename, Integer accion) {
 
-		Path rootPath = getPath(filename, accion);
-		log.info("pathBorrar1: " + rootPath);
+		String ruta = filename.substring(filename.lastIndexOf('/') + 1);
+		if (ruta != "defaultFoto.png") {
+			Path rootPath = getPath(ruta, accion);
+			log.info("pathBorrar1: " + rootPath);
 
-		File archivo = rootPath.toFile();
+			File archivo = rootPath.toFile();
 
-		log.info("pathBorrar2: " + rootPath);
+			log.info("pathBorrar2: " + rootPath);
 
-		if (archivo.exists() && archivo.canRead()) {
-			if (archivo.delete()) {
-				return true;
+			if (archivo.exists() && archivo.canRead()) {
+				if (archivo.delete()) {
+					return true;
+				}
 			}
+			
 		}
 		return false;
 	}
@@ -137,6 +143,5 @@ public class UploadFileServiceImpl implements IUploadFileService {
 		}
 		return Paths.get(ruta).resolve(filename).toAbsolutePath();
 	}
-
 
 }

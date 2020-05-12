@@ -173,7 +173,7 @@ public class PeliculaController {
 				return "peliculas/registro";
 			}
 
-			System.out.println(pelicula.toString());
+		
 
 			peliculaService.save(pelicula, foto);
 			status.setComplete();
