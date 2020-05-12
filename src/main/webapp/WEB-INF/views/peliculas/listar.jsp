@@ -14,6 +14,8 @@
 	<link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/tabla.css">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/icon.css">
+	    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/menu.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/header.css">
 	<title>${titulo}</title>
 </head>
  <body>

@@ -34,7 +34,7 @@ public class Pelicula {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date anio;
     private Collection<Actor> actores;
-    private Collection<Genero> peliculas;
+    private Collection<Genero> generos;
     private Pais pais;
     private Collection<Director> directores;
     private Collection<Usuario> usuarios;
@@ -135,8 +135,8 @@ public class Pelicula {
         return generos;
     }
 
-    public void setGeneros(Collection<Genero> peliculas) {
-        this.generos = peliculas;
+    public void setGeneros(Collection<Genero> generos) {
+        this.generos = generos;
     }
 
     @ManyToOne
@@ -186,14 +186,16 @@ public class Pelicula {
         return peliculaPlataformas.stream().map(PeliculaPlataforma::getPlataforma).map(Plataforma::getNombre).collect(Collectors.joining(", "));
     }
 
-
 	@Override
 	public String toString() {
 		return "Pelicula [id=" + id + ", titulo=" + titulo + ", duracion=" + duracion + ", guion=" + guion + ", poster="
-				 + ", sinopsis=" + sinopsis + ", anio=" + anio + ", actores=" + actores + ", generos=" + generos
-				+ ", listas=" + listas + ", pais=" + pais + ", directores=" + directores + ", plataformas="
-				+ plataformas + "]";
+				+ poster + ", sinopsis=" + sinopsis + ", anio=" + anio + ", actores=" + actores + ", generos=" + generos
+				+ ", pais=" + pais + ", directores=" + directores + ", usuarios=" + usuarios + ", peliculaPlataformas="
+				+ peliculaPlataformas + "]";
 	}
+
+
+
 	
 
 }

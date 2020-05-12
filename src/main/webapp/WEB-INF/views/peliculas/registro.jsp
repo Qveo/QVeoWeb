@@ -11,6 +11,12 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/general.css">
+
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/menu.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/header.css">
+
 </head>
 <body>
 	<header>
@@ -33,27 +39,29 @@
 
 				<div class="row">
 					<div class="input-field col s6">
-						<form:input path="titulo" id="titulo" type="text" class="validate" />
-						<form:label for="titulo" path="titulo">Titulo</form:label>
+						<form:input path="pelicula.titulo" id="titulo" type="text"
+							class="validate" />
+						<form:label for="titulo" path="pelicula.titulo">Titulo</form:label>
 					</div>
 					<div class="input-field col s3">
-						<form:input path="duracion" id="duracion" class="validate" />
-						<form:label for="duracion" path="duracion">Duraci&oacuten</form:label>
+						<form:input path="pelicula.duracion" id="duracion"
+							class="validate" />
+						<form:label for="duracion" path="pelicula.duracion">Duraci&oacuten</form:label>
 					</div>
 					<div class="input-field col s3">
-						<form:input path="anio" id="anio" class="validate" />
-						<form:label for="anio" path="anio">A&ntildeo</form:label>
+						<form:input path="pelicula.anio" id="anio" class="validate" />
+						<form:label for="anio" path="pelicula.anio">A&ntildeo</form:label>
 					</div>
 				</div>
 				<div class="row">
 					<div class="input-field col s6">
-						<form:input path="guion" id="guion" class="validate" />
-						<form:label for="guion" path="guion">Gui&oacuten</form:label>
+						<form:input path="pelicula.guion" id="guion" class="validate" />
+						<form:label for="guion" path="pelicula.guion">Gui&oacuten</form:label>
 					</div>
 					<div class="input-field col s6">
-						<form:textarea path="sinopsis" id="sinopsis"
+						<form:textarea path="pelicula.sinopsis" id="sinopsis"
 							class="materialize-textarea" />
-						<form:label path="sinopsis" for="sinopsis">Sinopsis</form:label>
+						<form:label path="pelicula.sinopsis" for="sinopsis">Sinopsis</form:label>
 
 					</div>
 				</div>
@@ -62,53 +70,55 @@
 
 				<div class="row">
 
-					<div class="input-field col s12">
+<!-- 					<div class="input-field col s12"> -->
 						<span>Paises</span> <br>
-<%-- 						<c:choose> --%>
-<%-- 							<c:when test="${edit}"> --%>
-<%-- 								<form:select path="pais"> --%>
-<%-- 									<form:option value="0">--Select--</form:option> --%>
-<%-- 									<c:forEach items="${paises}" var="pais"> --%>
-<%-- 										<c:choose> --%>
-<%-- 											<c:when test="${pais.id == serieNueva.pais.id}"> --%>
-<%-- 												<form:option value="${pais.id}" selected="selected">${pais.nombre}</form:option> --%>
-<%-- 											</c:when> --%>
-<%-- 											<c:otherwise> --%>
-<%-- 												<form:option value="${pais.id}">${pais.nombre}</form:option> --%>
-<%-- 											</c:otherwise> --%>
-<%-- 										</c:choose> --%>
-<%-- 									</c:forEach> --%>
-<%-- 								</form:select> --%>
-<%-- 							</c:when> --%>
+						<%-- 						<c:choose> --%>
+						<%-- 							<c:when test="${edit}"> --%>
+						<%-- 								<form:select path="pais"> --%>
+						<%-- 									<form:option value="0">--Select--</form:option> --%>
+						<%-- 									<c:forEach items="${paises}" var="pais"> --%>
+						<%-- 										<c:choose> --%>
+						<%-- 											<c:when test="${pais.id == serieNueva.pais.id}"> --%>
+						<%-- 												<form:option value="${pais.id}" selected="selected">${pais.nombre}</form:option> --%>
+						<%-- 											</c:when> --%>
+						<%-- 											<c:otherwise> --%>
+						<%-- 												<form:option value="${pais.id}">${pais.nombre}</form:option> --%>
+						<%-- 											</c:otherwise> --%>
+						<%-- 										</c:choose> --%>
+						<%-- 									</c:forEach> --%>
+						<%-- 								</form:select> --%>
+						<%-- 							</c:when> --%>
 
-<%-- 							<c:otherwise> --%>
-								<form:select path="pais" multiple="false">
-									<form:option value="">--Select--</form:option>
-									<form:options items="${paises}" itemLabel="nombre" />
-								</form:select>
-<%-- 							</c:otherwise> --%>
-<%-- 						</c:choose> --%>
+						<%-- 							<c:otherwise> --%>
+						<%-- 								<form:select path="pelicula.pais" multiple="false"> --%>
+						<%-- 									<form:option value="">--Select--</form:option> --%>
+						<%-- 									<form:options items="${paises}" itemLabel="nombre" /> --%>
+						<%-- 								</form:select> --%>
+						<%-- 							</c:otherwise> --%>
+						<%-- 						</c:choose> --%>
 
-					</div>
+						
+
+<!-- 					</div> -->
 
 				</div>
 
 
 
-<!-- 						<div class="file-field input-field"> -->
-<!-- 										<div class="btn"> -->
-<!-- 											<span>File</span> -->
-<!-- 											<input type="file" name="foto"/> -->
-<!-- 										</div> -->
-<!-- 										<div class="file-path-wrapper"> -->
-<!-- 											<input class="file-path validate" type="text" name="foto"/> -->
-<!-- 										</div> -->
-<!-- 						</div> -->
+				<!-- 						<div class="file-field input-field"> -->
+				<!-- 										<div class="btn"> -->
+				<!-- 											<span>File</span> -->
+				<!-- 											<input type="file" name="foto"/> -->
+				<!-- 										</div> -->
+				<!-- 										<div class="file-path-wrapper"> -->
+				<!-- 											<input class="file-path validate" type="text" name="foto"/> -->
+				<!-- 										</div> -->
+				<!-- 						</div> -->
 
 				<div class="row">
 					<div class="col s2"></div>
 					<div class="col s8">
-						<form:label path="poster">Poster</form:label>
+						<form:label path="pelicula.poster">Poster</form:label>
 						<input type="file" name="foto">
 
 						<c:if test="${edit}">
@@ -131,18 +141,21 @@
 							<c:when test="${edit}">
 								<c:forEach items="${directores}" var="director">
 									<c:if test="${fn:contains(peliculaNueva.directores,director)}">
-										<form:label for="${director.nombre}" path="directores">
-											<form:checkbox id="${director.nombre}" path="directores"
-												value="${director.id}" checked="checked" />
+										<form:label for="${director.nombre}"
+											path="pelicula.directores">
+											<form:checkbox id="${director.nombre}"
+												path="pelicula.directores" value="${director.id}"
+												checked="checked" />
 											<span>${director.nombre}</span>
 										</form:label>
 									</c:if>
 
 									<c:if
 										test="${not(fn:contains(peliculaNueva.directores,director))}">
-										<form:label for="${director.nombre}" path="directores">
-											<form:checkbox id="${director.nombre}" path="directores"
-												value="${director.id}" />
+										<form:label for="${director.nombre}"
+											path="pelicula.directores">
+											<form:checkbox id="${director.nombre}"
+												path="pelicula.directores" value="${director.id}" />
 											<span>${director.nombre}</span>
 										</form:label>
 									</c:if>
@@ -152,9 +165,9 @@
 
 							<c:otherwise>
 								<c:forEach items="${directores}" var="director">
-									<form:label for="${director.nombre}" path="directores">
-										<form:checkbox id="${director.nombre}" path="directores"
-											value="${director.id}" />
+									<form:label for="${director.nombre}" path="pelicula.directores">
+										<form:checkbox id="${director.nombre}"
+											path="pelicula.directores" value="${director.id}" />
 										<span>${director.nombre}</span>
 									</form:label>
 								</c:forEach>
@@ -172,16 +185,16 @@
 							<c:when test="${edit}">
 								<c:forEach items="${actores}" var="actor">
 									<c:if test="${fn:contains(peliculaNueva.actores,actor)}">
-										<form:label for="${actor.nombre}" path="actores">
-											<form:checkbox id="${actor.nombre}" path="actores"
+										<form:label for="${actor.nombre}" path="pelicula.actores">
+											<form:checkbox id="${actor.nombre}" path="pelicula.actores"
 												value="${actor.id}" checked="checked" />
 											<span>${actor.nombre}</span>
 										</form:label>
 									</c:if>
 
 									<c:if test="${not(fn:contains(peliculaNueva.actores,actor))}">
-										<form:label for="${actor.nombre}" path="actores">
-											<form:checkbox id="${actor.nombre}" path="actores"
+										<form:label for="${actor.nombre}" path="pelicula.actores">
+											<form:checkbox id="${actor.nombre}" path="pelicula.actores"
 												value="${actor.id}" />
 											<span>${actor.nombre}</span>
 										</form:label>
@@ -191,8 +204,8 @@
 							</c:when>
 							<c:otherwise>
 								<c:forEach items="${actores}" var="actor">
-									<form:label for="${actor.nombre}" path="actores">
-										<form:checkbox id="${actor.nombre}" path="actores"
+									<form:label for="${actor.nombre}" path="pelicula.actores">
+										<form:checkbox id="${actor.nombre}" path="pelicula.actores"
 											value="${actor.id}" />
 										<span>${actor.nombre}</span>
 									</form:label>
@@ -212,16 +225,16 @@
 							<c:when test="${edit}">
 								<c:forEach items="${generos}" var="genero">
 									<c:if test="${fn:contains(peliculaNueva.generos,genero)}">
-										<form:label for="${genero.nombre}" path="generos">
-											<form:checkbox id="${genero.nombre}" path="generos"
+										<form:label for="${genero.nombre}" path="pelicula.generos">
+											<form:checkbox id="${genero.nombre}" path="pelicula.generos"
 												value="${genero.id}" checked="checked" />
 											<span>${genero.nombre}</span>
 										</form:label>
 									</c:if>
 
 									<c:if test="${not(fn:contains(peliculaNueva.generos,genero))}">
-										<form:label for="${genero.nombre}" path="generos">
-											<form:checkbox id="${genero.nombre}" path="generos"
+										<form:label for="${genero.nombre}" path="pelicula.generos">
+											<form:checkbox id="${genero.nombre}" path="pelicula.generos"
 												value="${genero.id}" checked="checked" />
 											<span>${genero.nombre}</span>
 										</form:label>
@@ -231,8 +244,8 @@
 							</c:when>
 							<c:otherwise>
 								<c:forEach items="${generos}" var="genero">
-									<form:label for="${genero.nombre}" path="generos">
-										<form:checkbox id="${genero.nombre}" path="generos"
+									<form:label for="${genero.nombre}" path="pelicula.generos">
+										<form:checkbox id="${genero.nombre}" path="pelicula.generos"
 											value="${genero.id}" />
 										<span>${genero.nombre}</span>
 									</form:label>
@@ -253,8 +266,8 @@
 								<c:forEach items="${plataformas}" var="plataforma">
 									<c:if
 										test="${fn:contains(peliculaNueva.plataformas,plataforma)}">
-										<form:label for="${plataforma.nombre}" path="plataformas">
-											<form:checkbox id="${plataforma.nombre}" path="plataformas"
+										<form:label for="${plataforma.nombre}" path="plataforma">
+											<form:checkbox id="${plataforma.nombre}" path="plataforma"
 												value="${plataforma.id}" checked="checked" />
 											<span>${plataforma.nombre}</span>
 										</form:label>
@@ -262,8 +275,8 @@
 
 									<c:if
 										test="${not(fn:contains(peliculaNueva.plataformas,plataforma))}">
-										<form:label for="${plataforma.nombre}" path="plataformas">
-											<form:checkbox id="${plataforma.nombre}" path="plataformas"
+										<form:label for="${plataforma.nombre}" path="plataforma">
+											<form:checkbox id="${plataforma.nombre}" path="plataforma"
 												value="${plataforma.id}" />
 											<span>${plataforma.nombre}</span>
 										</form:label>
@@ -273,8 +286,8 @@
 							</c:when>
 							<c:otherwise>
 								<c:forEach items="${plataformas}" var="plataforma">
-									<form:label for="${plataforma.nombre}" path="plataformas">
-										<form:checkbox id="${plataforma.nombre}" path="plataformas"
+									<form:label for="${plataforma.nombre}" path="plataforma">
+										<form:checkbox id="${plataforma.nombre}" path="plataforma"
 											value="${plataforma.id}" />
 										<span>${plataforma.nombre}</span>
 									</form:label>
@@ -284,11 +297,21 @@
 						</c:choose>
 					</div>
 				</div>
+				
+				<div>
+				<c:forEach items="${paises}" var="director">
+							<form:label for="${director.nombre}" path="pelicula.pais">
+								<form:checkbox id="${director.nombre}"
+									path="pelicula.pais" value="${director.id}"/>
+								<span>${director.nombre}</span>
+							</form:label>
+						</c:forEach>
+					</div>
 
 				<c:choose>
-				<c:when test="${edit}">
-				<form:input path="id" type="hidden"/>
-				</c:when>
+					<c:when test="${edit}">
+						<form:input path="id" type="hidden" />
+					</c:when>
 				</c:choose>
 
 				<div class="row">
@@ -316,10 +339,14 @@
 	</main>
 
 </body>
-
 <script
-	src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/jquery.js"></script>
+	src="${pageContext.request.contextPath}/resources/vendor/js/jquery-3.4.1.min.js"></script>
+<script
+	src="${pageContext.request.contextPath}/resources/vendor/js/materialize.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/header.js"></script>
+
+<script src="${pageContext.request.contextPath}/resources/js/menu.js"></script>
+
 <script>
 	$('input[type=checkbox]').each(function() {
 

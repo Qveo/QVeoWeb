@@ -23,13 +23,14 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.qveo.qveoweb.dao.PeliculaPlataformaDao;
 import com.qveo.qveoweb.model.Actor;
 import com.qveo.qveoweb.model.Director;
 import com.qveo.qveoweb.model.Pais;
 import com.qveo.qveoweb.model.Plataforma;
 import com.qveo.qveoweb.model.Genero;
 import com.qveo.qveoweb.model.Pelicula;
-
+import com.qveo.qveoweb.model.PeliculaPlataforma;
 import com.qveo.qveoweb.service.ActorService;
 import com.qveo.qveoweb.service.DirectorService;
 import com.qveo.qveoweb.service.GeneroService;
@@ -43,6 +44,9 @@ import com.qveo.qveoweb.validation.PeliculaValidador;
 @Controller
 @RequestMapping("/peliculas")
 public class PeliculaController {
+
+	@Autowired
+	PeliculaPlataformaDao peliculaPlat;
 
 	@Autowired
 	PeliculaService peliculaService;
@@ -68,10 +72,10 @@ public class PeliculaController {
 	@Autowired
 	private IUploadFileService uploadFileService;
 
-	@InitBinder
-	public void InitBinder(WebDataBinder binder) {
-		binder.setValidator(peliculaValid);
-	}
+//	@InitBinder
+//	public void InitBinder(WebDataBinder binder) {
+//		binder.setValidator(peliculaValid);
+//	}
 
 	@GetMapping("/listar")
 	public String listar(Model mod) {
@@ -105,7 +109,7 @@ public class PeliculaController {
 		List<Actor> actores = actorServ.getAllActor();
 
 		mod.addAttribute("Title", "Registro de pelicula");
-		mod.addAttribute("peliculaNueva", new Pelicula());
+		mod.addAttribute("peliculaNueva", new PeliculaPlataforma());
 		mod.addAttribute("directores", directores);
 		mod.addAttribute("actores", actores);
 		mod.addAttribute("paises", paises);
@@ -151,35 +155,31 @@ public class PeliculaController {
 	}
 
 	@RequestMapping(value = "/form", method = RequestMethod.POST)
-	public String guardar(@Valid @ModelAttribute("peliculaNueva") Pelicula pelicula, BindingResult br, Model mod,
-			@RequestParam("foto") MultipartFile foto, SessionStatus status) {
+	public String guardar(@Valid @ModelAttribute("peliculaNueva") PeliculaPlataforma pelicula, BindingResult br,
+			Model mod, @RequestParam("foto") MultipartFile foto, SessionStatus status) {
 
-		try {
-			if (br.hasErrors()) {
+		if (br.hasErrors()) {
 
-				List<Genero> peliculas = generoService.getAllGenero();
-				List<Pais> paises = paisService.getAllPais();
-				List<Plataforma> plataformas = plataformaSerive.getAllPlataformas();
-				List<Director> directores = directorService.getAllDirector();
-				List<Actor> actores = actorServ.getAllActor();
+			List<Genero> peliculas = generoService.getAllGenero();
+			List<Pais> paises = paisService.getAllPais();
+			List<Plataforma> plataformas = plataformaSerive.getAllPlataformas();
+			List<Director> directores = directorService.getAllDirector();
+			List<Actor> actores = actorServ.getAllActor();
 
-				mod.addAttribute("Titulo", "Registro de pelicula");
-				mod.addAttribute("directores", directores);
-				mod.addAttribute("actores", actores);
-				mod.addAttribute("paises", paises);
-				mod.addAttribute("generos", peliculas);
-				mod.addAttribute("plataformas", plataformas);
-				mod.addAttribute("peliculaNueva", pelicula);
-				return "peliculas/registro";
-			}
-
-		
-
-			peliculaService.save(pelicula, foto);
-			status.setComplete();
-		} catch (IOException e) {
-			e.printStackTrace();
+			mod.addAttribute("Titulo", "Registro de pelicula");
+			mod.addAttribute("directores", directores);
+			mod.addAttribute("actores", actores);
+			mod.addAttribute("paises", paises);
+			mod.addAttribute("generos", peliculas);
+			mod.addAttribute("plataformas", plataformas);
+			mod.addAttribute("peliculaNueva", pelicula);
+			return "peliculas/registro";
 		}
+
+		System.out.println(pelicula.getPelicula().toString() + pelicula.getPlataforma());
+		peliculaPlat.save(pelicula);
+//			peliculaService.save(pelicula.getPelicula(), foto);
+//			status.setComplete();
 		return "redirect:/peliculas/listar";
 	}
 
