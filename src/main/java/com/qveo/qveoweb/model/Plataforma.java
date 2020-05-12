@@ -14,7 +14,7 @@ public class Plataforma {
     private String nombre;
     private Collection<Serie> series;
     private Collection<Usuario> usuarios;   
-    private Collection<Pelicula> peliculas;
+    private Set<PeliculaPlataforma> peliculaPlataformas = new HashSet<PeliculaPlataforma>();
     private String logo;
 
     
@@ -43,21 +43,16 @@ public class Plataforma {
         this.nombre = nombre;
     }
 
-    @ManyToMany
-    @JoinTable(
-            name ="pelicula_plataforma",
-            joinColumns = @JoinColumn(name = "id_plataforma", nullable = false),
-            inverseJoinColumns = @JoinColumn(name="id_pelicula", nullable = false)
-    )
-    public Collection<Pelicula> getPeliculas() {
-        return peliculas;
-    }
+    @OneToMany(mappedBy = "plataforma")
+	public Set<PeliculaPlataforma> getPeliculaPlataformas() {
+		return peliculaPlataformas;
+	}
 
-    public void setPeliculas(Collection<Pelicula> peliculas) {
-        this.peliculas = peliculas;
-    }
+	public void setPeliculaPlataformas(Set<PeliculaPlataforma> peliculaPlataformas) {
+		this.peliculaPlataformas = peliculaPlataformas;
+	}
 
-    @ManyToMany
+	@ManyToMany
     @JoinTable(
             name ="serie_plataforma",
             joinColumns = @JoinColumn(name = "id_plataforma", nullable = false),
@@ -70,4 +65,13 @@ public class Plataforma {
     public void setSeries(Collection<Serie> series) {
         this.series = series;
     }
+    
+    @ManyToMany(mappedBy = "plataformas")
+	public Collection<Usuario> getUsuarios() {
+		return usuarios;
+	}
+
+	public void setUsuarios(Collection<Usuario> usuarios) {
+		this.usuarios = usuarios;
+	}
 }
