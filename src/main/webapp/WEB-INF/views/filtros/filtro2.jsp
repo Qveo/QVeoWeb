@@ -26,22 +26,22 @@
 		<section>
 			<form:form method="POST" action="/qveo/filtrosP"
 				modelAttribute="peliculaBuscar">
-<!-- 				<div class="row"> -->
-<!-- 					<div class="col s1"></div> -->
-<!-- 					<div class="col s10 "> -->
-<!-- 						<span>A&ntilde;o</span> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
-<!-- 				<div class="row"> -->
-<!-- 					<div class="col s1"></div> -->
-<!-- 					<div class="col s6 "> -->
-<!-- 						<select multiple="true" name="years"> -->
-<%-- 							<c:forEach items="${fechas}" var="fecha"> --%>
-<%-- 								<option value="${fecha}">${fecha}</option> --%>
-<%-- 							</c:forEach> --%>
-<!-- 						</select> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
+				<div class="row">
+					<div class="col s1"></div>
+					<div class="col s10 ">
+						<span>A&ntilde;o</span>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col s1"></div>
+					<div class="col s6 ">
+						<select multiple="true" name="years">
+							<c:forEach items="${fechas}" var="fecha">
+								<option value="${fecha}">${fecha}</option>
+							</c:forEach>
+						</select>
+					</div>
+				</div>
 <!-- 				<div class="row"> -->
 <!-- 					<div class="col s1"></div> -->
 <!-- 					<div class="col s6 "> -->

@@ -67,7 +67,7 @@
 					<div class="col s1"></div>
 					<div class="col s6 ">
 						<form:select path="plataformas" multiple="true">
-							<form:options items="${plataformas}" itemLabel="nombre" />
+							<form:options items="${plataformas}" itemLabel="nombre" itemValue="id"/>
 						</form:select>
 					</div>
 				</div>

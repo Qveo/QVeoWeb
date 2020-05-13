@@ -40,7 +40,7 @@ public class PeliculaServiceImpl implements PeliculaService {
 
 	@Override
 	public List<Pelicula> buscarPeliGenero(Collection<Genero> generos) {
-		List<Pelicula> peliculas = peliculaDao.findByPeliculasIn(generos);
+		List<Pelicula> peliculas = peliculaDao.findByGenerosIn(generos);
 		return peliculas;
 	}
 
@@ -119,7 +119,7 @@ public class PeliculaServiceImpl implements PeliculaService {
 			fechaInferior = Date.valueOf(years[0] + "-1-1");
 			fechaSuperior = Date.valueOf(years[0] + "-12-31");
 
-			peliculaFiltrada.addAll(peliculaDao.findByPeliculasInAndAnioBetween(generos, fechaInferior, fechaSuperior));
+			peliculaFiltrada.addAll(peliculaDao.findByGenerosInAndAnioBetween(generos, fechaInferior, fechaSuperior));
 		}
 
 		if (years.length >= 2) {
@@ -128,7 +128,7 @@ public class PeliculaServiceImpl implements PeliculaService {
 				fechaSuperior = Date.valueOf(year + "-12-31");
 
 				peliculaFiltrada
-						.addAll(peliculaDao.findByPeliculasInAndAnioBetween(generos, fechaInferior, fechaSuperior));
+						.addAll(peliculaDao.findByGenerosInAndAnioBetween(generos, fechaInferior, fechaSuperior));
 			}
 
 		}

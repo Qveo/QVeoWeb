@@ -26,6 +26,8 @@
 				<div class="col s6 ">
 					<c:forEach items="${peliculas.plataforma.peliculaPlataformas}" var="peliculaPlataforma">
 						<label>${peliculaPlataforma.pelicula.titulo}</label>
+						<label>${peliculaPlataforma.pelicula.duracion}</label>
+						<br>
 					</c:forEach>
 				</div>
 			</div>
