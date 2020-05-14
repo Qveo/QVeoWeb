@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.qveo.qveoweb.dto.FiltroDto;
 import com.qveo.qveoweb.model.Genero;
 import com.qveo.qveoweb.model.Pelicula;
 import com.qveo.qveoweb.model.PeliculaPlataforma;
@@ -51,7 +52,7 @@ public class FiltroController {
 	@GetMapping("/filtro1")
 	public String buscadorSerie(Model model) {
 
-		model.addAttribute("seriesBuscar", new Serie());
+		model.addAttribute("seriesBuscar", new FiltroDto());
 
 		List<Genero> generos = generoService.getAllGeneros();
 
@@ -74,12 +75,11 @@ public class FiltroController {
 	 * Post controler para series
 	 */
 	@PostMapping("/filtros")
-	public String filtrar(@ModelAttribute(name = "seriesBuscar") Serie serie,
-			@RequestParam(name = "years", required = false) List<Integer> dates, Model model, BindingResult br) {
+	public String filtrar(@ModelAttribute(name = "seriesBuscar") FiltroDto filtro, Model model, BindingResult br) {
 
 		if (br.hasErrors()) {
 
-			model.addAttribute("seriesBuscar", new Serie());
+			model.addAttribute("seriesBuscar", filtro);
 
 			List<Genero> generos = generoService.getAllGeneros();
 
@@ -95,7 +95,7 @@ public class FiltroController {
 			return "filtros/filtro";
 		}
 			
-		 List<Serie> series =filtroService.busquedaCompletaSerie(serie.getGeneros(),serie.getPlataformas(), dates);
+		 List<Serie> series =filtroService.busquedaCompletaSerie(filtro.getGeneros(),filtro.getPlataformas(), filtro.getAnios());
 		 
 		 model.addAttribute("series", series);
 		

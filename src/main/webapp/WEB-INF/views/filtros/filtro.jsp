@@ -35,11 +35,10 @@
 				<div class="row">
 					<div class="col s1"></div>
 					<div class="col s6 ">
-						<select multiple="true" name="years">
-							<c:forEach items="${fechas}" var="fecha">
-								<option value="${fecha}">${fecha}</option>
-							</c:forEach>
-						</select>
+						<form:select multiple="true" path="anios">
+							<form:option value="">Fechas</form:option>
+							<form:options items="${fechas}" />
+						</form:select>
 					</div>
 				</div>
 				<div class="row">
