@@ -38,9 +38,29 @@ public class Pelicula {
     private Pais pais;
     private Collection<Director> directores;
     private Collection<Usuario> usuarios;
-    private Set<PeliculaPlataforma> peliculaPlataformas = new HashSet<PeliculaPlataforma>();
+    private Set<PeliculaPlataforma> peliculaPlataformas;
+    
+    public Pelicula() {
+    	
+    }
 
-    @Id
+    public Pelicula(Integer id, String titulo, Time duracion, String guion, String poster, String sinopsis, Date anio,
+			Collection<Actor> actores, Collection<Genero> generos, Pais pais, Collection<Director> directores, Set<PeliculaPlataforma> peliculaPlataformas) {
+		this.id = id;
+		this.titulo = titulo;
+		this.duracion = duracion;
+		this.guion = guion;
+		this.poster = poster;
+		this.sinopsis = sinopsis;
+		this.anio = anio;
+		this.actores = actores;
+		this.generos = generos;
+		this.pais = pais;
+		this.directores = directores;
+		this.peliculaPlataformas = peliculaPlataformas;
+	}
+
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
     public Integer getId() {

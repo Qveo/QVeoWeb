@@ -26,6 +26,8 @@ spring:
     password: root
   resources:
     static-locations: /resources/
+  jpa:
+    show-sql: true
 #  security:
 #    user:
 #      name: root

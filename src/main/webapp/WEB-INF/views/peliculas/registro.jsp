@@ -72,34 +72,34 @@
 
 <!-- 					<div class="input-field col s12"> -->
 						<span>Paises</span> <br>
-						<%-- 						<c:choose> --%>
-						<%-- 							<c:when test="${edit}"> --%>
-						<%-- 								<form:select path="pais"> --%>
-						<%-- 									<form:option value="0">--Select--</form:option> --%>
-						<%-- 									<c:forEach items="${paises}" var="pais"> --%>
-						<%-- 										<c:choose> --%>
-						<%-- 											<c:when test="${pais.id == serieNueva.pais.id}"> --%>
-						<%-- 												<form:option value="${pais.id}" selected="selected">${pais.nombre}</form:option> --%>
-						<%-- 											</c:when> --%>
-						<%-- 											<c:otherwise> --%>
-						<%-- 												<form:option value="${pais.id}">${pais.nombre}</form:option> --%>
-						<%-- 											</c:otherwise> --%>
-						<%-- 										</c:choose> --%>
-						<%-- 									</c:forEach> --%>
-						<%-- 								</form:select> --%>
-						<%-- 							</c:when> --%>
+												<c:choose>
+													<c:when test="${edit}">
+														<form:select path="pais">
+															<form:option value="0">--Select--</form:option>
+															<c:forEach items="${paises}" var="pais">
+																<c:choose>
+																	<c:when test="${pais.id == serieNueva.pais.id}">
+																		<form:option value="${pais.id}" selected="selected">${pais.nombre}</form:option>
+																	</c:when>
+																	<c:otherwise>
+																		<form:option value="${pais.id}">${pais.nombre}</form:option>
+																	</c:otherwise>
+																</c:choose>
+															</c:forEach>
+														</form:select>
+													</c:when>
 
-						<%-- 							<c:otherwise> --%>
-						<%-- 								<form:select path="pelicula.pais" multiple="false"> --%>
-						<%-- 									<form:option value="">--Select--</form:option> --%>
-						<%-- 									<form:options items="${paises}" itemLabel="nombre" /> --%>
-						<%-- 								</form:select> --%>
-						<%-- 							</c:otherwise> --%>
-						<%-- 						</c:choose> --%>
+													<c:otherwise>
+														<form:select path="pelicula.pais" multiple="false">
+															<form:option value="">--Select--</form:option>
+															<form:options items="${paises}" itemLabel="nombre" />
+														</form:select>
+													</c:otherwise>
+												</c:choose>
 
 						
 
-<!-- 					</div> -->
+					</div>
 
 				</div>
 

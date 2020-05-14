@@ -3,6 +3,7 @@ package com.qveo.qveoweb.controller;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -24,6 +25,7 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.qveo.qveoweb.dao.PeliculaPlataformaDao;
+import com.qveo.qveoweb.dto.PeliculaDto;
 import com.qveo.qveoweb.model.Actor;
 import com.qveo.qveoweb.model.Director;
 import com.qveo.qveoweb.model.Pais;
@@ -36,7 +38,7 @@ import com.qveo.qveoweb.service.DirectorService;
 import com.qveo.qveoweb.service.GeneroService;
 import com.qveo.qveoweb.service.IUploadFileService;
 import com.qveo.qveoweb.service.PaisService;
-
+import com.qveo.qveoweb.service.PeliculaPlataformaService;
 import com.qveo.qveoweb.service.PeliculaService;
 import com.qveo.qveoweb.service.PlataformaService;
 import com.qveo.qveoweb.validation.PeliculaValidador;
@@ -44,9 +46,12 @@ import com.qveo.qveoweb.validation.PeliculaValidador;
 @Controller
 @RequestMapping("/peliculas")
 public class PeliculaController {
-
+	/*
 	@Autowired
 	PeliculaPlataformaDao peliculaPlat;
+	*/
+	@Autowired
+	PeliculaPlataformaService peliculaPlataformaService;
 
 	@Autowired
 	PeliculaService peliculaService;
@@ -98,7 +103,7 @@ public class PeliculaController {
 
 		return "peliculas/mostrar";
 	}
-
+/*
 	@RequestMapping("/form")
 	public String crear(Model mod) {
 
@@ -118,14 +123,35 @@ public class PeliculaController {
 
 		return "peliculas/registro";
 	}
-
+*/
 	@RequestMapping(value = "/form/{id}", method = RequestMethod.GET)
 	public String editar(Model mod, @PathVariable(value = "id") Integer id) {
 
 		Pelicula pelicula = null;
-
+		List<PeliculaPlataforma> peliculaPlataforma = null;
+		PeliculaDto peliculaDto = null;
+		List<Plataforma> plataformasUsuario = new ArrayList<Plataforma>();
 		if (id > 0) {
 			pelicula = peliculaService.getPelicula(id);
+			peliculaPlataforma = peliculaPlataformaService.obtenerPelicula(pelicula);
+			for(PeliculaPlataforma plataforma: peliculaPlataforma) {
+				plataformasUsuario.add(plataforma.getPlataforma());
+			}
+			peliculaDto = new PeliculaDto(
+					pelicula.getId(),
+					pelicula.getTitulo(),
+					pelicula.getDuracion(),
+					pelicula.getGuion(),
+					pelicula.getPoster(),
+					pelicula.getSinopsis(),
+					pelicula.getAnio(),
+					pelicula.getPais(),
+					pelicula.getActores(),
+					pelicula.getGeneros(),
+					pelicula.getDirectores(),
+					plataformasUsuario
+			);
+			
 			if (pelicula == null) {
 
 				return "redirect:/listar";
@@ -147,13 +173,13 @@ public class PeliculaController {
 		mod.addAttribute("paises", paises);
 		mod.addAttribute("generos", generos);
 		mod.addAttribute("plataformas", plataformas);
-		mod.addAttribute("peliculaNueva", pelicula);
+		mod.addAttribute("peliculaNueva", peliculaDto);
 
 		mod.addAttribute("title", "Editar Pelicula");
 
-		return "peliculas/registro";
+		return "peliculas/editar";
 	}
-
+/*
 	@RequestMapping(value = "/form", method = RequestMethod.POST)
 	public String guardar(@Valid @ModelAttribute("peliculaNueva") PeliculaPlataforma pelicula, BindingResult br,
 			Model mod, @RequestParam("foto") MultipartFile foto, SessionStatus status) {
@@ -176,9 +202,41 @@ public class PeliculaController {
 			return "peliculas/registro";
 		}
 
-		System.out.println(pelicula.getPelicula().toString() + pelicula.getPlataforma());
+
 		peliculaService.save(pelicula.getPelicula(), foto);
 		peliculaPlat.save(pelicula);
+//			status.setComplete();
+		}catch(Exception e){
+			 e.printStackTrace();
+		}
+
+		return "redirect:/peliculas/listar";
+	}
+*/	
+	@RequestMapping(value = "/form2", method = RequestMethod.POST)
+	public String guardar(@ModelAttribute("peliculaNueva") PeliculaDto pelicula, BindingResult br,
+			Model mod, @RequestParam("foto") MultipartFile foto, SessionStatus status) {
+		try {
+		if (br.hasErrors()) {
+
+			List<Genero> generos = generoService.getAllGenero();
+			List<Pais> paises = paisService.getAllPais();
+			List<Plataforma> plataformas = plataformaSerive.getAllPlataformas();
+			List<Director> directores = directorService.getAllDirector();
+			List<Actor> actores = actorServ.getAllActor();
+
+			mod.addAttribute("Titulo", "Registro de pelicula");
+			mod.addAttribute("directores", directores);
+			mod.addAttribute("actores", actores);
+			mod.addAttribute("paises", paises);
+			mod.addAttribute("generos", generos);
+			mod.addAttribute("plataformas", plataformas);
+			mod.addAttribute("peliculaNueva", pelicula);
+			return "peliculas/registro";
+		}
+
+		peliculaService.save(pelicula, foto);
+		//peliculaPlat.save(peliculaNew);
 //			status.setComplete();
 		}catch(Exception e){
 			 e.printStackTrace();

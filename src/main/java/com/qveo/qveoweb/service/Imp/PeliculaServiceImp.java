@@ -1,7 +1,10 @@
 package com.qveo.qveoweb.service.Imp;
 
 import java.io.IOException;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,8 +12,11 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.qveo.qveoweb.dao.PeliculaDao;
+import com.qveo.qveoweb.dao.PeliculaPlataformaDao;
 import com.qveo.qveoweb.dao.PlataformaDao;
+import com.qveo.qveoweb.dto.PeliculaDto;
 import com.qveo.qveoweb.model.Pelicula;
+import com.qveo.qveoweb.model.PeliculaPlataforma;
 import com.qveo.qveoweb.model.Plataforma;
 import com.qveo.qveoweb.service.IUploadFileService;
 import com.qveo.qveoweb.service.PeliculaService;
@@ -20,6 +26,9 @@ public class PeliculaServiceImp implements PeliculaService {
 
 	@Autowired
 	PeliculaDao peliculaDao;
+	
+	@Autowired
+	PeliculaPlataformaDao peliculaPlataformaDao;
 
 	@Autowired
 	IUploadFileService uploadFileService;
@@ -49,8 +58,41 @@ public class PeliculaServiceImp implements PeliculaService {
 
 	@Override
 	@Transactional
-	public void save(Pelicula peliculaNew, MultipartFile foto) throws IOException {
+	public void save(PeliculaDto pelicula, MultipartFile foto) throws IOException {
+		
+		Set<PeliculaPlataforma> peliculaPlataformaColeccion = new HashSet<PeliculaPlataforma>();
+		Pelicula peliculaNew = new Pelicula(
+				pelicula.getId(),
+				pelicula.getTitulo(),
+				pelicula.getDuracion(),
+				pelicula.getGuion(),
+				pelicula.getPoster(),
+				pelicula.getSinopsis(),
+				pelicula.getAnio(),
+				pelicula.getActores(),
+				pelicula.getGeneros(),
+				pelicula.getPais(),
+				pelicula.getDirectores(),
+				peliculaPlataformaColeccion
+		);
+		//int i=0;
+		//peliculaNew.getPeliculaPlataformas().clear();
+		/*
+		for(Plataforma plataforma: pelicula.getPlataformas()) {
+			
+			PeliculaPlataforma peliculaPlataformaNew = new PeliculaPlataforma();
+			peliculaPlataformaNew.setPlataforma(plataforma);
+			peliculaPlataformaNew.setPelicula(peliculaNew);
+			//peliculaNew.getPeliculaPlataformas().add(peliculaPlataformaNew);
+			//i++;
 
+			//peliculaPlataformaDao.save(peliculaPlataformaNew);
+			//peliculaPlataformaColeccion.add(peliculaPlataformaNew);
+		}
+		
+		*/
+		//peliculaNew.setPeliculaPlataformas(peliculaPlataformaColeccion);
+		
 		peliculaDao.save(peliculaNew);
 
 		if (!foto.isEmpty()) {
@@ -70,7 +112,7 @@ public class PeliculaServiceImp implements PeliculaService {
 			peliculaNew.setPoster("/resources/img/peliculas/" + uniqueFilename);
 
 		}
-
+		peliculaDao.save(peliculaNew);
 		// nombreFichero="";
 	}
 
