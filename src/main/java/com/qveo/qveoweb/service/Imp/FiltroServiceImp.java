@@ -76,31 +76,30 @@ public class FiltroServiceImp implements FiltroService {
 	}
 
 	@Override
-	public List<Serie> busquedaCompletaSerie(Collection<Genero> generoBuscar, Collection<Plataforma> plataformaBuscar,
+	public List<Serie> busquedaCompletaSerie(Collection<Genero> generos, Collection<Plataforma> plataforma,
 			Collection<Integer> years) {
-		
 		List<Serie> serieFiltra = new ArrayList<Serie>(new HashSet<Serie>());
 
 		Collection<Genero> genero = null;
-		if (generoBuscar.isEmpty()) {
+		if (generos.isEmpty()) {
 			genero = generoService.getAllGeneros();
 		} else {
-			genero = generoBuscar;
+			genero = generos;
 		}
 
-		Collection<Plataforma> plataforma = null;
+		Collection<Plataforma> plataformas = null;
 
-		if (plataformaBuscar.isEmpty()) {
-			plataforma = plataformaSerice.getAllPlataformas();
+		if (plataforma.isEmpty()) {
+			plataformas = plataformaSerice.getAllPlataformas();
 		} else {
-			plataforma = plataformaBuscar;
+			plataformas = plataforma;
 		}
 		Collection<Integer> fechas = null;
-		if(years == null) {
-			fechas=buscarAllYears();
-		}else {
-			fechas=years;
-		}		
+		if (years == null) {
+			fechas = buscarAllYears();
+		} else {
+			fechas = years;
+		}
 
 		Date fechaInicio = null;
 		Date fechafinal = null;
@@ -108,14 +107,78 @@ public class FiltroServiceImp implements FiltroService {
 		for (Integer year : fechas) {
 			fechaInicio = Date.valueOf(year + "-1-1");
 			fechafinal = Date.valueOf(year + "-12-31");
-			serieFiltra.addAll(serieDao.findByPlataformasInAndGenerosInAndFechaInicioBetween(plataforma, genero,
+			serieFiltra.addAll(serieDao.findByPlataformasInAndGenerosInAndFechaInicioBetween(plataformas, genero,
 					fechaInicio, fechafinal));
 		}
 		return serieFiltra.stream().distinct().collect(Collectors.toList());
 	}
 
+	@Override
+	public List<Pelicula> busquedaCompletaPelicula(Collection<Genero> generosBuscar, Collection<Integer> years,
+			Collection<Plataforma> plataforma) {
+		List<Pelicula> peli = new ArrayList<Pelicula>(new HashSet<Pelicula>());
+		List<Pelicula> peliFitrada= new ArrayList<Pelicula>(new HashSet<Pelicula>());
+		PeliculaPlataforma peliculaplataforma=new PeliculaPlataforma();
+				
+		Collection<Genero> genero = null;
+		if (generosBuscar.isEmpty()==true) {
+			
+			genero = generoService.getAllGeneros();
+		} else {
+			
+			genero = generosBuscar;
+		}
 
+		Collection<Plataforma> plataformas = null;
 
+		if (plataforma.isEmpty()) {
+			plataformas = plataformaSerice.getAllPlataformas();
+		} else {
+			plataformas = plataforma;
+		}
+		
+		Collection<Integer> fechas = null;
+		if (years.isEmpty()) {
+			fechas = buscarAllYears();
+		} else {
+			fechas = years;
+		}
 
+		Date fechaInicio = null;
+		Date fechafinal = null;
+
+		for (Integer year : fechas) {
+			fechaInicio = Date.valueOf(year + "-1-1");
+			fechafinal = Date.valueOf(year + "-12-31");
+			peli.addAll(peliculaDao.findByGenerosInAndAnioBetween(genero, fechaInicio, fechafinal));
+
+		}
+		for (Plataforma plataform : plataformas) {
+		
+			for(Pelicula pelicula:peli ) {
+				if(comprobacionPlataforma(pelicula, plataform)==true) {
+					peliFitrada.add(pelicula);
+				}
+			}
+			
+		}
+
+		return peliFitrada.stream().distinct().collect(Collectors.toList());
+	}
 	
+	
+	public boolean comprobacionPlataforma(Pelicula pelicula, Plataforma plataforma) {
+		boolean respuesta=false;
+		
+		Set<PeliculaPlataforma> peliculaPlataform=pelicula.getPeliculaPlataformas();
+		
+		for (PeliculaPlataforma peliculaPlataforma : peliculaPlataform) {
+			if(peliculaPlataforma.getPlataforma().getId()==plataforma.getId()) {
+				respuesta= true;
+			break;
+			}
+		}
+		return respuesta;
+	}
+
 }

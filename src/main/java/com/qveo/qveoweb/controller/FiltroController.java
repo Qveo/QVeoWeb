@@ -96,9 +96,15 @@ public class FiltroController {
 			return "filtros/filtro";
 		}
 			
-		 List<Serie> series =filtroService.busquedaCompletaSerie(filtro.getGeneros(),filtro.getPlataformas(), filtro.getAnios());
+		 //List<Serie> series =filtroService.busquedaCompletaSerie(filtro.getGeneros(),filtro.getPlataformas(), filtro.getAnios());
 		 
-		 model.addAttribute("series", series);
+		List<Pelicula> peli= filtroService.busquedaCompletaPelicula(filtro.getGeneros(), filtro.getAnios(),filtro.getPlataformas());
+		
+		for(Pelicula pelisc:peli) {
+			System.out.println(pelisc.getTitulo()+" "+pelisc.getDuracion());
+		}
+		System.out.println("");
+		// model.addAttribute("series", series);
 		
 		return "filtros/filtrado";
 	}
@@ -111,12 +117,10 @@ public class FiltroController {
 
 		 model.addAttribute("peliculaBuscar", new Pelicula());
 		List<Genero> generos = generoService.getAllGeneros();
-		List<Integer> fecha = peliculaService.buscarAllYears();
 		List<Plataforma> plataformas = plataformaSerice.getAllPlataformas();
 		List<Pelicula> peliculas = peliculaService.findAll();
 
 		//model.addAttribute("peliculaBuscar", new PeliculaPlataforma());
-		model.addAttribute("fechas", fecha);
 		model.addAttribute("plataformas", plataformas);
 		model.addAttribute("generos", generos);
 		model.addAttribute("peliculaMostrar", peliculas);
@@ -134,12 +138,10 @@ public class FiltroController {
 		if (br.hasErrors()) {
 
 			List<Genero> generos = generoService.getAllGeneros();
-			List<Integer> fecha = peliculaService.buscarAllYears();
 			List<Plataforma> plataformas = plataformaSerice.getAllPlataformas();
 			List<Pelicula> peliculas = peliculaService.findAll();
 
 			model.addAttribute("peliculaBuscar", new PeliculaPlataforma());
-			model.addAttribute("fechas", fecha);
 			model.addAttribute("plataformas", plataformas);
 			model.addAttribute("generos", generos);
 			model.addAttribute("peliculaMostrar", peliculas);

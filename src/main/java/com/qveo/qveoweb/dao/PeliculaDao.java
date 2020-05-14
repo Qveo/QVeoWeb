@@ -16,12 +16,7 @@ import java.util.Set;
 @Repository
 public interface PeliculaDao extends JpaRepository<Pelicula, Integer> {
 	
-	List<Pelicula> findByGenerosIn(Collection<Genero> generos);
-	
-	List<Pelicula> findByAnioBetween(Date fechaInferior, Date fechaSuperior);
-		       
-	List<Pelicula> findByGenerosInAndAnioBetween(Collection<Genero> peliculas,Date fechaInferior, Date fechaSuperior);
-	
-	List<Pelicula> findByGenerosInAndAnioBetweenPeliculaPlataformas(Collection<Genero> peliculas,Date fechaInferior, Date fechaSuperior);
-	
+	List<Pelicula> findByGenerosInAndAnioBetween(Collection<Genero> generos,Date fechaInferior, Date fechaSuperior);
+		
+	List<Pelicula> findByGenerosInAndPeliculaPlataformasInAndAnioBetween(Collection<Genero> peliculas,Set<PeliculaPlataforma> peliculaPlataformas,Date fechaInferior, Date fechaSuperior);	
 }

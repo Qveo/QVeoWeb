@@ -18,7 +18,7 @@ public class Pelicula {
     private String sinopsis;
     private Date anio;
     private Collection<Actor> actores;
-    private Collection<Genero> genero;
+    private Collection<Genero> generos;
     private Pais pais;
     private Collection<Director> directores;
     private Collection<Usuario> usuarios;
@@ -116,11 +116,11 @@ public class Pelicula {
             inverseJoinColumns = @JoinColumn(name="id_genero", nullable = false)
     )
     public Collection<Genero> getGeneros() {
-        return genero;
+        return generos;
     }
 
     public void setGeneros(Collection<Genero> generos) {
-        this.genero = generos;
+        this.generos = generos;
     }
 
 
