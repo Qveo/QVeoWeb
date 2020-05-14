@@ -133,6 +133,10 @@ public class PeliculaController {
 		List<Plataforma> plataformasUsuario = new ArrayList<Plataforma>();
 		if (id > 0) {
 			pelicula = peliculaService.getPelicula(id);
+			if (pelicula == null) {
+				
+				return "redirect:/listar";
+			}
 			peliculaPlataforma = peliculaPlataformaService.obtenerPelicula(pelicula);
 			for(PeliculaPlataforma plataforma: peliculaPlataforma) {
 				plataformasUsuario.add(plataforma.getPlataforma());
@@ -152,10 +156,6 @@ public class PeliculaController {
 					plataformasUsuario
 			);
 			
-			if (pelicula == null) {
-
-				return "redirect:/listar";
-			}
 		} else {
 
 			return "redirect:/listar";

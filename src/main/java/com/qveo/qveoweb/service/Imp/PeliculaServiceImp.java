@@ -57,12 +57,10 @@ public class PeliculaServiceImp implements PeliculaService {
 	}
 
 	@Override
-	@Transactional
 	public void save(PeliculaDto pelicula, MultipartFile foto) throws IOException {
 		
-		Set<PeliculaPlataforma> peliculaPlataformaColeccion = new HashSet<PeliculaPlataforma>();
+		//Set<PeliculaPlataforma> peliculaPlataformaColeccion = new HashSet<PeliculaPlataforma>();
 		Pelicula peliculaNew = new Pelicula(
-				pelicula.getId(),
 				pelicula.getTitulo(),
 				pelicula.getDuracion(),
 				pelicula.getGuion(),
@@ -72,29 +70,44 @@ public class PeliculaServiceImp implements PeliculaService {
 				pelicula.getActores(),
 				pelicula.getGeneros(),
 				pelicula.getPais(),
-				pelicula.getDirectores(),
-				peliculaPlataformaColeccion
+				pelicula.getDirectores()
 		);
+		
+		peliculaNew.setId(pelicula.getId());
+		
+		//Pelicula peliculaEditada = getPelicula(pelicula.getId());
+		//peliculaEditada.setPeliculaPlataformas(peliculaPlataformaColeccion);
+		//System.out.println();
 		//int i=0;
 		//peliculaNew.getPeliculaPlataformas().clear();
-		/*
-		for(Plataforma plataforma: pelicula.getPlataformas()) {
-			
-			PeliculaPlataforma peliculaPlataformaNew = new PeliculaPlataforma();
-			peliculaPlataformaNew.setPlataforma(plataforma);
-			peliculaPlataformaNew.setPelicula(peliculaNew);
-			//peliculaNew.getPeliculaPlataformas().add(peliculaPlataformaNew);
-			//i++;
+	
+		//Set<PeliculaPlataforma> peliculaPlataformaColeccion = new HashSet<PeliculaPlataforma>();
+		peliculaDao.save(peliculaNew);
+		List<PeliculaPlataforma> peliculasPlataforma = peliculaPlataformaDao.findByPelicula(peliculaNew);
 
-			//peliculaPlataformaDao.save(peliculaPlataformaNew);
-			//peliculaPlataformaColeccion.add(peliculaPlataformaNew);
+		if (!peliculasPlataforma.isEmpty()) {
+
+			for (PeliculaPlataforma peliPlat : peliculasPlataforma) {
+				peliculaPlataformaDao.delete(peliPlat);
+			}
+		}
+		if (!pelicula.getPlataformas().isEmpty()) {
+
+			for (Plataforma plata : pelicula.getPlataformas()) {
+
+				PeliculaPlataforma peliculaPlataformaNew = new PeliculaPlataforma();
+				peliculaPlataformaNew.setPlataforma(plata);
+				peliculaPlataformaNew.setPelicula(peliculaNew);
+				// peliculaNew.getPeliculaPlataformas().add(peliculaPlataformaNew);
+				// i++;
+
+				peliculaPlataformaDao.save(peliculaPlataformaNew);
+				// peliculaPlataformaColeccion.add(peliculaPlataformaNew);
+
+				System.out.println(plata.getNombre());
+			}
 		}
 		
-		*/
-		//peliculaNew.setPeliculaPlataformas(peliculaPlataformaColeccion);
-		
-		peliculaDao.save(peliculaNew);
-
 		if (!foto.isEmpty()) {
 			try {
 				String uniqueFilename = null;

@@ -17,8 +17,8 @@ import javax.persistence.MapsId;
 public class PeliculaPlataforma {
 	
 	
-	//private PeliculaPlataformaId id = new PeliculaPlataformaId();
-	private PeliculaPlataformaId id;
+	private PeliculaPlataformaId id = new PeliculaPlataformaId();
+	//private PeliculaPlataformaId id;
 	
 	private Date fechaCaducidad;
 

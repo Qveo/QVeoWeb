@@ -38,15 +38,14 @@ public class Pelicula {
     private Pais pais;
     private Collection<Director> directores;
     private Collection<Usuario> usuarios;
-    private Set<PeliculaPlataforma> peliculaPlataformas;
+    private Set<PeliculaPlataforma> peliculaPlataformas = new HashSet<PeliculaPlataforma>();;
     
     public Pelicula() {
     	
     }
 
-    public Pelicula(Integer id, String titulo, Time duracion, String guion, String poster, String sinopsis, Date anio,
-			Collection<Actor> actores, Collection<Genero> generos, Pais pais, Collection<Director> directores, Set<PeliculaPlataforma> peliculaPlataformas) {
-		this.id = id;
+    public Pelicula(String titulo, Time duracion, String guion, String poster, String sinopsis, Date anio,
+			Collection<Actor> actores, Collection<Genero> generos, Pais pais, Collection<Director> directores) {
 		this.titulo = titulo;
 		this.duracion = duracion;
 		this.guion = guion;
@@ -57,7 +56,6 @@ public class Pelicula {
 		this.generos = generos;
 		this.pais = pais;
 		this.directores = directores;
-		this.peliculaPlataformas = peliculaPlataformas;
 	}
 
 	@Id
