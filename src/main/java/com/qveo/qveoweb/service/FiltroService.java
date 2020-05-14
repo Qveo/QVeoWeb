@@ -12,6 +12,6 @@ import com.qveo.qveoweb.model.Serie;
 
 public interface FiltroService {
 	List<Integer> buscarAllYears();
-	List<Serie> busquedaCompletaSerie(Collection<Genero> generos,Collection<Plataforma> plataforma,List<Integer> years);
+	List<Serie> busquedaCompletaSerie(Collection<Genero> generos,Collection<Plataforma> plataforma,Collection<Integer> years);
 	
 }

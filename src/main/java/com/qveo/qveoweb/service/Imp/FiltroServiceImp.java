@@ -77,7 +77,8 @@ public class FiltroServiceImp implements FiltroService{
 	
 	@Override
 	public List<Serie> busquedaCompletaSerie(Collection<Genero> generoBuscar, Collection<Plataforma> plataformaBuscar,
-			List<Integer> years) {
+			Collection<Integer> years) {
+		
 		List<Serie> serieFiltra = new ArrayList<Serie>(new HashSet<Serie>());
 		
 		Collection<Genero> genero=null;
@@ -95,7 +96,7 @@ public class FiltroServiceImp implements FiltroService{
 			plataforma=plataformaBuscar;
 		}
 		
-		List<Integer> fechas = null;
+		Collection<Integer> fechas = null;
 		if(years == null) {
 			fechas=buscarAllYears();
 		}else {
@@ -113,9 +114,5 @@ public class FiltroServiceImp implements FiltroService{
 		}
 		return serieFiltra.stream().distinct().collect(Collectors.toList());
 	}
-
-
-
-
 	
 }
