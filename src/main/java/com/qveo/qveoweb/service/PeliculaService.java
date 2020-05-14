@@ -6,6 +6,7 @@ import com.qveo.qveoweb.model.PeliculaPlataforma;
 import com.qveo.qveoweb.model.Plataforma;
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 
 public interface PeliculaService {
@@ -24,9 +25,4 @@ public interface PeliculaService {
 
 	List<Pelicula> buscarPeliPlataforma(Collection<PeliculaPlataforma> peliculaPlataformas);
 
-//	List<Pelicula> buscarPeliGeneroPlataforma(Collection<Genero> generos, Collection<Plataforma> plataformas);
-
-//	List<Pelicula> buscarPeliPlataformaYears(Collection<Plataforma> plataformas, String[] years);
-
-//	List<Pelicula> buscarCompleta(Collection<Genero> generos, Collection<Plataforma> plataformas, String[] years);
 }

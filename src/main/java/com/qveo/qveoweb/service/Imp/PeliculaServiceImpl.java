@@ -19,6 +19,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -142,8 +143,8 @@ public class PeliculaServiceImpl implements PeliculaService {
 
 	@Override
 	public List<Pelicula> buscarPeliPlataforma(Collection<PeliculaPlataforma> peliculaPlataformas) {
-		
-		return peliculaDao.findByPeliculaPlataformasIn(peliculaPlataformas);
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	/*

@@ -42,48 +42,36 @@
 						</select>
 					</div>
 				</div>
+				<div class="row">
+					<div class="col s1"></div>
+					<div class="col s6 ">
+						<span>Genero</span>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col s1"></div>
+					<div class="col s6 ">
+						<form:select path="pelicula.generos" multiple="true">
+							<form:options items="${generos}" itemLabel="nombre" itemValue="id"/>
+						</form:select>
+					</div>
+				</div>
 <!-- 				<div class="row"> -->
 <!-- 					<div class="col s1"></div> -->
 <!-- 					<div class="col s6 "> -->
-<!-- 						<span>Genero</span> -->
+<!-- 						<span>Plataformas</span> -->
 <!-- 					</div> -->
 <!-- 				</div> -->
 <!-- 				<div class="row"> -->
 <!-- 					<div class="col s1"></div> -->
 <!-- 					<div class="col s6 "> -->
-<%-- 						<form:select path="peliculas" multiple="true"> --%>
-<%-- 							<form:option value="">Genero</form:option> --%>
-<%-- 							<form:options items="${generos}" itemLabel="nombre" itemValue="id"/> --%>
+<%-- 						<form:select path="plataforma" multiple="multiple"> --%>
+<%-- 							<c:forEach items="${plataformas}" var="plataforma">			 --%>
+<%-- 								<form:option value="${plataforma.id}">${plataforma.nombre}</form:option> --%>
+<%-- 							</c:forEach> --%>
 <%-- 						</form:select> --%>
 <!-- 					</div> -->
 <!-- 				</div> -->
-				<div class="row">
-					<div class="col s1"></div>
-					<div class="col s6 ">
-						<span>Plataformas</span>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col s1"></div>
-					<div class="col s6 ">
-<%-- 							<form:options items="${plataformas}" itemLabel="nombre" --%>
-<%-- 								itemValue="id" /> --%>
-						<form:select path="plataforma" multiple="multiple">
-							<c:forEach items="${plataformas}" var="plataforma">
-							
-<%-- 								<c:forEach items="${plataforma.peliculaPlataformas}" var="peliculaPlataforma"> --%>
-								
-								
-								<form:option value="${plataforma.id}">${plataforma.nombre}</form:option>
-<%-- 								</c:forEach> --%>
-							</c:forEach>
-						</form:select>
-						
-						<%-- 							<form:select path="peliculaPlataformas" multiple="true"> --%>
-<%-- 							<form:options items="${peliculaMostrar.peliculaPlataformas}" itemLabel="nombre" /> --%>
-<%-- 							</form:select> --%>
-					</div>
-				</div>
 				<div class="row">
 					<div class="col s1"></div>
 					<div class="col s6 ">
