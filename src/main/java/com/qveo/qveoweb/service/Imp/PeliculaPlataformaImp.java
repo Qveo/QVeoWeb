@@ -28,4 +28,10 @@ public class PeliculaPlataformaImp implements PeliculaPlataformaService{
 		return peliculaPlataformaDao.findByPelicula(pelicula);
 	}
 
+	@Override
+	public List<PeliculaPlataforma> borrarPelicula(Pelicula pelicula) {
+		
+		return peliculaPlataformaDao.deleteByPelicula(pelicula);
+	}
+
 }

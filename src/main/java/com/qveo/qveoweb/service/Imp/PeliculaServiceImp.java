@@ -26,7 +26,7 @@ public class PeliculaServiceImp implements PeliculaService {
 
 	@Autowired
 	PeliculaDao peliculaDao;
-	
+
 	@Autowired
 	PeliculaPlataformaDao peliculaPlataformaDao;
 
@@ -58,30 +58,15 @@ public class PeliculaServiceImp implements PeliculaService {
 
 	@Override
 	public void save(PeliculaDto pelicula, MultipartFile foto) throws IOException {
-		
-		//Set<PeliculaPlataforma> peliculaPlataformaColeccion = new HashSet<PeliculaPlataforma>();
-		Pelicula peliculaNew = new Pelicula(
-				pelicula.getTitulo(),
-				pelicula.getDuracion(),
-				pelicula.getGuion(),
-				pelicula.getPoster(),
-				pelicula.getSinopsis(),
-				pelicula.getAnio(),
-				pelicula.getActores(),
-				pelicula.getGeneros(),
-				pelicula.getPais(),
-				pelicula.getDirectores()
-		);
-		
+
+		// Set<PeliculaPlataforma> peliculaPlataformaColeccion = new
+		// HashSet<PeliculaPlataforma>();
+		Pelicula peliculaNew = new Pelicula(pelicula.getTitulo(), pelicula.getDuracion(), pelicula.getGuion(),
+				pelicula.getPoster(), pelicula.getSinopsis(), pelicula.getAnio(), pelicula.getActores(),
+				pelicula.getGeneros(), pelicula.getPais(), pelicula.getDirectores());
+
 		peliculaNew.setId(pelicula.getId());
-		
-		//Pelicula peliculaEditada = getPelicula(pelicula.getId());
-		//peliculaEditada.setPeliculaPlataformas(peliculaPlataformaColeccion);
-		//System.out.println();
-		//int i=0;
-		//peliculaNew.getPeliculaPlataformas().clear();
-	
-		//Set<PeliculaPlataforma> peliculaPlataformaColeccion = new HashSet<PeliculaPlataforma>();
+
 		peliculaDao.save(peliculaNew);
 		List<PeliculaPlataforma> peliculasPlataforma = peliculaPlataformaDao.findByPelicula(peliculaNew);
 
@@ -107,7 +92,7 @@ public class PeliculaServiceImp implements PeliculaService {
 				System.out.println(plata.getNombre());
 			}
 		}
-		
+
 		if (!foto.isEmpty()) {
 			try {
 				String uniqueFilename = null;
@@ -131,8 +116,16 @@ public class PeliculaServiceImp implements PeliculaService {
 
 	@Override
 	@Transactional
-	public void delete(Integer id) {
-		peliculaDao.deleteById(id);
+	public void delete(Pelicula pelicula) {
+		List<PeliculaPlataforma> peliculasPlataforma = peliculaPlataformaDao.findByPelicula(pelicula);
+
+		if (!peliculasPlataforma.isEmpty()) {
+
+			for (PeliculaPlataforma peliPlat : peliculasPlataforma) {
+				peliculaPlataformaDao.delete(peliPlat);
+			}
+		}
+		peliculaDao.deleteById(pelicula.getId());
 
 	}
 

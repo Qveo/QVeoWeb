@@ -9,4 +9,6 @@ public interface PeliculaPlataformaService{
 
 	List<PeliculaPlataforma> getAllPeliculasPlataformas();
 	List<PeliculaPlataforma> obtenerPelicula(Pelicula pelicula);
+	List<PeliculaPlataforma> borrarPelicula(Pelicula pelicula);
+	
 }

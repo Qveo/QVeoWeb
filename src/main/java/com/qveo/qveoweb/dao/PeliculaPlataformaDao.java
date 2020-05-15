@@ -13,4 +13,6 @@ public interface PeliculaPlataformaDao extends JpaRepository<PeliculaPlataforma,
 	
 	List<PeliculaPlataforma> findAll();
 	List<PeliculaPlataforma> findByPelicula(Pelicula pelicula);
+	List<PeliculaPlataforma> deleteByPelicula(Pelicula pelicula);
+	
 }
