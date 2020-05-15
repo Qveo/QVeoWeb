@@ -147,6 +147,16 @@
 									</c:forEach>
 								</c:otherwise>
 							</c:choose>
+
+						</div>
+
+						<div class="col s2"></div>
+
+					</div>
+
+					<div class="row">
+						<div class="col s2"></div>
+						<div class="col s8">
 							<form:errors path="generos" style="color:red"></form:errors>
 						</div>
 						<div class="col s2"></div>
@@ -191,7 +201,7 @@
 
 								</c:choose>
 							</form:select>
-							<form:errors path="pais" style="color:red"></form:errors>
+
 						</div>
 						<div class="col s2"></div>
 					</div>
@@ -238,83 +248,101 @@
 									</c:forEach>
 								</c:otherwise>
 							</c:choose>
-							<form:errors path="directores" style="color:red"></form:errors>
-						</div>
-						<div class="col s2"></div>
-					</div>
-
-					<div class="row">
-						<div class="col s2"></div>
-						<div class="col s8">
-							<form:label path="plataformas">Plataformas</form:label>
-						</div>
-						<div class="col s2"></div>
-					</div>
-
-					<div class="row">
-						<div class="col s2"></div>
-						<div class="col s8">
-							<c:choose>
-								<c:when test="${editar}">
-									<c:forEach items="${plataformas}" var="plataforma">
-										<c:if test="${fn:contains(serieNueva.plataformas,plataforma)}">
-
-											<form:label for="${plataforma.nombre}" path="plataformas">
-												<form:checkbox id="${plataforma.nombre}" path="plataformas"
-													value="${plataforma.id}" checked="checked" />
-												<span>${plataforma.nombre}</span>
-											</form:label>
-
-										</c:if>
-										<c:if
-											test="${not(fn:contains(serieNueva.plataformas,plataforma))}">
-
-											<form:label for="${plataforma.nombre}" path="plataformas">
-												<form:checkbox id="${plataforma.nombre}" path="plataformas"
-													value="${plataforma.id}" />
-												<span>${plataforma.nombre}</span>
-											</form:label>
-										</c:if>
-									</c:forEach>
-								</c:when>
-								<c:otherwise>
-									<c:forEach items="${plataformas}" var="plataforma">
-										<form:label for="${plataforma.nombre}" path="plataformas">
-											<form:checkbox id="${plataforma.nombre}" path="plataformas"
-												value="${plataforma.id}" />
-											<span>${plataforma.nombre}</span>
-										</form:label>
-
-									</c:forEach>
-								</c:otherwise>
-							</c:choose>
-							<form:errors path="plataformas" style="color:red"></form:errors>
 
 						</div>
-						<div class="col s2"></div>
-					</div>
 
-					<div class="row">
-						<div class="col s2"></div>
-						<div class="col s8">
-							<c:choose>
-								<c:when test="${editar}">
-									<button class="btn waves-effect waves-light" type="submit"
-										name="action">
-										Actualizar <i class="material-icons right">send</i>
-									</button>
-								</c:when>
-								<c:otherwise>
-									<button class="btn waves-effect waves-light" type="submit"
-										name="action">
-										Registrarse <i class="material-icons right">send</i>
-									</button>
-								</c:otherwise>
-							</c:choose>
-						</div>
-						<div class="col s2"></div>
 					</div>
-				</form:form>
+			</div>
+
+
+			<div class="row">
+				<div class="col s2"></div>
+				<div class="col s8">
+					<form:errors path="directores" style="color:red"></form:errors>
+				</div>
+				<div class="col s2"></div>
+			</div>
+
+			<div class="row">
+				<div class="col s2"></div>
+				<div class="col s8">
+					<form:label path="plataformas">Plataformas</form:label>
+				</div>
+				<div class="col s2"></div>
+			</div>
+
+			<div class="row">
+				<div class="col s2"></div>
+				<div class="col s8">
+					<c:choose>
+						<c:when test="${editar}">
+							<c:forEach items="${plataformas}" var="plataforma">
+								<c:if test="${fn:contains(serieNueva.plataformas,plataforma)}">
+
+									<form:label for="${plataforma.nombre}" path="plataformas">
+										<form:checkbox id="${plataforma.nombre}" path="plataformas"
+											value="${plataforma.id}" checked="checked" />
+										<span>${plataforma.nombre}</span>
+									</form:label>
+
+								</c:if>
+								<c:if
+									test="${not(fn:contains(serieNueva.plataformas,plataforma))}">
+
+									<form:label for="${plataforma.nombre}" path="plataformas">
+										<form:checkbox id="${plataforma.nombre}" path="plataformas"
+											value="${plataforma.id}" />
+										<span>${plataforma.nombre}</span>
+									</form:label>
+								</c:if>
+							</c:forEach>
+						</c:when>
+						<c:otherwise>
+							<c:forEach items="${plataformas}" var="plataforma">
+								<form:label for="${plataforma.nombre}" path="plataformas">
+									<form:checkbox id="${plataforma.nombre}" path="plataformas"
+										value="${plataforma.id}" />
+									<span>${plataforma.nombre}</span>
+								</form:label>
+
+							</c:forEach>
+						</c:otherwise>
+					</c:choose>
+
+
+				</div>
+
+				<div class="col s2"></div>
+			</div>
+			<div class="row">
+				<div class="col s2"></div>
+				<div class="col s8">
+					<form:errors path="plataformas" style="color:red"></form:errors>
+				</div>
+				<div class="col s2"></div>
+			</div>
+
+			<div class="row">
+				<div class="col s2"></div>
+				<div class="col s8">
+					<c:choose>
+						<c:when test="${editar}">
+							<button class="btn waves-effect waves-light" type="submit"
+								name="action">
+								Actualizar <i class="material-icons right">send</i>
+							</button>
+						</c:when>
+						<c:otherwise>
+							<button class="btn waves-effect waves-light" type="submit"
+								name="action">
+								Registrarse <i class="material-icons right">send</i>
+							</button>
+						</c:otherwise>
+					</c:choose>
+				</div>
+				<div class="col s2"></div>
+			</div>
+			</form:form>
 
 			</div>
 		</section>
