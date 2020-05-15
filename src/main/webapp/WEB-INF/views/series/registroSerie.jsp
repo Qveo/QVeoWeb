@@ -16,7 +16,8 @@
 	href="${pageContext.request.contextPath}/resources/css/general.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/serieRegistro.css">
-	
+
+
 </head>
 <body>
 	<header>
@@ -28,13 +29,12 @@
 			<div class="row">
 				<c:choose>
 					<c:when test="${editar}">
-						<c:set var="action" scope="session"
-							value="/qveo/serie/form" />
+						<c:set var="action" scope="session" value="/qveo/serie/form" />
 					</c:when>
- 					<c:otherwise>
-					<c:set var="action" scope="session" value="/qveo/serie/form" /> 
- 					</c:otherwise> 
- 				</c:choose> 
+					<c:otherwise>
+						<c:set var="action" scope="session" value="/qveo/serie/form" />
+					</c:otherwise>
+				</c:choose>
 
 				<form:form method="POST" action="${action}"
 					modelAttribute="serieNueva" enctype="multipart/form-data"
@@ -53,7 +53,8 @@
 						<div class="col s2"></div>
 						<div class="col s8">
 							<form:label path="fechaInicio" for="date">Fecha de lanzamiento</form:label>
-							<form:input id="fechaInicio" path="fechaInicio"  class="datepicker"  />
+							<form:input id="date" path="fechaInicio" class="datepicker" />
+							<form:errors path="fechaInicio" style="color:red"></form:errors>
 						</div>
 						<div class="col s2"></div>
 					</div>
@@ -102,6 +103,7 @@
 						<div class="col s8">
 							<form:label path="sinopsis">Sinopsis</form:label>
 							<form:textarea path="sinopsis" id="sinopsis" rows="4" cols="20" />
+							<form:errors path="sinopsis" style="color:red"></form:errors>
 						</div>
 						<div class="col s2"></div>
 					</div>
@@ -145,6 +147,7 @@
 									</c:forEach>
 								</c:otherwise>
 							</c:choose>
+							<form:errors path="generos" style="color:red"></form:errors>
 						</div>
 						<div class="col s2"></div>
 					</div>
@@ -235,6 +238,7 @@
 									</c:forEach>
 								</c:otherwise>
 							</c:choose>
+							<form:errors path="directores" style="color:red"></form:errors>
 						</div>
 						<div class="col s2"></div>
 					</div>
@@ -284,6 +288,7 @@
 									</c:forEach>
 								</c:otherwise>
 							</c:choose>
+							<form:errors path="plataformas" style="color:red"></form:errors>
 
 						</div>
 						<div class="col s2"></div>
@@ -321,12 +326,9 @@
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/js/jquery.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/vendor/js/serie.js"></script>
-<!-- 	<script type="text/javascript"> -->
-// 	document.addEventListener('DOMContentLoaded', function() {
-// 		var elems = document.querySelectorAll('select');
-// 		var instances = M.FormSelect.init(elems);
-// 	});
-<!-- 	</script> -->
+	<script
+		src="${pageContext.request.contextPath}/resources/vendor/js/serie.js"></script>
+
+
 </body>
 </html>

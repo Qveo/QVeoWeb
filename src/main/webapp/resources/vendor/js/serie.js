@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	var fecha = document.querySelectorAll('.datepicker');
 	var instance = M.Datepicker.init(fecha, {
-		format : 'yyyy-mm-dd',
+		format : 'dd-mm-yyyy',
 		yearRange : 100
 	});
 	
