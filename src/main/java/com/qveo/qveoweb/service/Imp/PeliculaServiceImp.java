@@ -74,6 +74,8 @@ public class PeliculaServiceImp implements PeliculaService {
 		
 		peliculaNew.setId(pelicula.getId());
 		
+		peliculaDao.save(peliculaNew);
+		
 		if(!peliculaPlataformaDao.findByPelicula(peliculaNew).isEmpty()) {
 			List<PeliculaPlataforma> peliculasPlataforma = peliculaPlataformaDao.findByPelicula(peliculaNew);
 			for (PeliculaPlataforma peliPlat : peliculasPlataforma) {

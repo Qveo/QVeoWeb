@@ -16,7 +16,7 @@ public class PeliculaDto {
 		
 		private Integer id;
 		private String titulo;
-		@DateTimeFormat(pattern = "HH:mm:ss")
+		//@DateTimeFormat(pattern = "HH:mm:ss")
 	    private Time duracion;
 	    private String guion;
 	    private String poster;
