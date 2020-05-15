@@ -26,7 +26,7 @@ public class PeliculaServiceImp implements PeliculaService {
 
 	@Autowired
 	PeliculaDao peliculaDao;
-	
+
 	@Autowired
 	PeliculaPlataformaDao peliculaPlataformaDao;
 
@@ -93,7 +93,7 @@ public class PeliculaServiceImp implements PeliculaService {
 				peliculaPlataformaDao.save(peliculaPlataformaNew);
 			}
 		}
-		
+
 		if (!foto.isEmpty()) {
 			try {
 				String uniqueFilename = null;
@@ -117,8 +117,16 @@ public class PeliculaServiceImp implements PeliculaService {
 
 	@Override
 	@Transactional
-	public void delete(Integer id) {
-		peliculaDao.deleteById(id);
+	public void delete(Pelicula pelicula) {
+		List<PeliculaPlataforma> peliculasPlataforma = peliculaPlataformaDao.findByPelicula(pelicula);
+
+		if (!peliculasPlataforma.isEmpty()) {
+
+			for (PeliculaPlataforma peliPlat : peliculasPlataforma) {
+				peliculaPlataformaDao.delete(peliPlat);
+			}
+		}
+		peliculaDao.deleteById(pelicula.getId());
 
 	}
 

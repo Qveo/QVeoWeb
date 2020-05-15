@@ -24,7 +24,7 @@
 	</header>
 	<main>
 		<div class="row">
-			<c:set var="action" scope="session" value="/qveo/peliculas/form2" />
+			<c:set var="action" scope="session" value="/qveo/peliculas/form" />
 			<form:form method="POST" action="${action}"
 				modelAttribute="peliculaNueva" enctype="multipart/form-data"
 				class="col s12 white-text">
@@ -33,25 +33,30 @@
 					<div class="input-field col s6">
 						<form:input path="titulo" id="titulo" type="text" class="validate" />
 						<form:label for="titulo" path="titulo">Titulo</form:label>
+						<form:errors path="titulo" style="color:red" />
 					</div>
 					<div class="input-field col s3">
 						<form:input path="duracion" id="duracion" class="validate" />
 						<form:label for="duracion" path="duracion">Duraci&oacuten</form:label>
+						<form:errors path="duracion" style="color:red" />
 					</div>
 					<div class="input-field col s3">
 						<form:input path="anio" id="anio" class="validate" />
 						<form:label for="anio" path="anio">A&ntildeo</form:label>
+						<form:errors path="anio" style="color:red" />
 					</div>
 				</div>
 				<div class="row">
 					<div class="input-field col s6">
 						<form:input path="guion" id="guion" class="validate" />
 						<form:label for="guion" path="guion">Gui&oacuten</form:label>
+						<form:errors path="guion" style="color:red" />
 					</div>
 					<div class="input-field col s6">
 						<form:textarea path="sinopsis" id="sinopsis"
 							class="materialize-textarea" />
 						<form:label path="sinopsis" for="sinopsis">Sinopsis</form:label>
+						<form:errors path="sinopsis" style="color:red" />
 
 					</div>
 				</div>
@@ -81,7 +86,7 @@
 
 
 				</div>
-		</div>
+		
 
 
 
@@ -176,7 +181,7 @@
 					<c:if test="${not(fn:contains(peliculaNueva.generos,genero))}">
 						<form:label for="${genero.nombre}" path="generos">
 							<form:checkbox id="${genero.nombre}" path="generos"
-								value="${genero.id}" checked="checked" />
+								value="${genero.id}" />
 							<span>${genero.nombre}</span>
 						</form:label>
 					</c:if>

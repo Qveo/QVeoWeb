@@ -12,6 +12,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
 //@IdClass(PeliculaPlataformaId.class)
 @Entity
 public class PeliculaPlataforma {
@@ -59,6 +62,7 @@ public class PeliculaPlataforma {
 		this.plataforma = plataforma;
 	}
 	
+
 	@ManyToOne
 	@MapsId("peliculaId")
 	@JoinColumn(name = "ID_PELICULA", referencedColumnName = "ID", nullable = false)

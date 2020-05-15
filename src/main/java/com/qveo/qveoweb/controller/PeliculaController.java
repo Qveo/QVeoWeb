@@ -77,10 +77,10 @@ public class PeliculaController {
 	@Autowired
 	private IUploadFileService uploadFileService;
 
-//	@InitBinder
-//	public void InitBinder(WebDataBinder binder) {
-//		binder.setValidator(peliculaValid);
-//	}
+	@InitBinder
+	public void InitBinder(WebDataBinder binder) {
+		binder.setValidator(peliculaValid);
+	}
 
 	@GetMapping("/listar")
 	public String listar(Model mod) {
@@ -103,7 +103,7 @@ public class PeliculaController {
 
 		return "peliculas/mostrar";
 	}
-/*
+
 	@RequestMapping("/form")
 	public String crear(Model mod) {
 
@@ -114,7 +114,7 @@ public class PeliculaController {
 		List<Actor> actores = actorServ.getAllActor();
 
 		mod.addAttribute("Title", "Registro de pelicula");
-		mod.addAttribute("peliculaNueva", new PeliculaPlataforma());
+		mod.addAttribute("peliculaNueva", new PeliculaDto());
 		mod.addAttribute("directores", directores);
 		mod.addAttribute("actores", actores);
 		mod.addAttribute("paises", paises);
@@ -123,7 +123,7 @@ public class PeliculaController {
 
 		return "peliculas/registro";
 	}
-*/
+
 	@RequestMapping(value = "/form/{id}", method = RequestMethod.GET)
 	public String editar(Model mod, @PathVariable(value = "id") Integer id) {
 
@@ -179,42 +179,42 @@ public class PeliculaController {
 
 		return "peliculas/editar";
 	}
-/*
-	@RequestMapping(value = "/form", method = RequestMethod.POST)
-	public String guardar(@Valid @ModelAttribute("peliculaNueva") PeliculaPlataforma pelicula, BindingResult br,
-			Model mod, @RequestParam("foto") MultipartFile foto, SessionStatus status) {
-		try {
-		if (br.hasErrors()) {
 
-			List<Genero> peliculas = generoService.getAllGenero();
-			List<Pais> paises = paisService.getAllPais();
-			List<Plataforma> plataformas = plataformaSerive.getAllPlataformas();
-			List<Director> directores = directorService.getAllDirector();
-			List<Actor> actores = actorServ.getAllActor();
-
-			mod.addAttribute("Titulo", "Registro de pelicula");
-			mod.addAttribute("directores", directores);
-			mod.addAttribute("actores", actores);
-			mod.addAttribute("paises", paises);
-			mod.addAttribute("generos", peliculas);
-			mod.addAttribute("plataformas", plataformas);
-			mod.addAttribute("peliculaNueva", pelicula);
-			return "peliculas/registro";
-		}
-
-
-		peliculaService.save(pelicula.getPelicula(), foto);
-		peliculaPlat.save(pelicula);
+//	@RequestMapping(value = "/form", method = RequestMethod.POST)
+//	public String guardar(@Valid @ModelAttribute("peliculaNueva") PeliculaPlataforma pelicula, BindingResult br,
+//			Model mod, @RequestParam("foto") MultipartFile foto, SessionStatus status) {
+//		try {
+//		if (br.hasErrors()) {
+//
+//			List<Genero> peliculas = generoService.getAllGenero();
+//			List<Pais> paises = paisService.getAllPais();
+//			List<Plataforma> plataformas = plataformaSerive.getAllPlataformas();
+//			List<Director> directores = directorService.getAllDirector();
+//			List<Actor> actores = actorServ.getAllActor();
+//
+//			mod.addAttribute("Titulo", "Registro de pelicula");
+//			mod.addAttribute("directores", directores);
+//			mod.addAttribute("actores", actores);
+//			mod.addAttribute("paises", paises);
+//			mod.addAttribute("generos", peliculas);
+//			mod.addAttribute("plataformas", plataformas);
+//			mod.addAttribute("peliculaNueva", pelicula);
+//			return "peliculas/registro";
+//		}
+//
+//
+//		peliculaService.save(pelicula.getPelicula(), foto);
+//		peliculaPlat.save(pelicula);
 //			status.setComplete();
-		}catch(Exception e){
-			 e.printStackTrace();
-		}
-
-		return "redirect:/peliculas/listar";
-	}
-*/	
-	@RequestMapping(value = "/form2", method = RequestMethod.POST)
-	public String guardar(@ModelAttribute("peliculaNueva") PeliculaDto pelicula, BindingResult br,
+//		}catch(Exception e){
+//			 e.printStackTrace();
+//		}
+//
+//		return "redirect:/peliculas/listar";
+//	}
+	
+	@RequestMapping(value = "/form", method = RequestMethod.POST)
+	public String guardar(@Valid @ModelAttribute("peliculaNueva") PeliculaDto pelicula, BindingResult br,
 			Model mod, @RequestParam("foto") MultipartFile foto, SessionStatus status) {
 		try {
 		if (br.hasErrors()) {
@@ -236,7 +236,7 @@ public class PeliculaController {
 		}
 
 		peliculaService.save(pelicula, foto);
-		//peliculaPlat.save(peliculaNew);
+		//peliculaPlataformaService.save(peliculaNew);
 //			status.setComplete();
 		}catch(Exception e){
 			 e.printStackTrace();
@@ -254,7 +254,7 @@ public class PeliculaController {
 
 			uploadFileService.delete(pelicula.getPoster(), 2);
 
-			peliculaService.delete(id);
+			peliculaService.delete(pelicula);
 		}
 		return "redirect:/peliculas/listar";
 	}

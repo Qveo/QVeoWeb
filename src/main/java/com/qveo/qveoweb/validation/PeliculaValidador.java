@@ -8,7 +8,7 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
-import com.qveo.qveoweb.model.Pelicula;
+import com.qveo.qveoweb.dto.PeliculaDto;
 
 @Component
 public class PeliculaValidador implements Validator {
@@ -16,7 +16,7 @@ public class PeliculaValidador implements Validator {
 	@Override
 	public boolean supports(Class<?> clazz) {
 		// TODO Auto-generated method stub
-		return Pelicula.class.isAssignableFrom(clazz);
+		return PeliculaDto.class.isAssignableFrom(clazz);
 
 	}
 
@@ -24,9 +24,10 @@ public class PeliculaValidador implements Validator {
 	public void validate(Object target, Errors errors) {
 		// TODO Auto-generated method stub
 
-		Pelicula pelicula = (Pelicula) target;
+		PeliculaDto pelicula = (PeliculaDto) target;
 
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "titulo", "empty");
+		System.out.println("Hola");
 
 		if (pelicula.getDuracion() != null) {
 			DateFormat format = new SimpleDateFormat("HH:mm:ss");
