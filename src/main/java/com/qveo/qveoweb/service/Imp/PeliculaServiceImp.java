@@ -45,7 +45,6 @@ public class PeliculaServiceImp implements PeliculaService {
 	@Override
 	@Transactional(readOnly = true)
 	public List<Pelicula> findAll() {
-		// TODO Auto-generated method stub
 		return (List<Pelicula>) peliculaDao.findAll();
 	}
 
@@ -57,9 +56,9 @@ public class PeliculaServiceImp implements PeliculaService {
 	}
 
 	@Override
+	@Transactional
 	public void save(PeliculaDto pelicula, MultipartFile foto) throws IOException {
 		
-		//Set<PeliculaPlataforma> peliculaPlataformaColeccion = new HashSet<PeliculaPlataforma>();
 		Pelicula peliculaNew = new Pelicula(
 				pelicula.getTitulo(),
 				pelicula.getDuracion(),
@@ -75,36 +74,23 @@ public class PeliculaServiceImp implements PeliculaService {
 		
 		peliculaNew.setId(pelicula.getId());
 		
-		//Pelicula peliculaEditada = getPelicula(pelicula.getId());
-		//peliculaEditada.setPeliculaPlataformas(peliculaPlataformaColeccion);
-		//System.out.println();
-		//int i=0;
-		//peliculaNew.getPeliculaPlataformas().clear();
-	
-		//Set<PeliculaPlataforma> peliculaPlataformaColeccion = new HashSet<PeliculaPlataforma>();
-		peliculaDao.save(peliculaNew);
-		List<PeliculaPlataforma> peliculasPlataforma = peliculaPlataformaDao.findByPelicula(peliculaNew);
-
-		if (!peliculasPlataforma.isEmpty()) {
-
+		if(!peliculaPlataformaDao.findByPelicula(peliculaNew).isEmpty()) {
+			List<PeliculaPlataforma> peliculasPlataforma = peliculaPlataformaDao.findByPelicula(peliculaNew);
 			for (PeliculaPlataforma peliPlat : peliculasPlataforma) {
 				peliculaPlataformaDao.delete(peliPlat);
 			}
 		}
-		if (!pelicula.getPlataformas().isEmpty()) {
+		
+
+		if (pelicula.getPlataformas() != null) {
 
 			for (Plataforma plata : pelicula.getPlataformas()) {
 
 				PeliculaPlataforma peliculaPlataformaNew = new PeliculaPlataforma();
 				peliculaPlataformaNew.setPlataforma(plata);
 				peliculaPlataformaNew.setPelicula(peliculaNew);
-				// peliculaNew.getPeliculaPlataformas().add(peliculaPlataformaNew);
-				// i++;
 
 				peliculaPlataformaDao.save(peliculaPlataformaNew);
-				// peliculaPlataformaColeccion.add(peliculaPlataformaNew);
-
-				System.out.println(plata.getNombre());
 			}
 		}
 		
@@ -125,8 +111,8 @@ public class PeliculaServiceImp implements PeliculaService {
 			peliculaNew.setPoster("/resources/img/peliculas/" + uniqueFilename);
 
 		}
+		
 		peliculaDao.save(peliculaNew);
-		// nombreFichero="";
 	}
 
 	@Override
