@@ -20,8 +20,14 @@ public class UsuarioValidator implements Validator{
 		
 		Usuario usuario = (Usuario)target;
 		
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "nombre", "error");
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "apellidos", "error");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "nombre", "empty");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "apellidos", "empty");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "empty");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "fechaNacimiento", "empty");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "empty");
+		ValidationUtils.rejectIfEmpty(errors, "sexo", "null");
+		ValidationUtils.rejectIfEmpty(errors, "pais", "null");
+		ValidationUtils.rejectIfEmpty(errors, "plataformas", "null");
 		
 	}
 

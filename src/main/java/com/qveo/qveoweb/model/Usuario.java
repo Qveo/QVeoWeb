@@ -15,6 +15,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.Date;
+import java.util.stream.Collectors;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -26,17 +27,12 @@ public class Usuario {
     private Integer id;
     private String nombre;
     private String apellidos;
-    @NotEmpty @Email(message="El email debe ser válido")
     private String email;
     private String foto;
-    @NotNull @Past(message="La fecha es obligatoria del pasado")
     private Date fechaNacimiento;
-    @NotNull
     private String sexo;
-    @Size(min=4, message="La contraseña es obligatoria, al menos 4 caracteres")
     private String password;
     private Rol rol;
-    @NotNull
     private Pais pais;
     private Date fechaAlta;
 	private Collection<Plataforma> plataformas;
@@ -225,5 +221,9 @@ public class Usuario {
 	public void setSeries(Collection<Serie> series) {
 		this.series = series;
 	}
+	
+	public String plataformasConcatenadas(){
+        return plataformas.stream().map(Plataforma::getNombre).collect(Collectors.joining(", "));
+    }
 	
 }

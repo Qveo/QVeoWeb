@@ -58,22 +58,23 @@
 										class="material-icons editar">edit</i></a>
 								</div>
 								<div class="col s12 m6 l4">
-									<a href="#modal2" class="btn-floating btn-large red"><i class="material-icons eliminar">delete</i></a>
+									<a href="#modal2" class="btn-floating btn-large red modal-trigger"><i class="material-icons eliminar">delete</i></a>
 								</div>
 							</div>
 						</div>
 					</div>
 				</c:forEach>
 			<!-- Modal datos usuario -->
-			<div id="modal1" class="modal">
+			<%@include file="/WEB-INF/views/layout/modalDetalleUsuario.jsp" %>
+			<%-- <div id="modal1" class="modal info">
 				<div id="contenido" class="modal-content contenido-ajax">
 					<div class="row">
 						<div id="img-usuario" class="col s12 m12 l5 imagen-usuario"><img src="${pageContext.request.contextPath}"></div>
 						<div id="info-usuario" class="col s12 m12 l7"></div>
 					</div>
 				</div>
-			</div>
-			<!-- Confirar elimianr usuario -->
+			</div> --%>
+			<!-- Confirar eliminar usuario -->
 			<div id="modal2" class="modal confirmar">
 				<div class="modal-content">
 					<h4>Por favor debes confirmar</h4>
