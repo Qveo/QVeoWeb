@@ -206,6 +206,13 @@
 						</div>
 						<div class="col s2"></div>
 					</div>
+					<div class="row">
+						<div class="col s2"></div>
+						<div class="col s8">
+							<form:errors path="pais" style="color:red"></form:errors>
+						</div>
+						<div class="col s2"></div>
+					</div>
 
 					<div class="row">
 						<div class="col s2"></div>
