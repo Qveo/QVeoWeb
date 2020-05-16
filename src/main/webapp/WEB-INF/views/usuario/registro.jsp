@@ -55,13 +55,13 @@
 								<form:input value="${nuevoUsuario.password}" id="password"
 									class="validate" path="password" />
 								<form:label for="password" path="password">Password</form:label>
-								<form:errors path="email" style="color:red"></form:errors>
+								<form:errors path="password" style="color:red"></form:errors>
 							</c:when>
 							<c:otherwise>
 								<form:password id="password" path="password" showPassword="true"
 									class="validate" />
 								<form:label for="password" path="password">Password</form:label>
-								<form:errors path="email" style="color:red"></form:errors>
+								<form:errors path="password" style="color:red"></form:errors>
 							</c:otherwise>
 						</c:choose>
 					</div>
@@ -82,6 +82,7 @@
 							<form:radiobutton id="fem" path="sexo" value="F" />
 							<span>Femenino</span>
 						</form:label>
+						<form:errors path="sexo" style="color:red"></form:errors>
 					</div>
 					<form:errors path="sexo" style="color:red"></form:errors>
 				</div>
@@ -105,6 +106,7 @@
 							<form:option value="">Pais de residencia</form:option>
 							<form:options items="${paises}" itemLabel="nombre" />
 						</form:select>
+						<form:errors path="pais" style="color:red"></form:errors>
 					</div>
 					<form:errors path="pais" style="color:red"></form:errors>
 				</div>

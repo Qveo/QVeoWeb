@@ -31,5 +31,6 @@
 				</c:forEach>
 			</c:otherwise>
 		</c:choose>
+		<form:errors path="plataformas" style="color:red"></form:errors>
 	</div>
 </div>
