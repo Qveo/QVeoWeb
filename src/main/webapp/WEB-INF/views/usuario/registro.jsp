@@ -55,11 +55,13 @@
 								<form:input value="${nuevoUsuario.password}" id="password"
 									class="validate" path="password" />
 								<form:label for="password" path="password">Password</form:label>
+								<form:errors path="email" style="color:red"></form:errors>
 							</c:when>
 							<c:otherwise>
 								<form:password id="password" path="password" showPassword="true"
 									class="validate" />
 								<form:label for="password" path="password">Password</form:label>
+								<form:errors path="email" style="color:red"></form:errors>
 							</c:otherwise>
 						</c:choose>
 					</div>
@@ -81,6 +83,7 @@
 							<span>Femenino</span>
 						</form:label>
 					</div>
+					<form:errors path="sexo" style="color:red"></form:errors>
 				</div>
 				<!--  fecha nacimiento usuario -->
 				<div class="row">
@@ -103,10 +106,12 @@
 							<form:options items="${paises}" itemLabel="nombre" />
 						</form:select>
 					</div>
+					<form:errors path="pais" style="color:red"></form:errors>
 				</div>
 
 				<!-- plataformas de usuario -->
 				<%@include file="/WEB-INF/views/layout/chipsPlataforma.jsp"%>
+				<form:errors path="plataformas" style="color:red"></form:errors>
 
 				<!-- Imagen de usuario -->
 				<c:if test="${edit}">
@@ -126,6 +131,7 @@
 							</div>
 						</div>
 					</div>
+					
 				</c:if>
 				<!-- subida de foto -->
 				<div class="row">
