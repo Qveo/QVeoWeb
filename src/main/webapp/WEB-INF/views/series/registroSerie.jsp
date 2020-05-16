@@ -201,6 +201,7 @@
 
 								</c:choose>
 							</form:select>
+							<form:errors path="pais" style="color:red"></form:errors>
 
 						</div>
 						<div class="col s2"></div>
