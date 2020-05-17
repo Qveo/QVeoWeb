@@ -21,11 +21,13 @@ import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.qveo.qveoweb.model.Actor;
 import com.qveo.qveoweb.model.Director;
 import com.qveo.qveoweb.model.Genero;
 import com.qveo.qveoweb.model.Pais;
 import com.qveo.qveoweb.model.Plataforma;
 import com.qveo.qveoweb.model.Serie;
+import com.qveo.qveoweb.service.ActorService;
 import com.qveo.qveoweb.service.DirectorService;
 import com.qveo.qveoweb.service.GeneroService;
 import com.qveo.qveoweb.service.IUploadFileService;
@@ -60,6 +62,9 @@ public class SerieController {
 	@Autowired
 	SerieValidador validador;
 	
+	@Autowired
+	ActorService actorService;
+	
 	@InitBinder
 	public void InitBinder(WebDataBinder binder) {
 		binder.setValidator(validador);
@@ -90,12 +95,14 @@ public class SerieController {
 		List<Pais> paises=paisService.getAllPais();
 		List<Plataforma> plataformas=plataformaSerive.getAllPlataformas();
 		List<Director> directores=directorService.getAllDirector();
+		List<Actor> actores= actorService.getAllActores();
 		
 		model.addAttribute("serieNueva",new Serie());
 		model.addAttribute("paises", paises);
 		model.addAttribute("generos", generos);
 		model.addAttribute("plataformas", plataformas);
 		model.addAttribute("directores", directores);
+		model.addAttribute("actores", actores);
 		
 		return "series/registroSerie";
 	}
@@ -108,6 +115,7 @@ public class SerieController {
 		List<Plataforma> plataformas=plataformaSerive.getAllPlataformas();
 		List<Director> directores=directorService.getAllDirector();	
 		Serie serieEditar=serieService.getSerie(id).get();
+		List<Actor> actores= actorService.getAllActores();
 		
 		model.addAttribute("editar", true);
 		model.addAttribute("serieNueva", serieEditar);
@@ -115,6 +123,7 @@ public class SerieController {
 		model.addAttribute("generos", generos);
 		model.addAttribute("plataformas", plataformas);
 		model.addAttribute("directores", directores);
+		model.addAttribute("actores", actores);
 	
 		return "series/registroSerie";
 	}
@@ -129,6 +138,7 @@ public class SerieController {
 			List<Pais> paises=paisService.getAllPais();
 			List<Plataforma> plataformas=plataformaSerive.getAllPlataformas();
 			List<Director> directores=directorService.getAllDirector();	
+			List<Actor> actores= actorService.getAllActores();
 			
 			model.addAttribute("editar", true);
 			model.addAttribute("serieNueva", serieNueva);
@@ -136,6 +146,7 @@ public class SerieController {
 			model.addAttribute("generos", generos);
 			model.addAttribute("plataformas", plataformas);
 			model.addAttribute("directores", directores);
+			model.addAttribute("actores", actores);
 		
 			return "series/registroSerie";
 		}

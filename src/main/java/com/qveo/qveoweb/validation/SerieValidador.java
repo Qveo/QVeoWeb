@@ -54,7 +54,7 @@ public class SerieValidador implements Validator {
 
 		ValidationUtils.rejectIfEmpty(errors, "directores", "null");
 
-		//ValidationUtils.rejectIfEmpty(errors, "actores", "null");
+		ValidationUtils.rejectIfEmpty(errors, "actores", "null");
 
 		ValidationUtils.rejectIfEmpty(errors, "generos", "null");
 		ValidationUtils.rejectIfEmpty(errors, "plataformas", "null");

@@ -11,13 +11,9 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">
 <link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+	href="${pageContext.request.contextPath}/resources/css/materialize.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/general.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/serieRegistro.css">
-
-
 </head>
 <body>
 	<header>
@@ -27,16 +23,7 @@
 	<main>
 		<section>
 			<div class="row">
-				<c:choose>
-					<c:when test="${editar}">
-						<c:set var="action" scope="session" value="/qveo/serie/form" />
-					</c:when>
-					<c:otherwise>
-						<c:set var="action" scope="session" value="/qveo/serie/form" />
-					</c:otherwise>
-				</c:choose>
-
-				<form:form method="POST" action="${action}"
+				<form:form method="POST" action="/qveo/serie/form"
 					modelAttribute="serieNueva" enctype="multipart/form-data"
 					class="col s12">
 					<div class="row">
@@ -214,10 +201,33 @@
 						<div class="col s2"></div>
 					</div>
 
+					<!-- Chips Actores -->
+					<%@include file="/WEB-INF/views/layout/chipsActores.jsp"%>
 					<div class="row">
 						<div class="col s2"></div>
 						<div class="col s8">
-							<form:label path="directores">Director</form:label>
+							<form:errors path="actores" style="color:red"></form:errors>
+						</div>
+						<div class="col s2"></div>
+					</div>
+
+
+					<!-- Chips directores -->
+					<%@include file="/WEB-INF/views/layout/chipsDirectores.jsp"%>
+					<div class="row">
+						<div class="col s2"></div>
+						<div class="col s8">
+							<form:errors path="directores" style="color:red"></form:errors>
+						</div>
+						<div class="col s2"></div>
+					</div>
+					<!-- plataformas de series -->
+					<%@include file="/WEB-INF/views/layout/chipsPlataforma.jsp"%>
+
+					<div class="row">
+						<div class="col s2"></div>
+						<div class="col s8">
+							<form:errors path="plataformas" style="color:red"></form:errors>
 						</div>
 						<div class="col s2"></div>
 					</div>
@@ -225,133 +235,24 @@
 					<div class="row">
 						<div class="col s2"></div>
 						<div class="col s8">
-
 							<c:choose>
 								<c:when test="${editar}">
-									<c:forEach items="${directores}" var="director">
-										<c:if test="${fn:contains(serieNueva.directores,director)}">
-											<form:label for="${director.nombre}" path="directores">
-												<form:checkbox id="${director.nombre}" path="directores"
-													value="${director.id}" checked="checked" />
-												<span>${director.nombre}</span>
-											</form:label>
-										</c:if>
-										<c:if
-											test="${not(fn:contains(serieNueva.directores,director))}">
-											<form:label for="${director.nombre}" path="directores">
-												<form:checkbox id="${director.nombre}" path="directores"
-													value="${director.id}" />
-												<span>${director.nombre}</span>
-											</form:label>
-										</c:if>
-									</c:forEach>
+									<button class="btn waves-effect waves-light" type="submit"
+										name="action">
+										Actualizar <i class="material-icons right">send</i>
+									</button>
 								</c:when>
 								<c:otherwise>
-									<c:forEach items="${directores}" var="director">
-										<form:label for="${director.nombre}" path="directores">
-											<form:checkbox id="${director.nombre}" path="directores"
-												value="${director.id}" />
-											<span>${director.nombre}</span>
-										</form:label>
-									</c:forEach>
+									<button class="btn waves-effect waves-light" type="submit"
+										name="action">
+										Registrarse <i class="material-icons right">send</i>
+									</button>
 								</c:otherwise>
 							</c:choose>
-
 						</div>
-
+						<div class="col s2"></div>
 					</div>
-			</div>
-
-
-			<div class="row">
-				<div class="col s2"></div>
-				<div class="col s8">
-					<form:errors path="directores" style="color:red"></form:errors>
-				</div>
-				<div class="col s2"></div>
-			</div>
-
-			<div class="row">
-				<div class="col s2"></div>
-				<div class="col s8">
-					<form:label path="plataformas">Plataformas</form:label>
-				</div>
-				<div class="col s2"></div>
-			</div>
-
-			<div class="row">
-				<div class="col s2"></div>
-				<div class="col s8">
-					<c:choose>
-						<c:when test="${editar}">
-							<c:forEach items="${plataformas}" var="plataforma">
-								<c:if test="${fn:contains(serieNueva.plataformas,plataforma)}">
-
-									<form:label for="${plataforma.nombre}" path="plataformas">
-										<form:checkbox id="${plataforma.nombre}" path="plataformas"
-											value="${plataforma.id}" checked="checked" />
-										<span>${plataforma.nombre}</span>
-									</form:label>
-
-								</c:if>
-								<c:if
-									test="${not(fn:contains(serieNueva.plataformas,plataforma))}">
-
-									<form:label for="${plataforma.nombre}" path="plataformas">
-										<form:checkbox id="${plataforma.nombre}" path="plataformas"
-											value="${plataforma.id}" />
-										<span>${plataforma.nombre}</span>
-									</form:label>
-								</c:if>
-							</c:forEach>
-						</c:when>
-						<c:otherwise>
-							<c:forEach items="${plataformas}" var="plataforma">
-								<form:label for="${plataforma.nombre}" path="plataformas">
-									<form:checkbox id="${plataforma.nombre}" path="plataformas"
-										value="${plataforma.id}" />
-									<span>${plataforma.nombre}</span>
-								</form:label>
-
-							</c:forEach>
-						</c:otherwise>
-					</c:choose>
-
-
-				</div>
-
-				<div class="col s2"></div>
-			</div>
-			<div class="row">
-				<div class="col s2"></div>
-				<div class="col s8">
-					<form:errors path="plataformas" style="color:red"></form:errors>
-				</div>
-				<div class="col s2"></div>
-			</div>
-
-			<div class="row">
-				<div class="col s2"></div>
-				<div class="col s8">
-					<c:choose>
-						<c:when test="${editar}">
-							<button class="btn waves-effect waves-light" type="submit"
-								name="action">
-								Actualizar <i class="material-icons right">send</i>
-							</button>
-						</c:when>
-						<c:otherwise>
-							<button class="btn waves-effect waves-light" type="submit"
-								name="action">
-								Registrarse <i class="material-icons right">send</i>
-							</button>
-						</c:otherwise>
-					</c:choose>
-				</div>
-				<div class="col s2"></div>
-			</div>
-			</form:form>
-
+				</form:form>
 			</div>
 		</section>
 	</main>
@@ -359,12 +260,12 @@
 	<footer>
 		<%@include file="/WEB-INF/views/layout/footer.jsp"%>
 	</footer>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/js/jquery.js"></script>
+
+	<script
+		src="${pageContext.request.contextPath}/resources/js/materialize.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/resources/vendor/js/serie.js"></script>
-
 
 </body>
 </html>
