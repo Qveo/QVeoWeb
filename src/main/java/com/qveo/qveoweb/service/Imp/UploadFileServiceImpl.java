@@ -22,8 +22,6 @@ import com.qveo.qveoweb.service.PeliculaService;
 @Service
 public class UploadFileServiceImpl implements IUploadFileService {
 
-	private final Logger log = LoggerFactory.getLogger(getClass());
-
 	private final static String UPLOADS_FOLDER = "src/main/webapp/resources/img";
 
 	@Autowired
@@ -45,8 +43,6 @@ public class UploadFileServiceImpl implements IUploadFileService {
 		String nombreFinal = nombre2 + "_" + nombre + "." + extension;
 
 		Path rootPath = getPath(nombreFinal, accion);
-
-		log.info("rootPath: " + rootPath);
 
 		Files.deleteIfExists(rootPath);
 
@@ -101,18 +97,14 @@ public class UploadFileServiceImpl implements IUploadFileService {
 		String ruta = filename.substring(filename.lastIndexOf('/') + 1);
 		if (ruta != "defaultFoto.png") {
 			Path rootPath = getPath(ruta, accion);
-			log.info("pathBorrar1: " + rootPath);
-
 			File archivo = rootPath.toFile();
-
-			log.info("pathBorrar2: " + rootPath);
 
 			if (archivo.exists() && archivo.canRead()) {
 				if (archivo.delete()) {
 					return true;
 				}
 			}
-			
+
 		}
 		return false;
 	}

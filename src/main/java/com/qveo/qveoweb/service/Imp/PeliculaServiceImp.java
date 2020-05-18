@@ -36,12 +36,6 @@ public class PeliculaServiceImp implements PeliculaService {
 	@Autowired
 	PlataformaDao plataformaDao;
 
-	public static String directorioPelicula = "src/main/webapp/resources/img/";
-
-	public String rutaguardar = "/resources/img/pelicula/";
-
-	public String nombreFichero = "";
-
 	@Override
 	@Transactional(readOnly = true)
 	public List<Pelicula> findAll() {
@@ -58,31 +52,21 @@ public class PeliculaServiceImp implements PeliculaService {
 	@Override
 	@Transactional
 	public void save(PeliculaDto pelicula, MultipartFile foto) throws IOException {
-		
-		Pelicula peliculaNew = new Pelicula(
-				pelicula.getTitulo(),
-				pelicula.getDuracion(),
-				pelicula.getGuion(),
-				pelicula.getPoster(),
-				pelicula.getSinopsis(),
-				pelicula.getAnio(),
-				pelicula.getActores(),
-				pelicula.getGeneros(),
-				pelicula.getPais(),
-				pelicula.getDirectores()
-		);
-		
+
+		Pelicula peliculaNew = new Pelicula(pelicula.getTitulo(), pelicula.getDuracion(), pelicula.getGuion(),
+				pelicula.getPoster(), pelicula.getSinopsis(), pelicula.getAnio(), pelicula.getActores(),
+				pelicula.getGeneros(), pelicula.getPais(), pelicula.getDirectores());
+
 		peliculaNew.setId(pelicula.getId());
-		
+
 		peliculaDao.save(peliculaNew);
-		
-		if(!peliculaPlataformaDao.findByPelicula(peliculaNew).isEmpty()) {
+
+		if (!peliculaPlataformaDao.findByPelicula(peliculaNew).isEmpty()) {
 			List<PeliculaPlataforma> peliculasPlataforma = peliculaPlataformaDao.findByPelicula(peliculaNew);
 			for (PeliculaPlataforma peliPlat : peliculasPlataforma) {
 				peliculaPlataformaDao.delete(peliPlat);
 			}
 		}
-		
 
 		if (pelicula.getPlataformas() != null) {
 
@@ -102,7 +86,6 @@ public class PeliculaServiceImp implements PeliculaService {
 
 				uniqueFilename = uploadFileService.copy(foto, 2, peliculaNew.getId(), peliculaNew.getTitulo());
 				peliculaNew.setPoster("/resources/img/peliculas/" + uniqueFilename);
-				System.out.println(uniqueFilename);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -113,7 +96,7 @@ public class PeliculaServiceImp implements PeliculaService {
 			peliculaNew.setPoster("/resources/img/peliculas/" + uniqueFilename);
 
 		}
-		
+
 		peliculaDao.save(peliculaNew);
 	}
 

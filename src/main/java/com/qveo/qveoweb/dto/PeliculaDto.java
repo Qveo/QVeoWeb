@@ -4,6 +4,9 @@ import java.sql.Time;
 import java.util.Collection;
 import java.util.Date;
 
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.qveo.qveoweb.model.Actor;
@@ -17,11 +20,11 @@ public class PeliculaDto {
 		private Integer id;
 		private String titulo;
 		//@DateTimeFormat(pattern = "HH:mm:ss")
-	    private Time duracion;
+	    private String duracion;
 	    private String guion;
 	    private String poster;
 	    private String sinopsis;
-	    @DateTimeFormat(pattern = "yyyy-MM-dd")
+	    @DateTimeFormat(pattern = "dd-MM-yyyy")
 	    private Date anio;
 	    private Pais pais;
 	    private Collection<Actor> actores;
@@ -33,7 +36,7 @@ public class PeliculaDto {
 	    	
 	    }
 	    
-		public PeliculaDto(Integer id, String titulo, Time duracion, String guion, String poster, String sinopsis, Date anio,
+		public PeliculaDto(Integer id, String titulo, String duracion, String guion, String poster, String sinopsis, Date anio,
 				Pais pais, Collection<Actor> actores, Collection<Genero> generos, Collection<Director> directores, Collection<Plataforma> plataformas) {
 			this.id = id;
 			this.titulo = titulo;
@@ -65,11 +68,11 @@ public class PeliculaDto {
 			this.titulo = titulo;
 		}
 
-		public Time getDuracion() {
+		public String getDuracion() {
 			return duracion;
 		}
 
-		public void setDuracion(Time duracion) {
+		public void setDuracion(String duracion) {
 			this.duracion = duracion;
 		}
 
@@ -96,7 +99,8 @@ public class PeliculaDto {
 		public void setSinopsis(String sinopsis) {
 			this.sinopsis = sinopsis;
 		}
-
+		
+		
 		public Date getAnio() {
 			return anio;
 		}

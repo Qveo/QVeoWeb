@@ -1,20 +1,14 @@
 package com.qveo.qveoweb.model;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
+
 
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
-import java.sql.Time;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 @Entity
@@ -22,16 +16,11 @@ public class Pelicula {
 	
 	
     private Integer id;
-    
-    /*@NotNull*/
     private String titulo;
-    
-   /* @Pattern(regexp = "[\\d]")*/
-    private Time duracion;
+    private String duracion;
     private String guion;
     private String poster;
     private String sinopsis;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date anio;
     private Collection<Actor> actores;
     private Collection<Genero> generos;
@@ -44,7 +33,7 @@ public class Pelicula {
     	
     }
 
-    public Pelicula(String titulo, Time duracion, String guion, String poster, String sinopsis, Date anio,
+    public Pelicula(String titulo, String duracion, String guion, String poster, String sinopsis, Date anio,
 			Collection<Actor> actores, Collection<Genero> generos, Pais pais, Collection<Director> directores) {
 		this.titulo = titulo;
 		this.duracion = duracion;
@@ -81,11 +70,11 @@ public class Pelicula {
 
     @Basic
     @Column(name = "DURACION")
-    public Time getDuracion() {
+    public String getDuracion() {
         return duracion;
     }
 
-    public void setDuracion(Time duracion) {
+    public void setDuracion(String duracion) {
         this.duracion = duracion;
     }
 
@@ -121,6 +110,8 @@ public class Pelicula {
 
     @Basic
     @Column(name = "ANIO")
+    @DateTimeFormat(pattern = "dd-MM-yyyy")
+    @Temporal(TemporalType.DATE)
     public Date getAnio() {
         return anio;
     }
