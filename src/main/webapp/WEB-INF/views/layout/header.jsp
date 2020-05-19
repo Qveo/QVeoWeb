@@ -4,7 +4,7 @@
 		<div>
 		<nav>
 		<div>
-		<div class="nav-wrapper navbar-fixed">
+		<div>
 		<a href="#" class="sidenav-trigger" data-target="slide-out"><i class="material-icons">menu</i></a>
 		<a href="${pageContext.request.contextPath}/home" class="title-qveo">QVEO</a>
 		<ul class="right hide-on-med-and-down">

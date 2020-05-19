@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		format : 'dd-mm-yyyy',
 		yearRange : 100
 	});
-	
+
 	$('input[type=checkbox]').each(function() {
 
 		var name = $(this).attr('name');
@@ -15,5 +15,5 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	var elems = document.querySelectorAll('select');
 	var instances = M.FormSelect.init(elems);
-	
+
 });

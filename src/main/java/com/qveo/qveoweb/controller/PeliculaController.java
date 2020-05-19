@@ -1,8 +1,5 @@
 package com.qveo.qveoweb.controller;
 
-import java.io.IOException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,19 +17,17 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.qveo.qveoweb.dao.PeliculaPlataformaDao;
 import com.qveo.qveoweb.dto.PeliculaDto;
 import com.qveo.qveoweb.model.Actor;
 import com.qveo.qveoweb.model.Director;
-import com.qveo.qveoweb.model.Pais;
-import com.qveo.qveoweb.model.Plataforma;
 import com.qveo.qveoweb.model.Genero;
+import com.qveo.qveoweb.model.Pais;
 import com.qveo.qveoweb.model.Pelicula;
 import com.qveo.qveoweb.model.PeliculaPlataforma;
+import com.qveo.qveoweb.model.Plataforma;
 import com.qveo.qveoweb.service.ActorService;
 import com.qveo.qveoweb.service.DirectorService;
 import com.qveo.qveoweb.service.GeneroService;
@@ -123,7 +118,7 @@ public class PeliculaController {
 		return "peliculas/registro";
 	}
 
-	@RequestMapping(value = "/form/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
 	public String editar(Model mod, @PathVariable(value = "id") Integer id) {
 
 		Pelicula pelicula = null;
@@ -169,7 +164,7 @@ public class PeliculaController {
 		return "peliculas/registro";
 	}
 
-	@RequestMapping(value = "/form", method = RequestMethod.POST)
+	@RequestMapping(value = "/form/add", method = RequestMethod.POST)
 	public String guardar(@Valid @ModelAttribute("peliculaNueva") PeliculaDto pelicula, BindingResult br, Model mod,
 			@RequestParam("foto") MultipartFile foto, SessionStatus status) {
 		try {

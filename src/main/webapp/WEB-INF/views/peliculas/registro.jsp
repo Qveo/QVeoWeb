@@ -24,7 +24,7 @@
 	</header>
 	<main>
 		<div class="row">
-			<c:set var="action" scope="session" value="/qveo/peliculas/form" />
+			<c:set var="action" scope="session" value="/qveo/peliculas/form/add" />
 			<form:form method="POST" action="${action}"
 				modelAttribute="peliculaNueva" enctype="multipart/form-data"
 				class="col s12 white-text">
