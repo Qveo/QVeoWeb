@@ -85,8 +85,6 @@ public class SerieController {
 	public String listaSerie(Model model) {
 		List<Serie> series= serieService.findAllSerie();
 		model.addAttribute("series", series);
-		List<Plataforma> plataformas=plataformaSerive.getAllPlataformas();
-		model.addAttribute("plataformas", plataformas);
 		return "series/listaSerie";
 	}
 	

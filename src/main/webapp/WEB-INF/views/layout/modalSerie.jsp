@@ -1,9 +1,9 @@
 <c:forEach items="${series}" var="serie">
-<div id="#modal-serie-${serie.id}" class="modal info">
+<div id="modal-serie-${serie.id}" class="modal info">
 	<div class="modal-content">
 		<div class="row">
 			<div class="col s12 m12 l5 imagen-usuario">
-				<img id="img-usuario" src="${pageContext.request.contextPath}" />
+				<img src="${pageContext.request.contextPath}${serie.poster}"  width="100%"/>
 			</div>
 			<div class="col s12 m12 l7">
 				<div class="row">

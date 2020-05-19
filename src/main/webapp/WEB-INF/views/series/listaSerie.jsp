@@ -11,10 +11,12 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/general.css">
-	<link rel="stylesheet"
+<link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/icon.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/listaSerie.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/modal.css">
 </head>
 <body>
 	<header>
@@ -38,8 +40,6 @@
 				<div class="col s3">Opciones</div>
 			</div>
 
-
-
 			<c:forEach items="${series}" var="serie">
 				<div id="${serie.id}" class="row cuerpo">
 					<div class="col s3">
@@ -62,32 +62,33 @@
 									class="material-icons editar">edit</i></a>
 							</div>
 							<div class="col s12 m6 l4">
-								<a href="#modal2"
+								<a href="#modal2-serie-${serie.id}"
 									class="btn-floating btn-large red modal-trigger"><i
 									class="material-icons eliminar">delete</i></a>
 							</div>
+
 						</div>
 					</div>
 				</div>
 			</c:forEach>
-			
 
 			<!-- Modal datos serie -->
-			<%@include file="/WEB-INF/views/layout/modalSerie.jsp" %>
+			<%@include file="/WEB-INF/views/layout/modalSerie.jsp"%>
 
-			
-			<!-- Confirar eliminar usuario -->
-			<!--  <div id="modal2" class="modal confirmar">
-				<div class="modal-content">
-					<h4>Por favor debes confirmar</h4>
-					<p>¿Estás seguro de querer eliminar a este usuario?</p>
+			<c:forEach items="${series}" var="serie">
+				<!-- Confirar eliminar usuario -->
+				<div id="modal2-serie-${serie.id}" class="modal confirmar">
+					<div class="modal-content">
+						<h4>Por favor debes confirmar</h4>
+						<p>¿Estás seguro de querer eliminar a este usuario?</p>
+					</div>
+					<div class="modal-footer">
+						<a href="#!" class="waves-effect waves-green btn-flat modal-close">Cancelar</a>
+						<a href="/qveo/serie/delete/${serie.id}"
+							class="waves-effect waves-green btn-flat modal-close eliminar-usuario">Aceptar</a>
+					</div>
 				</div>
-				<div class="modal-footer">
-					<a href="#!" class="waves-effect waves-green btn-flat modal-close">Cancelar</a>
-					<a href="/qveo/serie/delete/${serie.id}" class="waves-effect waves-green btn-flat modal-close eliminar-usuario">Aceptar</a>
-				</div>
-			</div>-->
-
+			</c:forEach>
 
 		</div>
 
@@ -100,9 +101,9 @@
 	<!-- /qveo/serie/delete/${serie.id} -->
 </body>
 <script src="${pageContext.request.contextPath}/resources/js/jquery.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/js/materialize.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/vendor/js/serie.js"></script>
+<script
+	src="${pageContext.request.contextPath}/resources/js/materialize.js"></script>
+<script
+	src="${pageContext.request.contextPath}/resources/vendor/js/serie.js"></script>
 
 </html>
