@@ -129,7 +129,7 @@ public class PeliculaController {
 			pelicula = peliculaService.getPelicula(id);
 			if (pelicula == null) {
 
-				return "redirect:/listar";
+				return "redirect:/peliculas/listar";
 			}
 			peliculaPlataforma = peliculaPlataformaService.obtenerPelicula(pelicula);
 			for (PeliculaPlataforma plataforma : peliculaPlataforma) {
@@ -142,7 +142,7 @@ public class PeliculaController {
 
 		} else {
 
-			return "redirect:/listar";
+			return "redirect:/peliculas/listar";
 		}
 
 		List<Genero> generos = generoService.getAllGenero();

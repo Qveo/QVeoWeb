@@ -2,20 +2,14 @@ package com.qveo.qveoweb.service.Imp;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.Resource;
-import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.qveo.qveoweb.model.Pelicula;
 import com.qveo.qveoweb.service.IUploadFileService;
 import com.qveo.qveoweb.service.PeliculaService;
 
@@ -69,8 +63,8 @@ public class UploadFileServiceImpl implements IUploadFileService {
 			} else if (peliculaService.getPelicula(id).getPoster() == null
 					&& peliculaService.getPelicula(id).getPoster() != "/resources/img/peliculas/defaultFoto.png") {
 				nombreFinal = "defaultFoto.png";
-				System.out.println(nombreFinal);
-				System.out.println("Hola");
+				
+				
 			}
 
 			break;
@@ -95,7 +89,7 @@ public class UploadFileServiceImpl implements IUploadFileService {
 	public boolean delete(String filename, Integer accion) {
 
 		String ruta = filename.substring(filename.lastIndexOf('/') + 1);
-		if (ruta != "defaultFoto.png") {
+		if (!ruta.equals("defaultFoto.png")) {
 			Path rootPath = getPath(ruta, accion);
 			File archivo = rootPath.toFile();
 

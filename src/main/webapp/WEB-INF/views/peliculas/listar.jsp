@@ -19,6 +19,8 @@
 <%-- 	href="${pageContext.request.contextPath}/resources/css/menu.css"> --%>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/footer.css">
+	<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/modal.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/header.css">
 <title>${titulo}</title>
@@ -52,8 +54,8 @@
 					<div class="col s4">
 						<div id="${pelicula.id}" class="row opciones">
 							<div class="col s12 m3 l4">
-								<a class="btn-floating btn-large modal-trigger"
-									href="#modal-pelicula${pelicula.id }"><i
+								<a class="btn-floating btn-large modal-trigger info"
+									href="#modal-pelicula${pelicula.id}"><i
 									class="material-icons">visibility</i></a>
 							</div>
 							<div class="col s12 m3 l4">
@@ -70,15 +72,10 @@
 					</div>
 				</div>
 			</c:forEach>
-
-
-
-
-
-
-			<c:forEach items="${peliculas}" var="pelicula">
-				<%@include file="/WEB-INF/views/layout/modalDetallePelicula.jsp"%>
-			</c:forEach>
+			
+			
+				<%@include file="/WEB-INF/views/layout/pelicula/modalDetallePelicula.jsp"%>
+			
 
 			<div id="modal2" class="modal confirmar">
 				<div class="modal-content">
@@ -97,22 +94,19 @@
 		<div id="modal3" class="modal confirmar">
 			<div class="modal-content">
 				<h4>Pelicula eliminada</h4>
+			</div>
 				<div class="modal-footer">
-				<a href=""
-					class="waves-effect waves-green btn-flat modal-close">Aceptar</a>
+					<a href="" class="waves-effect waves-green btn-flat modal-close">Aceptar</a>
 				</div>
 
 			</div>
-		</div>
-
+		
 	</main>
 	<footer>
 		<%@include file="/WEB-INF/views/layout/footer.jsp"%>
 	</footer>
 
-	<c:forEach items="${peliculas}" var="pelicula">
-		<%@include file="/WEB-INF/views/layout/modalDetallePelicula.jsp"%>
-	</c:forEach>
+
 
 </body>
 <script
@@ -120,9 +114,6 @@
 <script
 	src="${pageContext.request.contextPath}/resources/vendor/js/materialize.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/header.js"></script>
-<script
-	src="${pageContext.request.contextPath}/resources/js/carousel.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/menu.js"></script>
 <script
 	src="${pageContext.request.contextPath}/resources/js/pelicula/pelicula.js"></script>
 

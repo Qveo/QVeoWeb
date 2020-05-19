@@ -23,7 +23,6 @@ public class PeliculaValidador implements Validator {
 		PeliculaDto pelicula = (PeliculaDto) target;
 
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "titulo", "empty");
-		System.out.println("Hola");
 
 		if (!pelicula.getDuracion().isEmpty()) {
 			if (!pelicula.getDuracion().matches("[0-9]{2}[:][\\d]{2}[:][\\d]{2}")) {

@@ -65,22 +65,23 @@
 
 				<div class="row">
 
-					<!-- 					<div class="input-field col s12"> -->
-					<span>Paises</span> <br>
+					<div class="input-field col s12">
+						<span>Paises</span> <br>
 
-					<form:select path="pais">
-						<form:option value="0">--Select--</form:option>
-						<c:forEach items="${paises}" var="pais">
-							<c:choose>
-								<c:when test="${pais.id == peliculaNueva.pais.id}">
-									<form:option value="${pais.id}" selected="selected">${pais.nombre}</form:option>
-								</c:when>
-								<c:otherwise>
-									<form:option value="${pais.id}">${pais.nombre}</form:option>
-								</c:otherwise>
-							</c:choose>
-						</c:forEach>
-					</form:select>
+						<form:select path="pais">
+							<form:option value="0">--Select--</form:option>
+							<c:forEach items="${paises}" var="pais">
+								<c:choose>
+									<c:when test="${pais.id == peliculaNueva.pais.id}">
+										<form:option value="${pais.id}" selected="selected">${pais.nombre}</form:option>
+									</c:when>
+									<c:otherwise>
+										<form:option value="${pais.id}">${pais.nombre}</form:option>
+									</c:otherwise>
+								</c:choose>
+							</c:forEach>
+						</form:select>
+					</div>
 					<form:errors path="pais" style="color:red" />
 				</div>
 
@@ -88,8 +89,8 @@
 				<div class="row">
 					<div class="col s2"></div>
 					<div class="col s8">
-						<form:label path="poster">Poster</form:label>
-						<input type="file" name="foto">
+						<%-- 						<form:label path="poster">Poster</form:label> --%>
+						<!-- 						<input type="file" name="foto"> -->
 
 						<c:if test="${editar== true}">
 							<form:input path="id" type="hidden" />
@@ -100,203 +101,108 @@
 							</div>
 						</c:if>
 
+						<div class="col s12 m12 l6 offset-l3">
+							<div class="file-field input-field">
+								<div class="btn">
+									<form:label path="poster">
+										<span>Poster de la pelicula</span>
+									</form:label>
+									<input type="file" name="foto" /> 
+								</div>
+								<div class="file-path-wrapper">
+									<input class="file-path validate" type="text"
+										placeholder="Suba aqui su foto">
+								</div>
+							</div>
+						</div>
+
 
 					</div>
 
 					<div class="col s2"></div>
 				</div>
 
-				<div class="row">
-					<div class="col s12">
-
-						<span>Directores</span> <br>
-						<c:choose>
-							<c:when test="${editar}">
-								<c:forEach items="${directores}" var="director">
-									<c:if test="${fn:contains(peliculaNueva.directores,director)}">
-										<form:label for="${director.nombre}" path="directores">
-											<form:checkbox id="${director.nombre}" path="directores"
-												value="${director.id}" checked="checked" />
-											<span>${director.nombre}</span>
-										</form:label>
-									</c:if>
-
-									<c:if
-										test="${not(fn:contains(peliculaNueva.directores,director))}">
-										<form:label for="${director.nombre}" path="directores">
-											<form:checkbox id="${director.nombre}" path="directores"
-												value="${director.id}" />
-											<span>${director.nombre}</span>
-										</form:label>
-									</c:if>
-								</c:forEach>
-							</c:when>
-							<c:otherwise>
-								<c:forEach items="${directores}" var="director">
-									<form:label for="${director.nombre}" path="directores">
-										<form:checkbox id="${director.nombre}" path="directores"
-											value="${director.id}" />
-										<span>${director.nombre}</span>
-									</form:label>
-								</c:forEach>
-							</c:otherwise>
-						</c:choose>
-					</div>
-				</div>
-				
+				<%@include file="/WEB-INF/views/layout/pelicula/chipsDirectores.jsp"%>
 				<div class="row">
 					<form:errors path="directores" style="color:red" />
 				</div>
 
-				<div class="row">
-					<div class="col s12">
+				<%@include file="/WEB-INF/views/layout/pelicula/chipsActores.jsp"%>
 
-
-						<span>Actores</span> <br>
-						<c:choose>
-							<c:when test="${editar}">
-								<c:forEach items="${actores}" var="actor">
-									<c:if test="${fn:contains(peliculaNueva.actores,actor)}">
-										<form:label for="${actor.nombre}" path="actores">
-											<form:checkbox id="${actor.nombre}" path="actores"
-												value="${actor.id}" checked="checked" />
-											<span>${actor.nombre}</span>
-										</form:label>
-									</c:if>
-
-									<c:if test="${not(fn:contains(peliculaNueva.actores,actor))}">
-										<form:label for="${actor.nombre}" path="actores">
-											<form:checkbox id="${actor.nombre}" path="actores"
-												value="${actor.id}" />
-											<span>${actor.nombre}</span>
-										</form:label>
-									</c:if>
-								</c:forEach>
-							</c:when>
-							<c:otherwise>
-								<c:forEach items="${actores}" var="actor">
-									<form:label for="${actor.nombre}" path="actores">
-										<form:checkbox id="${actor.nombre}" path="actores"
-											value="${actor.id}" />
-										<span>${actor.nombre}</span>
-									</form:label>
-								</c:forEach>
-							</c:otherwise>
-						</c:choose>
-					</div>
-				</div>
-				
 				<div class="row">
 					<form:errors path="actores" style="color:red" />
 				</div>
 
-				<div class="row">
-					<div class="col s12">
+				<%@include file="/WEB-INF/views/layout/pelicula/chipsGeneros.jsp"%>
 
-
-						<span>Generos</span>
-							<c:choose>
-							<c:when test="${editar}">
-								<c:forEach items="${generos}" var="genero">
-									<c:if test="${fn:contains(peliculaNueva.generos,genero)}">
-										<form:label for="${genero.nombre}" path="generos">
-											<form:checkbox id="${genero.nombre}" path="generos"
-												value="${genero.id}" checked="checked" />
-											<span>${genero.nombre}</span>
-										</form:label>
-									</c:if>
-
-									<c:if test="${not(fn:contains(peliculaNueva.generos,genero))}">
-										<form:label for="${genero.nombre}" path="generos">
-											<form:checkbox id="${genero.nombre}" path="generos"
-												value="${genero.id}" />
-											<span>${genero.nombre}</span>
-										</form:label>
-									</c:if>
-								</c:forEach>
-							</c:when>
-							<c:otherwise>
-								<c:forEach items="${generos}" var="genero">
-									<form:label for="${genero.nombre}" path="generos">
-										<form:checkbox id="${genero.nombre}" path="generos"
-											value="${genero.id}" />
-										<span>${genero.nombre}</span>
-									</form:label>
-								</c:forEach>
-							</c:otherwise>
-						</c:choose>
-					</div>
-				</div>
-				
 				<div class="row">
 					<form:errors path="generos" style="color:red" />
 				</div>
 
-				<div class="row">
-					<div class="col s12">
+				<%@include
+					file="/WEB-INF/views/layout/pelicula/chipsPlataformas.jsp"%>
 
+				<!-- 				<span>Plataforma</span> -->
+				<%-- 				<c:choose> --%>
+				<%-- 					<c:when test="${editar}"> --%>
+				<%-- 						<c:forEach items="${plataformas}" var="plataforma"> --%>
+				<%-- 							<c:if test="${fn:contains(peliculaNueva.plataformas,plataforma)}"> --%>
+				<%-- 								<form:label for="${plataforma.nombre}" path="plataformas"> --%>
+				<%-- 									<form:checkbox id="${plataforma.nombre}" path="plataformas" --%>
+				<%-- 										value="${plataforma.id}" checked="checked" /> --%>
+				<%-- 									<span>${plataforma.nombre}</span> --%>
+				<%-- 								</form:label> --%>
+				<%-- 							</c:if> --%>
 
-						<span>Plataforma</span>
-							<c:choose>
-							<c:when test="${editar}">
-								<c:forEach items="${plataformas}" var="plataforma">
-									<c:if test="${fn:contains(peliculaNueva.plataformas,plataforma)}">
-										<form:label for="${plataforma.nombre}" path="plataformas">
-											<form:checkbox id="${plataforma.nombre}" path="plataformas"
-												value="${plataforma.id}" checked="checked" />
-											<span>${plataforma.nombre}</span>
-										</form:label>
-									</c:if>
+				<%-- 							<c:if --%>
+				<%-- 								test="${not(fn:contains(peliculaNueva.plataformas,plataforma))}"> --%>
+				<%-- 								<form:label for="${plataforma.nombre}" path="plataformas"> --%>
+				<%-- 									<form:checkbox id="${plataforma.nombre}" path="plataformas" --%>
+				<%-- 										value="${plataforma.id}" /> --%>
+				<%-- 									<span>${plataforma.nombre}</span> --%>
+				<%-- 								</form:label> --%>
+				<%-- 							</c:if> --%>
+				<%-- 						</c:forEach> --%>
+				<%-- 					</c:when> --%>
+				<%-- 					<c:otherwise> --%>
+				<%-- 						<c:forEach items="${plataformas}" var="plataforma"> --%>
+				<%-- 							<form:label for="${plataforma.nombre}" path="plataformas"> --%>
+				<%-- 								<form:checkbox id="${plataforma.nombre}" path="plataformas" --%>
+				<%-- 									value="${plataforma.id}" /> --%>
+				<%-- 								<span>${plataforma.nombre}</span> --%>
+				<%-- 							</form:label> --%>
+				<%-- 						</c:forEach> --%>
+				<%-- 					</c:otherwise> --%>
+				<%-- 				</c:choose> --%>
+				<!-- 		</div> -->
 
-									<c:if test="${not(fn:contains(peliculaNueva.plataformas,plataforma))}">
-										<form:label for="${plataforma.nombre}" path="plataformas">
-											<form:checkbox id="${plataforma.nombre}" path="plataformas"
-												value="${plataforma.id}" />
-											<span>${plataforma.nombre}</span>
-										</form:label>
-									</c:if>
-								</c:forEach>
-							</c:when>
-							<c:otherwise>
-								<c:forEach items="${plataformas}" var="plataforma">
-									<form:label for="${plataforma.nombre}" path="plataformas">
-										<form:checkbox id="${plataforma.nombre}" path="plataformas"
-											value="${plataforma.id}" />
-										<span>${plataforma.nombre}</span>
-									</form:label>
-								</c:forEach>
-							</c:otherwise>
-						</c:choose>
-					</div>
-				</div>
-				
 				<div class="row">
 					<form:errors path="plataformas" style="color:red" />
 				</div>
 
 
 
-		<div class="row">
-			<div class="col s12 m12 l6 offset-l3">
+				<div class="row">
+					<div class="col s12 m12 l6 offset-l3">
 
-				<c:choose>
-						<c:when test="${editar}">
-							<button class="btn waves-effect waves-light" type="submit"
-								name="action">
-								Actualizar <i class="material-icons right">send</i>
-							</button>
-						</c:when>
-						<c:otherwise>
-							<button class="btn waves-effect waves-light" type="submit"
-								name="action">
-								Registrarse <i class="material-icons right">send</i>
-							</button>
-						</c:otherwise>
-					</c:choose>
-			</div>
-		</div>
+						<c:choose>
+							<c:when test="${editar}">
+								<button class="btn waves-effect waves-light" type="submit"
+									name="action">
+									Actualizar <i class="material-icons right">send</i>
+								</button>
+							</c:when>
+							<c:otherwise>
+								<button class="btn waves-effect waves-light" type="submit"
+									name="action">
+									Registrarse <i class="material-icons right">send</i>
+								</button>
+							</c:otherwise>
+						</c:choose>
+					</div>
+				</div>
 
-		</form:form>
+			</form:form>
 		</div>
 	</main>
 
@@ -307,9 +213,8 @@
 	src="${pageContext.request.contextPath}/resources/vendor/js/materialize.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/header.js"></script>
 
-<script src="${pageContext.request.contextPath}/resources/js/menu.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/vendor/js/pelicula.js"></script>
+<script
+	src="${pageContext.request.contextPath}/resources/vendor/js/pelicula.js"></script>
 
 
 
