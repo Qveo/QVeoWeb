@@ -8,7 +8,7 @@
 </div>
 <div class="row">
 	<div id="chips"
-		class="chipsA chips-placeholder col s12 m12 l6 offset-l3"></div>
+		class="chips chipsA chips-placeholder col s12 m12 l6 offset-l3"></div>
 	<div id="actores">
 		<c:choose>
 			<c:when test="${editar==true}">
