@@ -102,7 +102,7 @@ public class SerieController {
 		model.addAttribute("generos", generos);
 		model.addAttribute("plataformas", plataformas);
 		model.addAttribute("directores", directores);
-		model.addAttribute("actores", actores);
+	model.addAttribute("actores", actores);
 		
 		return "series/registroSerie";
 	}

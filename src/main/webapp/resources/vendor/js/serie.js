@@ -63,9 +63,9 @@ document.addEventListener('DOMContentLoaded', function() {
 		 predefinidosD[i]={tags: directoresSerie[i].className};
 	}
 	 
-	 $('.chipsD').chips({
+	 $('.chipsDirec').chips({
          placeholder: 'Directores',
-         secondaryPlaceholder: '+otro',
+         secondaryPlaceholder: '+otros',
          autocompleteOptions: {
         	 data: tagsD
          },

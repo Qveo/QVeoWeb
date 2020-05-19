@@ -188,8 +188,6 @@
 
 								</c:choose>
 							</form:select>
-							<form:errors path="pais" style="color:red"></form:errors>
-
 						</div>
 						<div class="col s2"></div>
 					</div>
@@ -201,32 +199,32 @@
 						<div class="col s2"></div>
 					</div>
 
-					<!-- Chips Actores -->
+					<!-- Chips Actores Series-->
 					<%@include file="/WEB-INF/views/layout/chipsActores.jsp"%>
 					<div class="row">
 						<div class="col s2"></div>
-						<div class="col s8">
+						<div class="col s6">
 							<form:errors path="actores" style="color:red"></form:errors>
 						</div>
 						<div class="col s2"></div>
 					</div>
 
 
-					<!-- Chips directores -->
+					<!-- Chips directores Series-->
 					<%@include file="/WEB-INF/views/layout/chipsDirectores.jsp"%>
 					<div class="row">
 						<div class="col s2"></div>
-						<div class="col s8">
+						<div class="col s6">
 							<form:errors path="directores" style="color:red"></form:errors>
 						</div>
 						<div class="col s2"></div>
 					</div>
-					<!-- plataformas de series -->
+					
+					<!--Chips plataformas de series -->
 					<%@include file="/WEB-INF/views/layout/chipsPlataforma.jsp"%>
-
 					<div class="row">
 						<div class="col s2"></div>
-						<div class="col s8">
+						<div class="col s6">
 							<form:errors path="plataformas" style="color:red"></form:errors>
 						</div>
 						<div class="col s2"></div>
@@ -261,11 +259,9 @@
 		<%@include file="/WEB-INF/views/layout/footer.jsp"%>
 	</footer>
 	<script src="${pageContext.request.contextPath}/resources/js/jquery.js"></script>
-
 	<script
 		src="${pageContext.request.contextPath}/resources/js/materialize.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/resources/vendor/js/serie.js"></script>
-
 </body>
 </html>
