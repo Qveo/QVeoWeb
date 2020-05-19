@@ -38,7 +38,7 @@
                 <c:forEach items="${plataforma.peliculaPlataformas}" var="peliculaPlataformas">
                     <div class="carousel-item">
                         <a class="waves-effect waves-light modal-trigger"
-                        href="#modal-pelicula${peliculaPlataformas.pelicula.id}">
+                        href="#modal-pelicula${plataforma.id}-${peliculaPlataformas.pelicula.id}">
                             <img src="${pageContext.request.contextPath}${peliculaPlataformas.pelicula.poster}"/>
                         </a>
                     </div>
@@ -69,7 +69,7 @@
 </body>
 <script src="${pageContext.request.contextPath}/resources/vendor/js/jquery-3.4.1.min.js"></script>
 <script
-        src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        src="${pageContext.request.contextPath}/resources/vendor/js/materialize.js"></script>
 <script
         src="${pageContext.request.contextPath}/resources/js/header.js"></script>
 <script

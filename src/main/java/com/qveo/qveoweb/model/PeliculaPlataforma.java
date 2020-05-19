@@ -49,7 +49,7 @@ public class PeliculaPlataforma {
 	
 	@ManyToOne
 	@MapsId("plataformaId")
-	@JoinColumn(name = "ID_PLATAFORMA")
+	@JoinColumn(name = "ID_PLATAFORMA", referencedColumnName = "ID", nullable = false)
 	public Plataforma getPlataforma() {
 		return plataforma;
 	}
@@ -60,7 +60,7 @@ public class PeliculaPlataforma {
 	
 	@ManyToOne
 	@MapsId("peliculaId")
-	@JoinColumn(name = "ID_PELICULA")
+	@JoinColumn(name = "ID_PELICULA", referencedColumnName = "ID", nullable = false)
 	public Pelicula getPelicula() {
 		return pelicula;
 	}
