@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		 predefinidosD[i]={tag: directoresSerie[i].className};
 	}
 	 
-	 $('.chipsDirec').chips({
+	 $('.chipsD').chips({
          placeholder: 'Directores',
          secondaryPlaceholder: '+otros',
          autocompleteOptions: {
@@ -106,5 +106,9 @@ document.addEventListener('DOMContentLoaded', function() {
 	         },
 	         data: predefinidos,
 	     });
-		 
+		 		 
+		 //Modals
+		 var modals = document.querySelectorAll('.modal');
+		 var modalInstance = M.Modal.init(modals);
 });
+
