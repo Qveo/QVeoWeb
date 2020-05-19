@@ -26,7 +26,7 @@ public class UsuarioAjaxController {
 	@RequestMapping(value = "/ajax/usuario/{id}", method = RequestMethod.GET)
     public ResponseEntity<?> getSearchResultViaAjax(@PathVariable("id") Integer id) {
 
-        Usuario usuario = usuarioService.findById(id);
+        Usuario usuario = usuarioService.getUsuario(id);
 
         return ResponseEntity.ok(usuario);
 
@@ -35,8 +35,8 @@ public class UsuarioAjaxController {
 	@RequestMapping(value = "/ajax/usuario/delete/{id}", method = RequestMethod.GET)
 	public ResponseEntity<?> deleteUser(@PathVariable("id") Integer id) {
 		
-		Usuario usuario = usuarioService.findById(id);
-		String rutaFoto = usuarioService.findById(id).getFoto();
+		Usuario usuario = usuarioService.getUsuario(id);
+		String rutaFoto = usuarioService.getUsuario(id).getFoto();
 		String ruta = rutaFoto.substring(rutaFoto.lastIndexOf('/') + 1);
 		
 

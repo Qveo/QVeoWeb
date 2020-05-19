@@ -32,12 +32,12 @@
 					<div class="input-field col s12 m6 l6 offset-l3">
 						<form:input path="nombre" id="first_name" class="validate" />
 						<form:label for="first_name" path="nombre">Nombre</form:label>
-						<form:errors path="nombre" style="color:red"></form:errors>
+						<form:errors path="nombre" class="error"></form:errors>
 					</div>
 					<div class="input-field col s12 m6 l6 offset-l3">
 						<form:input path="apellidos" id="last_name" class="validate" />
 						<form:label for="last_name" path="apellidos">Apellidos</form:label>
-						<form:errors path="apellidos" style="color:red"></form:errors>
+						<form:errors path="apellidos" class="error"></form:errors>
 					</div>
 				</div>
 				<!-- email y password usuario -->
@@ -47,7 +47,7 @@
 						<form:label for="email" path="email">Email</form:label>
 						<span class="helper-text" data-error="email inválido"
 							data-success="Perfecto!"></span>
-						<form:errors path="email" style="color:red"></form:errors>
+						<form:errors path="email" class="error"></form:errors>
 					</div>
 					<div class="input-field col s12 m6 l6 offset-l3">
 						<c:choose>
@@ -55,13 +55,13 @@
 								<form:input value="${nuevoUsuario.password}" id="password"
 									class="validate" path="password" />
 								<form:label for="password" path="password">Password</form:label>
-								<form:errors path="password" style="color:red"></form:errors>
+								<form:errors path="password" class="error"></form:errors>
 							</c:when>
 							<c:otherwise>
 								<form:password id="password" path="password" showPassword="true"
 									class="validate" />
 								<form:label for="password" path="password">Password</form:label>
-								<form:errors path="password" style="color:red"></form:errors>
+								<form:errors path="password" class="error"></form:errors>
 							</c:otherwise>
 						</c:choose>
 					</div>
@@ -82,16 +82,15 @@
 							<form:radiobutton id="fem" path="sexo" value="F" />
 							<span>Femenino</span>
 						</form:label>
-						<form:errors path="sexo" style="color:red"></form:errors>
+						<form:errors path="sexo" class="error"></form:errors>
 					</div>
-					<form:errors path="sexo" style="color:red"></form:errors>
 				</div>
 				<!--  fecha nacimiento usuario -->
 				<div class="row">
 					<div class="col s12 m12 l6 offset-l3">
 						<form:label for="date" path="fechaNacimiento">Fecha de Nacimiento</form:label>
 						<form:input id="date" class="datepicker" path="fechaNacimiento" />
-						<form:errors path="fechaNacimiento" style="color:red"></form:errors>
+						<form:errors path="fechaNacimiento" class="error"></form:errors>
 					</div>
 				</div>
 				<!-- pais usuario -->
@@ -106,14 +105,12 @@
 							<form:option value="">Pais de residencia</form:option>
 							<form:options items="${paises}" itemLabel="nombre" />
 						</form:select>
-						<form:errors path="pais" style="color:red"></form:errors>
+						<form:errors path="pais" class="error"></form:errors>
 					</div>
-					<form:errors path="pais" style="color:red"></form:errors>
 				</div>
 
 				<!-- plataformas de usuario -->
 				<%@include file="/WEB-INF/views/layout/chipsPlataforma.jsp"%>
-				<form:errors path="plataformas" style="color:red"></form:errors>
 
 				<!-- Imagen de usuario -->
 				<c:if test="${edit}">

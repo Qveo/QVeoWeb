@@ -10,9 +10,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 public interface IUploadFileService {
 
-//	public Resource load(String filename) throws MalformedURLException;
-
-	public String copy(MultipartFile file,Integer accion,String titulo) throws IOException;
+	public String copy(MultipartFile file, Integer accion, Integer id, String titulo) throws IOException;
+	
+	public String defaultFoto(Integer accion, Integer id) throws IOException;
 
 	public boolean delete(String filename,Integer accion);
 }

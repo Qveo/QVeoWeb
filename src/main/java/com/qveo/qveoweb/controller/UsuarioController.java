@@ -28,8 +28,6 @@ import org.springframework.web.multipart.MultipartFile;
 @Controller
 public class UsuarioController {
 
-	private boolean editar = false;
-
 	@Autowired
 	private UsuarioService usuarioService;
 
@@ -38,9 +36,6 @@ public class UsuarioController {
 
 	@Autowired
 	private PlataformaService plataformaService;
-
-	@Autowired
-	private IUploadFileService uploadFileService;
 	
 	@Autowired
 	private UsuarioValidator validador;
@@ -61,7 +56,6 @@ public class UsuarioController {
 
 	@RequestMapping(value = "/usuario/form", method = RequestMethod.GET)
 	public String mostrarFormulario(Model model) {
-		editar=false;
 		
 		model.addAttribute("titulo", "Registro de Usuario");
 		model.addAttribute("nuevoUsuario", new Usuario());
@@ -82,37 +76,8 @@ public class UsuarioController {
 
 				return "usuario/registro";
 			}
-
-			if (!file.isEmpty()) {
-				if(editar) {
-					
-					String rutaFoto = usuarioService.findById(usuario.getId()).getFoto();
-					String ruta = rutaFoto.substring(rutaFoto.lastIndexOf('/') + 1);
-	
-					if (usuario.getId() != null && usuario.getId() > 0 && ruta != null && ruta.length() > 0) {
-						uploadFileService.delete(ruta, 6);
-					}
-				
-				}
-				String uniqueFilename = uploadFileService.copy(file,6,usuario.getNombre());
-				usuario.setFoto("/resources/img/usuarios/"+uniqueFilename);
-			}
 			
-			if(file.isEmpty()) {
-				if(editar) {
-					usuario.setFoto(usuarioService.findById(usuario.getId()).getFoto());
-					usuarioService.saveUser(usuario);
-					return "redirect:/usuario/list";
-				}
-				
-				model.addAttribute("paises", paisService.getAllPais());
-				model.addAttribute("plataformas", plataformaService.getAllPlataformas());
-				model.addAttribute("fotoerror", "Introduce una foto, por favor");
-				return "usuario/registro";
-				
-			}
-			
-			usuarioService.saveUser(usuario);
+			usuarioService.saveUser(usuario,file);
 
 		} catch (IOException e) {
 
@@ -124,14 +89,13 @@ public class UsuarioController {
 
 	@RequestMapping(value = "/usuario/edit/{id}", method = RequestMethod.GET)
 	public String editUsuario(Model modelo, @PathVariable("id") Integer id, Model model) {
-		
-		editar=true;
-		Usuario usuario = usuarioService.findById(id);
+
+		Usuario usuario = usuarioService.getUsuario(id);
 		model.addAttribute("paises", paisService.getAllPais());
 		model.addAttribute("plataformas", plataformaService.getAllPlataformas());
 
 		modelo.addAttribute("nuevoUsuario", usuario);
-		modelo.addAttribute("edit", editar);
+		modelo.addAttribute("edit", true);
 		model.addAttribute("titulo", "Editar Usuario");
 		
 		return "usuario/registro";
