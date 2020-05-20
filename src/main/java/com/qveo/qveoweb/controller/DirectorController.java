@@ -27,23 +27,19 @@ import com.qveo.qveoweb.validation.DirectorValidador;
 @RequestMapping("/directores")
 public class DirectorController {
 
-	Boolean editar = false;
+
 
 	@Autowired
 	private DirectorValidador validador;
-	
+
+
 	@Autowired
-	UploadFileService uploadFileService;
-	
-	@Autowired
-	DirectorService dirService;
-	
-	
+	private DirectorService dirService;
+
 	@InitBinder
 	public void InitBinder(WebDataBinder binder) {
 		binder.setValidator(validador);
 	}
-	
 
 	@RequestMapping(value = "/listar", method = RequestMethod.GET)
 	public String listado(Model mod) {
@@ -70,7 +66,7 @@ public class DirectorController {
 
 	@RequestMapping(value = "/form", method = RequestMethod.GET)
 	public String crear(Model mod) {
-		editar = false;
+	
 		Director director = new Director();
 		mod.addAttribute("Title", "Registro de director");
 		mod.addAttribute("directorNuevo", director);
@@ -79,9 +75,9 @@ public class DirectorController {
 
 	}
 
-	@RequestMapping(value = "/form/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
 	public String editar(Model mod, @PathVariable(value = "id") Integer id) {
-		editar = true;
+	
 		Director director = null;
 
 		if (id > 0) {
@@ -95,7 +91,7 @@ public class DirectorController {
 			return "redirect:/directores/listar";
 		}
 
-		mod.addAttribute("edit", true);
+		mod.addAttribute("editar", true);
 		mod.addAttribute("Title", "Editar director");
 		mod.addAttribute("directorNuevo", director);
 
@@ -103,67 +99,24 @@ public class DirectorController {
 
 	}
 
-	@RequestMapping(value = "/form", method=RequestMethod.POST)
+	@RequestMapping(value = "/form/add", method = RequestMethod.POST)
 	public String guardar(@Valid @ModelAttribute("directorNuevo") Director director, BindingResult br, Model mod,
 			@RequestParam("retrato") MultipartFile foto, SessionStatus status) {
 
 		try {
 			if (br.hasErrors()) {
-				
-				System.out.println("HOLA");
-				System.out.println(director.getNombre());
-				System.out.println(director.getFoto());
 
+		
+				mod.addAttribute("directorNuevo", director);
 				mod.addAttribute("titulo", "Formulario de Director");
 				return "directores/registro";
 
-			}
-
-			if (!foto.isEmpty()) {
-				if (editar == true) {
-					String rutaFoto = dirService.getDirector(director.getId()).getFoto();
-					String ruta = rutaFoto.substring(rutaFoto.lastIndexOf('/') + 1);
-
-					if (director.getId() != null && director.getId() > 0 && ruta != null && ruta.length() > 0) {
-					
-
-						uploadFileService.delete(ruta,4);
-					}
-				}
-
-				String uniqueFilename = null;
-				try {
-					uniqueFilename = uploadFileService.copy(foto,4,director.getNombre());
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				System.out.println(uniqueFilename);
-				director.setFoto("/resources/img/directores/" + uniqueFilename);
-			}
-
-			if (editar == true) {
-				if (foto.isEmpty()) {
-					director.setFoto(dirService.getDirector(director.getId()).getFoto());
-				}
-			}
-			
-			if (foto.isEmpty()) {
-				System.out.println(director.getNombre());
-				System.out.println(director.getFoto());
-
-				mod.addAttribute("titulo", "Formulario del director");
-				mod.addAttribute("fotoerror", "Introduce una foto, por favor");
-				return "directores/registro";
-				
-			}
-			System.out.println(director);
-
-			dirService.save(director);
+			} 
+			dirService.save(director,foto);
 			status.setComplete();
 
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+	
 			e.printStackTrace();
 
 		}
@@ -175,16 +128,7 @@ public class DirectorController {
 	@RequestMapping(value = "/delete/{id}")
 	public String eliminar(@PathVariable(value = "id") Integer id) {
 		if (id > 0) {
-			Director director = dirService.getDirector(id);
-			
-			String rutaFoto = director.getFoto();
-			System.out.println(rutaFoto);
-			
-			String ruta = rutaFoto.substring(rutaFoto.lastIndexOf('/') + 1);
-
-			uploadFileService.delete(ruta,4);
 			dirService.delete(id);
-
 		}
 
 		return "redirect:/directores/listar";
