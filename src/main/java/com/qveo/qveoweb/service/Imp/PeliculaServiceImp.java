@@ -56,8 +56,35 @@ public class PeliculaServiceImp implements PeliculaService {
 		Pelicula peliculaNew = new Pelicula(pelicula.getTitulo(), pelicula.getDuracion(), pelicula.getGuion(),
 				pelicula.getPoster(), pelicula.getSinopsis(), pelicula.getAnio(), pelicula.getActores(),
 				pelicula.getGeneros(), pelicula.getPais(), pelicula.getDirectores());
+		
+		Integer last = null;
+		if (pelicula.getId() == null) {
+			Integer last_id = last().getId();
+			last = last_id + 1;
+		}else {
+			last = pelicula.getId();
+			
+		}
 
-		peliculaNew.setId(pelicula.getId());
+		
+		System.out.println(last);
+		
+		if (!foto.isEmpty()) {
+			try {
+				String uniqueFilename = null;
+
+				uniqueFilename = uploadFileService.copy(foto, 2, last, peliculaNew.getTitulo());
+				peliculaNew.setPoster("/resources/img/peliculas/" + uniqueFilename);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+		} else if (foto.isEmpty()) {
+			String uniqueFilename = null;
+			uniqueFilename = uploadFileService.defaultFoto(2, last);
+			peliculaNew.setPoster("/resources/img/peliculas/" + uniqueFilename);
+
+		}
 
 		peliculaDao.save(peliculaNew);
 
@@ -80,22 +107,7 @@ public class PeliculaServiceImp implements PeliculaService {
 			}
 		}
 
-		if (!foto.isEmpty()) {
-			try {
-				String uniqueFilename = null;
-
-				uniqueFilename = uploadFileService.copy(foto, 2, peliculaNew.getId(), peliculaNew.getTitulo());
-				peliculaNew.setPoster("/resources/img/peliculas/" + uniqueFilename);
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-
-		} else if (foto.isEmpty()) {
-			String uniqueFilename = null;
-			uniqueFilename = uploadFileService.defaultFoto(2, peliculaNew.getId());
-			peliculaNew.setPoster("/resources/img/peliculas/" + uniqueFilename);
-
-		}
+		
 
 		peliculaDao.save(peliculaNew);
 	}
@@ -112,6 +124,14 @@ public class PeliculaServiceImp implements PeliculaService {
 			}
 		}
 		peliculaDao.deleteById(pelicula.getId());
+
+	}
+	
+	@Override
+	public Pelicula last() {
+		Pelicula pelicula = peliculaDao.findTopByOrderByIdDesc();
+
+		return pelicula;
 
 	}
 

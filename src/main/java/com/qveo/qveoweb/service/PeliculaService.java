@@ -14,6 +14,7 @@ public interface PeliculaService {
 	public Pelicula getPelicula(Integer id);
 	public void save(PeliculaDto pelicula, MultipartFile foto) throws IOException;
 	public void delete(Pelicula pelicula);
+	public Pelicula last ();
 	
 
 	

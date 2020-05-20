@@ -12,4 +12,5 @@ import java.util.List;
 @Repository
 public interface PeliculaDao extends JpaRepository<Pelicula, Integer> {
 	//List<Pelicula> findByPlataformasIn(Collection<Plataforma> plataformas);
+	Pelicula findTopByOrderByIdDesc();
 }
