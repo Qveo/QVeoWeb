@@ -20,3 +20,8 @@ footer{
     padding-top: -10vh;
     height: 307px;
 }
+
+.page-footer{
+    background-color: #222831 !important;
+    color: #00adb5 !important;
+}

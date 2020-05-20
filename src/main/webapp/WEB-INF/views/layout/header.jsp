@@ -1,3 +1,5 @@
+
+
 <div class="navbar-fixed">
 	<nav>
 		<div class="nav-wrapper">
@@ -5,12 +7,6 @@
 				class="material-icons">menu</i></a> <a
 				href="${pageContext.request.contextPath}/home" class="title-qveo">QVEO</a>
 			<ul class="right hide-on-med-and-down">
-				<!-- Texto de busqueda -->
-				<li>
-					<div id="buscar-nombre" class="input-field col s12">
-						<input type="text" id="autocomplete-input" class="autocomplete">
-					</div>
-				</li>
 				<li><a href="#">Inicio</a></li>
 				<li><a href="#">B&uacutesqueda</a></li>
 				<li><a href="#">Series</a></li>
@@ -29,11 +25,6 @@
 		<a href="#"><img class="circle icon-user icon-user-sidenav"
 			src="${pageContext.request.contextPath}/resources/img/iconouser.jpg"></a>
 	</div>
-	<li>
-		<div id="buscar-nombre" class="input-field col s12">
-			<input type="text" id="autocomplete-input" class="autocomplete">
-		</div>
-	</li>
 	<li><a href="#" class="font-color-sidenav">Inicio</a></li>
 	<li><a href="#" class="font-color-sidenav">B&uacutesqueda</a></li>
 	<li><a href="#" class="font-color-sidenav">Series</a></li>
@@ -42,11 +33,3 @@
 	<li><a href="#" class="font-color-sidenav">Mi lista</a></li>
 	<li><div class="divider"></div></li>
 </ul>
-
-
-<script
-	src="${pageContext.request.contextPath}/resources/vendor/js/jquery-3.4.1.min.js"></script>
-<script
-	src="${pageContext.request.contextPath}/resources/vendor/js/materialize.js"></script>
-<script
-	src="${pageContext.request.contextPath}/resources/js/busqueda.js"></script>
