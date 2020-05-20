@@ -12,7 +12,6 @@
     <link rel="stylesheet"
           href="${pageContext.request.contextPath}/resources/css/carousel.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/general.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/menu.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/header.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/modal.css">
 </head>
@@ -75,6 +74,5 @@
         src="${pageContext.request.contextPath}/resources/js/header.js"></script>
 <script
         src="${pageContext.request.contextPath}/resources/js/carousel.js"></script>
-<script
-        src="${pageContext.request.contextPath}/resources/js/menu.js"></script>
+
 </html>

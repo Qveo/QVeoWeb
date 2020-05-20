@@ -1,6 +1,9 @@
 package com.qveo.qveoweb.model;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.sql.Date;
 import java.util.Collection;
 import java.util.stream.Collectors;
@@ -97,6 +100,7 @@ public class Serie {
             joinColumns = @JoinColumn(name = "id_serie", nullable = false),
             inverseJoinColumns = @JoinColumn(name = "id_actor", nullable = false)
     )
+    @JsonIgnore
     public Collection<Actor> getActores() {
         return actores;
     }
@@ -111,6 +115,7 @@ public class Serie {
             joinColumns = @JoinColumn(name = "id_serie", nullable = false),
             inverseJoinColumns = @JoinColumn(name = "id_director", nullable = false)
     )
+    @JsonIgnore
     public Collection<Director> getDirectores() {
         return directores;
     }
@@ -125,6 +130,7 @@ public class Serie {
             joinColumns = @JoinColumn(name = "id_serie", nullable = false),
             inverseJoinColumns = @JoinColumn(name = "id_genero", nullable = false)
     )
+    @JsonIgnore
     public Collection<Genero> getGeneros() {
         return generos;
     }
@@ -135,6 +141,7 @@ public class Serie {
 
     @ManyToOne
     @JoinColumn(name = "ID_PAIS", referencedColumnName = "ID", nullable = false)
+    @JsonIgnore
     public Pais getPais() {
         return pais;
     }
@@ -150,6 +157,7 @@ public class Serie {
             joinColumns = @JoinColumn(name = "id_serie", nullable = false),
             inverseJoinColumns = @JoinColumn(name = "id_plataforma", nullable = false)
     )
+    @JsonIgnore
     public Collection<Plataforma> getPlataformas() {
         return plataformas;
     }
@@ -159,6 +167,7 @@ public class Serie {
     }
 
     @ManyToMany(mappedBy = "series")
+    @JsonIgnore
     public Collection<Usuario> getUsuarios() {
         return usuarios;
     }
