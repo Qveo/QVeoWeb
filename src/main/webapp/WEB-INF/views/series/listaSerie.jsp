@@ -14,6 +14,8 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/icon.css">
 <link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/header.css">
+<link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/listaSerie.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/modal.css">
@@ -98,12 +100,11 @@
 	<footer>
 		<%@include file="/WEB-INF/views/layout/footer.jsp"%>
 	</footer>
-	<!-- /qveo/serie/delete/${serie.id} -->
 </body>
-<script src="${pageContext.request.contextPath}/resources/js/jquery.js"></script>
+<script src="${pageContext.request.contextPath}/resources/vendor/js/jquery-3.4.1.min.js"></script>
 <script
-	src="${pageContext.request.contextPath}/resources/js/materialize.js"></script>
+	src="${pageContext.request.contextPath}/resources/vendor/js/materialize.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/header.js"></script>
 <script
 	src="${pageContext.request.contextPath}/resources/vendor/js/serie.js"></script>
-
 </html>

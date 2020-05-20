@@ -1,6 +1,5 @@
 package com.qveo.qveoweb.controller;
 
-
 import java.io.IOException;
 import java.util.List;
 
@@ -36,87 +35,85 @@ import com.qveo.qveoweb.service.PlataformaService;
 import com.qveo.qveoweb.service.SerieService;
 import com.qveo.qveoweb.validation.SerieValidador;
 
-
 @Controller
 public class SerieController {
 	Boolean editar = false;
-	
+
 	@Autowired
 	SerieService serieService;
-	
+
 	@Autowired
 	GeneroService generoService;
-	
+
 	@Autowired
 	PaisService paisService;
-	
+
 	@Autowired
 	PlataformaService plataformaSerive;
-	
+
 	@Autowired
 	DirectorService directorService;
-	
+
 	@Autowired
 	IUploadFileService uploadFileService;
-	
+
 	@Autowired
 	SerieValidador validador;
-	
+
 	@Autowired
 	ActorService actorService;
-	
+
 	@InitBinder
 	public void InitBinder(WebDataBinder binder) {
 		binder.setValidator(validador);
 	}
-	
-	
+
 	@GetMapping("/serie/{id}")
 	public String Serie(@PathVariable Integer id, Model model) {
 
-		Serie series=serieService.getSerie(id).get();
-				
+		Serie series = serieService.getSerie(id);
+
 		model.addAttribute("series", series);
-	
+
 		return "series/serie";
 	}
-	
+
 	@GetMapping("/serie/listar")
 	public String listaSerie(Model model) {
-		List<Serie> series= serieService.findAllSerie();
+		List<Serie> series = serieService.findAllSerie();
 		model.addAttribute("series", series);
 		return "series/listaSerie";
 	}
-	
+
 	@GetMapping("/serie/form")
 	public String SerieFormulario(Model model) {
-		editar=false;
-		List<Genero> generos=generoService.getAllGenero();
-		List<Pais> paises=paisService.getAllPais();
-		List<Plataforma> plataformas=plataformaSerive.getAllPlataformas();
-		List<Director> directores=directorService.getAllDirector();
-		List<Actor> actores= actorService.getAllActores();
-		
-		model.addAttribute("serieNueva",new Serie());
+		editar = false;
+		List<Genero> generos = generoService.getAllGenero();
+		List<Pais> paises = paisService.getAllPais();
+		List<Plataforma> plataformas = plataformaSerive.getAllPlataformas();
+		List<Director> directores = directorService.getAllDirector();
+		List<Actor> actores = actorService.getAllActores();
+
+		model.addAttribute("serieNueva", new Serie());
 		model.addAttribute("paises", paises);
 		model.addAttribute("generos", generos);
 		model.addAttribute("plataformas", plataformas);
 		model.addAttribute("directores", directores);
-	model.addAttribute("actores", actores);
-		
+		model.addAttribute("actores", actores);
+
 		return "series/registroSerie";
 	}
-	
+
 	@GetMapping("/serie/edit/{id}")
 	public String editarSerie(Model model, @PathVariable("id") Integer id) {
-		editar=true;		
-		List<Genero> generos=generoService.getAllGenero();
-		List<Pais> paises=paisService.getAllPais();
-		List<Plataforma> plataformas=plataformaSerive.getAllPlataformas();
-		List<Director> directores=directorService.getAllDirector();	
-		Serie serieEditar=serieService.getSerie(id).get();
-		List<Actor> actores= actorService.getAllActores();
-		
+		editar = true;
+		List<Genero> generos = generoService.getAllGenero();
+		List<Pais> paises = paisService.getAllPais();
+		List<Plataforma> plataformas = plataformaSerive.getAllPlataformas();
+		List<Director> directores = directorService.getAllDirector();
+		Serie serieEditar = serieService.getSerie(id);
+		List<Actor> actores = actorService.getAllActores();
+
 		model.addAttribute("editar", true);
 		model.addAttribute("serieNueva", serieEditar);
 		model.addAttribute("paises", paises);
@@ -124,80 +121,51 @@ public class SerieController {
 		model.addAttribute("plataformas", plataformas);
 		model.addAttribute("directores", directores);
 		model.addAttribute("actores", actores);
-	
+
 		return "series/registroSerie";
 	}
-	
+
 	@PostMapping("/serie/form")
-	public String guardar(@Valid @ModelAttribute("serieNueva") Serie serieNueva, BindingResult br ,Model model,
-			@RequestParam("posters") MultipartFile file, RedirectAttributes redirectAttrs,SessionStatus status) {
-		
-		if(br.hasErrors()) {
-			
-			List<Genero> generos=generoService.getAllGenero();
-			List<Pais> paises=paisService.getAllPais();
-			List<Plataforma> plataformas=plataformaSerive.getAllPlataformas();
-			List<Director> directores=directorService.getAllDirector();	
-			List<Actor> actores= actorService.getAllActores();
-			
-			model.addAttribute("editar", true);
-			model.addAttribute("serieNueva", serieNueva);
-			model.addAttribute("paises", paises);
-			model.addAttribute("generos", generos);
-			model.addAttribute("plataformas", plataformas);
-			model.addAttribute("directores", directores);
-			model.addAttribute("actores", actores);
-		
-			return "series/registroSerie";
-		}
-		
-		if(!file.isEmpty()) {
-			if(editar==true) {
-				String rutaFoto = serieService.getSerie(serieNueva.getId()).get().getPoster();
-				String ruta = rutaFoto.substring(rutaFoto.lastIndexOf('/') + 1);
+	public String guardar(@Valid @ModelAttribute("serieNueva") Serie serieNueva, BindingResult br, Model model,
+			@RequestParam("posters") MultipartFile file, RedirectAttributes redirectAttrs, SessionStatus status) {
+		try {
+			if (br.hasErrors()) {
 
-				if (serieNueva.getId() != null && serieNueva.getId() > 0 && ruta != null && ruta.length() > 0) {
+				List<Genero> generos = generoService.getAllGenero();
+				List<Pais> paises = paisService.getAllPais();
+				List<Plataforma> plataformas = plataformaSerive.getAllPlataformas();
+				List<Director> directores = directorService.getAllDirector();
+				List<Actor> actores = actorService.getAllActores();
 
-					uploadFileService.delete(ruta, 1);
+				model.addAttribute("editar", true);
+				model.addAttribute("serieNueva", serieNueva);
+				model.addAttribute("paises", paises);
+				model.addAttribute("generos", generos);
+				model.addAttribute("plataformas", plataformas);
+				model.addAttribute("directores", directores);
+				model.addAttribute("actores", actores);
 
-				}
+				return "series/registroSerie";
 			}
-			
-			String uniqueFilename = null; 
-			
-			try {
-				uniqueFilename = uploadFileService.copy(file,1,serieNueva.getTitulo());
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
-			
-			serieNueva.setPoster("/resources/img/series/" +uniqueFilename);
-			
+
+			serieService.save(serieNueva, file);
+			status.setComplete();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
-		
-		if(file.isEmpty() && editar==true) {
-				serieNueva.setPoster(serieService.getSerie(serieNueva.getId()).get().getPoster());
-		}
-		
-		serieService.save(serieNueva);
-		status.setComplete();
-		
 		return "redirect:/serie/listar";
 	}
-	
+
 	@GetMapping("/serie/delete/{id}")
 	public String deleteSerie(@PathVariable("id") Integer id) {
 
-		String rutaFoto = serieService.getSerie(id).get().getPoster();
+		String rutaFoto = serieService.getSerie(id).getPoster();
 		String ruta = rutaFoto.substring(rutaFoto.lastIndexOf('/') + 1);
-		
+
 		serieService.deleteSerie(id);
-		uploadFileService.delete(ruta,1);
-		
+		uploadFileService.delete(ruta, 1);
+
 		return "redirect:/serie/listar";
 	}
-	
-	
+
 }

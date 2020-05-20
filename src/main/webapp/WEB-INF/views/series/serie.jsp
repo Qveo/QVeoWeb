@@ -15,6 +15,8 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/general.css">
 <link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/header.css">
+<link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/serie.css">
 </head>
 <body>
@@ -55,28 +57,28 @@
 
 					<h5>Sinopsis</h5>
 					<p>${series.sinopsis}</p>
-					
-				<div>
-					<h5>Genero:</h5>
-				<ul>
-					<c:forEach items="${series.generos}" var="genero">
 
-						<li><a class="genero">${genero.nombre}</a></li>
-					</c:forEach>
-				</ul>
-			</div>	
+					<div>
+						<h5>Genero:</h5>
+						<ul>
+							<c:forEach items="${series.generos}" var="genero">
+
+								<li><a class="genero">${genero.nombre}</a></li>
+							</c:forEach>
+						</ul>
+					</div>
 
 
-				<div>
-					<h5>
-						Plataformas:
-						<c:forEach items="${series.plataformas}" var="plataforma">
+					<div>
+						<h5>
+							Plataformas:
+							<c:forEach items="${series.plataformas}" var="plataforma">
                      
                      ${plataforma.nombre}
                      
                        </c:forEach>
-					</h5>
-				</div>
+						</h5>
+					</div>
 				</div>
 			</div>
 
@@ -87,23 +89,23 @@
 		<div class="row">
 			<div class="col s1"></div>
 			<div class="col s10 ">
-					<div class="col s4">
+				<div class="col s4">
 
-						<h5>Director:</h5>
-						<ul>
-							<c:forEach items="${series.directores}" var="director">
-								<li>
-									<div class="col s3">
-										<img src="${pageContext.request.contextPath}${director.foto}"
-											alt="${director.nombre}" width="100%">
-										<div>
-											<a href="#"> ${director.nombre}</a>
-										</div>
+					<h5>Director:</h5>
+					<ul>
+						<c:forEach items="${series.directores}" var="director">
+							<li>
+								<div class="col s3">
+									<img src="${pageContext.request.contextPath}${director.foto}"
+										alt="${director.nombre}" width="100%">
+									<div>
+										<a href="#"> ${director.nombre}</a>
 									</div>
-								</li>
-							</c:forEach>
-						</ul>
-					</div>
+								</div>
+							</li>
+						</c:forEach>
+					</ul>
+				</div>
 				<div class="col s8">
 					<h5>Reparto:</h5>
 
@@ -121,9 +123,9 @@
 						</c:forEach>
 					</ul>
 				</div>
-		</div>
 			</div>
-			<div class="row">
+		</div>
+		<div class="row">
 			<div class="col s1"></div>
 			<div class="col s8">
 				<div>
@@ -143,10 +145,10 @@
 						<td>Fecha</td>
 					</tr>
 				</table>
-				</div>
-				<div class="col s3"></div>
 			</div>
-		
+			<div class="col s3"></div>
+		</div>
+
 		<div class="col s1"></div>
 
 
@@ -156,6 +158,11 @@
 		<%@include file="/WEB-INF/views/layout/footer.jsp"%>
 	</footer>
 	<script
-		src="${pageContext.request.contextPath}/resources/js/materialize.js"></script>
+		src="${pageContext.request.contextPath}/resources/vendor/js/jquery-3.4.1.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/vendor/js/materialize.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/header.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/vendor/js/serie.js"></script>
 </body>
 </html>

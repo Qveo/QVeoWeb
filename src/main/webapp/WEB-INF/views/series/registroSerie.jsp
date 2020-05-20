@@ -13,6 +13,8 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/materialize.css">
 <link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/header.css">
+<link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/general.css">
 </head>
 <body>
@@ -219,7 +221,7 @@
 						</div>
 						<div class="col s2"></div>
 					</div>
-					
+
 					<!--Chips plataformas de series -->
 					<%@include file="/WEB-INF/views/layout/chipsPlataforma.jsp"%>
 					<div class="row">
@@ -258,10 +260,11 @@
 	<footer>
 		<%@include file="/WEB-INF/views/layout/footer.jsp"%>
 	</footer>
-	<script src="${pageContext.request.contextPath}/resources/js/jquery.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/js/materialize.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/vendor/js/serie.js"></script>
+<script src="${pageContext.request.contextPath}/resources/vendor/js/jquery-3.4.1.min.js"></script>
+<script
+	src="${pageContext.request.contextPath}/resources/vendor/js/materialize.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/header.js"></script>
+<script
+	src="${pageContext.request.contextPath}/resources/vendor/js/serie.js"></script>
 </body>
 </html>

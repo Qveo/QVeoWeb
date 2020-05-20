@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	var fecha = document.querySelectorAll('.datepicker');
 	var instance = M.Datepicker.init(fecha, {
 		format : 'dd-mm-yyyy',
-		yearRange : 100
+		yearRange : 40
 	});
 	
 	//Checkbox

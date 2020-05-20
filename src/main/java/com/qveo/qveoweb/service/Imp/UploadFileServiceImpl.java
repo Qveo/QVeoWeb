@@ -7,14 +7,18 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+
+import com.qveo.qveoweb.model.Serie;
 import com.qveo.qveoweb.service.IUploadFileService;
+import com.qveo.qveoweb.service.PeliculaService;
+import com.qveo.qveoweb.service.SerieService;
 
 @Service
 public class UploadFileServiceImpl implements IUploadFileService {
@@ -23,46 +27,92 @@ public class UploadFileServiceImpl implements IUploadFileService {
 
 	private final static String UPLOADS_FOLDER = "src/main/webapp/resources/img";
 
-	@Override
-	public String copy(MultipartFile file,Integer accion,String titulo) throws IOException {
-		String nombre=titulo.trim().toLowerCase().replaceAll("\\s+", "_");
-		
-		String uniqueFilename = file.getOriginalFilename();
-		
-		String extension=uniqueFilename.substring(uniqueFilename.lastIndexOf(".") + 1);
-		
-		String nombreFinal=nombre+"."+extension;
-				
-		Path rootPath = getPath(nombreFinal,accion);
+	@Autowired
+	SerieService serieService;
 
-//		log.info("rootPath: " + rootPath);
+	@Override
+	public String copy(MultipartFile file, Integer accion, Integer id, String titulo) throws IOException {
+		String nombre = String.valueOf(id);
+
+		String nombre2 = titulo.trim().toLowerCase().replaceAll("\\s+", "_");
+
+		String uniqueFilename = null;
+
+		uniqueFilename = file.getOriginalFilename();
+
+		String extension = uniqueFilename.substring(uniqueFilename.lastIndexOf(".") + 1);
+
+		String nombreFinal = nombre2 + "_" + nombre + "." + extension;
+
+		Path rootPath = getPath(nombreFinal, accion);
+
+		Files.deleteIfExists(rootPath);
 
 		Files.copy(file.getInputStream(), rootPath);
 
 		return nombreFinal;
 	}
-	
 
 	@Override
-	public boolean delete(String filename,Integer accion) {
-		
-		Path rootPath = getPath(filename,accion);
-		
-//		log.info("pathBorrar1: " + rootPath);
-		
-		File archivo = rootPath.toFile();
-		
-//		log.info("pathBorrar2: " + rootPath);
+	public boolean delete(String filename, Integer accion) {
 
-		if (archivo.exists() && archivo.canRead()) {
-			if (archivo.delete()) {
-				return true;
+		String ruta = filename.substring(filename.lastIndexOf('/') + 1);
+
+		if (!ruta.equals("defaultFoto.jpg")) {
+
+			Path rootPath = getPath(filename, accion);
+
+			File archivo = rootPath.toFile();
+
+			if (archivo.exists() && archivo.canRead()) {
+				if (archivo.delete()) {
+					return true;
+				}
 			}
 		}
+
 		return false;
 	}
 
-	public Path getPath(String filename,Integer accion) {
+	@Override
+	public String defaultFoto(Integer accion, Integer id) throws IOException {
+		String nombreFinal = "";
+
+		switch (accion) {
+		case 1:
+
+			if (serieService.getSerie(id).getPoster() != null) {
+				String nombre = serieService.getSerie(id).getPoster();
+				nombreFinal = nombre.substring(nombre.lastIndexOf('/') + 1);
+				System.out.println(nombreFinal);
+			} else if (serieService.getSerie(id).getPoster() == null
+					&& serieService.getSerie(id).getPoster() != "/resources/img/series/defaultFoto.jpg") {
+				nombreFinal = "defaultFoto.jpg";
+			}
+
+			break;
+
+		case 2:
+
+			break;
+		case 3:
+
+			break;
+		case 4:
+
+			break;
+		case 5:
+
+			break;
+		case 6:
+
+			break;
+
+		}
+		return nombreFinal;
+	}
+
+	public Path getPath(String filename, Integer accion) {
 		String ruta = "";
 		switch (accion) {
 		case 1:
@@ -86,6 +136,5 @@ public class UploadFileServiceImpl implements IUploadFileService {
 		}
 		return Paths.get(ruta).resolve(filename).toAbsolutePath();
 	}
-
 
 }
