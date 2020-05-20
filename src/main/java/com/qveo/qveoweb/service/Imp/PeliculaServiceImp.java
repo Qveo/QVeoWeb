@@ -63,6 +63,7 @@ public class PeliculaServiceImp implements PeliculaService {
 			last = last_id + 1;
 		}else {
 			last = pelicula.getId();
+			peliculaNew.setId(last);
 			
 		}
 
