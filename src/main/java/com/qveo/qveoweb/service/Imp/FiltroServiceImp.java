@@ -11,6 +11,7 @@ import java.util.Comparator;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -19,6 +20,7 @@ import org.springframework.stereotype.Service;
 
 import com.qveo.qveoweb.dao.PeliculaDao;
 import com.qveo.qveoweb.dao.SerieDao;
+import com.qveo.qveoweb.model.Director;
 import com.qveo.qveoweb.model.Genero;
 import com.qveo.qveoweb.model.Pelicula;
 import com.qveo.qveoweb.model.PeliculaPlataforma;
@@ -110,6 +112,7 @@ public class FiltroServiceImp implements FiltroService {
 			serieFiltra.addAll(serieDao.findByPlataformasInAndGenerosInAndFechaInicioBetween(plataformas, genero,
 					fechaInicio, fechafinal));
 		}
+		
 		return serieFiltra.stream().distinct().collect(Collectors.toList());
 	}
 
@@ -118,7 +121,7 @@ public class FiltroServiceImp implements FiltroService {
 			Collection<Plataforma> plataforma) {
 		List<Pelicula> peli = new ArrayList<Pelicula>(new HashSet<Pelicula>());
 		List<Pelicula> peliFitrada= new ArrayList<Pelicula>(new HashSet<Pelicula>());
-		PeliculaPlataforma peliculaplataforma=new PeliculaPlataforma();
+		
 				
 		Collection<Genero> genero = null;
 		if (generosBuscar.isEmpty()==true) {
@@ -180,5 +183,7 @@ public class FiltroServiceImp implements FiltroService {
 		}
 		return respuesta;
 	}
+
+
 
 }

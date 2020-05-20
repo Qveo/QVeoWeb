@@ -15,6 +15,9 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/general.css">
+	<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/filtro.css">
+
 </head>
 <body>
 	<header>
@@ -22,11 +25,32 @@
 	</header>
 
 	<main>
-		<h1>hola mundo Series</h1>
+		<h1>Filtro</h1>
 		<section>
 			<form:form method="POST" action="/qveo/filtros"
 				modelAttribute="seriesBuscar">
 				<div class="row">
+				<div class="row">
+					<div class="col s1"></div>
+					<div class="col s6 ">
+						<ul>
+							<li><form:label path="accionFiltro" for="todos">
+									<form:radiobutton id="todos" path="accionFiltro" value="1" checked="checked"/>
+									<span>Todo</span>
+								</form:label></li>
+							<li><form:label path="accionFiltro" for="series">
+									<form:radiobutton id="series" path="accionFiltro" value="2" />
+									<span>Series</span>
+								</form:label></li>
+							<li>
+							<form:label path="accionFiltro" for="pelis">
+									<form:radiobutton id="pelis" path="accionFiltro" value="3" />
+									<span>Pelicula</span>
+								</form:label>
+							</li>
+						</ul>
+					</div>
+				</div>
 					<div class="col s1"></div>
 					<div class="col s10 ">
 						<span>A&ntilde;o</span>
@@ -66,10 +90,12 @@
 					<div class="col s1"></div>
 					<div class="col s6 ">
 						<form:select path="plataformas" multiple="true">
-							<form:options items="${plataformas}" itemLabel="nombre" itemValue="id"/>
+							<form:options items="${plataformas}" itemLabel="nombre"
+								itemValue="id" />
 						</form:select>
 					</div>
 				</div>
+				
 				<div class="row">
 					<div class="col s1"></div>
 					<div class="col s6 ">
@@ -102,8 +128,21 @@
 						</tr>
 					</c:forEach>
 				</tbody>
-
 			</table>
+			
+				<div class="row">
+				<div class="col s4"></div>
+				<div class="col s6">
+					<c:forEach items="${serieMostrar}" var="serie">
+						<c:forEach items="${serie.directores}" var="director">
+							<a href="/qveo/filtro/director/${director.id}">${director.nombre}</a>
+						</c:forEach>
+
+					</c:forEach>
+					<a href="/qveo/filtro/actor/5">Aqui hgdsaidsaidji</a>
+				</div>
+				<div class="col s4"></div>
+			</div>
 		</section>
 
 	</main>

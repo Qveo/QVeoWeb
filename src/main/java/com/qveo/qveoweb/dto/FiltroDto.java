@@ -10,18 +10,19 @@ public class FiltroDto {
 	Collection<Genero> generos;
 	Collection<Plataforma> plataformas;
 	Collection<Integer> anios;
+	Integer accionFiltro;
 	
 	public FiltroDto() {
 	}
 
 
-
-	public FiltroDto(Collection<Genero> generos, Collection<Plataforma> plataformas, Collection<Integer> anios) {
+	public FiltroDto(Collection<Genero> generos, Collection<Plataforma> plataformas, Collection<Integer> anios,
+			Integer accionFiltro) {
 		this.generos = generos;
 		this.plataformas = plataformas;
 		this.anios = anios;
+		this.accionFiltro = accionFiltro;
 	}
-
 
 
 	public Collection<Genero> getGeneros() {
@@ -57,6 +58,19 @@ public class FiltroDto {
 	public void setAnios(Collection<Integer> anios) {
 		this.anios = anios;
 	}
+
+
+
+	public Integer getAccionFiltro() {
+		return accionFiltro;
+	}
+
+
+
+	public void setAccionFiltro(Integer accionFiltro) {
+		this.accionFiltro = accionFiltro;
+	}
+	
 	
 	
 	

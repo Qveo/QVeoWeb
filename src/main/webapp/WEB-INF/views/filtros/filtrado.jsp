@@ -21,31 +21,83 @@
 	</header>
 	<main>
 		<section>
-			<div class="row">
-				<div class="col s1"></div>
-				<div class="col s6 ">
-					<c:forEach items="${series}" var="serie">
-						<span>${serie.titulo}</span>
-						<span>${serie.temporadas}</span>
-					</c:forEach>
+			<c:if test="${accion >=1 }">
+				<div class="row">
+					<div class="col s1"></div>
+					<div class="col s6 ">
+						<c:forEach items="${series}" var="serie">
+							<span>${serie.titulo}</span>
+							<span>${serie.temporadas}</span>
+						</c:forEach>
+					</div>
 				</div>
-			</div>
-			<div class="row">
-				<div class="col s1"></div>
-				<div class="col s6 ">
-					<c:forEach items="${series}" var="serie">
-						<label>${serie.titulo}</label>
-						<label>${serie.temporadas}</label>
-					</c:forEach>
+				<div class="row">
+					<div class="col s1"></div>
+					<div class="col s6 ">
+						<c:forEach items="${series}" var="serie">
+							<label>${serie.titulo}</label>
+							<label>${serie.temporadas}</label>
+						</c:forEach>
+					</div>
 				</div>
-			</div>
+				<div class="row">
+					<div class="col s1"></div>
+					<div class="col s6 ">
+						<c:forEach items="${pelis}" var="peli">
+							<label>${peli.titulo}</label>
+							<label>${peli.guion}</label>
+						</c:forEach>
+					</div>
+				</div>
+			</c:if>
+			<c:if test="${director == true}">
+				<div class="row">
+					<div class="col s1"></div>
+					<div class="col s6 ">
+						<c:forEach items="${directoInfo.series}" var="serieD">
+							<label>${serieD.titulo}</label>
+							<label>${serieD.temporadas}</label>
+						</c:forEach>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col s1"></div>
+					<div class="col s6 ">
+						<c:forEach items="${directoInfo.peliculas}" var="peliP">
+							<label>${peliP.titulo}</label>
+							<label>${peliP.guion}</label>
+						</c:forEach>
+					</div>
+				</div>
+			</c:if>
 
+			<c:if test="${actor == true }">
+				<div class="row">
+					<div class="col s1"></div>
+					<div class="col s6 ">
+						<c:forEach items="${actorInfo.series}" var="serieA">
+							<label>${serieA.titulo}</label>
+							<label>${serieA.temporadas}</label>
+						</c:forEach>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col s1"></div>
+					<div class="col s6 ">
+						<c:forEach items="${actorInfo.peliculas}" var="peliA">
+							<label>${peliA.titulo}</label>
+							<label>${peliA.guion}</label>
+						</c:forEach>
+					</div>
+				</div>
+
+			</c:if>
 			<div class="row">
 				<div class="col s1"></div>
 				<div class="col s6 ">
-				<p style="color:red">${cartel}</p>
+					<p style="color: red">${cartel}</p>
 				</div>
-				</div>
+			</div>
 		</section>
 	</main>
 	<footer>
