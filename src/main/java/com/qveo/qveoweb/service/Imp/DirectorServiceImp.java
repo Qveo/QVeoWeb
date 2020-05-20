@@ -60,7 +60,7 @@ public class DirectorServiceImp implements DirectorService {
 
 		} else if (foto.isEmpty()) {
 			String uniqueFilename = null;
-			uniqueFilename = fotoService.defaultFoto(4, director.getId());
+			uniqueFilename = fotoService.defaultFoto(4, last);
 			director.setFoto("/resources/img/directores/" + uniqueFilename);
 
 		}
