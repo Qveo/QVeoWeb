@@ -71,26 +71,13 @@ public class PlataformaServiceImpl implements PlataformaService {
 	@Transactional
 	public void delete(Integer id) {
 
-		//Plataforma plat = getPlataforma(id);
+		Plataforma plat = getPlataforma(id);
 
-		//fotoService.delete(plat.getFoto(), 4);
+		fotoService.delete(plat.getFoto(), 5);
 
 		plataformaDao.deleteById(id);
 
 	}
 
-//	@Override
-//	public Integer last(Plataforma plataforma) {
-//
-//		Plataforma plat = plataformaDao.findTopByOrderByIdDesc();
-//
-//		Integer last = null;
-//		if (plataforma.getId() == null) {
-//			Integer last_id = plat.getId();
-//			last = last_id + 1;
-//		} else {
-//			last = plataforma.getId();
-//		}
-//		return last;
-//	}
+
 }
