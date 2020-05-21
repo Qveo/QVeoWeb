@@ -17,20 +17,21 @@ import com.qveo.qveoweb.model.Actor;
 import com.qveo.qveoweb.service.ActorService;
 
 @Service
-public class ActorServiceImp implements ActorService{
-	
+public class ActorServiceImp implements ActorService {
+
 	@Autowired
 	ActorDao actorDao;
-	
 
+	@Autowired
+	UploadFileServiceImpl uploadFileService;
 
 	@Override
 	@Transactional(readOnly = true)
-	public Optional<Actor> getActor(Integer id) {
+	public Actor getActor(Integer id) {
 		// TODO Auto-generated method stub
-		return actorDao.findById(id);
+		return actorDao.findById(id).orElse(null);
 	}
-	
+
 	@Override
 	@Transactional(readOnly = true)
 	public List<Actor> findAllActor() {
@@ -40,13 +41,45 @@ public class ActorServiceImp implements ActorService{
 
 	@Override
 	@Transactional
-	public void save(Actor actorNuevo) {		
+	public void save(Actor actorNuevo, MultipartFile foto) throws IOException {
+
+		String fotoTemp;
+
+		if (actorNuevo.getId() != null) {
+			fotoTemp = getActor(actorNuevo.getId()).getFoto();
+		} else {
+			fotoTemp = "";
+		}
+
+		actorDao.save(actorNuevo);
+
+		String uniqueFilename = null;
+		
+		if (!foto.isEmpty()) {
+			try {
+				uniqueFilename = uploadFileService.copy(foto, 3, actorNuevo.getId(), actorNuevo.getNombre());
+				actorNuevo.setFoto("/resources/img/actores/" + uniqueFilename);
+
+			} catch (IOException e) {
+
+				e.printStackTrace();
+			}
+		} else if (foto.isEmpty()) {
+			uniqueFilename = uploadFileService.defaultFoto(3, fotoTemp);
+			actorNuevo.setFoto("/resources/img/actores/" + uniqueFilename);
+		}
+
 		actorDao.save(actorNuevo);
 	}
 
 	@Override
 	@Transactional
 	public void deleteActor(Integer id) {
+		
+		Actor actor= getActor(id);
+		
+		uploadFileService.delete(actor.getFoto(), 3);
+		
 		actorDao.deleteById(id);
 	}
 }

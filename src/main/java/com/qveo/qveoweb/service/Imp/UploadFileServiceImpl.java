@@ -46,7 +46,7 @@ public class UploadFileServiceImpl implements IUploadFileService {
 	}
 	
 	@Override
-	public String defaultFoto(Integer accion, Integer id) throws IOException {
+	public String defaultFoto(Integer accion, String temp) throws IOException {
 
 		String nombreFinal = null;
 
@@ -69,6 +69,13 @@ public class UploadFileServiceImpl implements IUploadFileService {
 			break;
 		case 3:
 
+			if(!temp.equals("") && !temp.equals("")) {
+				String nombre=temp;
+				nombreFinal=nombre.substring(nombre.lastIndexOf('/') + 1);
+			}else if (temp.equals("/resources/img/actores/defaultFoto.png") || temp.equals("")) {
+				nombreFinal = "defaultFoto.png";	
+			}
+			
 			break;
 		case 4:
 
@@ -77,13 +84,13 @@ public class UploadFileServiceImpl implements IUploadFileService {
 
 			break;
 		case 6:
-			if (usuarioService.getUsuario(id).getFoto() != null) {
+			/*if (usuarioService.getUsuario(id).getFoto() != null) {
 				String nombre = usuarioService.getUsuario(id).getFoto();
 				nombreFinal = nombre.substring(nombre.lastIndexOf('/') + 1);
 			} else if (usuarioService.getUsuario(id).getFoto() == null
 					&& usuarioService.getUsuario(id).getFoto() != "/resources/img/usuarios/defaultFoto.png") {
 				nombreFinal = "defaultFoto.png";
-			}
+			}*/
 			break;
 		}
 

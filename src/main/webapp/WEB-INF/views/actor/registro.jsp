@@ -14,13 +14,20 @@
 	</c:otherwise>
 </c:choose>
 
-
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/general.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/icon.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/header.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/actor/actor.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/modal.css">
 </head>
 
 <body>
@@ -31,8 +38,7 @@
 		<div class="row">
 			<c:choose>
 				<c:when test="${editar}">
-					<c:set var="action" scope="session"
-						value="/qveo/actor/form/" />
+					<c:set var="action" scope="session" value="/qveo/actor/form/" />
 				</c:when>
 				<c:otherwise>
 					<c:set var="action" scope="session" value="/qveo/actor/form/" />
@@ -46,9 +52,9 @@
 					<div class="col s2"></div>
 					<div class="input-field col s8">
 						<form:label path="nombre">Nombre</form:label>
-						<form:input path="nombre" id="nombre" class="validate"/>
+						<form:input path="nombre" id="nombre" class="validate" />
 						<form:errors path="nombre" style="color:red"></form:errors>
-						<div style="color:red">${errorNombre}</div>
+						<div style="color: red">${errorNombre}</div>
 					</div>
 					<div class="col s2"></div>
 				</div>
@@ -85,7 +91,7 @@
 							</c:choose>
 						</form:select>
 						<form:errors path="pais" style="color:red"></form:errors>
-						<div style="color:red">${errorPais}</div>
+						<div style="color: red">${errorPais}</div>
 					</div>
 				</div>
 				<div class="row">
@@ -99,15 +105,15 @@
 					<div class="col s2"></div>
 					<div class="col s8">
 						<form:label for="mas" path="sexo">
-							<form:radiobutton id="mas" path="sexo" value="H" class="validate"/>
+							<form:radiobutton id="mas" path="sexo" value="H" class="validate" />
 							<span>Masculino</span>
 						</form:label>
 						<form:label for="fem" path="sexo">
-							<form:radiobutton id="fem" path="sexo" value="M" class="validate"/>
+							<form:radiobutton id="fem" path="sexo" value="M" class="validate" />
 							<span>Femenino</span>
 						</form:label>
 						<form:errors path="sexo" style="color:red"></form:errors>
-						<div style="color:red">${errorSexo}</div>
+						<div style="color: red">${errorSexo}</div>
 					</div>
 					<div class="col s2"></div>
 				</div>
@@ -118,7 +124,7 @@
 						<input type="file" name="fotoActor">
 						<c:if test="${editar == true}">
 							<div class="col s4">
-							<form:input path="id" type="hidden"/>
+								<form:input path="id" type="hidden" />
 								<img alt="${actorNuevo.nombre}"
 									src="${pageContext.request.contextPath}${actorNuevo.foto}"
 									width="80%">
@@ -153,10 +159,13 @@
 	<footer>
 		<%@include file="/WEB-INF/views/layout/footer.jsp"%>
 	</footer>
+		<script
+		src="${pageContext.request.contextPath}/resources/vendor/js/materialize.js"></script>
 	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/jquery.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/actor.js"></script>
+		src="${pageContext.request.contextPath}/resources/vendor/js/jquery-3.4.1.min.js"></script>
+
+	<script src="${pageContext.request.contextPath}/resources/js/header.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/actor.js"></script>
 
 </body>
 

@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,19 +23,25 @@ import com.qveo.qveoweb.model.Pais;
 import com.qveo.qveoweb.service.ActorService;
 import com.qveo.qveoweb.service.IUploadFileService;
 import com.qveo.qveoweb.service.PaisService;
+import com.qveo.qveoweb.validation.ActorValidator;
 
 @Controller
 public class ActorController {
 
-	boolean editar=false;
+	boolean editar = false;
 	@Autowired
 	ActorService actorService;
 
 	@Autowired
-	PaisService paisService;
-	
+	private ActorValidator validador;
+
 	@Autowired
-	IUploadFileService uploadFileService;
+	PaisService paisService;
+
+	@InitBinder
+	public void InitBinder(WebDataBinder binder) {
+		binder.setValidator(validador);
+	}
 
 	@GetMapping("/actor/list")
 	public String listaActor(Model model) {
@@ -44,25 +52,38 @@ public class ActorController {
 
 	@GetMapping("/actor/form")
 	public String actorForm(Model model) {
-		editar=false;
+		editar = false;
 		List<Pais> paises = paisService.getAllPais();
 
 		model.addAttribute("actorNuevo", new Actor());
 		model.addAttribute("paises", paises);
-		
+
 		return "actor/registro";
 	}
-	
+
 	@GetMapping("/actor/edit/{id}")
 	public String editarActor(Model model, @PathVariable("id") Integer id) {
-		editar=true;
+
+		Actor actor = null;
+
+		if (id > 0) {
+			actor = actorService.getActor(id);
+			
+			if (actor == null) {
+				return "redirect:/actor/list";
+			}
+			
+		} else {
+			return "redirect:/actor/list";
+		}
+
 		List<Pais> paises = paisService.getAllPais();
-		Actor actor = actorService.getActor(id).get();
+		actor = actorService.getActor(id);
 
 		model.addAttribute("editar", true);
 		model.addAttribute("actorNuevo", actor);
 		model.addAttribute("paises", paises);
-		
+
 		return "actor/registro";
 	}
 
@@ -70,55 +91,31 @@ public class ActorController {
 	public String guardar(@Valid @ModelAttribute("actorNuevo") Actor actorNuevo, BindingResult br, Model model,
 			@RequestParam(value = "fotoActor") MultipartFile file, RedirectAttributes redirectAttrs,
 			SessionStatus status) {
-
-		if (br.hasErrors()) {
-			List<Pais> paises = paisService.getAllPais();
-			model.addAttribute("paises", paises);
-			model.addAttribute("actorNuevo", actorNuevo);
-			return "actor/registro";
-		}
-		
-		if (!file.isEmpty()) {
-			if (editar == true) {
-				String rutaFoto = actorService.getActor(actorNuevo.getId()).get().getFoto();
-				String ruta = rutaFoto.substring(rutaFoto.lastIndexOf('/') + 1);
-
-				if (actorNuevo.getId() != null && actorNuevo.getId() > 0 && ruta != null && ruta.length() > 0) {
-
-					uploadFileService.delete(ruta, 3);
-
-				}
+		try {
+			if (br.hasErrors()) {
+				List<Pais> paises = paisService.getAllPais();
+				model.addAttribute("paises", paises);
+				model.addAttribute("actorNuevo", actorNuevo);
+				return "actor/registro";
 			}
-			
-			String uniqueFilename = null;
-			try {
-				uniqueFilename = uploadFileService.copy(file, 3, actorNuevo.getNombre());
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			actorNuevo.setFoto("/resources/img/actores/" + uniqueFilename);
-		}
 
-		if (editar == true) {
-			if (file.isEmpty()) {
-				actorNuevo.setFoto(actorService.getActor(actorNuevo.getId()).get().getFoto());
-			}
-		}
+			actorService.save(actorNuevo, file);
+			status.setComplete();
 
-		actorService.save(actorNuevo);
-		status.setComplete();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 
 		return "redirect:/actor/list";
 	}
+
 	@GetMapping("/actor/delete/{id}")
 	public String deleteActor(@PathVariable("id") Integer id) {
 
-		String rutaFoto = actorService.getActor(id).get().getFoto();
-		String ruta = rutaFoto.substring(rutaFoto.lastIndexOf('/') + 1);
-		actorService.deleteActor(id);
-		uploadFileService.delete(ruta,3);
-		
+		if (id > 0) {
+			actorService.deleteActor(id);
+		}
+
 		return "redirect:/actor/list";
 
 	}

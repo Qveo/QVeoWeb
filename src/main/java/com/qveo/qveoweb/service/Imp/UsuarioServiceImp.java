@@ -53,7 +53,7 @@ public class UsuarioServiceImp implements UsuarioService {
 
 		} else if (foto.isEmpty()) {
 			String uniqueFilename = null;
-			uniqueFilename = uploadFileService.defaultFoto(6, usuario.getId());
+			//uniqueFilename = uploadFileService.defaultFoto(6, usuario.getId());
 			usuario.setFoto("/resources/img/usuarios/" + uniqueFilename);
 
 		}

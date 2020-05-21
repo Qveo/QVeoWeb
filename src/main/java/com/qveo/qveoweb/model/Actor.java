@@ -10,12 +10,12 @@ import java.util.Collection;
 @Entity
 public class Actor {
     private Integer id;
-    @NotBlank(message = "El  nombre es obligatorio")
-    @Size(min = 5,max=40,message = "No puede superar los 100 caracteres")
+    //@NotBlank(message = "El  nombre es obligatorio")
+    //@Size(min = 5,max=40,message = "No puede superar los 100 caracteres")
     private String nombre;
-    @NotBlank(message = "El sexo es obligatorio")
+    //@NotBlank(message = "El sexo es obligatorio")
     private String sexo;
-    @NotNull(message = "Escoja un pais de la lista")
+    //@NotNull(message = "Escoja un pais de la lista")
     private Pais pais;
     private Collection<Pelicula> peliculas;
     private Collection<Serie> series;

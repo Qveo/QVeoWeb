@@ -12,7 +12,7 @@ public interface IUploadFileService {
 
 	public String copy(MultipartFile file, Integer accion, Integer id, String titulo) throws IOException;
 	
-	public String defaultFoto(Integer accion, Integer id) throws IOException;
+	public String defaultFoto(Integer accion, String temp) throws IOException;
 
 	public boolean delete(String filename,Integer accion);
 }

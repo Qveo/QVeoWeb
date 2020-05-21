@@ -17,6 +17,8 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/header.css">
 <link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/actor/actor.css">
+<link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/modal.css">
 </head>
 
@@ -43,7 +45,7 @@
 
 			</div>
 			<c:forEach items="${actores}" var="actor">
-				<div id="${actor.id}" class="row">
+				<div id="${actor.id}" class="row cuerpo">
 					<div class="col s3">
 						<img src="${pageContext.request.contextPath}${actor.foto}"
 							alt="${actor.nombre}" width="40%">
@@ -96,11 +98,12 @@
 	</footer>
 
 </body>
-<script
-	src="${pageContext.request.contextPath}/resources/vendor/js/jquery-3.4.1.min.js"></script>
-<script
-	src="${pageContext.request.contextPath}/resources/js/materialize.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/header.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/actor.js"></script>
+		<script
+		src="${pageContext.request.contextPath}/resources/vendor/js/materialize.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/vendor/js/jquery-3.4.1.min.js"></script>
+
+	<script src="${pageContext.request.contextPath}/resources/js/header.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/actor.js"></script>
 
 </html>

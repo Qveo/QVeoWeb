@@ -11,7 +11,8 @@ import com.qveo.qveoweb.model.Actor;
 public interface ActorService {
 
 	List<Actor> findAllActor();
-	void save(Actor actorNuevo);
+	void save(Actor actorNuevo,MultipartFile file) throws IOException;
 	void deleteActor(Integer id);
-	Optional<Actor> getActor(Integer id);
+	Actor getActor(Integer id);
+
 }
