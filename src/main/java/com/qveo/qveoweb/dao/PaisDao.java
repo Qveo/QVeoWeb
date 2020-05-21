@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.qveo.qveoweb.model.Pais;
 
 @Repository
-public interface PaisDao extends JpaRepository<Pais, Integer>{
+public interface PaisDao extends JpaRepository<Pais, Integer> {
 
 }

@@ -7,8 +7,9 @@
           rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,400;1,700;1,900&display=swap"
           rel="stylesheet">
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<!--     <link rel="stylesheet" -->
+<!--           href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
+          <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/materialize.css">
     <link rel="stylesheet"
           href="${pageContext.request.contextPath}/resources/css/carousel.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/general.css">
@@ -38,7 +39,7 @@
                 <c:forEach items="${plataforma.peliculaPlataformas}" var="peliculaPlataformas">
                     <div class="carousel-item">
                         <a class="waves-effect waves-light modal-trigger"
-                        href="#modal-pelicula${peliculaPlataformas.pelicula.id}">
+                        href="#modal-pelicula${plataforma.id}-${peliculaPlataformas.pelicula.id}">
                             <img src="${pageContext.request.contextPath}${peliculaPlataformas.pelicula.poster}"/>
                         </a>
                     </div>
@@ -70,7 +71,7 @@
 </body>
 <script src="${pageContext.request.contextPath}/resources/vendor/js/jquery-3.4.1.min.js"></script>
 <script
-        src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        src="${pageContext.request.contextPath}/resources/vendor/js/materialize.js"></script>
 <script
         src="${pageContext.request.contextPath}/resources/js/header.js"></script>
 <script
