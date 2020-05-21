@@ -15,13 +15,13 @@ import javax.persistence.MapsId;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 
-//@IdClass(PeliculaPlataformaId.class)
+
 @Entity
 public class PeliculaPlataforma {
 	
 	
-	private PeliculaPlataformaId id = new PeliculaPlataformaId();
-	//private PeliculaPlataformaId id;
+	private PeliculaPlataformaId id ;
+
 	
 	private Date fechaCaducidad;
 
@@ -33,6 +33,11 @@ public class PeliculaPlataforma {
 	public PeliculaPlataforma() {
 	}
 	
+	public PeliculaPlataforma(PeliculaPlataformaId id) {
+		
+		this.id = new PeliculaPlataformaId();
+	}
+
 	@Column(name = "CADUCA")
 	public Date getFechaCaducidad() {
 		return fechaCaducidad;

@@ -1,10 +1,7 @@
 package com.qveo.qveoweb.service.Imp;
 
 import java.io.IOException;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Optional;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -53,28 +50,25 @@ public class PeliculaServiceImp implements PeliculaService {
 	@Transactional
 	public void save(PeliculaDto pelicula, MultipartFile foto) throws IOException {
 
+		String fotoTemp;
+
+		if (pelicula.getId() != null) {
+			fotoTemp = getPelicula(pelicula.getId()).getPoster();
+			System.out.println(fotoTemp);
+		} else {
+			fotoTemp = "";
+		}
+
 		Pelicula peliculaNew = new Pelicula(pelicula.getTitulo(), pelicula.getDuracion(), pelicula.getGuion(),
 				pelicula.getPoster(), pelicula.getSinopsis(), pelicula.getAnio(), pelicula.getActores(),
 				pelicula.getGeneros(), pelicula.getPais(), pelicula.getDirectores());
-		
-		Integer last = null;
-		if (pelicula.getId() == null) {
-			Integer last_id = last().getId();
-			last = last_id + 1;
-		}else {
-			last = pelicula.getId();
-			peliculaNew.setId(last);
-			
-		}
 
-		
-		System.out.println(last);
-		
+		peliculaDao.save(peliculaNew);
 		if (!foto.isEmpty()) {
 			try {
 				String uniqueFilename = null;
 
-				uniqueFilename = uploadFileService.copy(foto, 2, last, peliculaNew.getTitulo());
+				uniqueFilename = uploadFileService.copy(foto, 2, peliculaNew.getId(), peliculaNew.getTitulo());
 				peliculaNew.setPoster("/resources/img/peliculas/" + uniqueFilename);
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -82,12 +76,37 @@ public class PeliculaServiceImp implements PeliculaService {
 
 		} else if (foto.isEmpty()) {
 			String uniqueFilename = null;
-			uniqueFilename = uploadFileService.defaultFoto(2, last);
+			uniqueFilename = uploadFileService.defaultFoto(2, fotoTemp);
 			peliculaNew.setPoster("/resources/img/peliculas/" + uniqueFilename);
 
 		}
 
 		peliculaDao.save(peliculaNew);
+
+		addPlataform(pelicula, peliculaNew);
+
+		peliculaDao.save(peliculaNew);
+	}
+
+	@Override
+	@Transactional
+	public void delete(Integer id) {
+		Pelicula pelicula = getPelicula(id);
+		List<PeliculaPlataforma> peliculasPlataforma = peliculaPlataformaDao.findByPelicula(pelicula);
+
+		if (!peliculasPlataforma.isEmpty()) {
+
+			for (PeliculaPlataforma peliPlat : peliculasPlataforma) {
+				peliculaPlataformaDao.delete(peliPlat);
+			}
+		}
+		uploadFileService.delete(pelicula.getPoster(), 2);
+		peliculaDao.deleteById(id);
+
+	}
+
+	@Override
+	public void addPlataform(PeliculaDto pelicula, Pelicula peliculaNew) {
 
 		if (!peliculaPlataformaDao.findByPelicula(peliculaNew).isEmpty()) {
 			List<PeliculaPlataforma> peliculasPlataforma = peliculaPlataformaDao.findByPelicula(peliculaNew);
@@ -107,32 +126,6 @@ public class PeliculaServiceImp implements PeliculaService {
 				peliculaPlataformaDao.save(peliculaPlataformaNew);
 			}
 		}
-
-		
-
-		peliculaDao.save(peliculaNew);
-	}
-
-	@Override
-	@Transactional
-	public void delete(Pelicula pelicula) {
-		List<PeliculaPlataforma> peliculasPlataforma = peliculaPlataformaDao.findByPelicula(pelicula);
-
-		if (!peliculasPlataforma.isEmpty()) {
-
-			for (PeliculaPlataforma peliPlat : peliculasPlataforma) {
-				peliculaPlataformaDao.delete(peliPlat);
-			}
-		}
-		peliculaDao.deleteById(pelicula.getId());
-
-	}
-	
-	@Override
-	public Pelicula last() {
-		Pelicula pelicula = peliculaDao.findTopByOrderByIdDesc();
-
-		return pelicula;
 
 	}
 

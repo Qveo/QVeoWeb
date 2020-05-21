@@ -200,12 +200,7 @@ public class PeliculaController {
 	public String eliminar(@PathVariable(value = "id") Integer id) {
 
 		if (id > 0) {
-
-			Pelicula pelicula = peliculaService.getPelicula(id);
-
-			uploadFileService.delete(pelicula.getPoster(), 2);
-
-			peliculaService.delete(pelicula);
+			peliculaService.delete(id);
 		}
 		return "redirect:/peliculas/listar";
 	}

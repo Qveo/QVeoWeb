@@ -13,8 +13,9 @@ public interface PeliculaService {
 	public List<Pelicula> findAll();
 	public Pelicula getPelicula(Integer id);
 	public void save(PeliculaDto pelicula, MultipartFile foto) throws IOException;
-	public void delete(Pelicula pelicula);
-	public Pelicula last ();
+	public void delete(Integer id);
+	public void addPlataform(PeliculaDto film, Pelicula film2);
+
 	
 
 	
