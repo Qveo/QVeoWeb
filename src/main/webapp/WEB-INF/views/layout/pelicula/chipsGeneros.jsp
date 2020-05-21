@@ -11,7 +11,7 @@
 		class="chips chipsG chips-placeholder col s12 m12 l6 offset-l3"></div>
 	<div id="generos">
 		<c:choose>
-			<c:when test="${editar==true}">
+			<c:when test="${editar==true || rep == true}">
 				<c:forEach items="${generos}" var="genero">
 					<c:choose>
 						<c:when test="${fn:contains(peliculaNueva.generos,genero)}">

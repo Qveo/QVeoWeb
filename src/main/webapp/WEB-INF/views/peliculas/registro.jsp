@@ -142,40 +142,6 @@
 				<%@include
 					file="/WEB-INF/views/layout/pelicula/chipsPlataformas.jsp"%>
 
-				<!-- 				<span>Plataforma</span> -->
-				<%-- 				<c:choose> --%>
-				<%-- 					<c:when test="${editar}"> --%>
-				<%-- 						<c:forEach items="${plataformas}" var="plataforma"> --%>
-				<%-- 							<c:if test="${fn:contains(peliculaNueva.plataformas,plataforma)}"> --%>
-				<%-- 								<form:label for="${plataforma.nombre}" path="plataformas"> --%>
-				<%-- 									<form:checkbox id="${plataforma.nombre}" path="plataformas" --%>
-				<%-- 										value="${plataforma.id}" checked="checked" /> --%>
-				<%-- 									<span>${plataforma.nombre}</span> --%>
-				<%-- 								</form:label> --%>
-				<%-- 							</c:if> --%>
-
-				<%-- 							<c:if --%>
-				<%-- 								test="${not(fn:contains(peliculaNueva.plataformas,plataforma))}"> --%>
-				<%-- 								<form:label for="${plataforma.nombre}" path="plataformas"> --%>
-				<%-- 									<form:checkbox id="${plataforma.nombre}" path="plataformas" --%>
-				<%-- 										value="${plataforma.id}" /> --%>
-				<%-- 									<span>${plataforma.nombre}</span> --%>
-				<%-- 								</form:label> --%>
-				<%-- 							</c:if> --%>
-				<%-- 						</c:forEach> --%>
-				<%-- 					</c:when> --%>
-				<%-- 					<c:otherwise> --%>
-				<%-- 						<c:forEach items="${plataformas}" var="plataforma"> --%>
-				<%-- 							<form:label for="${plataforma.nombre}" path="plataformas"> --%>
-				<%-- 								<form:checkbox id="${plataforma.nombre}" path="plataformas" --%>
-				<%-- 									value="${plataforma.id}" /> --%>
-				<%-- 								<span>${plataforma.nombre}</span> --%>
-				<%-- 							</form:label> --%>
-				<%-- 						</c:forEach> --%>
-				<%-- 					</c:otherwise> --%>
-				<%-- 				</c:choose> --%>
-				<!-- 		</div> -->
-
 				<div class="row">
 					<form:errors path="plataformas" style="color:red" />
 				</div>

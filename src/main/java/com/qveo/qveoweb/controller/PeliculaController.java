@@ -68,9 +68,6 @@ public class PeliculaController {
 	@Autowired
 	PeliculaValidador peliculaValid;
 
-	@Autowired
-	private IUploadFileService uploadFileService;
-
 	@InitBinder
 	public void InitBinder(WebDataBinder binder) {
 		binder.setValidator(peliculaValid);
@@ -183,6 +180,7 @@ public class PeliculaController {
 				mod.addAttribute("generos", generos);
 				mod.addAttribute("plataformas", plataformas);
 				mod.addAttribute("peliculaNueva", pelicula);
+				mod.addAttribute("rep", true);
 				return "peliculas/registro";
 			}
 
