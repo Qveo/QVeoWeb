@@ -4,11 +4,21 @@
 	<nav>
 		<div class="nav-wrapper">
 			<a href="#" class="sidenav-trigger" data-target="slide-out"><i
-				class="material-icons">menu</i></a> <a
-				href="${pageContext.request.contextPath}/home" class="title-qveo">QVEO</a>
+				class="material-icons">menu</i></a><a
+			href="${pageContext.request.contextPath}/home"
+			class="title-qveo">QVEO</a>
 			<ul class="right hide-on-med-and-down">
 				<li><a href="#">Inicio</a></li>
-				<li><a href="#">B&uacutesqueda</a></li>
+				<li>
+					<div id="buscar-nombre" class="input-field col s12 mostrar-ocultar">
+						<input type="text" id="autocomplete-input" class="autocomplete"
+							placeholder="Búsqueda..."> <a
+							class="waves-effect waves-light btn clear" id="clear"><i
+							class="material-icons">clear</i></a>
+					</div>
+				</li>
+				<li><a id="buscar-nombre-trigger" class="scale-transition"
+					href="#!">B&uacutesqueda</a></li>
 				<li><a href="#">Series</a></li>
 				<li><a href="#">Pel&iacuteculas</a></li>
 				<li><a href="#">M&aacutes Recientes</a></li>
@@ -33,3 +43,9 @@
 	<li><a href="#" class="font-color-sidenav">Mi lista</a></li>
 	<li><div class="divider"></div></li>
 </ul>
+<script
+	src="${pageContext.request.contextPath}/resources/vendor/js/jquery-3.4.1.min.js"></script>
+<script
+	src="${pageContext.request.contextPath}/resources/vendor/js/materialize.js"></script>
+<script
+	src="${pageContext.request.contextPath}/resources/vendor/js/busqueda.js"></script>
