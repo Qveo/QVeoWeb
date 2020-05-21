@@ -66,43 +66,6 @@ public class ActorController {
 		return "actor/registro";
 	}
 
-//	@PostMapping("/actor/form/add")
-//	public String addActor(@Valid @ModelAttribute("actorNuevo") Actor actorNuevo, BindingResult br,
-//			@RequestParam(value = "fotoActor") MultipartFile file, Model model) throws IOException {
-//		if (br.hasErrors()) {
-//			List<Pais> paises = paisService.getAllPais();
-//			model.addAttribute("paises", paises);
-//			return "actor/registro";
-//		}
-//
-//		actorService.save(actorNuevo);
-//		actorService.saveImg(file, actorNuevo.getNombre());
-//
-//		return "redirect:/actor/list";
-//	}
-
-//	@PostMapping("/actor/update/{id}")
-//	public String updateActor(@Valid @ModelAttribute("actorNuevo") Actor actorAct, BindingResult br, RedirectAttributes redirectAttrs) {
-//		if (br.hasErrors()) {
-//		
-//			if (br.hasFieldErrors("nombre")) {
-//				redirectAttrs.addFlashAttribute("errorNombre", "El campo nombre no debe ser mayor de  100 caracteres");
-//			}
-//			if (br.hasFieldErrors("pais")) {
-//				redirectAttrs.addFlashAttribute("errorPais", "Escoja un pais de la lista");
-//			}
-//			if (br.hasFieldErrors("sexo")) {
-//				redirectAttrs.addFlashAttribute("errorSexo", "El campo sexo es obligatoirio");
-//			}
-//							
-//			return "redirect:/actor/edit/"+actorAct.getId();
-//		}
-//
-//		actorService.editarActor(actorAct);
-//		
-//		return "redirect:/actor/list";
-//	}
-
 	@PostMapping("/actor/form/")
 	public String guardar(@Valid @ModelAttribute("actorNuevo") Actor actorNuevo, BindingResult br, Model model,
 			@RequestParam(value = "fotoActor") MultipartFile file, RedirectAttributes redirectAttrs,
