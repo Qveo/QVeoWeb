@@ -37,6 +37,7 @@ input {
 	border-bottom: 1px solid #eeeeee !important;
 	padding: 0 !important;
 	margin: 5px 0 !important;
+	width: 25px;
 }
 
 .input-field .clear{

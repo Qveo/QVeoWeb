@@ -7,7 +7,7 @@
 <head>
 <meta charset="ISO-8859-1">
 
-<title>${series.titulo}</title>
+<title>${Titulo}</title>
 
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">
@@ -30,21 +30,21 @@
 			<div class="col s1"></div>
 			<div class="col s10 derecha">
 				<div class="col s4 bord">
-					<img src="${pageContext.request.contextPath}${series.poster}"
+					<img src="${pageContext.request.contextPath}${peliculas.poster}"
 						alt="rick" width="80%">
 
 				</div>
 				<div class="col s8">
-					<h2>${series.titulo}
+					<h2>${peliculas.titulo}
 						<span class="fechaInicio">(<fmt:formatDate pattern="yyyy"
-								value="${series.fechaInicio}" />)
+								value="${peliculas.anio}" />)
 						</span>
 					</h2>
 					<div>
 						<ul>
-							<li><span>Temporada:${series.temporadas}</span></li>
-							<li><span>Capitulos:${series.capitulos}</span></li>
-							<li><span>Pais:${series.pais.nombre}</span></li>
+							<li><span>Temporada:${peliculas.guion}</span></li>
+							<li><span>Capitulos:${peliculas.duracion}</span></li>
+							<li><span>Pais:${peliculas.pais.nombre}</span></li>
 						</ul>
 
 					</div>
@@ -57,12 +57,12 @@
 					</div>
 
 					<h5>Sinopsis</h5>
-					<p>${series.sinopsis}</p>
+					<p>${peliculas.sinopsis}</p>
 
 					<div>
 						<h5>Genero:</h5>
 						<ul>
-							<c:forEach items="${series.generos}" var="genero">
+							<c:forEach items="${peliculas.generos}" var="genero">
 
 								<li><a class="genero">${genero.nombre}</a></li>
 							</c:forEach>
@@ -70,16 +70,7 @@
 					</div>
 
 
-					<div>
-						<h5>
-							Plataformas:
-							<c:forEach items="${series.plataformas}" var="plataforma">
-                     
-                     ${plataforma.nombre}
-                     
-                       </c:forEach>
-						</h5>
-					</div>
+				
 				</div>
 			</div>
 
@@ -94,7 +85,7 @@
 
 					<h5>Director:</h5>
 					<ul>
-						<c:forEach items="${series.directores}" var="director">
+						<c:forEach items="${peliculas.directores}" var="director">
 							<li>
 								<div class="col s3">
 									<img src="${pageContext.request.contextPath}${director.foto}"
@@ -111,7 +102,7 @@
 					<h5>Reparto:</h5>
 
 					<ul>
-						<c:forEach items="${series.actores}" var="actores">
+						<c:forEach items="${peliculas.actores}" var="actores">
 							<li>
 								<div class="col s2">
 									<img src="${pageContext.request.contextPath}${actores.foto}"

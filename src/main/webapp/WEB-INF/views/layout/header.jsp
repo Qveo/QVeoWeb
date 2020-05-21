@@ -3,22 +3,12 @@
 <div class="navbar-fixed">
 	<nav>
 		<div class="nav-wrapper">
-			<a href="#" class="sidenav-trigger" data-target="slide-out"><i
-				class="material-icons">menu</i></a><a
-			href="${pageContext.request.contextPath}/home"
-			class="title-qveo">QVEO</a>
+			<a href="#" id="hamburger" class="sidenav-trigger"
+				data-target="slide-out"><i class="material-icons">menu</i></a> 
+				<a href="${pageContext.request.contextPath}/home" id="title-qveo"
+				class="title-qveo">QVEO</a>
 			<ul class="right hide-on-med-and-down">
 				<li><a href="#">Inicio</a></li>
-				<li>
-					<div id="buscar-nombre" class="input-field col s12 mostrar-ocultar">
-						<input type="text" id="autocomplete-input" class="autocomplete"
-							placeholder="Búsqueda..."> <a
-							class="waves-effect waves-light btn clear" id="clear"><i
-							class="material-icons">clear</i></a>
-					</div>
-				</li>
-				<li><a id="buscar-nombre-trigger" class="scale-transition"
-					href="#!">B&uacutesqueda</a></li>
 				<li><a href="#">Series</a></li>
 				<li><a href="#">Pel&iacuteculas</a></li>
 				<li><a href="#">M&aacutes Recientes</a></li>
@@ -26,6 +16,18 @@
 				<li><a href="${pageContext.request.contextPath}/usuario"><img
 						class="circle icon-user"
 						src="${pageContext.request.contextPath}/resources/img/iconouser.jpg"></a></li>
+			</ul>
+			<ul class="right">
+				<li>
+					<div id="buscar-nombre" class="input-field mostrar-ocultar">
+						<input type="text" id="autocomplete-input" class="autocomplete"
+							placeholder="Búsqueda..."> <a
+							class="waves-effect waves-light btn clear" id="clear"><i
+							class="material-icons">clear</i></a>
+					</div>
+				</li>
+				<li><a id="buscar-nombre-trigger" class="scale-transition"
+					href="#!"><i class="material-icons">search</i></a></li>
 			</ul>
 		</div>
 	</nav>

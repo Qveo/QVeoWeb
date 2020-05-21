@@ -1,6 +1,9 @@
 package com.qveo.qveoweb.model;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.sql.Date;
 import java.sql.Time;
 import java.util.Collection;
@@ -18,7 +21,7 @@ public class Pelicula {
     private String sinopsis;
     private Date anio;
     private Collection<Actor> actores;
-    private Collection<Genero> peliculas;
+    private Collection<Genero> generos;
     private Pais pais;
     private Collection<Director> directores;
     private Collection<Usuario> usuarios;
@@ -101,6 +104,7 @@ public class Pelicula {
             joinColumns = @JoinColumn(name = "id_pelicula", nullable = false),
             inverseJoinColumns = @JoinColumn(name="id_actor", nullable = false)
     )
+    @JsonIgnore
     public Collection<Actor> getActores() {
         return actores;
     }
@@ -115,16 +119,18 @@ public class Pelicula {
             joinColumns = @JoinColumn(name = "id_pelicula", nullable = false),
             inverseJoinColumns = @JoinColumn(name="id_genero", nullable = false)
     )
-    public Collection<Genero> getPeliculas() {
-        return peliculas;
+    @JsonIgnore
+    public Collection<Genero> getGeneros() {
+        return generos;
     }
 
-    public void setPeliculas(Collection<Genero> peliculas) {
-        this.peliculas = peliculas;
+    public void setGeneros(Collection<Genero> peliculas) {
+        this.generos = peliculas;
     }
 
     @ManyToOne
     @JoinColumn(name = "ID_PAIS", referencedColumnName = "ID", nullable = false)
+    @JsonIgnore
     public Pais getPais() {
         return pais;
     }
@@ -139,6 +145,7 @@ public class Pelicula {
             joinColumns = @JoinColumn(name = "id_pelicula", nullable = false),
             inverseJoinColumns = @JoinColumn(name="id_director", nullable = false)
     )
+    @JsonIgnore
     public Collection<Director> getDirectores() {
         return directores;
     }
@@ -149,6 +156,7 @@ public class Pelicula {
     
 
     @OneToMany(mappedBy = "pelicula")
+    @JsonIgnore
 	public Set<PeliculaPlataforma> getPeliculaPlataformas() {
 		return peliculaPlataformas;
 	}
@@ -158,6 +166,7 @@ public class Pelicula {
 	}
 
 	@ManyToMany(mappedBy = "peliculas")
+	@JsonIgnore
 	public Collection<Usuario> getUsuarios() {
 		return usuarios;
 	}
