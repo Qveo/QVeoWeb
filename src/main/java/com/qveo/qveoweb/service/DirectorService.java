@@ -17,6 +17,5 @@ public interface DirectorService {
 
 	public void delete(Integer id);
 	
-	public Director last ();
 
 }

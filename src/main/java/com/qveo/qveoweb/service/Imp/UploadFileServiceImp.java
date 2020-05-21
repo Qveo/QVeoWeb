@@ -94,7 +94,7 @@ public class UploadFileServiceImp implements UploadFileService {
 	}
 
 	@Override
-	public String defaultFoto(Integer accion, Integer id) throws IOException {
+	public String defaultFoto(Integer accion, String temp) throws IOException {
 		String nombreFinal = null;
 
 		switch (accion) {
@@ -110,11 +110,10 @@ public class UploadFileServiceImp implements UploadFileService {
 
 			break;
 		case 4:
-			if (directorService.getDirector(id).getFoto() != null) {
-				String nombre = directorService.getDirector(id).getFoto();
+			if (!temp.equals("/resources/img/plataformas/defaultFoto.png") && !temp.equals("")) {
+				String nombre = temp;
 				nombreFinal = nombre.substring(nombre.lastIndexOf('/') + 1);
-			} else if (directorService.getDirector(id).getFoto() == null
-					&& directorService.getDirector(id).getFoto() != "/resources/img/directores/defaultFoto.png") {
+			} else if (temp.equals("/resources/img/plataformas/defaultFoto.png") || temp.equals("")) {
 				nombreFinal = "defaultFoto.png";	
 			}
 

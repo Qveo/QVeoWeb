@@ -40,19 +40,21 @@ public class DirectorServiceImp implements DirectorService {
 	@Override
 	public void save(Director director, MultipartFile foto) throws IOException {
 
-		Integer last = null;
-		if (director.getId() == null) {
-			Integer last_id = last().getId();
-			last = last_id + 1;
-		}else {
-			last = director.getId();
+		String fotoTemp;
+
+		if (director.getId() != null) {
+			fotoTemp = getDirector(director.getId()).getFoto();
+		} else {
+			fotoTemp = "";
 		}
+		
+		dirDao.save(director);
 
 		if (!foto.isEmpty()) {
 			try {
 				String uniqueFilename = null;
 
-				uniqueFilename = fotoService.copy(foto, 4, last, director.getNombre());
+				uniqueFilename = fotoService.copy(foto, 4, director.getId(), director.getNombre());
 				director.setFoto("/resources/img/directores/" + uniqueFilename);
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -60,7 +62,7 @@ public class DirectorServiceImp implements DirectorService {
 
 		} else if (foto.isEmpty()) {
 			String uniqueFilename = null;
-			uniqueFilename = fotoService.defaultFoto(4, director.getId());
+			uniqueFilename = fotoService.defaultFoto(4, fotoTemp);
 			director.setFoto("/resources/img/directores/" + uniqueFilename);
 
 		}
@@ -78,14 +80,6 @@ public class DirectorServiceImp implements DirectorService {
 		fotoService.delete(director.getFoto(), 4);
 
 		dirDao.deleteById(id);
-
-	}
-
-	@Override
-	public Director last() {
-		Director director = dirDao.findTopByOrderByIdDesc();
-
-		return director;
 
 	}
 
