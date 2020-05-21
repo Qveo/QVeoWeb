@@ -26,27 +26,18 @@ import com.qveo.qveoweb.validation.PlataformaValidador;
 @Controller
 @RequestMapping("/plataformas")
 public class PlataformaController {
-	
-	
-Boolean editar = false;
 
-	
 	@Autowired
 	private PlataformaValidador validador;
-	
-	
-	@Autowired
-	private UploadFileService uploadFileService;
-	
+
 	@Autowired
 	private PlataformaService platService;
-	
+
 	@InitBinder
 	public void InitBinder(WebDataBinder binder) {
 		binder.setValidator(validador);
 	}
-	
-	
+
 	@RequestMapping(value = "/listar", method = RequestMethod.GET)
 	public String listado(Model mod) {
 
@@ -72,7 +63,7 @@ Boolean editar = false;
 
 	@RequestMapping(value = "/form", method = RequestMethod.GET)
 	public String crear(Model mod) {
-		editar = false;
+
 		Plataforma plataforma = new Plataforma();
 		mod.addAttribute("Title", "Registro de Plataforma");
 		mod.addAttribute("plataformaNueva", plataforma);
@@ -81,9 +72,9 @@ Boolean editar = false;
 
 	}
 
-	@RequestMapping(value = "/form/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
 	public String editar(Model mod, @PathVariable(value = "id") Integer id) {
-		editar = true;
+
 		Plataforma plataforma = null;
 
 		if (id > 0) {
@@ -97,7 +88,7 @@ Boolean editar = false;
 			return "redirect:/plataformas/listar";
 		}
 
-		mod.addAttribute("edit", true);
+		mod.addAttribute("editar", true);
 		mod.addAttribute("Title", "Editar Plataforma");
 		mod.addAttribute("plataformaNueva", plataforma);
 
@@ -105,70 +96,24 @@ Boolean editar = false;
 
 	}
 
-	@RequestMapping(value = "/form", method=RequestMethod.POST)
+	@RequestMapping(value = "/form/add", method = RequestMethod.POST)
 	public String guardar(@Valid @ModelAttribute("plataformaNueva") Plataforma plataforma, BindingResult br, Model mod,
 			@RequestParam("retrato") MultipartFile foto, SessionStatus status) {
-		
 
 		try {
 			if (br.hasErrors()) {
-				
-				System.out.println("HOLA");
-				System.out.println(plataforma.getNombre());
-				System.out.println(plataforma.getFoto());
 
+				mod.addAttribute("plataformaNueva", plataforma);
 				mod.addAttribute("titulo", "Formulario de Plataforma");
 				return "plataformas/registro";
 
 			}
 
-			if (!foto.isEmpty()) {
-				if (editar == true) {
-					String rutaFoto = platService.getPlataforma(plataforma.getId()).getFoto();
-					String ruta = rutaFoto.substring(rutaFoto.lastIndexOf('/') + 1);
-
-					if (plataforma.getId() != null && plataforma.getId() > 0 && ruta != null && ruta.length() > 0) {
-					
-
-						uploadFileService.delete(ruta,4);
-					}
-				}
-
-				String uniqueFilename = null;
-				try {
-					uniqueFilename = uploadFileService.copy(foto,5,plataforma.getNombre());
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				System.out.println(uniqueFilename);
-				plataforma.setFoto("/resources/img/plataforma/" + uniqueFilename);
-			}
-
-			if (editar == true) {
-				if (foto.isEmpty()) {
-					plataforma.setFoto(platService.getPlataforma(plataforma.getId()).getFoto());
-				}
-			}
-			
-			if (foto.isEmpty()) {
-				System.out.println(plataforma.getNombre());
-				System.out.println(plataforma.getFoto());
-
-				mod.addAttribute("titulo", "Formulario de Plataforma");
-				mod.addAttribute("fotoerror", "Introduce una foto, por favor");
-				return "plataformas/registro";
-				
-			}
-			
-			
-			System.out.println(plataforma);
-
-			platService.save(plataforma);
+			platService.save(plataforma, foto);
 			status.setComplete();
 
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+		
 			e.printStackTrace();
 
 		}
@@ -179,19 +124,9 @@ Boolean editar = false;
 
 	@RequestMapping(value = "/delete/{id}")
 	public String eliminar(@PathVariable(value = "id") Integer id) {
-		System.out.println(id);
-		if (id > 0) {
-			Plataforma plataforma = platService.getPlataforma(id);
-			
-			System.out.println(plataforma);
-			
-			String rutaFoto = plataforma.getFoto();
-			System.out.println(rutaFoto);
-			
-			String ruta = rutaFoto.substring(rutaFoto.lastIndexOf('/') + 1);
-			System.out.println(ruta);
 
-			uploadFileService.delete(ruta,5);
+		if (id > 0) {
+
 			platService.delete(id);
 
 		}
@@ -200,5 +135,3 @@ Boolean editar = false;
 	}
 
 }
-
-

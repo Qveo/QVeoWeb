@@ -19,7 +19,7 @@
 	<main>
 
 
-		<form:form method="POST" action="/qveo/plataformas/form"
+		<form:form method="POST" action="/qveo/plataformas/form/add"
 			modelAttribute="plataformaNueva" enctype="multipart/form-data"
 			class="col s12 white-text">
 
@@ -37,24 +37,40 @@
 			<div class="row">
 				<div class="col s2"></div>
 				<div class="col s8">
-					<form:label path="foto">Foto</form:label>
-					<input type="file" name="retrato">
-					<span style="color:red">${fotoerror}</span>
-					
-					<c:if test="${edit}">
+
+					<c:if test="${editar}">
 						<div class="col s4">
 							<img alt="${plataformaNueva.nombre}"
 								src="${pageContext.request.contextPath}${plataformaNueva.foto}"
-								width="80%">
+								width="80%"> <span style="color: red">${fotoerror}</span>
 						</div>
 					</c:if>
 
+					<div class="col s12 m12 l6 offset-l3">
+						<div class="file-field input-field">
+							<div class="btn">
+								<form:label path="foto">
+									<span>Logo de la plataforma</span>
+								</form:label>
+								<input type="file" name="retrato" />
+							</div>
+							<div class="file-path-wrapper">
+								<input class="file-path validate" type="text"
+									placeholder="Suba aqui su foto">
+							</div>
+						</div>
+					</div>
+
+
 				</div>
+
 				<div class="col s2"></div>
 			</div>
 
+
+
 			<c:choose>
-				<c:when test="${edit}">
+				<c:when test="${editar}">
 					<form:input path="id" type="hidden" />
 				</c:when>
 			</c:choose>
@@ -62,7 +78,7 @@
 			<div class="row">
 				<div class="col s12 m12 l6 offset-l3">
 					<c:choose>
-						<c:when test="${edit}">
+						<c:when test="${editar}">
 							<button class="btn waves-effect waves-light" type="submit"
 								name="action">
 								Actualizar <i class="material-icons right">send</i>
