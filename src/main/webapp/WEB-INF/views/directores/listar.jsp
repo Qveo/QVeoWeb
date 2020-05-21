@@ -77,7 +77,7 @@
 			<div id="modal2" class="modal confirmar">
 				<div class="modal-content">
 					<h4>Por favor debes confirmar</h4>
-					<p>¿Estás seguro de querer eliminar esta pelicula?</p>
+					<p>¿Estás seguro de querer eliminar este director?</p>
 				</div>
 				<div class="modal-footer">
 					<a href="#!" class="waves-effect waves-green btn-flat modal-close">Cancelar</a>
@@ -90,7 +90,7 @@
 
 		<div id="modal3" class="modal confirmar">
 			<div class="modal-content">
-				<h4>Pelicula eliminada</h4>
+				<h4>Director eliminado</h4>
 			</div>
 			<div class="modal-footer">
 				<a href="" class="waves-effect waves-green btn-flat modal-close">Aceptar</a>
