@@ -9,21 +9,39 @@ import java.nio.file.Paths;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+<<<<<<< HEAD
 
 import com.qveo.qveoweb.service.IUploadFileService;
 import com.qveo.qveoweb.service.PeliculaService;
+=======
+import com.qveo.qveoweb.service.IUploadFileService;
+import com.qveo.qveoweb.service.PeliculaService;
+import com.qveo.qveoweb.service.UsuarioService;
+>>>>>>> develop
 
 @Service
 public class UploadFileServiceImpl implements IUploadFileService {
 
 	private final static String UPLOADS_FOLDER = "src/main/webapp/resources/img";
+<<<<<<< HEAD
 
 	@Autowired
 	PeliculaService peliculaService;
 
+	@Autowired
+	UsuarioService usuarioService;
+
 	@Override
 	public String copy(MultipartFile file, Integer accion, Integer id, String titulo) throws IOException {
 
+=======
+	
+	
+
+	@Override
+	public String copy(MultipartFile file,Integer accion,Integer id, String titulo) throws IOException {
+		
+>>>>>>> develop
 		String nombre = String.valueOf(id);
 
 		String nombre2 = titulo.trim().toLowerCase().replaceAll("\\s+", "_");
@@ -43,11 +61,18 @@ public class UploadFileServiceImpl implements IUploadFileService {
 		Files.copy(file.getInputStream(), rootPath);
 
 		return nombreFinal;
+<<<<<<< HEAD
 
 	}
 
 	@Override
 	public String defaultFoto(Integer accion, String temp) throws IOException {
+=======
+	}
+	
+	@Override
+	public String defaultFoto(Integer accion, Integer id) throws IOException {
+>>>>>>> develop
 
 		String nombreFinal = null;
 
@@ -57,12 +82,15 @@ public class UploadFileServiceImpl implements IUploadFileService {
 			break;
 
 		case 2:
-			if (!temp.equals("/resources/img/plataformas/defaultFoto.png") && !temp.equals("")) {
+<<<<<<< HEAD
+			if (!temp.equals("/resources/img/peliculas/defaultFoto.png") && !temp.equals("")) {
 				String nombre = temp;
 				nombreFinal = nombre.substring(nombre.lastIndexOf('/') + 1);
-			} else if (temp.equals("/resources/img/plataformas/defaultFoto.png") || temp.equals("")) {
+			} else if (temp.equals("/resources/img/peliculas/defaultFoto.png") || temp.equals("")) {
 				nombreFinal = "defaultFoto.png";	
 			}
+=======
+>>>>>>> develop
 
 			break;
 		case 3:
@@ -75,16 +103,34 @@ public class UploadFileServiceImpl implements IUploadFileService {
 
 			break;
 		case 6:
+<<<<<<< HEAD
 
+=======
+			if (usuarioService.getUsuario(id).getFoto() != null) {
+				String nombre = usuarioService.getUsuario(id).getFoto();
+				nombreFinal = nombre.substring(nombre.lastIndexOf('/') + 1);
+			} else if (usuarioService.getUsuario(id).getFoto() == null
+					&& usuarioService.getUsuario(id).getFoto() != "/resources/img/usuarios/defaultFoto.png") {
+				nombreFinal = "defaultFoto.png";
+			}
+>>>>>>> develop
 			break;
 		}
 
 		return nombreFinal;
 	}
+<<<<<<< HEAD
 
 	@Override
 	public boolean delete(String filename, Integer accion) {
 
+=======
+	
+
+	@Override
+	public boolean delete(String filename,Integer accion) {
+		
+>>>>>>> develop
 		String ruta = filename.substring(filename.lastIndexOf('/') + 1);
 		if (!ruta.equals("defaultFoto.png")) {
 			Path rootPath = getPath(ruta, accion);
@@ -100,11 +146,19 @@ public class UploadFileServiceImpl implements IUploadFileService {
 		return false;
 	}
 
+<<<<<<< HEAD
 	public Path getPath(String filename, Integer accion) {
 		String ruta = "";
 
 		switch (accion) {
 		case 1:
+=======
+	public Path getPath(String filename,Integer accion) {
+		String ruta = "";
+		switch (accion) {
+		case 1:
+
+>>>>>>> develop
 			ruta = UPLOADS_FOLDER + "/serie";
 			break;
 
@@ -127,4 +181,8 @@ public class UploadFileServiceImpl implements IUploadFileService {
 		return Paths.get(ruta).resolve(filename).toAbsolutePath();
 	}
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> develop
 }
