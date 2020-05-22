@@ -17,13 +17,13 @@ import com.qveo.qveoweb.service.UsuarioService;
 public class UploadFileServiceImpl implements IUploadFileService {
 
 	private final static String UPLOADS_FOLDER = "src/main/webapp/resources/img";
-	
+
 	@Autowired
 	UsuarioService usuarioService;
 
 	@Override
-	public String copy(MultipartFile file,Integer accion,Integer id, String titulo) throws IOException {
-		
+	public String copy(MultipartFile file, Integer accion, Integer id, String titulo) throws IOException {
+
 		String nombre = String.valueOf(id);
 
 		String nombre2 = titulo.trim().toLowerCase().replaceAll("\\s+", "_");
@@ -44,7 +44,7 @@ public class UploadFileServiceImpl implements IUploadFileService {
 
 		return nombreFinal;
 	}
-	
+
 	@Override
 	public String defaultFoto(Integer accion, String temp) throws IOException {
 
@@ -56,26 +56,17 @@ public class UploadFileServiceImpl implements IUploadFileService {
 			break;
 
 		case 2:
-			/*
-			if (peliculaService.getPelicula(id).getPoster() != null) {
-				String nombre = peliculaService.getPelicula(id).getPoster();
-				nombreFinal = nombre.substring(nombre.lastIndexOf('/') + 1);
-			} else if (peliculaService.getPelicula(id).getPoster() == null
-					&& peliculaService.getPelicula(id).getPoster() != "/resources/img/peliculas/defaultFoto.png") {
-				nombreFinal = "defaultFoto.png";
-			}
-			*/
 
 			break;
 		case 3:
 
-			if(!temp.equals("/resources/img/plataformas/defaultFoto.png") && !temp.equals("")) {
-				String nombre=temp;
-				nombreFinal=nombre.substring(nombre.lastIndexOf('/') + 1);
-			}else if (temp.equals("/resources/img/actores/defaultFoto.png") || temp.equals("")) {
-				nombreFinal = "defaultFoto.png";	
+			if (!temp.equals("/resources/img/plataformas/defaultFoto.png") && !temp.equals("")) {
+				String nombre = temp;
+				nombreFinal = nombre.substring(nombre.lastIndexOf('/') + 1);
+			} else if (temp.equals("/resources/img/actores/defaultFoto.png") || temp.equals("")) {
+				nombreFinal = "defaultFoto.png";
 			}
-			
+
 			break;
 		case 4:
 
@@ -84,17 +75,16 @@ public class UploadFileServiceImpl implements IUploadFileService {
 
 			break;
 		case 6:
-	
+
 			break;
 		}
 
 		return nombreFinal;
 	}
-	
 
 	@Override
-	public boolean delete(String filename,Integer accion) {
-		
+	public boolean delete(String filename, Integer accion) {
+
 		String ruta = filename.substring(filename.lastIndexOf('/') + 1);
 		if (!ruta.equals("defaultFoto.png")) {
 			Path rootPath = getPath(ruta, accion);
@@ -110,7 +100,7 @@ public class UploadFileServiceImpl implements IUploadFileService {
 		return false;
 	}
 
-	public Path getPath(String filename,Integer accion) {
+	public Path getPath(String filename, Integer accion) {
 		String ruta = "";
 		switch (accion) {
 		case 1:
@@ -136,6 +126,5 @@ public class UploadFileServiceImpl implements IUploadFileService {
 		}
 		return Paths.get(ruta).resolve(filename).toAbsolutePath();
 	}
-
 
 }

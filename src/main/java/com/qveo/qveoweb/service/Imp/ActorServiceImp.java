@@ -28,14 +28,14 @@ public class ActorServiceImp implements ActorService {
 	@Override
 	@Transactional(readOnly = true)
 	public Actor getActor(Integer id) {
-		// TODO Auto-generated method stub
+
 		return actorDao.findById(id).orElse(null);
 	}
 
 	@Override
 	@Transactional(readOnly = true)
 	public List<Actor> findAllActor() {
-		// TODO Auto-generated method stub
+
 		return actorDao.findAll();
 	}
 
@@ -54,7 +54,7 @@ public class ActorServiceImp implements ActorService {
 		actorDao.save(actorNuevo);
 
 		String uniqueFilename = null;
-		
+
 		if (!foto.isEmpty()) {
 			try {
 				uniqueFilename = uploadFileService.copy(foto, 3, actorNuevo.getId(), actorNuevo.getNombre());
@@ -75,11 +75,11 @@ public class ActorServiceImp implements ActorService {
 	@Override
 	@Transactional
 	public void deleteActor(Integer id) {
-		
-		Actor actor= getActor(id);
-		
+
+		Actor actor = getActor(id);
+
 		uploadFileService.delete(actor.getFoto(), 3);
-		
+
 		actorDao.deleteById(id);
 	}
 }

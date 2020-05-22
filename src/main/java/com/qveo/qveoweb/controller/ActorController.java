@@ -28,7 +28,6 @@ import com.qveo.qveoweb.validation.ActorValidator;
 @Controller
 public class ActorController {
 
-
 	@Autowired
 	ActorService actorService;
 
@@ -68,11 +67,11 @@ public class ActorController {
 
 		if (id > 0) {
 			actor = actorService.getActor(id);
-			
+
 			if (actor == null) {
 				return "redirect:/actor/list";
 			}
-			
+
 		} else {
 			return "redirect:/actor/list";
 		}
