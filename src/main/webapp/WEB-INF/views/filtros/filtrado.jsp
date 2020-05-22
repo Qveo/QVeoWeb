@@ -97,25 +97,6 @@
 						</div>
 					</a>				
 				</c:forEach>
-			
-<!-- 				<div class="row"> -->
-<!-- 					<div class="col s1"></div> -->
-<!-- 					<div class="col s6 "> -->
-<%-- 						<c:forEach items="${reparto.series}" var="serie"> --%>
-<%-- 							<label>${serie.titulo}</label> --%>
-<%-- 							<label>${serie.temporadas}</label> --%>
-<%-- 						</c:forEach> --%>
-<!-- 					</div> -->
-<!-- 				</div> -->
-<!-- 				<div class="row"> -->
-<!-- 					<div class="col s1"></div> -->
-<!-- 					<div class="col s6 "> -->
-<%-- 						<c:forEach items="${reparto.peliculas}" var="peli"> --%>
-<%-- 							<label>${peli.titulo}</label> --%>
-<%-- 							<label>${peli.guion}</label> --%>
-<%-- 						</c:forEach> --%>
-<!-- 					</div> -->
-<!-- 				</div> -->
 			</c:if>
 			</div>
 		</section>

@@ -90,7 +90,7 @@ public class FiltroController {
 	public String filtrDirector(@PathVariable Integer id, Model model) {
 
 		Director director = null;
-		director = directorService.findById(id).get();
+		director = filtroService.findByDirectorid(id);
 
 		if (director == null) 	return "redirect:/filtro";
 	
@@ -105,7 +105,7 @@ public class FiltroController {
 	public String filtrActor(@PathVariable Integer id, Model model) {
 		Actor actor = null;
 
-		actor = actorService.findById(id);
+		actor = filtroService.findByActorid(id);
 
 		if (actor == null)  return "redirect:/filtro";
 

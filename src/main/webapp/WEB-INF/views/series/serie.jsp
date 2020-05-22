@@ -62,7 +62,7 @@
                      		<div class="col s2">
 	                     		<img src="${pageContext.request.contextPath}${director.foto}" alt="${director.nombre}" width="80%">
 	                     		<div>
-	                    			<a href="#"> ${director.nombre}</a>
+	                    			<a href="/qveo/filtro/director/${director.id}"> ${director.nombre}</a>
 	                    		</div>
                     		</div>
                      </li>
