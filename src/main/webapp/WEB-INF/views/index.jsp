@@ -76,6 +76,4 @@
         src="${pageContext.request.contextPath}/resources/js/header.js"></script>
 <script
         src="${pageContext.request.contextPath}/resources/js/carousel.js"></script>
-<script
-        src="${pageContext.request.contextPath}/resources/js/menu.js"></script>
 </html>

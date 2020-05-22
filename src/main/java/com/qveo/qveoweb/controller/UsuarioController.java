@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.InitBinder;
 import javax.validation.Valid;
 
 import com.qveo.qveoweb.model.Usuario;
-import com.qveo.qveoweb.service.IUploadFileService;
 import com.qveo.qveoweb.service.PaisService;
 import com.qveo.qveoweb.service.PlataformaService;
 import com.qveo.qveoweb.service.UsuarioService;

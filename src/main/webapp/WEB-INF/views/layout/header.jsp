@@ -1,4 +1,4 @@
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <div class="navbar-fixed">
 	<nav>
@@ -16,6 +16,12 @@
 				<li><a href="${pageContext.request.contextPath}/usuario"><img
 						class="circle icon-user"
 						src="${pageContext.request.contextPath}/resources/img/iconouser.jpg"></a></li>
+				<li>
+					<a href="<c:url value="/login" />">Sig in</a>
+				</li>
+				<li>
+					<a href="<c:url value="/logout" />">Logout</a>
+				</li>
 			</ul>
 		</div>
 	</nav>

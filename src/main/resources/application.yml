@@ -28,9 +28,9 @@ spring:
     static-locations: /resources/
 #  security:
 #    user:
-#      name: root
-#      password: root
-#      roles: manager
+#      name: user
+#      password: user
+#      roles: user
 
 
 
