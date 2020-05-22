@@ -18,8 +18,12 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.qveo.qveoweb.dao.ActorDao;
+import com.qveo.qveoweb.dao.DirectorDao;
 import com.qveo.qveoweb.dao.PeliculaDao;
 import com.qveo.qveoweb.dao.SerieDao;
+import com.qveo.qveoweb.dto.FiltroDto;
+import com.qveo.qveoweb.model.Actor;
 import com.qveo.qveoweb.model.Director;
 import com.qveo.qveoweb.model.Genero;
 import com.qveo.qveoweb.model.Pelicula;
@@ -44,6 +48,12 @@ public class FiltroServiceImp implements FiltroService {
 
 	@Autowired
 	GeneroService generoService;
+
+	@Autowired
+	DirectorDao directorDao;
+
+	@Autowired
+	ActorDao actorDao;
 
 	@Override
 	public List<Integer> buscarAllYears() {
@@ -80,7 +90,7 @@ public class FiltroServiceImp implements FiltroService {
 	@Override
 	public List<Serie> busquedaCompletaSerie(Collection<Genero> generos, Collection<Plataforma> plataforma,
 			Collection<Integer> years) {
-		List<Serie> serieFiltra = new ArrayList<Serie>(new HashSet<Serie>());
+		List<Serie> serieFiltra = new ArrayList<Serie>();
 
 		Collection<Genero> genero = null;
 		if (generos.isEmpty()) {
@@ -97,7 +107,7 @@ public class FiltroServiceImp implements FiltroService {
 			plataformas = plataforma;
 		}
 		Collection<Integer> fechas = null;
-		if (years == null) {
+		if (years.isEmpty()) {
 			fechas = buscarAllYears();
 		} else {
 			fechas = years;
@@ -112,7 +122,7 @@ public class FiltroServiceImp implements FiltroService {
 			serieFiltra.addAll(serieDao.findByPlataformasInAndGenerosInAndFechaInicioBetween(plataformas, genero,
 					fechaInicio, fechafinal));
 		}
-		
+
 		return serieFiltra.stream().distinct().collect(Collectors.toList());
 	}
 
@@ -120,15 +130,14 @@ public class FiltroServiceImp implements FiltroService {
 	public List<Pelicula> busquedaCompletaPelicula(Collection<Genero> generosBuscar, Collection<Integer> years,
 			Collection<Plataforma> plataforma) {
 		List<Pelicula> peli = new ArrayList<Pelicula>(new HashSet<Pelicula>());
-		List<Pelicula> peliFitrada= new ArrayList<Pelicula>(new HashSet<Pelicula>());
-		
-				
+		List<Pelicula> peliFitrada = new ArrayList<Pelicula>(new HashSet<Pelicula>());
+
 		Collection<Genero> genero = null;
-		if (generosBuscar.isEmpty()==true) {
-			
+		if (generosBuscar.isEmpty() == true) {
+
 			genero = generoService.getAllGeneros();
 		} else {
-			
+
 			genero = generosBuscar;
 		}
 
@@ -139,7 +148,7 @@ public class FiltroServiceImp implements FiltroService {
 		} else {
 			plataformas = plataforma;
 		}
-		
+
 		Collection<Integer> fechas = null;
 		if (years.isEmpty()) {
 			fechas = buscarAllYears();
@@ -157,33 +166,83 @@ public class FiltroServiceImp implements FiltroService {
 
 		}
 		for (Plataforma plataform : plataformas) {
-		
-			for(Pelicula pelicula:peli ) {
-				if(comprobacionPlataforma(pelicula, plataform)==true) {
+
+			for (Pelicula pelicula : peli) {
+				if (comprobacionPlataforma(pelicula, plataform) == true) {
 					peliFitrada.add(pelicula);
 				}
 			}
-			
+
 		}
 
 		return peliFitrada.stream().distinct().collect(Collectors.toList());
 	}
-	
-	
+
 	public boolean comprobacionPlataforma(Pelicula pelicula, Plataforma plataforma) {
-		boolean respuesta=false;
-		
-		Set<PeliculaPlataforma> peliculaPlataform=pelicula.getPeliculaPlataformas();
-		
+		boolean respuesta = false;
+
+		Set<PeliculaPlataforma> peliculaPlataform = pelicula.getPeliculaPlataformas();
+
 		for (PeliculaPlataforma peliculaPlataforma : peliculaPlataform) {
-			if(peliculaPlataforma.getPlataforma().getId()==plataforma.getId()) {
-				respuesta= true;
-			break;
+			if (peliculaPlataforma.getPlataforma().getId() == plataforma.getId()) {
+				respuesta = true;
+				break;
 			}
 		}
 		return respuesta;
 	}
 
+	@Override
+	public Actor findByActorid(Integer id) {
+		Actor actor = null;
 
+		if (id > 0) {
+			actor = null;
+		} else {
+			actor = actorDao.findById(id).orElse(null);
+		}
+
+		return actor;
+	}
+
+	@Override
+	public Director findByDirectorid(Integer id) {
+		Director director = null;
+
+		if (id > 0) {
+			director = null;
+		} else {
+			director = directorDao.findById(id).orElse(null);
+		}
+
+		return director;
+	}
+
+	@Override
+	public FiltroDto busqueda(FiltroDto filtro) {
+
+		List<Serie> series = null;
+		List<Pelicula> peli = null;
+
+		if (filtro.getAccionFiltro() == 1) {
+
+			series = busquedaCompletaSerie(filtro.getGeneros(), filtro.getPlataformas(), filtro.getAnios());
+			peli = busquedaCompletaPelicula(filtro.getGeneros(), filtro.getAnios(), filtro.getPlataformas());
+
+		} else if (filtro.getAccionFiltro() == 2) {
+
+			series = busquedaCompletaSerie(filtro.getGeneros(), filtro.getPlataformas(), filtro.getAnios());
+
+		} else if (filtro.getAccionFiltro() == 3) {
+
+			peli = busquedaCompletaPelicula(filtro.getGeneros(), filtro.getAnios(), filtro.getPlataformas());
+
+		}
+
+		filtro.setSeries(series);
+		filtro.setPelicula(peli);
+
+		return filtro;
+	}
 
 }

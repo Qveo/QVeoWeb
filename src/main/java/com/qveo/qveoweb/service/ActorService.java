@@ -6,5 +6,5 @@ import com.qveo.qveoweb.model.Actor;
 
 public interface ActorService {
 
-	Optional<Actor> findById(Integer id);
+	Actor findById(Integer id);
 }

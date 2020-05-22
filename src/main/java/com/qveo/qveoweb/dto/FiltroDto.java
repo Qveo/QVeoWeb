@@ -3,7 +3,9 @@ package com.qveo.qveoweb.dto;
 import java.util.Collection;
 
 import com.qveo.qveoweb.model.Genero;
+import com.qveo.qveoweb.model.Pelicula;
 import com.qveo.qveoweb.model.Plataforma;
+import com.qveo.qveoweb.model.Serie;
 
 public class FiltroDto {
 	
@@ -11,6 +13,8 @@ public class FiltroDto {
 	Collection<Plataforma> plataformas;
 	Collection<Integer> anios;
 	Integer accionFiltro;
+	Collection<Pelicula> pelicula;
+	Collection<Serie> series;
 	
 	public FiltroDto() {
 	}
@@ -58,7 +62,25 @@ public class FiltroDto {
 	public void setAnios(Collection<Integer> anios) {
 		this.anios = anios;
 	}
+	
+	public Collection<Pelicula> getPelicula() {
+		return pelicula;
+	}
 
+
+	public void setPelicula(Collection<Pelicula> pelicula) {
+		this.pelicula = pelicula;
+	}
+
+
+	public Collection<Serie> getSeries() {
+		return series;
+	}
+
+
+	public void setSeries(Collection<Serie> series) {
+		this.series = series;
+	}
 
 
 	public Integer getAccionFiltro() {
@@ -70,8 +92,6 @@ public class FiltroDto {
 	public void setAccionFiltro(Integer accionFiltro) {
 		this.accionFiltro = accionFiltro;
 	}
-	
-	
-	
+
 	
 }

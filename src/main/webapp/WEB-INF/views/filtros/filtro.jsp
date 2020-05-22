@@ -15,7 +15,7 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/general.css">
-	<link rel="stylesheet"
+<link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/filtro.css">
 
 </head>
@@ -25,77 +25,59 @@
 	</header>
 
 	<main>
-		<h1>Filtro</h1>
+
 		<section>
+			<h1>Filtro</h1>
 			<form:form method="POST" action="/qveo/filtros"
 				modelAttribute="seriesBuscar">
-				<div class="row">
+
 				<div class="row">
 					<div class="col s1"></div>
 					<div class="col s6 ">
 						<ul>
 							<li><form:label path="accionFiltro" for="todos">
-									<form:radiobutton id="todos" path="accionFiltro" value="1" checked="checked"/>
+									<form:radiobutton id="todos" path="accionFiltro" value="1"
+										checked="checked" />
 									<span>Todo</span>
 								</form:label></li>
 							<li><form:label path="accionFiltro" for="series">
 									<form:radiobutton id="series" path="accionFiltro" value="2" />
 									<span>Series</span>
 								</form:label></li>
-							<li>
-							<form:label path="accionFiltro" for="pelis">
+							<li><form:label path="accionFiltro" for="pelis">
 									<form:radiobutton id="pelis" path="accionFiltro" value="3" />
 									<span>Pelicula</span>
-								</form:label>
-							</li>
+								</form:label></li>
 						</ul>
 					</div>
-				</div>
 					<div class="col s1"></div>
-					<div class="col s10 ">
-						<span>A&ntilde;o</span>
-					</div>
 				</div>
+
 				<div class="row">
 					<div class="col s1"></div>
-					<div class="col s6 ">
+					<div class="col s3">
+						<label>A&ntilde;o</label>
 						<form:select multiple="true" path="anios">
 							<form:option value="">Fechas</form:option>
 							<form:options items="${fechas}" />
 						</form:select>
 					</div>
-				</div>
-				<div class="row">
-					<div class="col s1"></div>
-					<div class="col s6 ">
-						<span>Genero</span>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col s1"></div>
-					<div class="col s6 ">
+					<div class="col s3">
+						<label> Genero</label>
 						<form:select path="generos" multiple="true">
 							<form:option value="">Genero</form:option>
 							<form:options items="${generos}" itemLabel="nombre" />
 						</form:select>
 					</div>
-				</div>
-				<div class="row">
-					<div class="col s1"></div>
-					<div class="col s6 ">
-						<span>Plataformas</span>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col s1"></div>
-					<div class="col s6 ">
+					<div class="col s3">
+						<label>Plataformas</label>
 						<form:select path="plataformas" multiple="true">
 							<form:options items="${plataformas}" itemLabel="nombre"
 								itemValue="id" />
 						</form:select>
 					</div>
+					<div class="col s1"></div>
 				</div>
-				
 				<div class="row">
 					<div class="col s1"></div>
 					<div class="col s6 ">
@@ -105,43 +87,35 @@
 						</button>
 					</div>
 				</div>
+
 			</form:form>
 		</section>
 
 		<section>
-			<table class="centered highlight responsive-table">
-				<thead>
-					<tr>
-						<th>Poster</th>
-						<th>Titulo</th>
-						<th>Fecha de inicio</th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach items="${serieMostrar}" var="serie">
-						<tr>
-							<td><img alt="${serie.titulo}"
-								src="${pageContext.request.contextPath}${serie.poster}"
-								width="20%"></td>
-							<td>${serie.titulo}</td>
-							<td>${serie.fechaInicio}</td>
-						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
-			
-				<div class="row">
-				<div class="col s4"></div>
-				<div class="col s6">
-					<c:forEach items="${serieMostrar}" var="serie">
-						<c:forEach items="${serie.directores}" var="director">
-							<a href="/qveo/filtro/director/${director.id}">${director.nombre}</a>
-						</c:forEach>
-
-					</c:forEach>
-					<a href="/qveo/filtro/actor/5">Aqui hgdsaidsaidji</a>
+			<div class="container">
+				<div class="row cabeceras">
+					<div class="col s2"></div>
+					<div class="col s3">Poster</div>
+					<div class="col s3">Titulo</div>
+					<div class="col s3">Fecha de inicio</div>
+					<div class="col s2"></div>
 				</div>
-				<div class="col s4"></div>
+
+				<c:forEach items="${serieMostrar}" var="serie">
+					<a href="/qveo/serie/${serie.id}">
+						<div class="row cuerpo">
+							<div class="col s2"></div>
+							<div class="col s3">
+								<img alt="${serie.titulo}"
+									src="${pageContext.request.contextPath}${serie.poster}"
+									width="40%">
+							</div>
+							<div class="col s3">${serie.titulo}</div>
+							<div class="col s3">${serie.fechaInicio}</div>
+							<div class="col s2"></div>
+						</div>
+					</a>
+				</c:forEach>
 			</div>
 		</section>
 

@@ -16,9 +16,9 @@ public class ActorServiceImp implements ActorService{
 	ActorDao actorDao;
 
 	@Override
-	public Optional<Actor> findById(Integer id) {
+	public Actor findById(Integer id) {
 		// TODO Auto-generated method stub
-		return actorDao.findById(id);
+		return actorDao.findById(id).orElse(null);
 	}
 	
 	

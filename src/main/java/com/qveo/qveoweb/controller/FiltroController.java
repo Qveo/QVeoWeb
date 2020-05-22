@@ -85,35 +85,33 @@ public class FiltroController {
 		return "filtros/filtro";
 	}
 
-	/* Filtro dreictor y actores */
-	@GetMapping("/filtro/{reparto}/{id}")
-	public String filtrReparto(@PathVariable String reparto, @PathVariable Integer id, Model model) {
+	/* Filtro Director */
+	@GetMapping("/filtro/director/{id}")
+	public String filtrDirector(@PathVariable Integer id, Model model) {
 
-		Director direc = null;
+		Director director = null;
+		director = directorService.findById(id).get();
+
+		if (director == null) 	return "redirect:/filtro";
+	
+		model.addAttribute("reparto", director);			
+		model.addAttribute("pintar", true);
+		
+		return "filtros/filtrado";
+	}
+
+	/* Filtro Actor */
+	@GetMapping("/filtro/actor/{id}")
+	public String filtrActor(@PathVariable Integer id, Model model) {
 		Actor actor = null;
 
-		if (reparto.equals("director")) {
+		actor = actorService.findById(id);
 
-			direc = directorService.findById(id).get();
-			
-			model.addAttribute("director", true);
-			
-			model.addAttribute("actor", false);
-			
-			
+		if (actor == null)  return "redirect:/filtro";
 
-		} else if (reparto.equals("actor")) {
-
-			model.addAttribute("actor", true);
-			
-			model.addAttribute("director", false);
-			
-			actor = actorService.findById(id).get();
-
-		}
+		model.addAttribute("pintar", true);
+		model.addAttribute("reparto", actor);
 		
-		model.addAttribute("directoInfo", direc);
-		model.addAttribute("actorInfo", actor);
 		return "filtros/filtrado";
 	}
 
@@ -140,32 +138,11 @@ public class FiltroController {
 
 			return "filtros/filtro";
 		}
-
-		List<Serie> series = new ArrayList<Serie>();
-		List<Pelicula> peli = new ArrayList<Pelicula>();
-
-		if (filtro.getAccionFiltro() == 1) {
-			series.addAll(filtroService.busquedaCompletaSerie(filtro.getGeneros(), filtro.getPlataformas(),
-					filtro.getAnios()));
-			peli.addAll(filtroService.busquedaCompletaPelicula(filtro.getGeneros(), filtro.getAnios(),
-					filtro.getPlataformas()));
-			System.out.println("Todos");
-		} else if (filtro.getAccionFiltro() == 2) {
-			System.out.println("Filtro Series");
-			series.addAll(filtroService.busquedaCompletaSerie(filtro.getGeneros(), filtro.getPlataformas(),
-					filtro.getAnios()));
-
-		} else if (filtro.getAccionFiltro() == 3) {
-			System.out.println("Filtro Pelis");
-			peli.addAll(filtroService.busquedaCompletaPelicula(filtro.getGeneros(), filtro.getAnios(),
-					filtro.getPlataformas()));
-
-		}
-
-		model.addAttribute("accion", filtro.getAccionFiltro());
-		model.addAttribute("series", series);
-		model.addAttribute("pelis", peli);
-
+		
+		
+		FiltroDto filtrados=filtroService.busqueda(filtro);
+		model.addAttribute("filtrado", filtrados);
+		
 		return "filtros/filtrado";
 	}
 }
