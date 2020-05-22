@@ -73,6 +73,7 @@ public class UsuarioController {
 				model.addAttribute("nuevoUsuario", usuario);
 				model.addAttribute("paises", paisService.getAllPais());
 				model.addAttribute("plataformas", plataformaService.getAllPlataformas());
+				model.addAttribute("rep", true);
 
 				return "usuario/registro";
 			}

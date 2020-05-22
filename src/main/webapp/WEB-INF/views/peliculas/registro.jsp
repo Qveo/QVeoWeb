@@ -107,7 +107,7 @@
 									<form:label path="poster">
 										<span>Poster de la pelicula</span>
 									</form:label>
-									<input type="file" name="foto" /> 
+									<input type="file" name="foto" />
 								</div>
 								<div class="file-path-wrapper">
 									<input class="file-path validate" type="text"
@@ -146,7 +146,11 @@
 					<form:errors path="plataformas" style="color:red" />
 				</div>
 
-
+				<c:choose>
+					<c:when test="${editar}">
+						<form:input path="id" type="hidden" />
+					</c:when>
+				</c:choose>
 
 				<div class="row">
 					<div class="col s12 m12 l6 offset-l3">

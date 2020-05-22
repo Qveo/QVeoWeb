@@ -20,7 +20,7 @@ import org.hibernate.annotations.CascadeType;
 public class PeliculaPlataforma {
 	
 	
-	private PeliculaPlataformaId id ;
+	private PeliculaPlataformaId id = new PeliculaPlataformaId();
 
 	
 	private Date fechaCaducidad;
@@ -33,10 +33,6 @@ public class PeliculaPlataforma {
 	public PeliculaPlataforma() {
 	}
 	
-	public PeliculaPlataforma(PeliculaPlataformaId id) {
-		
-		this.id = new PeliculaPlataformaId();
-	}
 
 	@Column(name = "CADUCA")
 	public Date getFechaCaducidad() {

@@ -55,6 +55,7 @@ public class PeliculaServiceImp implements PeliculaService {
 		if (pelicula.getId() != null) {
 			fotoTemp = getPelicula(pelicula.getId()).getPoster();
 			
+			
 		} else {
 			fotoTemp = "";
 		}
@@ -62,7 +63,9 @@ public class PeliculaServiceImp implements PeliculaService {
 		Pelicula peliculaNew = new Pelicula(pelicula.getTitulo(), pelicula.getDuracion(), pelicula.getGuion(),
 				pelicula.getPoster(), pelicula.getSinopsis(), pelicula.getAnio(), pelicula.getActores(),
 				pelicula.getGeneros(), pelicula.getPais(), pelicula.getDirectores());
-
+			
+		peliculaNew.setId(pelicula.getId());
+			
 		peliculaDao.save(peliculaNew);
 		if (!foto.isEmpty()) {
 			try {
@@ -85,7 +88,7 @@ public class PeliculaServiceImp implements PeliculaService {
 
 		addPlataform(pelicula, peliculaNew);
 
-		peliculaDao.save(peliculaNew);
+		
 	}
 
 	@Override
