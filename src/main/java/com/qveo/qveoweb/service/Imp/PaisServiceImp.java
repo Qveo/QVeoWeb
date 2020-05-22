@@ -19,7 +19,7 @@ public class PaisServiceImp implements PaisService {
 
 	@Override
 	@Transactional(readOnly = true)
-	public List<Pais> findAll() {
+	public List<Pais> getAllPais() {
 
 		return (List<Pais>) paisDao.findAll();
 	}

@@ -59,7 +59,7 @@ public class UsuarioController {
 		
 		model.addAttribute("titulo", "Registro de Usuario");
 		model.addAttribute("nuevoUsuario", new Usuario());
-		model.addAttribute("paises", paisService.findAll());
+		model.addAttribute("paises", paisService.getAllPais());
 		model.addAttribute("plataformas", plataformaService.getAllPlataformas());
 
 		return "usuario/registro";
@@ -71,7 +71,7 @@ public class UsuarioController {
 		try {
 			if (br.hasErrors()) {
 				model.addAttribute("nuevoUsuario", usuario);
-				model.addAttribute("paises", paisService.findAll());
+				model.addAttribute("paises", paisService.getAllPais());
 				model.addAttribute("plataformas", plataformaService.getAllPlataformas());
 
 				return "usuario/registro";
@@ -91,7 +91,7 @@ public class UsuarioController {
 	public String editUsuario(Model modelo, @PathVariable("id") Integer id, Model model) {
 
 		Usuario usuario = usuarioService.getUsuario(id);
-		model.addAttribute("paises", paisService.findAll());
+		model.addAttribute("paises", paisService.getAllPais());
 		model.addAttribute("plataformas", plataformaService.getAllPlataformas());
 
 		modelo.addAttribute("nuevoUsuario", usuario);

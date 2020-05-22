@@ -1,7 +1,5 @@
 package com.qveo.qveoweb.controller;
 
-import java.io.IOException;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +37,7 @@ public class PaisController {
 	public String listado(Model mod) {
 
 		mod.addAttribute("titulo", "Listado de directores");
-		mod.addAttribute("paises", paisService.findAll());
+		mod.addAttribute("paises", paisService.getAllPais());
 
 		return "paises/listar";
 	}
