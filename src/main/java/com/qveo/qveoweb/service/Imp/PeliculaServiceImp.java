@@ -54,7 +54,7 @@ public class PeliculaServiceImp implements PeliculaService {
 
 		if (pelicula.getId() != null) {
 			fotoTemp = getPelicula(pelicula.getId()).getPoster();
-			System.out.println(fotoTemp);
+			
 		} else {
 			fotoTemp = "";
 		}
