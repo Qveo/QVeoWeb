@@ -28,7 +28,7 @@ import com.qveo.qveoweb.validation.ActorValidator;
 @Controller
 public class ActorController {
 
-	boolean editar = false;
+
 	@Autowired
 	ActorService actorService;
 
@@ -52,7 +52,7 @@ public class ActorController {
 
 	@GetMapping("/actor/form")
 	public String actorForm(Model model) {
-		editar = false;
+
 		List<Pais> paises = paisService.getAllPais();
 
 		model.addAttribute("actorNuevo", new Actor());
