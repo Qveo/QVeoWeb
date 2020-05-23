@@ -14,7 +14,7 @@
 <body>
 	<main>
 		<div class="container">
-			<form action="login" method="POST" 
+			<form name="login" action="/qveo/login" method="POST" 
 				class="col s12 m12 l6 offset-l3 white-text">
 				<div class="row">
 					<div class="input-field col s12 m6 l6 offset-l3">
@@ -38,6 +38,7 @@
 						</div>
 					</div>
 				</div>
+				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 			</form>
 		</div>
 	</main>

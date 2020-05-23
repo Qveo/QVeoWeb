@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <div class="navbar-fixed">
 	<nav>
 		<div class="nav-wrapper">
@@ -17,11 +17,16 @@
 						class="circle icon-user"
 						src="${pageContext.request.contextPath}/resources/img/iconouser.jpg"></a></li>
 				<li>
-					<a href="<c:url value="/login" />">Sig in</a>
+					<a href="<c:url value="/login" />">Sign in</a>
 				</li>
+				<li>
+					<a href="<c:url value="/usuario/form" />">Sign up</a>
+				</li>
+				<security:authorize access="authenticated">
 				<li>
 					<a href="<c:url value="/logout" />">Logout</a>
 				</li>
+				</security:authorize>
 			</ul>
 		</div>
 	</nav>
