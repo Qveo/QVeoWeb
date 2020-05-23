@@ -1,11 +1,8 @@
 package com.qveo.qveoweb.controller;
 
 
-import com.qveo.qveoweb.dao.PlataformaDao;
-import com.qveo.qveoweb.model.Pelicula;
-import com.qveo.qveoweb.model.Plataforma;
-import com.qveo.qveoweb.service.PeliculaService;
-import com.qveo.qveoweb.service.PlataformaService;
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,8 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import java.util.List;
-import java.util.Map;
+import com.qveo.qveoweb.model.Plataforma;
+import com.qveo.qveoweb.service.PlataformaService;
 
 @Controller
 public class HomeController {

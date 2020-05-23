@@ -11,7 +11,7 @@
 		class="chips chips-placeholder col s12 m12 l6 offset-l3"></div>
 	<div id="plataformas">
 		<c:choose>
-			<c:when test="${edit}">
+			<c:when test="${edit || rep}">
 				<c:forEach items="${plataformas}" var="plataforma">
 					<c:choose>
 						<c:when test="${fn:contains(nuevoUsuario.plataformas,plataforma)}">
