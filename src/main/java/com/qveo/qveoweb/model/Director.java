@@ -7,6 +7,7 @@ import java.util.Collection;
 public class Director {
     private Integer id;
     private String nombre;
+    private String foto;
     private Collection<Serie> series;
     private Collection<Pelicula> peliculas;
 
@@ -29,8 +30,19 @@ public class Director {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+    
+    
+    @Basic
+    @Column(name = "FOTO")
+    public String getFoto() {
+		return foto;
+	}
 
-    @ManyToMany
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
+
+	@ManyToMany
     @JoinTable(
             name ="Director_serie",
             joinColumns = @JoinColumn(name = "id_director", nullable = false),

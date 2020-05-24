@@ -42,8 +42,18 @@ public class Plataforma {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+    
+    @Basic
+    @Column(name = "LOGO")
+    public String getLogo() {
+		return logo;
+	}
 
-    @OneToMany(mappedBy = "plataforma")
+	public void setLogo(String logo) {
+		this.logo = logo;
+	}
+
+	@OneToMany(mappedBy = "plataforma")
 	public Set<PeliculaPlataforma> getPeliculaPlataformas() {
 		return peliculaPlataformas;
 	}

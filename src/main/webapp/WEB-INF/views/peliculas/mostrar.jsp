@@ -6,11 +6,13 @@
 	rel="stylesheet">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<!-- <link rel="stylesheet" -->
+<%-- 	href="${pageContext.request.contextPath}/resources/css/general.css"> --%>
+<!-- <link rel="stylesheet" -->
+<%-- 	href="${pageContext.request.contextPath}/resources/css/pelicula.css"> --%>
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/general.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/pelicula.css">
-	<title><c:out value="${Titulo}"/></title>
+	href="${pageContext.request.contextPath}/resources/css/header.css">
+<title><c:out value="${Titulo}" /></title>
 </head>
 <body>
 	<header>
@@ -22,59 +24,59 @@
 			<div class="col s1"></div>
 			<div class="col s10 derecha ">
 				<div class="col s4 bord">
-				<img
-					src="${pageContext.request.contextPath}/resources/img/rick.jpeg"
-					alt="rick" class="izq" width="80%">
-				
-				
+					<img
+						src="${pageContext.request.contextPath}/resources/img/rick.jpeg"
+						alt="rick" class="izq" width="80%">
+
+
 				</div>
 				<div class="col s8">
-				<h2>${peliculas.titulo}<span class="fechaInicio">(${peliculas.anio})</span>
-				</h2>
+					<h2>${peliculas.titulo}<span class="fechaInicio">(${peliculas.anio})</span>
+					</h2>
 
-				<div>
-					<ul>
-						<li><a>Agregar</a></li>
-						<li><a>Ir a la plataforma</a></li>
-					</ul>
-				</div>
+					<div>
+						<ul>
+							<li><a>Agregar</a></li>
+							<li><a>Ir a la plataforma</a></li>
+						</ul>
+					</div>
 
-				<h5>Sinopsis</h5>
-				<p>${peliculas.sinopsis}</p>
+					<h5>Sinopsis</h5>
+					<p>${peliculas.sinopsis}</p>
 
-				<table>
-					<tr>
-						<td>Comentario 1</td>
-						<td>Fecha</td>
-					</tr>
-					<tr>
-						<td>Comentario 2</td>
-						<td>Fecha</td>
-					</tr>
-					<tr>
-						<td>Comentario 3</td>
-						<td>Fecha</td>
-					</tr>
-				</table>
+					<table>
+						<tr>
+							<td>Comentario 1</td>
+							<td>Fecha</td>
+						</tr>
+						<tr>
+							<td>Comentario 2</td>
+							<td>Fecha</td>
+						</tr>
+						<tr>
+							<td>Comentario 3</td>
+							<td>Fecha</td>
+						</tr>
+					</table>
 				</div>
-				</div>
-			
-			<div class="col s1"></div>
-			
 			</div>
 
-			<div class="row">
-				<div class="col s1"></div>
-				<div class="col s10 ">
-					<span>Genero:</span>
-					<ul>
-						<c:forEach items="${peliculas.generos}" var="genero">
+			<div class="col s1"></div>
 
-							<li><a class="genero">${genero.nombre}</a></li>
-						</c:forEach>
-					</ul>
+		</div>
 
-			
+		<div class="row">
+			<div class="col s1"></div>
+			<div class="col s10 ">
+				<span>Genero:</span>
+				<ul>
+					<c:forEach items="${peliculas.generos}" var="genero">
+
+						<li><a class="genero">${genero.nombre}</a></li>
+					</c:forEach>
+				</ul>
+
+
 				<div>
 					<span>Duracion: ${peliculas.duracion}</span>
 				</div>
@@ -119,15 +121,15 @@
 					</ul>
 
 				</div>
-				
-				</div>
 
 			</div>
+
+		</div>
 
 		<div class="col s1"></div>
 
 
-		</div>
+
 
 
 
@@ -140,6 +142,5 @@
 </body>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-<script
-	src="${pageContext.request.contextPath}/resources/js/carousel.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/header.js"></script>
 </html>

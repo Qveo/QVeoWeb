@@ -83,16 +83,16 @@ public class PeliculaController {
 	}
 
 	@GetMapping("/{id}")
-	public String mostrar(Model mod, @PathVariable String id) {
+	public String mostrar(Model mod, @PathVariable Integer id) {
 
-		int idI = Integer.parseInt(id);
+		
 
-		Pelicula pelicula = peliculaService.getPelicula(idI);
+		Pelicula pelicula = peliculaService.getPelicula(id);
 
 		mod.addAttribute("peliculas", pelicula);
 		mod.addAttribute("Titulo", "Datos de la pelicula");
 
-		return "peliculas/mostrar";
+		return "peliculas/pelicula";
 	}
 
 	@RequestMapping("/form")

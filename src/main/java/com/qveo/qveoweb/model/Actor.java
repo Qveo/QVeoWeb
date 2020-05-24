@@ -8,6 +8,7 @@ public class Actor {
     private Integer id;
     private String nombre;
     private String sexo;
+    private String foto;
     private Pais pais;
     private Collection<Pelicula> peliculas;
     private Collection<Serie> series;
@@ -31,6 +32,16 @@ public class Actor {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+    
+    @Basic
+    @Column(name = "FOTO")
+    public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
 
     @Basic
     @Column(name = "SEXO")
