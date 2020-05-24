@@ -2,30 +2,29 @@ package com.qveo.qveoweb.service.Imp;
 
 import java.io.File;
 import java.io.IOException;
-
+import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.qveo.qveoweb.service.DirectorService;
+import com.qveo.qveoweb.service.PlataformaService;
 import com.qveo.qveoweb.service.UploadFileService;
 
 @Service
 public class UploadFileServiceImp implements UploadFileService {
 
 	private final static String UPLOADS_FOLDER = "src/main/webapp/resources/img";
-
+	
 	@Autowired
-	DirectorService directorService;
+	PlataformaService platServ;
 
 	@Override
-	public String copy(MultipartFile file, Integer accion, Integer id, String titulo) throws IOException {
-		
+	public String copy(MultipartFile file, Integer accion,Integer id, String titulo) throws IOException {
 		String nombre = String.valueOf(id);
 
 		String nombre2 = titulo.trim().toLowerCase().replaceAll("\\s+", "_");
@@ -50,8 +49,6 @@ public class UploadFileServiceImp implements UploadFileService {
 
 	@Override
 	public boolean delete(String filename, Integer accion) {
-		
-		
 		String ruta = filename.substring(filename.lastIndexOf('/') + 1);
 		if (!ruta.equals("defaultFoto.png")) {
 			Path rootPath = getPath(ruta, accion);
@@ -74,6 +71,7 @@ public class UploadFileServiceImp implements UploadFileService {
 		case 1:
 			ruta = UPLOADS_FOLDER + "/peliculas";
 			break;
+
 		case 2:
 			ruta = UPLOADS_FOLDER + "/serie";
 			break;
@@ -92,7 +90,7 @@ public class UploadFileServiceImp implements UploadFileService {
 		}
 		return Paths.get(ruta).resolve(filename).toAbsolutePath();
 	}
-
+	
 	@Override
 	public String defaultFoto(Integer accion, String temp) throws IOException {
 		String nombreFinal = null;
@@ -110,15 +108,16 @@ public class UploadFileServiceImp implements UploadFileService {
 
 			break;
 		case 4:
+		
+
+			break;
+		case 5:
 			if (!temp.equals("/resources/img/plataformas/defaultFoto.png") && !temp.equals("")) {
 				String nombre = temp;
 				nombreFinal = nombre.substring(nombre.lastIndexOf('/') + 1);
 			} else if (temp.equals("/resources/img/plataformas/defaultFoto.png") || temp.equals("")) {
 				nombreFinal = "defaultFoto.png";	
 			}
-
-			break;
-		case 5:
 
 			break;
 		case 6:
@@ -130,3 +129,10 @@ public class UploadFileServiceImp implements UploadFileService {
 	}
 
 }
+
+			if (!temp.equals("/resources/img/plataformas/defaultFoto.png") && !temp.equals("")) {
+				String nombre = temp;
+				nombreFinal = nombre.substring(nombre.lastIndexOf('/') + 1);
+			} else if (temp.equals("/resources/img/plataformas/defaultFoto.png") || temp.equals("")) {
+				nombreFinal = "defaultFoto.png";	
+			}
