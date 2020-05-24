@@ -197,9 +197,10 @@ public class FiltroServiceImp implements FiltroService {
 		Actor actor = null;
 
 		if (id > 0) {
-			actor = null;
-		} else {
 			actor = actorDao.findById(id).orElse(null);
+		} else {
+			actor = null;
+
 		}
 
 		return actor;
@@ -208,11 +209,10 @@ public class FiltroServiceImp implements FiltroService {
 	@Override
 	public Director findByDirectorid(Integer id) {
 		Director director = null;
-
 		if (id > 0) {
-			director = null;
-		} else {
 			director = directorDao.findById(id).orElse(null);
+		} else {
+			director = null;
 		}
 
 		return director;

@@ -23,24 +23,4 @@ public class SerieServiceImp implements SerieService {
 		return serieDao.findAll();
 	}
 
-	@Override
-	@Transactional(readOnly = true)
-	public Optional<Serie> getSerie(Integer id) {
-
-		return serieDao.findById(id);
-	}
-
-	@Override
-	@Transactional
-	public void save(Serie serieNew) {
-		serieDao.save(serieNew);
-	}
-
-	@Override
-	@Transactional
-	public void deleteSerie(Integer id) {
-		serieDao.deleteById(id);
-
-	}
-
 }

@@ -87,16 +87,16 @@ public class FiltroController {
 
 	/* Filtro Director */
 	@GetMapping("/filtro/director/{id}")
-	public String filtrDirector(@PathVariable Integer id, Model model) {
+	public String filtrDirector(@PathVariable String id, Model model) {
 
-		Director director = null;
-		director = filtroService.findByDirectorid(id);
-
-		if (director == null) 	return "redirect:/filtro";
+		Director director  = filtroService.findByDirectorid(Integer.parseInt(id));
 	
-		model.addAttribute("reparto", director);			
+		if (director == null) {
+			return "redirect:/filtro";
+		}
+		model.addAttribute("reparto", director);
 		model.addAttribute("pintar", true);
-		
+
 		return "filtros/filtrado";
 	}
 
@@ -107,11 +107,12 @@ public class FiltroController {
 
 		actor = filtroService.findByActorid(id);
 
-		if (actor == null)  return "redirect:/filtro";
+		if (actor == null)
+			return "redirect:/filtro";
 
 		model.addAttribute("pintar", true);
 		model.addAttribute("reparto", actor);
-		
+
 		return "filtros/filtrado";
 	}
 
@@ -138,11 +139,10 @@ public class FiltroController {
 
 			return "filtros/filtro";
 		}
-		
-		
-		FiltroDto filtrados=filtroService.busqueda(filtro);
+
+		FiltroDto filtrados = filtroService.busqueda(filtro);
 		model.addAttribute("filtrado", filtrados);
-		
+
 		return "filtros/filtrado";
 	}
 }
