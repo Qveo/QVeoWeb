@@ -36,11 +36,8 @@ spring:
 #      fail-on-empty-beans: false
   resources:
     static-locations: /resources/
-
-  servlet:
-    multipart:
-      max-file-size: 128KB
-      max-request-size: 128KB
+#  jpa:
+#    show-sql: true
 #  security:
 #    user:
 #      name: root
