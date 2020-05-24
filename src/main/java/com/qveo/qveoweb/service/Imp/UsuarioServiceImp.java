@@ -1,20 +1,15 @@
 package com.qveo.qveoweb.service.Imp;
 
-import java.util.ArrayList;
+import java.io.IOException;
 import java.util.List;
 
 import com.qveo.qveoweb.dao.RolDao;
 import com.qveo.qveoweb.dao.UsuarioDao;
-import com.qveo.qveoweb.model.Pelicula;
 import com.qveo.qveoweb.model.Rol;
-import com.qveo.qveoweb.model.Serie;
 import com.qveo.qveoweb.model.Usuario;
+import com.qveo.qveoweb.service.IUploadFileService;
 import com.qveo.qveoweb.service.UsuarioService;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import org.apache.commons.io.FilenameUtils;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,31 +25,44 @@ public class UsuarioServiceImp implements UsuarioService {
 
     @Autowired
     RolDao rolDao;
-
-    private final String rutaGuardar = "src/main/webapp/resources/img/";
-
-    private final String rutaUsuario = "/resources/img/";
     
-    private String extension="";
-    
-    private String nombreImg="";
-    
+    @Autowired
+	IUploadFileService uploadFileService;
 
     @Override
     public List<Usuario> findAllUsuarios() {
         return usuarioDao.findAll();
     }
 
-    public void saveUser(Usuario usuario) {
+    public void saveUser(Usuario usuario, MultipartFile foto) throws IOException {
 
         Rol rol = rolDao.findById(1);
         usuario.setRol(rol);
 
         usuarioDao.save(usuario);
+
+		if (!foto.isEmpty()) {
+			try {
+				String uniqueFilename = null;
+
+				uniqueFilename = uploadFileService.copy(foto, 6, usuario.getId(), usuario.getNombre());
+				usuario.setFoto("/resources/img/usuarios/" + uniqueFilename);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+		} else if (foto.isEmpty()) {
+			String uniqueFilename = null;
+			uniqueFilename = uploadFileService.defaultFoto(6, usuario.getId());
+			usuario.setFoto("/resources/img/usuarios/" + uniqueFilename);
+
+		}
+
+		usuarioDao.save(usuario);
     }
 
     @Override
-    public Usuario findById(Integer id) {
+    public Usuario getUsuario(Integer id) {
 
         Usuario entity = usuarioDao.findById(id).get();
         return entity;
@@ -66,53 +74,19 @@ public class UsuarioServiceImp implements UsuarioService {
 
     }
 
-    @Override
-    public void editUser(Usuario usuarioEditado) {
-        Usuario entity = usuarioDao.findById(usuarioEditado.getId()).get();
-        if (entity != null) {
-            entity.setNombre(usuarioEditado.getNombre());
-            entity.setApellidos(usuarioEditado.getApellidos());
-            entity.setEmail(usuarioEditado.getEmail());
-            if(usuarioEditado.getPassword() != null) entity.setPassword(usuarioEditado.getPassword());
-            if(usuarioEditado.getFoto()!= null) entity.setFoto(usuarioEditado.getFoto());
-            entity.setFechaNacimiento(usuarioEditado.getFechaNacimiento());
-            entity.setSexo(usuarioEditado.getSexo());
-        }
+	@Override
+	public List<Usuario> findUsuarioPorNombre(String nombre) {
+		
+		List<Usuario> usuarios = usuarioDao.findByNombreStartingWith(nombre);
+		
+		return usuarios;
+	}
 
-    }
-
-    @Override
-    public void saveImg(MultipartFile file, Usuario usuario, boolean actFile) throws IOException {
-        try {
-            byte[] bytes = file.getBytes();
-
-            extension = FilenameUtils.getExtension(file.getOriginalFilename());
-            
-            nombreImg = usuario.getNombre().trim().toLowerCase().replaceAll("\\s+", "_") + "." + extension;
-            
-            String rutaFinal = rutaGuardar + nombreImg;
-            
-            usuario.setFoto(rutaUsuario+nombreImg);
-
-            if (!actFile) {
-                Path path = Paths.get(rutaFinal);
-
-                Files.write(path, bytes);
-            } else {
-
-                /*Elimina y luego la crea
-				 * 
-				 * crea de nuevo*/
-                Path path = Paths.get(rutaFinal);
-
-                Files.write(path, bytes);
-            }
-
-        } catch (NoSuchFieldError e) {
-            System.err.println("Error de ficheros ---------------------------------");
-            e.printStackTrace();
-        }
-    }
+	@Override
+	public boolean usuarioExiste(Integer id) {
+		
+		return usuarioDao.existsById(id);
+	}
     
 
 }

@@ -11,4 +11,5 @@ import org.springframework.stereotype.Repository;
 public interface UsuarioDao extends JpaRepository<Usuario, Integer> {
 
     List<Usuario> findAll();
+    List<Usuario> findByNombreStartingWith(String nombre);
 }

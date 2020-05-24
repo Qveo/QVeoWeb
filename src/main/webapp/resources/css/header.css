@@ -1,0 +1,29 @@
+.title-qveo{
+    color: #00adb5;
+    margin-left: 2rem;
+    font-weight: bold;
+    font-size: xx-large;
+}
+
+.icon-user{
+    width: 3.1rem;
+    margin-top: 0.5rem;
+}
+
+.icon-user-sidenav{
+    margin: 5vh 0vh 3vh 8vh;
+    width: 6rem;
+}
+
+.sidenav{
+    background-color: #393e46;
+
+}
+
+.sidenav li > a{
+    color: white;
+}
+
+a:hover{
+    color: #00adb5 ;
+}
