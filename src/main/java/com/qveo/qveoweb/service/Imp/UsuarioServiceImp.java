@@ -66,9 +66,7 @@ public class UsuarioServiceImp implements UsuarioService {
 
     @Override
     public Usuario getUsuario(Integer id) {
-
-        Usuario entity = usuarioDao.findById(id).get();
-        return entity;
+        return usuarioDao.findById(id).get();
     }
 
     @Override
@@ -79,16 +77,17 @@ public class UsuarioServiceImp implements UsuarioService {
 
 	@Override
 	public List<Usuario> findUsuarioPorNombre(String nombre) {
-		
-		List<Usuario> usuarios = usuarioDao.findByNombreStartingWith(nombre);
-		
-		return usuarios;
+		return usuarioDao.findByNombreStartingWith(nombre);
 	}
 
 	@Override
 	public boolean usuarioExiste(Integer id) {
-		
 		return usuarioDao.existsById(id);
+	}
+
+	@Override
+	public Usuario findUserByEmail(String email) {
+		return usuarioDao.findByEmail(email);
 	}    
 
 }

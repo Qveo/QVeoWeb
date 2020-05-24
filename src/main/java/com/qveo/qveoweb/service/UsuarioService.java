@@ -16,4 +16,5 @@ public interface UsuarioService {
     public void deleteUser(Integer id);
     public List<Usuario> findUsuarioPorNombre(String nombre);
     public boolean usuarioExiste(Integer id);
+    public Usuario findUserByEmail(String email);
 }
