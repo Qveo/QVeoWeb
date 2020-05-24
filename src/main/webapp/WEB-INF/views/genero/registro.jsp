@@ -37,7 +37,6 @@
 		<%@include file="/WEB-INF/views/layout/header.jsp"%>
 	</header>
 	<main>
-
 		<section>
 			<div class="row">
 				<div class="col s2"></div>
@@ -48,7 +47,11 @@
 						<form:input path="nombre" id="nombre" />
 						<form:errors path="nombre" style="color:red"></form:errors>
 						<div style="color: red">${errorNombre}</div>
-						
+						<c:choose>
+							<c:when test="${editar}">
+								<form:hidden path="id" />
+							</c:when>
+						</c:choose>
 						<c:choose>
 							<c:when test="${editar}">
 								<button class="btn waves-effect waves-light" type="submit"

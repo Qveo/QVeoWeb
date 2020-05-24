@@ -54,13 +54,14 @@ public class GeneroController {
 		if (id > 0) {
 			genero = generoService.getGenero(id);
 			
-			if (genero == null) {	return "redirect:/home"; }
+			if (genero == null) 	return "redirect:/home";  
 			
 		} else {return "redirect:/home";}
 			
 
 		model.addAttribute("editar", true);
 		model.addAttribute("generoNuevo", genero);
+		
 		return "genero/registro";
 	}
 
@@ -71,7 +72,6 @@ public class GeneroController {
 
 			return "genero/registro";
 		}
-		System.out.println(generoAct.getId() + " " + generoAct.getNombre());
 		generoService.save(generoAct);
 
 		return "redirect:/genero/list";
