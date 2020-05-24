@@ -1,0 +1,20 @@
+
+.btn-floating.btn-large{
+	background: #393e46;
+}
+
+.btn-floating.btn-large .material-icons.eliminar{
+	background:  #c40e2a;	
+}
+/*
+.material-icons.eliminar {
+    color: #c40e2a;
+}*/
+/*
+.material-icons.editar{
+    color: #00adb5;
+}*/
+
+.btn.agregar-usuario{
+    background-color: #00adb5;
+}

@@ -1,11 +1,29 @@
 package com.qveo.qveoweb.model;
 
 import javax.persistence.*;
-import java.sql.Date;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Size;
+
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import java.util.Date;
+import java.util.stream.Collectors;
+import java.util.ArrayList;
 import java.util.Collection;
 
 @Entity
+@EntityListeners(AuditingEntityListener.class)
 public class Usuario {
+	
+	
     private Integer id;
     private String nombre;
     private String apellidos;
@@ -14,10 +32,36 @@ public class Usuario {
     private Date fechaNacimiento;
     private String sexo;
     private String password;
-    private Lista lista;
     private Rol rol;
+    private Pais pais;
+    private Date fechaAlta;
+	private Collection<Plataforma> plataformas;
+    private Collection<Pelicula> peliculas;
+    private Collection<Serie> series;
+    
+    public Usuario() {
+    	
+    }
 
-    @Id
+    public Usuario(String nombre,String apellidos,String email, String foto,Date fechaNacimiento, String sexo, String password, Rol rol,
+			Pais pais, Date fechaAlta) {
+		this.nombre = nombre;
+		this.apellidos = apellidos;
+		this.email = email;
+		this.foto = foto;
+		this.fechaNacimiento = fechaNacimiento;
+		this.sexo = sexo;
+		this.password = password;
+		this.rol = rol;
+		this.pais = pais;
+		this.fechaAlta = fechaAlta;
+		this.plataformas = new ArrayList<>();
+		this.peliculas = new ArrayList<>();
+		this.series = new ArrayList<>();
+	}
+
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
     public Integer getId() {
         return id;
@@ -69,6 +113,8 @@ public class Usuario {
 
     @Basic
     @Column(name = "FECHA_NACIMIENTO")
+    @DateTimeFormat(pattern = "dd-MM-yyyy")
+    @Temporal(TemporalType.DATE)
     public Date getFechaNacimiento() {
         return fechaNacimiento;
     }
@@ -97,18 +143,9 @@ public class Usuario {
         this.password = password;
     }
 
-    @OneToOne
-    @JoinColumn(name = "ID_LISTA", referencedColumnName = "ID", nullable = false)
-    public Lista getLista() {
-        return lista;
-    }
-
-    public void setLista(Lista lista) {
-        this.lista = lista;
-    }
-
     @ManyToOne
     @JoinColumn(name = "ID_ROL", referencedColumnName = "ID", nullable = false)
+    @JsonIgnore
     public Rol getRol() {
         return rol;
     }
@@ -116,4 +153,77 @@ public class Usuario {
     public void setRol(Rol rol) {
         this.rol = rol;
     }
+    
+    @ManyToOne()
+    @JoinColumn(name = "ID_PAIS", referencedColumnName = "ID", nullable = false)
+    @JsonIgnore
+	public Pais getPais() {
+		return pais;
+	}
+
+	public void setPais(Pais pais) {
+		this.pais = pais;
+	}
+	
+	@CreatedDate
+	@Column(name = "FECHA_ALTA", updatable = false)
+	//@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@Temporal(TemporalType.DATE)
+	public Date getFechaAlta() {
+		return fechaAlta;
+	}
+	
+	public void setFechaAlta(Date fechaAlta) {
+		this.fechaAlta = fechaAlta;
+	}
+	
+	@ManyToMany
+    @JoinTable(
+            name ="usuario_plataforma",
+            joinColumns = @JoinColumn(name = "id_usuario", nullable = false),
+            inverseJoinColumns = @JoinColumn(name="id_plataforma", nullable = false)
+    )
+	@JsonIgnore
+	public Collection<Plataforma> getPlataformas() {
+		return plataformas;
+	}
+
+	public void setPlataformas(Collection<Plataforma> plataformas) {
+		this.plataformas = plataformas;
+	}
+	
+	@ManyToMany
+    @JoinTable(
+            name ="usuario_pelicula",
+            joinColumns = @JoinColumn(name = "id_usuario", nullable = false),
+            inverseJoinColumns = @JoinColumn(name="id_pelicula", nullable = false)
+    )
+	@JsonIgnore
+	public Collection<Pelicula> getPeliculas() {
+		return peliculas;
+	}
+
+	public void setPeliculas(Collection<Pelicula> peliculas) {
+		this.peliculas = peliculas;
+	}
+	
+	@ManyToMany
+    @JoinTable(
+            name ="usuario_serie",
+            joinColumns = @JoinColumn(name = "id_usuario", nullable = false),
+            inverseJoinColumns = @JoinColumn(name="id_serie", nullable = false)
+    )
+	@JsonIgnore
+	public Collection<Serie> getSeries() {
+		return series;
+	}
+
+	public void setSeries(Collection<Serie> series) {
+		this.series = series;
+	}
+	
+	public String plataformasConcatenadas(){
+        return plataformas.stream().map(Plataforma::getNombre).collect(Collectors.joining(", "));
+    }
+	
 }

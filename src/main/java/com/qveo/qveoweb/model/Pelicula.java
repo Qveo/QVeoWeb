@@ -4,6 +4,9 @@ import javax.persistence.*;
 import java.sql.Date;
 import java.sql.Time;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Entity
 public class Pelicula {
@@ -16,12 +19,13 @@ public class Pelicula {
     private Date anio;
     private Collection<Actor> actores;
     private Collection<Genero> peliculas;
-    private Collection<Lista> listas;
     private Pais pais;
     private Collection<Director> directores;
-    private Collection<Plataforma> plataformas;
+    private Collection<Usuario> usuarios;
+    private Set<PeliculaPlataforma> peliculaPlataformas = new HashSet<PeliculaPlataforma>();
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
     public Integer getId() {
         return id;
@@ -119,20 +123,6 @@ public class Pelicula {
         this.peliculas = peliculas;
     }
 
-    @ManyToMany
-    @JoinTable(
-            name ="lista_pelicula",
-            joinColumns = @JoinColumn(name = "id_pelicula", nullable = false),
-            inverseJoinColumns = @JoinColumn(name="id_lista", nullable = false)
-    )
-    public Collection<Lista> getListas() {
-        return listas;
-    }
-
-    public void setListas(Collection<Lista> listas) {
-        this.listas = listas;
-    }
-
     @ManyToOne
     @JoinColumn(name = "ID_PAIS", referencedColumnName = "ID", nullable = false)
     public Pais getPais() {
@@ -156,18 +146,28 @@ public class Pelicula {
     public void setDirectores(Collection<Director> directores) {
         this.directores = directores;
     }
+    
 
-    @ManyToMany
-    @JoinTable(
-            name ="pelicula_plataforma",
-            joinColumns = @JoinColumn(name = "id_pelicula", nullable = false),
-            inverseJoinColumns = @JoinColumn(name="id_plataforma", nullable = false)
-    )
-    public Collection<Plataforma> getPlataformas() {
-        return plataformas;
-    }
+    @OneToMany(mappedBy = "pelicula")
+	public Set<PeliculaPlataforma> getPeliculaPlataformas() {
+		return peliculaPlataformas;
+	}
 
-    public void setPlataformas(Collection<Plataforma> plataformas) {
-        this.plataformas = plataformas;
+	public void setPeliculaPlataformas(Set<PeliculaPlataforma> peliculaPlataformas) {
+		this.peliculaPlataformas = peliculaPlataformas;
+	}
+
+	@ManyToMany(mappedBy = "peliculas")
+	public Collection<Usuario> getUsuarios() {
+		return usuarios;
+	}
+
+	public void setUsuarios(Collection<Usuario> usuarios) {
+		this.usuarios = usuarios;
+	}
+
+    public String plataformasConcatenadas(){
+        return peliculaPlataformas.stream().map(PeliculaPlataforma::getPlataforma).map(Plataforma::getNombre).collect(Collectors.joining(", "));
     }
 }
+
