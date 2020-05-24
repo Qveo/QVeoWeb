@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.qveo.qveoweb.model.Genero;
 import com.qveo.qveoweb.service.GeneroService;
@@ -53,26 +54,27 @@ public class GeneroController {
 
 		if (id > 0) {
 			genero = generoService.getGenero(id);
-			
-			if (genero == null) 	return "redirect:/home";  
-			
-		} else {return "redirect:/home";}
-			
-
+			if (genero == null) {
+				return "redirect:/home";
+			}
+		} else {
+			return "redirect:/home";
+		}
 		model.addAttribute("editar", true);
 		model.addAttribute("generoNuevo", genero);
-		
+
 		return "genero/registro";
 	}
 
 	@PostMapping("/genero/form")
 	public String guardar(@Valid @ModelAttribute("generoNuevo") Genero generoAct, BindingResult br,
-			RedirectAttributes redirectAttrs) {
+			RedirectAttributes redirectAttrs, SessionStatus status) {
 		if (br.hasErrors()) {
 
 			return "genero/registro";
 		}
 		generoService.save(generoAct);
+		status.setComplete();
 
 		return "redirect:/genero/list";
 	}
