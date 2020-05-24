@@ -16,7 +16,7 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/general.css">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/filtro.css">
+	href="${pageContext.request.contextPath}/resources/css/filtro/filtro.css">
 
 </head>
 <body>
@@ -27,7 +27,7 @@
 	<main>
 
 		<section>
-			<h1>Filtro</h1>
+		
 			<form:form method="POST" action="/qveo/filtros"
 				modelAttribute="seriesBuscar">
 
@@ -124,9 +124,9 @@
 		<%@include file="/WEB-INF/views/layout/footer.jsp"%>
 	</footer>
 	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+		src="${pageContext.request.contextPath}/resources/vendor/js/materialize.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/js/jquery.js"></script>
 	<script
-		src="${pageContext.request.contextPath}/resources/vendor/js/serie.js"></script>
+		src="${pageContext.request.contextPath}/resources/js/filtro/filtro.js"></script>
 </body>
 </html>

@@ -1,7 +1,5 @@
 package com.qveo.qveoweb.service.Imp;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +15,7 @@ public class ActorServiceImp implements ActorService{
 
 	@Override
 	public Actor findById(Integer id) {
-		// TODO Auto-generated method stub
+		
 		return actorDao.findById(id).orElse(null);
 	}
 	

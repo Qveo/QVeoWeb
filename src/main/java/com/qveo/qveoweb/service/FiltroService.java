@@ -2,17 +2,11 @@ package com.qveo.qveoweb.service;
 
 import java.util.Collection;
 import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-
-import org.springframework.stereotype.Service;
-
 import com.qveo.qveoweb.dto.FiltroDto;
 import com.qveo.qveoweb.model.Actor;
 import com.qveo.qveoweb.model.Director;
 import com.qveo.qveoweb.model.Genero;
 import com.qveo.qveoweb.model.Pelicula;
-import com.qveo.qveoweb.model.PeliculaPlataforma;
 import com.qveo.qveoweb.model.Plataforma;
 import com.qveo.qveoweb.model.Serie;
 

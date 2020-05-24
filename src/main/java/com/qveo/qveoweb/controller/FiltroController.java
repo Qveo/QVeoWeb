@@ -1,10 +1,6 @@
 package com.qveo.qveoweb.controller;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,14 +10,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.qveo.qveoweb.dto.FiltroDto;
 import com.qveo.qveoweb.model.Actor;
 import com.qveo.qveoweb.model.Director;
 import com.qveo.qveoweb.model.Genero;
-import com.qveo.qveoweb.model.Pelicula;
-import com.qveo.qveoweb.model.PeliculaPlataforma;
 import com.qveo.qveoweb.model.Plataforma;
 import com.qveo.qveoweb.model.Serie;
 import com.qveo.qveoweb.service.ActorService;
@@ -89,8 +82,8 @@ public class FiltroController {
 	@GetMapping("/filtro/director/{id}")
 	public String filtrDirector(@PathVariable String id, Model model) {
 
-		Director director  = filtroService.findByDirectorid(Integer.parseInt(id));
-	
+		Director director = filtroService.findByDirectorid(Integer.parseInt(id));
+
 		if (director == null) {
 			return "redirect:/filtro";
 		}
@@ -145,4 +138,5 @@ public class FiltroController {
 
 		return "filtros/filtrado";
 	}
+
 }

@@ -65,4 +65,16 @@ public class Plataforma {
     public void setSeries(Collection<Serie> series) {
         this.series = series;
     }
+
+    @Basic
+    @Column(name = "LOGO")
+	public String getLogo() {
+		return logo;
+	}
+
+	public void setLogo(String logo) {
+		this.logo = logo;
+	}
+    
+    
 }

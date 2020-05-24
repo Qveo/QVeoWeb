@@ -17,7 +17,7 @@ public class PaisServiceImp implements PaisService{
 
 	@Override
 	public List<Pais> getAllPais() {
-		// TODO Auto-generated method stub
+		
 		return paisDao.findAll();
 	}
 

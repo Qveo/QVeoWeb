@@ -1,6 +1,5 @@
 package com.qveo.qveoweb.dao;
 
-import com.qveo.qveoweb.model.Pelicula;
 import com.qveo.qveoweb.model.Plataforma;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

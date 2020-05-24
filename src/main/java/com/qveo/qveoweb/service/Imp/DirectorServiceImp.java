@@ -1,9 +1,6 @@
 package com.qveo.qveoweb.service.Imp;
 
-import java.util.Collection;
 import java.util.List;
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,14 +16,8 @@ public class DirectorServiceImp implements 	DirectorService{
 	
 	@Override
 	public List<Director> getAllDirector() {
-		// TODO Auto-generated method stub
+	
 		return directorDao.findAll();
-	}
-
-	@Override
-	public Optional<Director> findById(Integer id) {
-		// TODO Auto-generated method stub
-		return directorDao.findById(id);
 	}
 
 }
