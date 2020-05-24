@@ -83,7 +83,7 @@ public class UsuarioController {
 			e.printStackTrace();
 		}
 
-		return "redirect:/usuario/list";
+		return "redirect:/home";
 	}
 
 	@RequestMapping(value = "/usuario/edit/{id}", method = RequestMethod.GET)
