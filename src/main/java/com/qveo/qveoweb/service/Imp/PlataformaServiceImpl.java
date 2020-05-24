@@ -25,6 +25,13 @@ public class PlataformaServiceImpl implements PlataformaService {
 
 		return (List<Plataforma>) plataformaDao.findAll();
 	}
+	
+	@Override
+	@Transactional(readOnly = true)
+	public List<Plataforma> getAllPlataformas() {
+
+		return (List<Plataforma>) plataformaDao.findAll();
+	}
 
 	@Override
 	@Transactional(readOnly = true)

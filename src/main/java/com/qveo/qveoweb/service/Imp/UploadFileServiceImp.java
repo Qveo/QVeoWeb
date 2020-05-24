@@ -108,7 +108,12 @@ public class UploadFileServiceImp implements UploadFileService {
 
 			break;
 		case 4:
-		
+			if (!temp.equals("/resources/img/directores/defaultFoto.png") && !temp.equals("")) {
+				String nombre = temp;
+				nombreFinal = nombre.substring(nombre.lastIndexOf('/') + 1);
+			} else if (temp.equals("/resources/img/directores/defaultFoto.png") || temp.equals("")) {
+				nombreFinal = "defaultFoto.png";	
+			}
 
 			break;
 		case 5:
@@ -129,3 +134,5 @@ public class UploadFileServiceImp implements UploadFileService {
 	}
 
 }
+
+		
