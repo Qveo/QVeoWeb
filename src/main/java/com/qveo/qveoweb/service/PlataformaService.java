@@ -15,6 +15,8 @@ public interface PlataformaService {
 	public void save(Plataforma Plataforma, MultipartFile foto) throws IOException;
 
 	public void delete(Integer id);
+
+	List<Plataforma> getAllPlataformas();
 	
 	//public Integer last (Plataforma Plataforma);
 }
