@@ -5,6 +5,8 @@ import javax.persistence.*;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -141,6 +143,7 @@ public class Pelicula {
             joinColumns = @JoinColumn(name = "id_pelicula", nullable = false),
             inverseJoinColumns = @JoinColumn(name="id_genero", nullable = false)
     )
+    @JsonIgnore
     public Collection<Genero> getGeneros() {
         return generos;
     }
