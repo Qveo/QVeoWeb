@@ -72,7 +72,6 @@
 	src="${pageContext.request.contextPath}/resources/vendor/js/jquery-3.4.1.min.js"></script>
 <script
 	src="${pageContext.request.contextPath}/resources/vendor/js/materialize.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/header.js"></script>
 <script
 	src="${pageContext.request.contextPath}/resources/js/carousel.js"></script>
 </html>

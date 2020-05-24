@@ -4,8 +4,8 @@
 	<nav>
 		<div class="nav-wrapper">
 			<a href="#" id="hamburger" class="sidenav-trigger"
-				data-target="slide-out"><i class="material-icons">menu</i></a> 
-				<a href="${pageContext.request.contextPath}/home" id="title-qveo"
+				data-target="slide-out"><i class="material-icons">menu</i></a> <a
+				href="${pageContext.request.contextPath}/home" id="title-qveo"
 				class="title-qveo">QVEO</a>
 			<ul class="right hide-on-med-and-down">
 				<li><a href="#">Inicio</a></li>
@@ -49,5 +49,6 @@
 	src="${pageContext.request.contextPath}/resources/vendor/js/jquery-3.4.1.min.js"></script>
 <script
 	src="${pageContext.request.contextPath}/resources/vendor/js/materialize.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/header.js"></script>
 <script
 	src="${pageContext.request.contextPath}/resources/vendor/js/busqueda.js"></script>

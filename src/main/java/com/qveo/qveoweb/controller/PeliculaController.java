@@ -92,7 +92,7 @@ public class PeliculaController {
 		mod.addAttribute("peliculas", pelicula);
 		mod.addAttribute("Titulo", "Datos de la pelicula");
 
-		return "peliculas/mostrar";
+		return "peliculas/pelicula";
 	}
 
 	@RequestMapping("/form")
