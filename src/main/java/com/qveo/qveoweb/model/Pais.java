@@ -1,6 +1,7 @@
 package com.qveo.qveoweb.model;
 
 import javax.persistence.*;
+
 import java.util.Collection;
 
 @Entity
@@ -9,8 +10,9 @@ public class Pais {
     private String nombre;
     private Collection<Actor> actores;
     private Collection<Pelicula> peliculas;
-    private Collection<Serie> series;
     private Collection<Usuario> usuarios;
+    private Collection<Serie> series;
+    
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -1,6 +1,7 @@
 package com.qveo.qveoweb.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -11,7 +12,9 @@ import java.util.Set;
 public class Plataforma {
 	
     private Integer id;
+  
     private String nombre;
+    private String foto;
     private Collection<Serie> series;
     private Collection<Usuario> usuarios;   
     private Set<PeliculaPlataforma> peliculaPlataformas = new HashSet<PeliculaPlataforma>();
@@ -74,4 +77,16 @@ public class Plataforma {
 	public void setUsuarios(Collection<Usuario> usuarios) {
 		this.usuarios = usuarios;
 	}
+
+	 @Basic
+	 @Column(name = "LOGO")
+	public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
+	
+	
 }
