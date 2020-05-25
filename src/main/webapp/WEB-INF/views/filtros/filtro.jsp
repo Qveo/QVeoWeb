@@ -116,6 +116,21 @@
 						</div>
 					</a>
 				</c:forEach>
+				<c:forEach items="${peliculas}" var="peli">
+				<a href="/qveo/peliculas/${peli.id}">
+						<div class="row cuerpo">
+							<div class="col s2"></div>
+							<div class="col s3">
+								<img alt="${peli.titulo}"
+									src="${pageContext.request.contextPath}${peli.poster}"
+									width="40%">
+							</div>
+							<div class="col s3">${peli.titulo}</div>
+							<div class="col s3">${peli.duracion}</div>
+							<div class="col s2"></div>
+						</div>
+					</a>				
+				</c:forEach>
 			</div>
 		</section>
 

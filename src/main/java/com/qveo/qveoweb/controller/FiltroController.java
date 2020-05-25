@@ -15,6 +15,7 @@ import com.qveo.qveoweb.dto.FiltroDto;
 import com.qveo.qveoweb.model.Actor;
 import com.qveo.qveoweb.model.Director;
 import com.qveo.qveoweb.model.Genero;
+import com.qveo.qveoweb.model.Pelicula;
 import com.qveo.qveoweb.model.Plataforma;
 import com.qveo.qveoweb.model.Serie;
 import com.qveo.qveoweb.service.ActorService;
@@ -68,12 +69,16 @@ public class FiltroController {
 		List<Serie> series = serieService.findAllSerie();
 
 		List<Integer> fecha = filtroService.buscarAllYears();
+		
+		List<Pelicula> pelis=peliculaService.findAll();
 
 		model.addAttribute("fechas", fecha);
 		model.addAttribute("plataformas", plataformas);
-		model.addAttribute("serieMostrar", series);
-
 		model.addAttribute("generos", generos);
+		
+		model.addAttribute("serieMostrar", series);
+		model.addAttribute("peliculas", pelis);
+		
 
 		return "filtros/filtro";
 	}
