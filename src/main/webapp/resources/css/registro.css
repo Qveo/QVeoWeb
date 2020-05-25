@@ -1,0 +1,20 @@
+input {
+	color: #eeeeee;
+}
+
+span {
+	color: #eeeeee;
+}
+
+label {
+	color: #eeeeee;
+}
+
+/* label color */
+.input-field label {
+	color: #fff;
+}
+/* label focus color */
+.input-field input[type=text]:focus+label {
+	color: #000;
+}

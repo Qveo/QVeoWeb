@@ -1,0 +1,36 @@
+.cabeceras, .cuerpo{
+	margin: 0 !important;
+	padding: 5px 0; 
+	font-size: 25px;
+	text-align: left;
+}
+
+.cabeceras{
+	font-weight: bold;
+	background-color: #00adb5;
+}
+
+.cuerpo{
+	background-color: #eeeeee;
+	border-bottom: 1px solid #fff;
+}
+
+.cuerpo:hover{
+	background-color: #ddd;
+}
+
+.material-icons{
+	font-size: 40px !important;
+}
+
+.row .boton{
+	padding: 10px 0;
+}
+
+.opciones{
+	margin: 0 !important;
+}
+
+.imagen-director img{
+	width: 100%;
+}

@@ -1,29 +1,20 @@
 package com.qveo.qveoweb.controller;
 
+import com.qveo.qveoweb.model.Usuario;
+import com.qveo.qveoweb.service.PaisService;
+import com.qveo.qveoweb.service.PlataformaService;
+import com.qveo.qveoweb.service.UsuarioService;
+import com.qveo.qveoweb.validation.UsuarioValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
-
-import com.qveo.qveoweb.model.Usuario;
-import com.qveo.qveoweb.service.IUploadFileService;
-import com.qveo.qveoweb.service.PaisService;
-import com.qveo.qveoweb.service.PlataformaService;
-import com.qveo.qveoweb.service.UsuarioService;
-import com.qveo.qveoweb.validation.UsuarioValidator;
-
 import java.io.IOException;
-
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 public class UsuarioController {
@@ -73,6 +64,7 @@ public class UsuarioController {
 				model.addAttribute("nuevoUsuario", usuario);
 				model.addAttribute("paises", paisService.getAllPais());
 				model.addAttribute("plataformas", plataformaService.getAllPlataformas());
+				model.addAttribute("rep", true);
 
 				return "usuario/registro";
 			}

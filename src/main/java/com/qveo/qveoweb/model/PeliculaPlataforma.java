@@ -12,13 +12,17 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
 
-//@IdClass(PeliculaPlataformaId.class)
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
+
 @Entity
 public class PeliculaPlataforma {
 	
 	
 	private PeliculaPlataformaId id = new PeliculaPlataformaId();
 
+	
 	private Date fechaCaducidad;
 
 	private Plataforma plataforma;
@@ -29,6 +33,7 @@ public class PeliculaPlataforma {
 	public PeliculaPlataforma() {
 	}
 	
+
 	@Column(name = "CADUCA")
 	public Date getFechaCaducidad() {
 		return fechaCaducidad;
@@ -58,6 +63,7 @@ public class PeliculaPlataforma {
 		this.plataforma = plataforma;
 	}
 	
+
 	@ManyToOne
 	@MapsId("peliculaId")
 	@JoinColumn(name = "ID_PELICULA", referencedColumnName = "ID", nullable = false)
@@ -68,9 +74,4 @@ public class PeliculaPlataforma {
 	public void setPelicula(Pelicula pelicula) {
 		this.pelicula = pelicula;
 	}
-	
-	
-	
-	
-	
 }

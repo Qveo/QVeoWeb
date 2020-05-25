@@ -9,14 +9,19 @@ import java.nio.file.Paths;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+
 import com.qveo.qveoweb.service.IUploadFileService;
 import com.qveo.qveoweb.service.PeliculaService;
+
 import com.qveo.qveoweb.service.UsuarioService;
 
 @Service
 public class UploadFileServiceImpl implements IUploadFileService {
 
 	private final static String UPLOADS_FOLDER = "src/main/webapp/resources/img";
+
+	@Autowired
+	PeliculaService peliculaService;
 
 	@Autowired
 	UsuarioService usuarioService;
@@ -43,6 +48,8 @@ public class UploadFileServiceImpl implements IUploadFileService {
 		Files.copy(file.getInputStream(), rootPath);
 
 		return nombreFinal;
+
+
 	}
 
 	@Override
@@ -56,12 +63,9 @@ public class UploadFileServiceImpl implements IUploadFileService {
 			break;
 
 		case 2:
-
-			break;
-		case 3:
-
 			if (!temp.equals("/resources/img/plataformas/defaultFoto.png") && !temp.equals("")) {
 				String nombre = temp;
+		case 3:
 				nombreFinal = nombre.substring(nombre.lastIndexOf('/') + 1);
 			} else if (temp.equals("/resources/img/actores/defaultFoto.png") || temp.equals("")) {
 				nombreFinal = "defaultFoto.png";
@@ -75,6 +79,12 @@ public class UploadFileServiceImpl implements IUploadFileService {
 
 			break;
 		case 6:
+			if (!temp.equals("/resources/img/usuarios/defaultFoto.png") && !temp.equals("")) {
+				String nombre = temp;
+				nombreFinal = nombre.substring(nombre.lastIndexOf('/') + 1);
+			} else if (temp.equals("/resources/img/usuarios/defaultFoto.png") || temp.equals("")) {
+				nombreFinal = "defaultFoto.png";
+			}
 
 			break;
 		}
@@ -82,9 +92,9 @@ public class UploadFileServiceImpl implements IUploadFileService {
 		return nombreFinal;
 	}
 
-	@Override
-	public boolean delete(String filename, Integer accion) {
 
+	@Override
+	public boolean delete(String filename,Integer accion) {
 		String ruta = filename.substring(filename.lastIndexOf('/') + 1);
 		if (!ruta.equals("defaultFoto.png")) {
 			Path rootPath = getPath(ruta, accion);
@@ -102,9 +112,9 @@ public class UploadFileServiceImpl implements IUploadFileService {
 
 	public Path getPath(String filename, Integer accion) {
 		String ruta = "";
+
 		switch (accion) {
 		case 1:
-
 			ruta = UPLOADS_FOLDER + "/serie";
 			break;
 
@@ -126,5 +136,6 @@ public class UploadFileServiceImpl implements IUploadFileService {
 		}
 		return Paths.get(ruta).resolve(filename).toAbsolutePath();
 	}
+
 
 }

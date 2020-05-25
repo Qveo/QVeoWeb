@@ -14,8 +14,12 @@
 	href="${pageContext.request.contextPath}/resources/css/general.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/usuario/registro.css">
+	<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/header.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/footer.css">
+	<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/header.css">
 </head>
 <body>
 	<header>
@@ -185,10 +189,11 @@
 		<%@include file="/WEB-INF/views/layout/footer.jsp"%>
 	</footer>
 </body>
-<script src="${pageContext.request.contextPath}/resources/js/jquery.js"></script>
+<script src="${pageContext.request.contextPath}/resources/vendor/js/jquery-3.4.1.min.js"></script>
 <script
-	src="${pageContext.request.contextPath}/resources/js/materialize.js"></script>
+		src="${pageContext.request.contextPath}/resources/vendor/js/materialize.js"></script>
 <script
 	src="${pageContext.request.contextPath}/resources/js/usuario/registro.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/header.js"></script>
 </body>
 </html>

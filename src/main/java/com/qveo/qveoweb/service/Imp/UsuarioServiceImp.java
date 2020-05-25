@@ -38,7 +38,15 @@ public class UsuarioServiceImp implements UsuarioService {
 
         Rol rol = rolDao.findById(1);
         usuario.setRol(rol);
+        
+    	String fotoTemp;
 
+		if (usuario.getId() != null) {
+			fotoTemp = getUsuario(usuario.getId()).getFoto();
+			
+		} else {
+			fotoTemp = "";
+		}
         usuarioDao.save(usuario);
 
 		if (!foto.isEmpty()) {
@@ -53,7 +61,7 @@ public class UsuarioServiceImp implements UsuarioService {
 
 		} else if (foto.isEmpty()) {
 			String uniqueFilename = null;
-			//uniqueFilename = uploadFileService.defaultFoto(6, usuario.getId());
+			uniqueFilename = uploadFileService.defaultFoto(6, fotoTemp);
 			usuario.setFoto("/resources/img/usuarios/" + uniqueFilename);
 
 		}
