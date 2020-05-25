@@ -8,8 +8,17 @@ public class Rol {
     private Integer id;
     private String nombre;
     private Collection<Usuario> usuarios;
+    
+    public Rol() {
+    	
+    }
+     
+    public Rol(String nombre) {
+		this.nombre = nombre;
+	}
 
-    @Id
+	@Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "ID")
     public Integer getId() {
         return id;

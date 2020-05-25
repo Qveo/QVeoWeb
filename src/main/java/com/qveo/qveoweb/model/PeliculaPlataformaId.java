@@ -11,30 +11,30 @@ public class PeliculaPlataformaId implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	
-	private Long peliculaId;
+	private Integer peliculaId;
 	
 	
-	private Long plataformaId;
+	private Integer plataformaId;
 	
 	public PeliculaPlataformaId() {
 		
 	}
-	public PeliculaPlataformaId(Long peliculaId, Long plataformaId) {
+	public PeliculaPlataformaId(Integer peliculaId, Integer plataformaId) {
 		this.peliculaId = peliculaId;
 		this.plataformaId = plataformaId;
 	}
 	@Column(name = "ID_PELICULA")
-	public Long getPeliculaId() {
+	public Integer getPeliculaId() {
 		return peliculaId;
 	}
-	public void setPeliculaId(Long peliculaId) {
+	public void setPeliculaId(Integer peliculaId) {
 		this.peliculaId = peliculaId;
 	}
 	@Column(name = "ID_PLATAFORMA")
-	public Long getPlataformaId() {
+	public Integer getPlataformaId() {
 		return plataformaId;
 	}
-	public void setPlataformaId(Long plataformaId) {
+	public void setPlataformaId(Integer plataformaId) {
 		this.plataformaId = plataformaId;
 	}
 	@Override
@@ -68,6 +68,4 @@ public class PeliculaPlataformaId implements Serializable {
 	}
 	
 	
-	
-
 }
