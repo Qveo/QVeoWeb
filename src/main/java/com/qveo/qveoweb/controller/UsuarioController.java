@@ -102,9 +102,4 @@ public class UsuarioController {
 		return "usuario/registro";
 	}
 
-	@RequestMapping(value = "/usuario")
-	public String usuario(Model model){
-		return "adminUsuario";
-	}
-
 }

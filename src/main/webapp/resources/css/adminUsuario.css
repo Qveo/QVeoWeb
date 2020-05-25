@@ -1,0 +1,18 @@
+#personal, #contrasena, #plataformas {
+    height: 130vh;
+}
+
+.scroll-spy-sticky{
+    position: sticky;
+    top: 13vh;
+}
+
+body{
+    overflow: hidden;
+}
+
+footer{
+    position: fixed;
+    bottom: 0;
+    width: 100vw;
+}

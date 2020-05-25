@@ -11,7 +11,7 @@
 				<li><a href="#">Pel&iacuteculas</a></li>
 				<li><a href="#">M&aacutes Recientes</a></li>
 				<li><a href="#">Mi lista</a></li>
-				<li><a href="${pageContext.request.contextPath}/usuario"><img
+				<li><a href="${pageContext.request.contextPath}/mi-configuracion"><img
 						class="circle icon-user"
 						src="${pageContext.request.contextPath}/resources/img/iconouser.jpg"></a></li>
 			</ul>
@@ -20,7 +20,7 @@
 </div>
 <ul id="slide-out" class="sidenav">
 	<div>
-		<a href="${pageContext.request.contextPath}/usuario"><img class="circle icon-user icon-user-sidenav"
+		<a href="${pageContext.request.contextPath}/mi-configuracion"><img class="circle icon-user icon-user-sidenav"
 			src="${pageContext.request.contextPath}/resources/img/iconouser.jpg"></a>
 	</div>
 	<li><a href="${pageContext.request.contextPath}/" class="font-color-sidenav">Inicio</a></li>
