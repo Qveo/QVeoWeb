@@ -2,12 +2,10 @@ package com.qveo.qveoweb.service.Imp;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
-
 import com.qveo.qveoweb.dao.SerieDao;
 import com.qveo.qveoweb.model.Serie;
 import com.qveo.qveoweb.service.IUploadFileService;
@@ -40,21 +38,24 @@ public class SerieServiceImp implements SerieService {
 	@Transactional
 	public void save(Serie serieNew, MultipartFile poster) throws IOException {
 
-		Integer last = null;
-		if (serieNew.getId() == null) {
-			Integer last_id = last().getId();
-			last = last_id + 1;
-		} else {
-			last = serieNew.getId();
-			serieNew.setId(last);
+		String fotoTemp;
+		
+		if(serieNew.getId()!=null) {
+			fotoTemp=getSerie(serieNew.getId()).getPoster();
+		}else {
+			fotoTemp="";
 		}
+		
+		serieDao.save(serieNew);
 
+		String uniqueFilename = null;
+		
+		
 		if (!poster.isEmpty()) {
 
 			try {
-
-				String uniqueFilename = null;
-				uniqueFilename = uploadFileService.copy(poster, 1,last, serieNew.getTitulo());
+	
+				uniqueFilename = uploadFileService.copy(poster, 1,serieNew.getId(), serieNew.getTitulo());
 				serieNew.setPoster("/resources/img/series/" + uniqueFilename);
 
 			} catch (IOException e) {
@@ -65,37 +66,10 @@ public class SerieServiceImp implements SerieService {
 
 		} else if (poster.isEmpty()) {
 
-			String uniqueFilename = null;
-			uniqueFilename = uploadFileService.defaultFoto(1, last);
-			System.out.println("Entras qasdasd " + uniqueFilename);
+			uniqueFilename = uploadFileService.defaultFoto(1, fotoTemp);
 			serieNew.setPoster("/resources/img/series/" + uniqueFilename);
 
 		}
-
-		/*
-		 * if(!file.isEmpty()) { if(editar==true) { String rutaFoto =
-		 * serieService.getSerie(serieNueva.getId()).get().getPoster(); String ruta =
-		 * rutaFoto.substring(rutaFoto.lastIndexOf('/') + 1);
-		 * 
-		 * if (serieNueva.getId() != null && serieNueva.getId() > 0 && ruta != null &&
-		 * ruta.length() > 0) {
-		 * 
-		 * uploadFileService.delete(ruta, 1);
-		 * 
-		 * } }
-		 * 
-		 * String uniqueFilename = null;
-		 * 
-		 * try { uniqueFilename = uploadFileService.copy(file,1,serieNueva.getTitulo());
-		 * } catch (IOException e) { e.printStackTrace(); }
-		 * serieNueva.setPoster("/resources/img/series/" +uniqueFilename);
-		 * 
-		 * }
-		 * 
-		 * if(file.isEmpty() && editar==true) {
-		 * serieNueva.setPoster(serieService.getSerie(serieNueva.getId()).get().
-		 * getPoster()); }
-		 */
 
 		serieDao.save(serieNew);
 	}

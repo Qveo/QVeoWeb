@@ -57,11 +57,8 @@ public class UploadFileServiceImpl implements IUploadFileService {
 	public boolean delete(String filename, Integer accion) {
 
 		String ruta = filename.substring(filename.lastIndexOf('/') + 1);
-
-		if (!ruta.equals("defaultFoto.jpg")) {
-
-			Path rootPath = getPath(filename, accion);
-
+		if (!ruta.equals("defaultFoto.png")) {
+			Path rootPath = getPath(ruta, accion);
 			File archivo = rootPath.toFile();
 
 			if (archivo.exists() && archivo.canRead()) {
@@ -69,27 +66,25 @@ public class UploadFileServiceImpl implements IUploadFileService {
 					return true;
 				}
 			}
-		}
 
+		}
 		return false;
 	}
 
 	@Override
-	public String defaultFoto(Integer accion, Integer id) throws IOException {
+	public String defaultFoto(Integer accion, String temp) throws IOException {
 		String nombreFinal = "";
 
 		switch (accion) {
 		case 1:
-
-			if (serieService.getSerie(id).getPoster() != null) {
-				String nombre = serieService.getSerie(id).getPoster();
+			
+			if (!temp.equals("/resources/img/series/defaultFoto.png") && !temp.equals("")) {
+				String nombre = temp;
 				nombreFinal = nombre.substring(nombre.lastIndexOf('/') + 1);
-				System.out.println(nombreFinal);
-			} else if (serieService.getSerie(id).getPoster() == null
-					&& serieService.getSerie(id).getPoster() != "/resources/img/series/defaultFoto.jpg") {
-				nombreFinal = "defaultFoto.jpg";
+			} else if (temp.equals("/resources/img/series/defaultFoto.png") || temp.equals("")) {
+				nombreFinal = "defaultFoto.png";
 			}
-
+			
 			break;
 
 		case 2:
