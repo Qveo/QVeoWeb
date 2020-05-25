@@ -10,7 +10,6 @@ import java.util.List;
 
 @Repository
 public interface PeliculaDao extends JpaRepository<Pelicula, Integer> {
-	
+	Pelicula findTopByOrderByIdDesc();
 	List<Pelicula> findByGenerosInAndAnioBetween(Collection<Genero> generos,Date fechaInferior, Date fechaSuperior);
-		
 }

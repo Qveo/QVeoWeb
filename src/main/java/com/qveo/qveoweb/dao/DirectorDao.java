@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 import com.qveo.qveoweb.model.Director;
 
 @Repository
-public interface DirectorDao extends JpaRepository<Director	, Integer>{
+public interface DirectorDao extends JpaRepository <Director, Integer> {
 
+	Director findTopByOrderByIdDesc();
 }

@@ -1,11 +1,22 @@
 package com.qveo.qveoweb.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Size;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.Date;
+import java.util.stream.Collectors;
+import java.util.ArrayList;
 import java.util.Collection;
 
 @Entity
@@ -14,21 +25,49 @@ public class Usuario {
 	
 	
     private Integer id;
+    @NotBlank(message="El nombre es obligatorio")
+    @Size(min=2, max=50, message="No puede superar los 50 caracteres")
     private String nombre;
+    @NotBlank(message="El apellido es obligatorio")
     private String apellidos;
+    @NotEmpty @Email(message="El email debe ser válido")
     private String email;
     private String foto;
+    @NotNull(message="La fecha es obligatoria")
     private Date fechaNacimiento;
     private String sexo;
+    @NotNull(message="La contraseña es obligatoria")
     private String password;
     private Rol rol;
+    @NotNull(message="El pais es obligatoria")
     private Pais pais;
     private Date fechaAlta;
 	private Collection<Plataforma> plataformas;
     private Collection<Pelicula> peliculas;
     private Collection<Serie> series;
+    
+    public Usuario() {
+    	
+    }
 
-    @Id
+    public Usuario(String nombre,String apellidos,String email, String foto,Date fechaNacimiento, String sexo, String password, Rol rol,
+			Pais pais, Date fechaAlta) {
+		this.nombre = nombre;
+		this.apellidos = apellidos;
+		this.email = email;
+		this.foto = foto;
+		this.fechaNacimiento = fechaNacimiento;
+		this.sexo = sexo;
+		this.password = password;
+		this.rol = rol;
+		this.pais = pais;
+		this.fechaAlta = fechaAlta;
+		this.plataformas = new ArrayList<>();
+		this.peliculas = new ArrayList<>();
+		this.series = new ArrayList<>();
+	}
+
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
     public Integer getId() {
@@ -81,6 +120,8 @@ public class Usuario {
 
     @Basic
     @Column(name = "FECHA_NACIMIENTO")
+    @DateTimeFormat(pattern = "dd-MM-yyyy")
+    @Temporal(TemporalType.DATE)
     public Date getFechaNacimiento() {
         return fechaNacimiento;
     }
@@ -111,6 +152,7 @@ public class Usuario {
 
     @ManyToOne
     @JoinColumn(name = "ID_ROL", referencedColumnName = "ID", nullable = false)
+    @JsonIgnore
     public Rol getRol() {
         return rol;
     }
@@ -121,6 +163,7 @@ public class Usuario {
     
     @ManyToOne()
     @JoinColumn(name = "ID_PAIS", referencedColumnName = "ID", nullable = false)
+    @JsonIgnore
 	public Pais getPais() {
 		return pais;
 	}
@@ -130,8 +173,9 @@ public class Usuario {
 	}
 	
 	@CreatedDate
-	@Column(name = "FECHA_ALTA")
-	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "FECHA_ALTA", updatable = false)
+	//@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@Temporal(TemporalType.DATE)
 	public Date getFechaAlta() {
 		return fechaAlta;
 	}
@@ -146,6 +190,7 @@ public class Usuario {
             joinColumns = @JoinColumn(name = "id_usuario", nullable = false),
             inverseJoinColumns = @JoinColumn(name="id_plataforma", nullable = false)
     )
+	@JsonIgnore
 	public Collection<Plataforma> getPlataformas() {
 		return plataformas;
 	}
@@ -160,6 +205,7 @@ public class Usuario {
             joinColumns = @JoinColumn(name = "id_usuario", nullable = false),
             inverseJoinColumns = @JoinColumn(name="id_pelicula", nullable = false)
     )
+	@JsonIgnore
 	public Collection<Pelicula> getPeliculas() {
 		return peliculas;
 	}
@@ -174,6 +220,7 @@ public class Usuario {
             joinColumns = @JoinColumn(name = "id_usuario", nullable = false),
             inverseJoinColumns = @JoinColumn(name="id_serie", nullable = false)
     )
+	@JsonIgnore
 	public Collection<Serie> getSeries() {
 		return series;
 	}
@@ -181,5 +228,9 @@ public class Usuario {
 	public void setSeries(Collection<Serie> series) {
 		this.series = series;
 	}
-   
+	
+	public String plataformasConcatenadas(){
+        return plataformas.stream().map(Plataforma::getNombre).collect(Collectors.joining(", "));
+    }
+	
 }

@@ -1,6 +1,8 @@
 package com.qveo.qveoweb.service.Imp;
 
+
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,8 +19,28 @@ public class SerieServiceImp implements SerieService {
 	@Override
 	@Transactional(readOnly = true)
 	public List<Serie> findAllSerie() {
-		
+		// TODO Auto-generated method stub
 		return serieDao.findAll();
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public Optional<Serie> getSerie(Integer id) {
+
+		return serieDao.findById(id);
+	}
+
+	@Override
+	@Transactional
+	public void save(Serie serieNew) {
+		serieDao.save(serieNew);
+	}
+
+	@Override
+	@Transactional
+	public void deleteSerie(Integer id) {
+		serieDao.deleteById(id);
+
 	}
 
 }

@@ -1,11 +1,22 @@
 package com.qveo.qveoweb.service;
 
-import com.qveo.qveoweb.model.Pelicula;
+import java.io.IOException;
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartFile;
+
+import com.qveo.qveoweb.dto.PeliculaDto;
+import com.qveo.qveoweb.model.Pelicula;
 
 public interface PeliculaService {
-		
-	List<Pelicula> findAll();
+	
+	public List<Pelicula> findAll();
+	public Pelicula getPelicula(Integer id);
+	public void save(PeliculaDto pelicula, MultipartFile foto) throws IOException;
+	public void delete(Integer id);
+	public void addPlataform(PeliculaDto film, Pelicula film2);
 
+	
+
+	
 }

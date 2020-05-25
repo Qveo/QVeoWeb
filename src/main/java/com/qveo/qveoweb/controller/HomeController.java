@@ -14,22 +14,22 @@ import java.util.List;
 
 @Controller
 public class HomeController {
-	
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
-	@Autowired
-	PlataformaService plataformaService;
+    private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
-	@GetMapping({"/","/home"})
-	public String home(Model model) {
-		
-		logger.debug("Executing home() method via Get");
+    @Autowired
+    PlataformaService plataformaService;
 
-		List<Plataforma> plataformas = plataformaService.getAllPlataformas();
+    @GetMapping({"/", "/home"})
+    public String home(Model model) {
 
-		model.addAttribute("plataformas", plataformas);
-		
-		return "index";
-	}
+        //logger.debug("Executing home() method via Get");
+
+        List<Plataforma> plataformas = plataformaService.findAll();
+
+        model.addAttribute("plataformas", plataformas);
+
+        return "index";
+    }
 
 }
