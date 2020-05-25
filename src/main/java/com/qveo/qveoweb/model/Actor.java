@@ -9,6 +9,7 @@ public class Actor {
     private String nombre;
     private String sexo;
     private Pais pais;
+    private String foto;
     private Collection<Pelicula> peliculas;
     private Collection<Serie> series;
 
@@ -52,7 +53,15 @@ public class Actor {
         this.pais = pais;
     }
 
-    @ManyToMany
+    public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
+
+	@ManyToMany
     @JoinTable(
             name ="Actor_Pelicula",
             joinColumns = @JoinColumn(name = "id_actor", nullable = false),

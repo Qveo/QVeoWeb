@@ -12,13 +12,11 @@ import java.util.Set;
 public class Plataforma {
 	
     private Integer id;
-  
     private String nombre;
-    private String foto;
+	private String logo;
     private Collection<Serie> series;
     private Collection<Usuario> usuarios;   
     private Set<PeliculaPlataforma> peliculaPlataformas = new HashSet<PeliculaPlataforma>();
-    private String logo;
 
     
     
@@ -45,6 +43,16 @@ public class Plataforma {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+    
+    @Basic
+    @Column(name = "LOGO")
+    public String getFoto() {
+  		return logo;
+  	}
+
+  	public void setFoto(String logo) {
+  		this.logo = logo;
+  	}
 
     @OneToMany(mappedBy = "plataforma")
 	public Set<PeliculaPlataforma> getPeliculaPlataformas() {
@@ -76,17 +84,5 @@ public class Plataforma {
 
 	public void setUsuarios(Collection<Usuario> usuarios) {
 		this.usuarios = usuarios;
-	}
-
-	 @Basic
-	 @Column(name = "LOGO")
-	public String getFoto() {
-		return foto;
-	}
-
-	public void setFoto(String foto) {
-		this.foto = foto;
-	}
-	
-	
+	}	
 }
