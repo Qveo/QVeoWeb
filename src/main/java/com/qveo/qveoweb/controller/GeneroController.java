@@ -36,7 +36,7 @@ public class GeneroController {
 
 	@GetMapping("/genero/list")
 	public String listaGenero(Model model) {
-		List<Genero> generos = generoService.findAlGeneros();
+		List<Genero> generos = generoService.getAllGenero();
 		model.addAttribute("generos", generos);
 		return "genero/lista";
 	}

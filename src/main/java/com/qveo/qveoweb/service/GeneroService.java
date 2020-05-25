@@ -4,7 +4,7 @@ import java.util.List;
 import com.qveo.qveoweb.model.Genero;
 
 public interface GeneroService {
-	List<Genero> findAlGeneros();
+	List<Genero> getAllGenero();
 	void save(Genero generoNuevo);
 	void deleteGenero(Integer id);
 	Genero getGenero(Integer id);

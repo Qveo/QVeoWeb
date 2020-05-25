@@ -16,7 +16,7 @@ public class GeneroServiceImp implements GeneroService{
 	
 	@Override
 	@Transactional(readOnly = true)
-	public List<Genero> findAlGeneros() {
+	public List<Genero> getAllGenero() {
 		
 		return generoDao.findAll();
 	}
