@@ -9,7 +9,7 @@ import com.qveo.qveoweb.model.Actor;
 
 public interface ActorService {
 
-	List<Actor> findAllActor();
+	List<Actor> getAllActor();
 
 	void save(Actor actorNuevo, MultipartFile file) throws IOException;
 

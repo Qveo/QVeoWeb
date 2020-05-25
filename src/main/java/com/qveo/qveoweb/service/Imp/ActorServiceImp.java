@@ -34,7 +34,7 @@ public class ActorServiceImp implements ActorService {
 
 	@Override
 	@Transactional(readOnly = true)
-	public List<Actor> findAllActor() {
+	public List<Actor> getAllActor() {
 
 		return actorDao.findAll();
 	}

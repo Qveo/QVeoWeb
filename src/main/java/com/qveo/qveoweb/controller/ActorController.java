@@ -44,7 +44,7 @@ public class ActorController {
 
 	@GetMapping("/actor/list")
 	public String listaActor(Model model) {
-		List<Actor> actores = actorService.findAllActor();
+		List<Actor> actores = actorService.getAllActor();
 		model.addAttribute("actores", actores);
 		return "actor/lista";
 	}
