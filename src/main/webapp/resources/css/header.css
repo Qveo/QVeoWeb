@@ -27,3 +27,24 @@
 a:hover{
     color: #00adb5 ;
 }
+
+.mostrar-ocultar{
+	display: none;
+}
+
+input {
+	color: #eeeeee;
+	border-bottom: 1px solid #eeeeee !important;
+	padding: 0 !important;
+	margin: 5px 0 !important;
+	width: 25px;
+}
+
+.input-field .clear{
+	opacity: 0;
+	margin: 15px 0 0 0;
+    float: right;
+    position: relative;
+    top: -55px;
+    transition: opacity 0.2s linear
+}

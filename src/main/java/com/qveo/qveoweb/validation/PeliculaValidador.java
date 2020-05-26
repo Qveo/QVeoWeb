@@ -6,6 +6,7 @@ import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
 import com.qveo.qveoweb.dto.PeliculaDto;
+import com.qveo.qveoweb.model.Pelicula;
 
 @Component
 public class PeliculaValidador implements Validator {
@@ -13,7 +14,7 @@ public class PeliculaValidador implements Validator {
 	@Override
 	public boolean supports(Class<?> clazz) {
 
-		return PeliculaDto.class.isAssignableFrom(clazz);
+		return PeliculaDto.class.isAssignableFrom(clazz) || Pelicula.class.isAssignableFrom(clazz) ;
 
 	}
 

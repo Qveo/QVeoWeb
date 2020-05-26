@@ -1,6 +1,9 @@
 package com.qveo.qveoweb.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
 import java.util.Collection;
 
 @Entity
@@ -10,7 +13,15 @@ public class Genero {
     private Collection<Pelicula> peliculas;
     private Collection<Serie> series;
 
+    public Genero() {
+	}
+
+	public Genero(String nombre) {
+		this.nombre = nombre;
+	}
+    
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "ID")
     public Integer getId() {
         return id;
@@ -58,4 +69,8 @@ public class Genero {
     public void setSeries(Collection<Serie> series) {
         this.series = series;
     }
+
+	
+    
+    
 }

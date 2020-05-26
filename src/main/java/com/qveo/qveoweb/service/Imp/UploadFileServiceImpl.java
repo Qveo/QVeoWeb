@@ -27,8 +27,7 @@ public class UploadFileServiceImpl implements IUploadFileService {
 	UsuarioService usuarioService;
 
 	@Override
-	public String copy(MultipartFile file,Integer accion,Integer id, String titulo) throws IOException {
-		
+	public String copy(MultipartFile file, Integer accion, Integer id, String titulo) throws IOException {
 
 		String nombre = String.valueOf(id);
 
@@ -50,7 +49,6 @@ public class UploadFileServiceImpl implements IUploadFileService {
 
 		return nombreFinal;
 
-
 	}
 
 	@Override
@@ -64,15 +62,20 @@ public class UploadFileServiceImpl implements IUploadFileService {
 			break;
 
 		case 2:
-
 			if (!temp.equals("/resources/img/peliculas/defaultFoto.png") && !temp.equals("")) {
 				String nombre = temp;
 				nombreFinal = nombre.substring(nombre.lastIndexOf('/') + 1);
 			} else if (temp.equals("/resources/img/peliculas/defaultFoto.png") || temp.equals("")) {
-				nombreFinal = "defaultFoto.png";	
+				nombreFinal = "defaultFoto.png";
 			}
 			break;
 		case 3:
+			if (!temp.equals("/resources/img/actores/defaultFoto.png") && !temp.equals("")) {
+				String nombre = temp;
+				nombreFinal = nombre.substring(nombre.lastIndexOf('/') + 1);
+			} else if (temp.equals("/resources/img/actores/defaultFoto.png") || temp.equals("")) {
+				nombreFinal = "defaultFoto.png";
+			}
 
 			break;
 		case 4:
@@ -95,11 +98,8 @@ public class UploadFileServiceImpl implements IUploadFileService {
 		return nombreFinal;
 	}
 
-
 	@Override
-	public boolean delete(String filename,Integer accion) {
-		
-
+	public boolean delete(String filename, Integer accion) {
 		String ruta = filename.substring(filename.lastIndexOf('/') + 1);
 		if (!ruta.equals("defaultFoto.png")) {
 			Path rootPath = getPath(ruta, accion);
@@ -141,4 +141,5 @@ public class UploadFileServiceImpl implements IUploadFileService {
 		}
 		return Paths.get(ruta).resolve(filename).toAbsolutePath();
 	}
+
 }
