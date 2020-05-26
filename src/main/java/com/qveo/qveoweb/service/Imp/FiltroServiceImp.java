@@ -60,7 +60,7 @@ public class FiltroServiceImp implements FiltroService {
 
 		serieAll.forEach(serieR -> fecha.add(getYear(serieR.getFechaInicio())));
 
-		peliculasAll.forEach(peli -> fecha.add(getYear(peli.getAnio())));
+		peliculasAll.forEach(peli -> fecha.add(getYear((Date) peli.getAnio())));
 
 		fecha.stream().distinct().collect(Collectors.toList());
 
@@ -71,7 +71,7 @@ public class FiltroServiceImp implements FiltroService {
 		return fechaLimpia;
 	}
 
-	public int getYear(java.util.Date date) {
+	public int getYear(Date date) {
 
 		Calendar cal = Calendar.getInstance();
 

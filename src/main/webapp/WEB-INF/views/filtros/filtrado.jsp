@@ -30,78 +30,76 @@
 
 			<div class="container">
 				<div class="row cabeceras">
-					<div class="col s2"></div>
 					<div class="col s3">Poster</div>
-					<div class="col s3">Titulo</div>
-					<div class="col s3">Fecha de inicio/Duracion</div>
-					<div class="col s2"></div>
+					<div class="col s8">Datos</div>
 				</div>
 				<c:forEach items="${filtrado.series}" var="serie">
 					<a href="/qveo/serie/${serie.id}">
 						<div class="row cuerpo">
-							<div class="col s2"></div>
 							<div class="col s3">
 								<img alt="${serie.titulo}"
 									src="${pageContext.request.contextPath}${serie.poster}"
-									width="40%">
+									width="60%">
 							</div>
-							<div class="col s3">${serie.titulo}</div>
-							<div class="col s3">${serie.fechaInicio}</div>
-							<div class="col s2"></div>
+							<div class="col s8">
+								<h5>${serie.titulo}</h5>
+								<p>${serie.sinopsis}</p>
+							</div>
 						</div>
 					</a>
 				</c:forEach>
-				
-				<c:forEach items="${filtrado.pelicula}" var="peli">
-				<a href="/qveo/peliculas/${peli.id}">
-						<div class="row cuerpo">
-							<div class="col s2"></div>
-							<div class="col s3">
-								<img alt="${peli.titulo}"
-									src="${pageContext.request.contextPath}${peli.poster}"
-									width="40%">
-							</div>
-							<div class="col s3">${peli.titulo}</div>
-							<div class="col s3">${peli.duracion}</div>
-							<div class="col s2"></div>
-						</div>
-					</a>				
-				</c:forEach>
-			
 
-			<c:if test="${pintar == true}">
-			<c:forEach items="${reparto.series}" var="serie">
-					<a href="/qveo/serie/${serie.id}">
+				<c:forEach items="${filtrado.pelicula}" var="peli">
+					<a href="/qveo/peliculas/${peli.id}">
 						<div class="row cuerpo">
-							<div class="col s2"></div>
-							<div class="col s3">
-								<img alt="${serie.titulo}"
-									src="${pageContext.request.contextPath}${serie.poster}"
-									width="40%">
-							</div>
-							<div class="col s3">${serie.titulo}</div>
-							<div class="col s3">${serie.fechaInicio}</div>
-							<div class="col s2"></div>
-						</div>
-					</a>
-				</c:forEach>
-				
-				<c:forEach items="${reparto.peliculas}" var="peli">
-				<a href="/qveo/peliculas/${peli.id}">
-						<div class="row cuerpo">
-							<div class="col s2"></div>
+
 							<div class="col s3">
 								<img alt="${peli.titulo}"
 									src="${pageContext.request.contextPath}${peli.poster}"
-									width="40%">
+									width="60%">
 							</div>
-							<div class="col s3">${peli.titulo}</div>
-							<div class="col s3">${peli.duracion}</div>
-							<div class="col s2"></div>
+							<div class="col s8">
+								<h5>${peli.titulo}</h5>
+								<p>${peli.sinopsis}
+							</div>
 						</div>
-					</a>				
+					</a>
 				</c:forEach>
-			</c:if>
+
+
+				<c:if test="${pintar == true}">
+					<c:forEach items="${reparto.series}" var="serie">
+						<a href="/qveo/serie/${serie.id}">
+							<div class="row cuerpo">
+								<div class="col s3">
+									<img alt="${serie.titulo}"
+										src="${pageContext.request.contextPath}${serie.poster}"
+										width="60%">
+								</div>
+								<div class="col s8">
+									<h5>${serie.titulo}</h5>
+									<p>${serie.sinopsis}</p>
+								</div>
+							</div>
+						</a>
+					</c:forEach>
+
+					<c:forEach items="${reparto.peliculas}" var="peli">
+						<a href="/qveo/peliculas/${peli.id}">
+							<div class="row cuerpo">
+								<div class="col s3">
+									<img alt="${peli.titulo}"
+										src="${pageContext.request.contextPath}${peli.poster}"
+										width="60%">
+								</div>
+								<div class="col s8">
+									<h5>${peli.titulo}</h5>
+									<p>${peli.sinopsis}
+								</div>
+							</div>
+						</a>
+					</c:forEach>
+				</c:if>
 			</div>
 		</section>
 	</main>

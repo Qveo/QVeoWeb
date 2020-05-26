@@ -60,7 +60,7 @@ public class FiltroController {
 	@GetMapping("/filtro")
 	public String buscadorSerie(Model model) {
 
-		model.addAttribute("buscar", new FiltroDto());
+		
 
 		List<Genero> generos = generoService.getAllGenero();
 
@@ -71,6 +71,8 @@ public class FiltroController {
 		List<Integer> fecha = filtroService.buscarAllYears();
 		
 		List<Pelicula> pelis=peliculaService.findAll();
+		
+		model.addAttribute("buscar", new FiltroDto());
 
 		model.addAttribute("fechas", fecha);
 		model.addAttribute("plataformas", plataformas);
@@ -118,21 +120,23 @@ public class FiltroController {
 	 * Post controler para series
 	 */
 	@PostMapping("/filtros")
-	public String filtrar(@ModelAttribute(name = "buscar") FiltroDto filtro, Model model, BindingResult br) {
+	public String filtrar(@ModelAttribute(name = "buscar") FiltroDto filtro, BindingResult br, Model model) {
 
-		if (br.hasErrors()) {
+		
+		 if (br.hasErrors()) {
+			 System.out.println(br.getAllErrors());
 
 			model.addAttribute("buscar", filtro);
-
+		
 			List<Genero> generos = generoService.getAllGenero();
 
 			List<Serie> series = serieService.findAllSerie();
-
+			List<Plataforma> plataformas = plataformaSerice.getAllPlataformas();
 			List<Integer> fecha = filtroService.buscarAllYears();
 
 			model.addAttribute("fechas", fecha);
 			model.addAttribute("serieMostrar", series);
-
+			model.addAttribute("plataformas", plataformas);
 			model.addAttribute("generos", generos);
 
 			return "filtros/filtro";

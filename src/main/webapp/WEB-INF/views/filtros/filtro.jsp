@@ -31,7 +31,7 @@
 	<main>
 
 		<section>
-		
+
 			<form:form method="POST" action="/qveo/filtros"
 				modelAttribute="buscar">
 
@@ -70,7 +70,8 @@
 						<label> Genero</label>
 						<form:select path="generos" multiple="true">
 							<form:option value="">Genero</form:option>
-							<form:options items="${generos}" itemLabel="nombre" />
+							<form:options items="${generos}" itemValue="id"
+								itemLabel="nombre" />
 						</form:select>
 					</div>
 					<div class="col s3">
@@ -98,42 +99,44 @@
 		<section>
 			<div class="container">
 				<div class="row cabeceras">
-					<div class="col s2"></div>
+
 					<div class="col s3">Poster</div>
-					<div class="col s3">Titulo</div>
-					<div class="col s3">Fecha de inicio</div>
-					<div class="col s2"></div>
+					<div class="col s8">Datos</div>
+
 				</div>
 
 				<c:forEach items="${serieMostrar}" var="serie">
 					<a href="/qveo/serie/${serie.id}">
 						<div class="row cuerpo">
-							<div class="col s2"></div>
+
 							<div class="col s3">
 								<img alt="${serie.titulo}"
 									src="${pageContext.request.contextPath}${serie.poster}"
-									width="40%">
+									width="60%">
 							</div>
-							<div class="col s3">${serie.titulo}</div>
-							<div class="col s3">${serie.fechaInicio}</div>
-							<div class="col s2"></div>
+							<div class="col s8">
+								<h5>${serie.titulo}</h5>
+								<p>${serie.sinopsis}</p>
+							</div>
 						</div>
 					</a>
 				</c:forEach>
 				<c:forEach items="${peliculas}" var="peli">
-				<a href="/qveo/peliculas/${peli.id}">
+					<a href="/qveo/peliculas/${peli.id}">
 						<div class="row cuerpo">
-							<div class="col s2"></div>
+
 							<div class="col s3">
 								<img alt="${peli.titulo}"
 									src="${pageContext.request.contextPath}${peli.poster}"
-									width="40%">
+									width="60%">
 							</div>
-							<div class="col s3">${peli.titulo}</div>
-							<div class="col s3">${peli.duracion}</div>
-							<div class="col s2"></div>
+							<div class="col s8">
+								<h5>${peli.titulo}</h5>
+								<p>${peli.sinopsis}
+							</div>
+
 						</div>
-					</a>				
+					</a>
 				</c:forEach>
 			</div>
 		</section>
@@ -142,7 +145,7 @@
 	<footer>
 		<%@include file="/WEB-INF/views/layout/footer.jsp"%>
 	</footer>
-		<script
+	<script
 		src="${pageContext.request.contextPath}/resources/vendor/js/jquery-3.4.1.min.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/resources/vendor/js/materialize.js"></script>
