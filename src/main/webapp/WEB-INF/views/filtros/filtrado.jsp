@@ -15,6 +15,10 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/general.css">
 <link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/icon.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/header.css">
+<link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/filtro/filtro.css">
 </head>
 <body>
@@ -107,6 +111,7 @@
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/js/jquery.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/header.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/resources/vendor/js/serie.js"></script>
 </body>

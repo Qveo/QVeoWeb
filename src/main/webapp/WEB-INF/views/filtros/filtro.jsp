@@ -16,6 +16,10 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/general.css">
 <link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/icon.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/header.css">
+<link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/filtro/filtro.css">
 
 </head>
@@ -29,7 +33,7 @@
 		<section>
 		
 			<form:form method="POST" action="/qveo/filtros"
-				modelAttribute="seriesBuscar">
+				modelAttribute="buscar">
 
 				<div class="row">
 					<div class="col s1"></div>
@@ -138,9 +142,11 @@
 	<footer>
 		<%@include file="/WEB-INF/views/layout/footer.jsp"%>
 	</footer>
+		<script
+		src="${pageContext.request.contextPath}/resources/vendor/js/jquery-3.4.1.min.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/resources/vendor/js/materialize.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/jquery.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/header.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/resources/js/filtro/filtro.js"></script>
 </body>

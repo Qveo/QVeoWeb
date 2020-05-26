@@ -71,11 +71,11 @@ public class FiltroServiceImp implements FiltroService {
 		return fechaLimpia;
 	}
 
-	public int getYear(Date date2) {
+	public int getYear(java.util.Date date) {
 
 		Calendar cal = Calendar.getInstance();
 
-		cal.setTime(date2);
+		cal.setTime(date);
 
 		int year = cal.get(Calendar.YEAR);
 
@@ -89,7 +89,7 @@ public class FiltroServiceImp implements FiltroService {
 
 		Collection<Genero> genero = null;
 		if (generos.isEmpty()) {
-			genero = generoService.getAllGeneros();
+			genero = generoService.getAllGenero();
 		} else {
 			genero = generos;
 		}
@@ -130,7 +130,7 @@ public class FiltroServiceImp implements FiltroService {
 		Collection<Genero> genero = null;
 		if (generosBuscar.isEmpty() == true) {
 
-			genero = generoService.getAllGeneros();
+			genero = generoService.getAllGenero();
 		} else {
 
 			genero = generosBuscar;

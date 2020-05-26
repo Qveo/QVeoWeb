@@ -17,7 +17,6 @@ public class Plataforma {
     private Collection<Serie> series;
     private Collection<Usuario> usuarios;   
     private Set<PeliculaPlataforma> peliculaPlataformas = new HashSet<PeliculaPlataforma>();
-    private String logo;
 
     
     
@@ -77,11 +76,10 @@ public class Plataforma {
     public void setSeries(Collection<Serie> series) {
         this.series = series;
     }
-
-    @Basic
-    @Column(name = "LOGO")
-	public String getLogo() {
-		return logo;
+    
+    @ManyToMany(mappedBy = "plataformas")
+	public Collection<Usuario> getUsuarios() {
+		return usuarios;
 	}
 
 	public void setUsuarios(Collection<Usuario> usuarios) {
