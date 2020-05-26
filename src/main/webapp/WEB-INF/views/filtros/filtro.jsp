@@ -121,23 +121,23 @@
 						</div>
 					</a>
 				</c:forEach>
-				<c:forEach items="${peliculas}" var="peli">
-					<a href="/qveo/peliculas/${peli.id}">
-						<div class="row cuerpo">
+<%-- 				<c:forEach items="${peliculas}" var="peli"> --%>
+<%-- 					<a href="/qveo/peliculas/${peli.id}"> --%>
+<!-- 						<div class="row cuerpo"> -->
 
-							<div class="col s3">
-								<img alt="${peli.titulo}"
-									src="${pageContext.request.contextPath}${peli.poster}"
-									width="60%">
-							</div>
-							<div class="col s8">
-								<h5>${peli.titulo}</h5>
-								<p>${peli.sinopsis}
-							</div>
+<!-- 							<div class="col s3"> -->
+<%-- 								<img alt="${peli.titulo}" --%>
+<%-- 									src="${pageContext.request.contextPath}${peli.poster}" --%>
+<!-- 									width="60%"> -->
+<!-- 							</div> -->
+<!-- 							<div class="col s8"> -->
+<%-- 								<h5>${peli.titulo}</h5> --%>
+<%-- 								<p>${peli.sinopsis} --%>
+<!-- 							</div> -->
 
-						</div>
-					</a>
-				</c:forEach>
+<!-- 						</div> -->
+<!-- 					</a> -->
+<%-- 				</c:forEach> --%>
 			</div>
 		</section>
 
