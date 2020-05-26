@@ -31,18 +31,20 @@
 	<main>
 
 		<section>
-
+			<div class="row"></div>
+			<div class="row"></div>
+			<div class="row"></div>
 			<form:form method="POST" action="/qveo/filtros"
 				modelAttribute="buscar">
 
 				<div class="row">
 					<div class="col s1"></div>
-					<div class="col s6 ">
+					<div class="col s10 l3">
 						<ul>
 							<li><form:label path="accionFiltro" for="todos">
 									<form:radiobutton id="todos" path="accionFiltro" value="1"
 										checked="checked" />
-									<span>Todo</span>
+									<span class="flow-text">Todo</span>
 								</form:label></li>
 							<li><form:label path="accionFiltro" for="series">
 									<form:radiobutton id="series" path="accionFiltro" value="2" />
@@ -57,35 +59,36 @@
 					<div class="col s1"></div>
 				</div>
 
-				<div class="row">
-					<div class="col s1"></div>
-					<div class="col s3">
-						<label>A&ntilde;o</label>
+				<div class="row">			
+					<div class="col s11 l3">
+						<label class="flow-text">A&ntilde;o</label>
 						<form:select multiple="true" path="anios">
 							<form:option value="">Fechas</form:option>
-							<form:options items="${fechas}" />
+							<form:options items="${fechas}"/>
 						</form:select>
 					</div>
-					<div class="col s3">
-						<label> Genero</label>
+					
+					<div class="col s11 l3">
+						<label class="flow-text"> Genero</label>
 						<form:select path="generos" multiple="true">
 							<form:option value="">Genero</form:option>
 							<form:options items="${generos}" itemValue="id"
 								itemLabel="nombre" />
 						</form:select>
 					</div>
-					<div class="col s3">
-						<label>Plataformas</label>
+					
+					<div class="col s11 l3">
+						<label class="flow-text">Plataformas</label>
 						<form:select path="plataformas" multiple="true">
 							<form:options items="${plataformas}" itemLabel="nombre"
-								itemValue="id" />
+								itemValue="id"/>
 						</form:select>
 					</div>
-					<div class="col s1"></div>
+
 				</div>
 				<div class="row">
-					<div class="col s1"></div>
-					<div class="col s6 ">
+					<div class="col s1 l1"></div>
+					<div class="col s11 l6">
 						<button class="btn waves-effect waves-light" type="submit"
 							name="action">
 							Buscar <i class="material-icons right">send</i>
@@ -98,46 +101,29 @@
 
 		<section>
 			<div class="container">
-				<div class="row cabeceras">
-
-					<div class="col s3">Poster</div>
-					<div class="col s8">Datos</div>
-
-				</div>
-
-				<c:forEach items="${serieMostrar}" var="serie">
-					<a href="/qveo/serie/${serie.id}">
-						<div class="row cuerpo">
-
-							<div class="col s3">
+				<div class="row">
+					<c:forEach items="${serieMostrar}" var="serie">
+						<a href="/qveo/serie/${serie.id}">
+							<div class="col s10 xl2 l2">
 								<img alt="${serie.titulo}"
 									src="${pageContext.request.contextPath}${serie.poster}"
-									width="60%">
+									width="100%" />
 							</div>
-							<div class="col s8">
-								<h5>${serie.titulo}</h5>
-								<p>${serie.sinopsis}</p>
+						</a>
+
+					</c:forEach>
+
+
+					<c:forEach items="${peliculas}" var="peli">
+						<a href="/qveo/peliculas/${peli.id}">
+							<div class="col s10 xl2 l2">
+								<img alt="${peli.titulo}"
+									src="${pageContext.request.contextPath}${peli.poster}"
+									width="100%">
 							</div>
-						</div>
-					</a>
-				</c:forEach>
-<%-- 				<c:forEach items="${peliculas}" var="peli"> --%>
-<%-- 					<a href="/qveo/peliculas/${peli.id}"> --%>
-<!-- 						<div class="row cuerpo"> -->
-
-<!-- 							<div class="col s3"> -->
-<%-- 								<img alt="${peli.titulo}" --%>
-<%-- 									src="${pageContext.request.contextPath}${peli.poster}" --%>
-<!-- 									width="60%"> -->
-<!-- 							</div> -->
-<!-- 							<div class="col s8"> -->
-<%-- 								<h5>${peli.titulo}</h5> --%>
-<%-- 								<p>${peli.sinopsis} --%>
-<!-- 							</div> -->
-
-<!-- 						</div> -->
-<!-- 					</a> -->
-<%-- 				</c:forEach> --%>
+						</a>
+					</c:forEach>
+				</div>
 			</div>
 		</section>
 
