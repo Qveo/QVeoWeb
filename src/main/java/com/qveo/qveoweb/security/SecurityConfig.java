@@ -20,6 +20,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Autowired
 	UserDetailsServiceImpl userDetailsService;
+	
+	 @Override
+	 public void configure(AuthenticationManagerBuilder auth) throws Exception { 
+	     auth.userDetailsService(userDetailsService).passwordEncoder(getPasswordEncoder());   
+	     /*
+		 auth.inMemoryAuthentication()
+         .withUser("user").password(getPasswordEncoder().encode("user")).roles("USER")
+         .and()
+         .withUser("admin").password(getPasswordEncoder().encode("admin")).roles("ADMIN");
+         */
+	 }
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
@@ -32,8 +43,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers(resources).permitAll()
 				.antMatchers("/","/home").permitAll()
 				.antMatchers("/login*").permitAll()
-				.antMatchers("/usuario/form/**").permitAll()
-				.antMatchers("/usuario/list").hasRole("user")
+				.antMatchers("/admin/**").hasRole("ADMIN")
+				.antMatchers("/usuario/form*").permitAll()
 				.anyRequest()
 				.authenticated()
 				.and()
@@ -45,8 +56,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				//.successHandler(myAuthenticationSuccessHandler())
 				//.permitAll()
 				.failureUrl("/login?error=true")
-						// .usernameParameter("username")
-						// .passwordParameter("password")
 				.and()
 			.logout()
 				.logoutUrl("/logout")
@@ -56,15 +65,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.permitAll();
 		
 	}
-	
-	 @Override
-	 public void configure(AuthenticationManagerBuilder auth) throws Exception { 
-	        auth.userDetailsService(userDetailsService);     
-	 }
 	 
 	 @Bean
 	 public PasswordEncoder getPasswordEncoder() {
 		 return NoOpPasswordEncoder.getInstance();
 	 }
-
+	 
+	 /*
+	 @Bean
+	    public PasswordEncoder passwordEncoder() {
+	        return new BCryptPasswordEncoder();
+	    }
+	*/
 }

@@ -58,25 +58,4 @@ public class UserDetailsDto implements UserDetails {
 	public boolean isEnabled() {
 		return true;
 	}
-/*
-	private Integer id;
-	
-	public UserDetailsDto(Integer id, String username, String password, boolean accountNonExpired, boolean accountNonLocked,
-			boolean credentialsNonExpired, boolean enabled, Collection<? extends GrantedAuthority> authorities) {
-		super(username, password, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, authorities);
-		this.id = id;
-	}
-
-	
-	//public UserDetailsDto(String username, String password)
-	
-    public Integer getId() {
-        return id;
-    }
-
-
-    
-    */
-    
-
 }
