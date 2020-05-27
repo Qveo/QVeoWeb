@@ -1,11 +1,11 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-
 <title>Registro de una serie</title>
 
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -224,6 +224,7 @@
 
 					<!--Chips plataformas de series -->
 					<%@include file="/WEB-INF/views/layout/chipsPlataforma.jsp"%>
+					
 					<div class="row">
 						<div class="col s2"></div>
 						<div class="col s6">
@@ -265,6 +266,6 @@
 	src="${pageContext.request.contextPath}/resources/vendor/js/materialize.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/header.js"></script>
 <script
-	src="${pageContext.request.contextPath}/resources/vendor/js/serie.js"></script>
+	src="${pageContext.request.contextPath}/resources/js/serie/serie.js"></script>
 </body>
 </html>

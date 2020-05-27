@@ -106,5 +106,5 @@
 	src="${pageContext.request.contextPath}/resources/vendor/js/materialize.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/header.js"></script>
 <script
-	src="${pageContext.request.contextPath}/resources/vendor/js/serie.js"></script>
+	src="${pageContext.request.contextPath}/resources/js/serie/serie.js"></script>
 </html>

@@ -32,21 +32,21 @@ document.addEventListener('DOMContentLoaded', function() {
 	 for (var i = 0; i < actoresSerie.length; i++) {
 		 predefinidosA[i]={tag: actoresSerie[i].className};
 	}
- 
+
 	 $('.chipsA').chips({
-        placeholder: 'Actores',
-        secondaryPlaceholder: '+otr@s',
-        autocompleteOptions: {
-       	 data: tagsA
-        },
-        onChipAdd: function(e, chip){
-            $("."+chip.textContent.replace('close','').replace(' ','.')).removeAttr('disabled');
-        },
-        onChipDelete: function(e, chip){
-       	 $("."+chip.textContent.replace('close','').replace(' ','.')).attr('disabled', 'disabled');
-        },
-        data: predefinidosA,
-    }); 
+       placeholder: 'Actores',
+       secondaryPlaceholder: '+otr@s',
+       autocompleteOptions: {
+      	 data: tagsA
+       },
+       onChipAdd: function(e, chip){
+           $("."+chip.textContent.replace('close','').replace(' ','.')).removeAttr('disabled');
+       },
+       onChipDelete: function(e, chip){
+      	 $("."+chip.textContent.replace('close','').replace(' ','.')).attr('disabled', 'disabled');
+       },
+       data: predefinidosA,
+   }); 
 
 	
 	 //Chips Directores
