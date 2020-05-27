@@ -92,7 +92,7 @@ public class SerieController {
 		List<Pais> paises = paisService.getAllPais();
 		List<Plataforma> plataformas = plataformaSerive.getAllPlataformas();
 		List<Director> directores = directorService.getAllDirector();
-		List<Actor> actores = actorService.getAllActores();
+		List<Actor> actores = actorService.getAllActor();
 
 		model.addAttribute("serieNueva", new Serie());
 		model.addAttribute("paises", paises);
@@ -112,7 +112,7 @@ public class SerieController {
 		List<Plataforma> plataformas = plataformaSerive.getAllPlataformas();
 		List<Director> directores = directorService.getAllDirector();
 		Serie serieEditar = serieService.getSerie(id);
-		List<Actor> actores = actorService.getAllActores();
+		List<Actor> actores = actorService.getAllActor();
 
 		model.addAttribute("editar", true);
 		model.addAttribute("serieNueva", serieEditar);
@@ -124,6 +124,14 @@ public class SerieController {
 
 		return "series/registroSerie";
 	}
+	
+	@GetMapping("/serie/mostar")
+	public String listado(Model model) {
+		List<Serie> series = serieService.findAllSerie();
+		model.addAttribute("serieMostrar", series);
+		return "series/listaMostrar";
+	}
+	
 
 	@PostMapping("/serie/form")
 	public String guardar(@Valid @ModelAttribute("serieNueva") Serie serieNueva, BindingResult br, Model model,
@@ -135,7 +143,7 @@ public class SerieController {
 				List<Pais> paises = paisService.getAllPais();
 				List<Plataforma> plataformas = plataformaSerive.getAllPlataformas();
 				List<Director> directores = directorService.getAllDirector();
-				List<Actor> actores = actorService.getAllActores();
+				List<Actor> actores = actorService.getAllActor();
 
 				model.addAttribute("editar", true);
 				model.addAttribute("serieNueva", serieNueva);

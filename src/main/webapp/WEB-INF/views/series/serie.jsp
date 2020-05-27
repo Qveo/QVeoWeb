@@ -18,7 +18,7 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/header.css">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/serie.css">
+	href="${pageContext.request.contextPath}/resources/css/serie/serie.css">
 </head>
 <body>
 	<header>
@@ -100,7 +100,8 @@
 									<img src="${pageContext.request.contextPath}${director.foto}"
 										alt="${director.nombre}" width="100%">
 									<div>
-										<a href="#"> ${director.nombre}</a>
+										<a href="/qveo/filtro/director/${director.id}">
+											${director.nombre}</a>
 									</div>
 								</div>
 							</li>
@@ -117,7 +118,7 @@
 									<img src="${pageContext.request.contextPath}${actores.foto}"
 										alt="${actores.nombre}" width="60%">
 									<div>
-										<a href="#">${actores.nombre}</a>
+										<a href="/qveo/filtro/actor/${actores.id}">${actores.nombre}</a>
 									</div>
 								</div>
 							<li>

@@ -16,6 +16,8 @@
 	href="${pageContext.request.contextPath}/resources/css/header.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/general.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/serie/serie.css">
 </head>
 <body>
 	<header>
@@ -40,7 +42,7 @@
 
 					<div class="row">
 						<div class="col s2"></div>
-						<div class="col s8">
+						<div class="input-field col s8">
 							<form:label path="fechaInicio" for="date">Fecha de lanzamiento</form:label>
 							<form:input id="date" path="fechaInicio" class="datepicker" />
 							<form:errors path="fechaInicio" style="color:red"></form:errors>
@@ -72,7 +74,7 @@
 						<div class="col s2"></div>
 						<div class="col s8">
 							<form:label path="poster">Poster</form:label>
-							<input type="file" name="posters">
+							<input type="file" name="posters" class="boton-Foto">
 
 							<c:if test="${editar== true}">
 								<form:input path="id" type="hidden" />
@@ -202,7 +204,7 @@
 					</div>
 
 					<!-- Chips Actores Series-->
-					<%@include file="/WEB-INF/views/layout/chipsActores.jsp"%>
+					<%@include file="/WEB-INF/views/layout/series/chipsActores.jsp"%>
 					<div class="row">
 						<div class="col s2"></div>
 						<div class="col s6">
@@ -213,7 +215,7 @@
 
 
 					<!-- Chips directores Series-->
-					<%@include file="/WEB-INF/views/layout/chipsDirectores.jsp"%>
+					<%@include file="/WEB-INF/views/layout/series/chipsDirectores.jsp"%>
 					<div class="row">
 						<div class="col s2"></div>
 						<div class="col s6">
@@ -223,8 +225,8 @@
 					</div>
 
 					<!--Chips plataformas de series -->
-					<%@include file="/WEB-INF/views/layout/chipsPlataforma.jsp"%>
-					
+					<%@include file="/WEB-INF/views/layout/series/chipsPlataforma.jsp"%>
+
 					<div class="row">
 						<div class="col s2"></div>
 						<div class="col s6">
@@ -261,11 +263,12 @@
 	<footer>
 		<%@include file="/WEB-INF/views/layout/footer.jsp"%>
 	</footer>
-<script src="${pageContext.request.contextPath}/resources/vendor/js/jquery-3.4.1.min.js"></script>
-<script
-	src="${pageContext.request.contextPath}/resources/vendor/js/materialize.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/header.js"></script>
-<script
-	src="${pageContext.request.contextPath}/resources/js/serie/serie.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/vendor/js/jquery-3.4.1.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/vendor/js/materialize.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/header.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/js/serie/serie.js"></script>
 </body>
 </html>

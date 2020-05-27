@@ -58,7 +58,12 @@ public class UploadFileServiceImpl implements IUploadFileService {
 
 		switch (accion) {
 		case 1:
-
+			if (!temp.equals("/resources/img/series/defaultFoto.png") && !temp.equals("")) {
+				String nombre = temp;
+				nombreFinal = nombre.substring(nombre.lastIndexOf('/') + 1);
+			} else if (temp.equals("/resources/img/series/defaultFoto.png") || temp.equals("")) {
+				nombreFinal = "defaultFoto.png";
+			}
 			break;
 
 		case 2:
@@ -143,10 +148,3 @@ public class UploadFileServiceImpl implements IUploadFileService {
 	}
 
 }
-
-			} else if (temp.equals("/resources/img/series/defaultFoto.png") || temp.equals("")) {
-				nombreFinal = "defaultFoto.png";
-			}
-				nombreFinal = nombre.substring(nombre.lastIndexOf('/') + 1);
-				String nombre = temp;
-			if (!temp.equals("/resources/img/series/defaultFoto.png") && !temp.equals("")) {

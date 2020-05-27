@@ -17,9 +17,7 @@ public class Plataforma {
     private Collection<Serie> series;
     private Collection<Usuario> usuarios;   
     private Set<PeliculaPlataforma> peliculaPlataformas = new HashSet<PeliculaPlataforma>();
-    private String logo;
-
-    
+   
     
     public Plataforma() {
 	}

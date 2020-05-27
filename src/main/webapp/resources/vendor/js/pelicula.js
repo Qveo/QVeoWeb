@@ -37,10 +37,10 @@ document.addEventListener('DOMContentLoaded', function() {
       	 data: tagsA
        },
        onChipAdd: function(e, chip){
-           $("."+chip.textContent.replace('close','').replace(' ','.')).removeAttr('disabled');
+           $("."+chip.textContent.replace('close','').replace(/ /g,'.')).removeAttr('disabled');
        },
        onChipDelete: function(e, chip){
-      	 $("."+chip.textContent.replace('close','').replace(' ','.')).attr('disabled', 'disabled');
+      	 $("."+chip.textContent.replace('close','').replace(/ /g,'.')).attr('disabled', 'disabled');
        },
        data: predefinidosA,
    }); 
@@ -67,10 +67,10 @@ document.addEventListener('DOMContentLoaded', function() {
        	 data: tagsD
         },
         onChipAdd: function(e, chip){
-            $("."+chip.textContent.replace('close','').replace(' ','.')).removeAttr('disabled');
+            $("."+chip.textContent.replace('close','').replace(/ /g,'.')).removeAttr('disabled');
         },
         onChipDelete: function(e, chip){
-       	 $("."+chip.textContent.replace('close','').replace(' ','.')).attr('disabled', 'disabled');
+       	 $("."+chip.textContent.replace('close','').replace(/ /g,'.')).attr('disabled', 'disabled');
         },
         data: predefinidosD,
     });

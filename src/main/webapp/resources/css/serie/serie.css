@@ -1,3 +1,6 @@
+.boton-Foto{
+	width: 40%;
+}
 #titulo{
 	color:#00adb5;
 }
@@ -32,17 +35,4 @@ body * {
 ul li {
     display: inline;
     padding: 5px;  
-}
-
-li{
-	 color: white;
-}
-
-table {
-    border-collapse: collapse;
-    border-spacing: 0;
-}
-
-td {
-    display: inline-block;
 }

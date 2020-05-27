@@ -16,7 +16,7 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/header.css">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/listaSerie.css">
+	href="${pageContext.request.contextPath}/resources/css/serie/listaSerie.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/modal.css">
 </head>
@@ -75,7 +75,7 @@
 			</c:forEach>
 
 			<!-- Modal datos serie -->
-			<%@include file="/WEB-INF/views/layout/modalSerie.jsp"%>
+			<%@include file="/WEB-INF/views/layout/series/modalSerie.jsp"%>
 
 			<c:forEach items="${series}" var="serie">
 				<!-- Confirar eliminar usuario -->
