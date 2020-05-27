@@ -147,15 +147,6 @@ public class SerieController {
 
 				return "series/registroSerie";
 			}
-			System.out.println("Actor");
-			for(Actor act:serieNueva.getActores()) {
-				System.out.println(act.getId()+" "+act.getNombre());
-			}
-			
-			System.out.println("Director");
-			for(Director act:serieNueva.getDirectores()) {
-				System.out.println(act.getId()+" "+act.getNombre());
-			}
 			
 			serieService.save(serieNueva, file);
 			status.setComplete();
