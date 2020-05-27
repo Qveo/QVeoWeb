@@ -1,6 +1,5 @@
 
 
-<div class="navbar-fixed">
 	<nav>
 		<div class="nav-wrapper">
 			<a href="#" id="hamburger" class="sidenav-trigger"
@@ -21,7 +20,7 @@
 				<li>
 					<div id="buscar-nombre" class="input-field mostrar-ocultar">
 						<input type="text" id="autocomplete-input" class="autocomplete"
-							placeholder="Búsqueda..."> <a
+							placeholder="Bï¿½squeda..."> <a
 							class="waves-effect waves-light btn clear" id="clear"><i
 							class="material-icons">clear</i></a>
 					</div>

@@ -24,7 +24,28 @@ public class Serie {
     private Collection<Plataforma> plataformas;
     private Collection<Usuario> usuarios;
 
-    @Id
+    public Serie() {
+	}
+    
+	public Serie(String titulo, Date fechaInicio, String sinopsis, Integer temporadas, Integer capitulos,
+			Collection<Director> directores, Collection<Genero> generos, Pais pais, Collection<Plataforma> plataformas,
+			String poster) {
+		this.titulo = titulo;
+		this.fechaInicio = fechaInicio;
+		this.sinopsis = sinopsis;
+		this.temporadas = temporadas;
+		this.capitulos = capitulos;
+		this.directores = directores;
+		this.generos = generos;
+		this.pais = pais;
+		this.plataformas = plataformas;
+		this.poster = poster;
+	}
+
+
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "ID")
     public Integer getId() {
         return id;
@@ -50,7 +71,8 @@ public class Serie {
         return fechaInicio;
     }
 
-    public void setFechaInicio(Date fechaInicio) {
+   
+	public void setFechaInicio(Date fechaInicio) {
         this.fechaInicio = fechaInicio;
     }
 
@@ -165,7 +187,7 @@ public class Serie {
     public void setPlataformas(Collection<Plataforma> plataformas) {
         this.plataformas = plataformas;
     }
-
+    
     @ManyToMany(mappedBy = "series")
     @JsonIgnore
     public Collection<Usuario> getUsuarios() {
@@ -179,5 +201,4 @@ public class Serie {
     public String plataformasConcatenadas(){
         return plataformas.stream().map(Plataforma::getNombre).collect(Collectors.joining(", "));
     }
-
 }

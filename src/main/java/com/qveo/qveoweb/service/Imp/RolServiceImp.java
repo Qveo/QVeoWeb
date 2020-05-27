@@ -1,7 +1,5 @@
 package com.qveo.qveoweb.service.Imp;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.qveo.qveoweb.dao.RolDao;
