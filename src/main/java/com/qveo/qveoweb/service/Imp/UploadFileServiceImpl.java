@@ -2,36 +2,33 @@ package com.qveo.qveoweb.service.Imp;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.Resource;
-import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.qveo.qveoweb.model.Serie;
 import com.qveo.qveoweb.service.IUploadFileService;
 import com.qveo.qveoweb.service.PeliculaService;
-import com.qveo.qveoweb.service.SerieService;
+
+import com.qveo.qveoweb.service.UsuarioService;
 
 @Service
 public class UploadFileServiceImpl implements IUploadFileService {
 
-	private final Logger log = LoggerFactory.getLogger(getClass());
-
 	private final static String UPLOADS_FOLDER = "src/main/webapp/resources/img";
 
 	@Autowired
-	SerieService serieService;
+	PeliculaService peliculaService;
+
+	@Autowired
+	UsuarioService usuarioService;
 
 	@Override
 	public String copy(MultipartFile file, Integer accion, Integer id, String titulo) throws IOException {
+
 		String nombre = String.valueOf(id);
 
 		String nombre2 = titulo.trim().toLowerCase().replaceAll("\\s+", "_");
@@ -51,11 +48,58 @@ public class UploadFileServiceImpl implements IUploadFileService {
 		Files.copy(file.getInputStream(), rootPath);
 
 		return nombreFinal;
+
+	}
+
+	@Override
+	public String defaultFoto(Integer accion, String temp) throws IOException {
+
+		String nombreFinal = null;
+
+		switch (accion) {
+		case 1:
+
+			break;
+
+		case 2:
+			if (!temp.equals("/resources/img/peliculas/defaultFoto.png") && !temp.equals("")) {
+				String nombre = temp;
+				nombreFinal = nombre.substring(nombre.lastIndexOf('/') + 1);
+			} else if (temp.equals("/resources/img/peliculas/defaultFoto.png") || temp.equals("")) {
+				nombreFinal = "defaultFoto.png";
+			}
+			break;
+		case 3:
+			if (!temp.equals("/resources/img/actores/defaultFoto.png") && !temp.equals("")) {
+				String nombre = temp;
+				nombreFinal = nombre.substring(nombre.lastIndexOf('/') + 1);
+			} else if (temp.equals("/resources/img/actores/defaultFoto.png") || temp.equals("")) {
+				nombreFinal = "defaultFoto.png";
+			}
+
+			break;
+		case 4:
+
+			break;
+		case 5:
+
+			break;
+		case 6:
+			if (!temp.equals("/resources/img/usuarios/defaultFoto.png") && !temp.equals("")) {
+				String nombre = temp;
+				nombreFinal = nombre.substring(nombre.lastIndexOf('/') + 1);
+			} else if (temp.equals("/resources/img/usuarios/defaultFoto.png") || temp.equals("")) {
+				nombreFinal = "defaultFoto.png";
+			}
+
+			break;
+		}
+
+		return nombreFinal;
 	}
 
 	@Override
 	public boolean delete(String filename, Integer accion) {
-
 		String ruta = filename.substring(filename.lastIndexOf('/') + 1);
 		if (!ruta.equals("defaultFoto.png")) {
 			Path rootPath = getPath(ruta, accion);
@@ -71,48 +115,14 @@ public class UploadFileServiceImpl implements IUploadFileService {
 		return false;
 	}
 
-	@Override
-	public String defaultFoto(Integer accion, String temp) throws IOException {
-		String nombreFinal = "";
-
-		switch (accion) {
-		case 1:
-			
-			if (!temp.equals("/resources/img/series/defaultFoto.png") && !temp.equals("")) {
-				String nombre = temp;
-				nombreFinal = nombre.substring(nombre.lastIndexOf('/') + 1);
-			} else if (temp.equals("/resources/img/series/defaultFoto.png") || temp.equals("")) {
-				nombreFinal = "defaultFoto.png";
-			}
-			
-			break;
-
-		case 2:
-
-			break;
-		case 3:
-
-			break;
-		case 4:
-
-			break;
-		case 5:
-
-			break;
-		case 6:
-
-			break;
-
-		}
-		return nombreFinal;
-	}
-
 	public Path getPath(String filename, Integer accion) {
 		String ruta = "";
+
 		switch (accion) {
 		case 1:
-			ruta = UPLOADS_FOLDER + "/series";
+			ruta = UPLOADS_FOLDER + "/serie";
 			break;
+
 		case 2:
 			ruta = UPLOADS_FOLDER + "/peliculas";
 			break;
@@ -133,3 +143,10 @@ public class UploadFileServiceImpl implements IUploadFileService {
 	}
 
 }
+
+			} else if (temp.equals("/resources/img/series/defaultFoto.png") || temp.equals("")) {
+				nombreFinal = "defaultFoto.png";
+			}
+				nombreFinal = nombre.substring(nombre.lastIndexOf('/') + 1);
+				String nombre = temp;
+			if (!temp.equals("/resources/img/series/defaultFoto.png") && !temp.equals("")) {
