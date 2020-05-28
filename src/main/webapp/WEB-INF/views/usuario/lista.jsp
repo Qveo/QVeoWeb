@@ -19,7 +19,11 @@
 	<link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/header.css">
 <link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/header.css">
+<link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/footer.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/header.css">
 </head>
 <body>
 	<header>
@@ -92,5 +96,6 @@
 		src="${pageContext.request.contextPath}/resources/vendor/js/materialize.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/resources/js/usuario/lista.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/header.js"></script>
 </body>
 </html>

@@ -1,7 +1,12 @@
 package com.qveo.qveoweb.model;
 
 import javax.persistence.*;
-import java.sql.Date;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import java.util.Date;
 import java.util.Collection;
 import java.util.stream.Collectors;
 
@@ -21,7 +26,28 @@ public class Serie {
     private Collection<Plataforma> plataformas;
     private Collection<Usuario> usuarios;
 
-    @Id
+    public Serie() {
+	}
+    
+	public Serie(String titulo, Date fechaInicio, String sinopsis, Integer temporadas, Integer capitulos,
+			Collection<Director> directores, Collection<Genero> generos, Pais pais, Collection<Plataforma> plataformas,
+			String poster) {
+		this.titulo = titulo;
+		this.fechaInicio = fechaInicio;
+		this.sinopsis = sinopsis;
+		this.temporadas = temporadas;
+		this.capitulos = capitulos;
+		this.directores = directores;
+		this.generos = generos;
+		this.pais = pais;
+		this.plataformas = plataformas;
+		this.poster = poster;
+	}
+
+
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "ID")
     public Integer getId() {
         return id;
@@ -43,11 +69,15 @@ public class Serie {
 
     @Basic
     @Column(name = "FECHA_INICIO")
+    @DateTimeFormat(pattern = "dd-MM-yyyy")
+    @Temporal(TemporalType.DATE)
+    
     public Date getFechaInicio() {
         return fechaInicio;
     }
 
-    public void setFechaInicio(Date fechaInicio) {
+   
+	public void setFechaInicio(Date fechaInicio) {
         this.fechaInicio = fechaInicio;
     }
 
@@ -97,6 +127,7 @@ public class Serie {
             joinColumns = @JoinColumn(name = "id_serie", nullable = false),
             inverseJoinColumns = @JoinColumn(name = "id_actor", nullable = false)
     )
+    @JsonIgnore
     public Collection<Actor> getActores() {
         return actores;
     }
@@ -111,6 +142,7 @@ public class Serie {
             joinColumns = @JoinColumn(name = "id_serie", nullable = false),
             inverseJoinColumns = @JoinColumn(name = "id_director", nullable = false)
     )
+    @JsonIgnore
     public Collection<Director> getDirectores() {
         return directores;
     }
@@ -125,6 +157,7 @@ public class Serie {
             joinColumns = @JoinColumn(name = "id_serie", nullable = false),
             inverseJoinColumns = @JoinColumn(name = "id_genero", nullable = false)
     )
+    @JsonIgnore
     public Collection<Genero> getGeneros() {
         return generos;
     }
@@ -135,6 +168,7 @@ public class Serie {
 
     @ManyToOne
     @JoinColumn(name = "ID_PAIS", referencedColumnName = "ID", nullable = false)
+    @JsonIgnore
     public Pais getPais() {
         return pais;
     }
@@ -150,6 +184,7 @@ public class Serie {
             joinColumns = @JoinColumn(name = "id_serie", nullable = false),
             inverseJoinColumns = @JoinColumn(name = "id_plataforma", nullable = false)
     )
+    @JsonIgnore
     public Collection<Plataforma> getPlataformas() {
         return plataformas;
     }
@@ -157,8 +192,9 @@ public class Serie {
     public void setPlataformas(Collection<Plataforma> plataformas) {
         this.plataformas = plataformas;
     }
-
+    
     @ManyToMany(mappedBy = "series")
+    @JsonIgnore
     public Collection<Usuario> getUsuarios() {
         return usuarios;
     }
@@ -170,5 +206,4 @@ public class Serie {
     public String plataformasConcatenadas(){
         return plataformas.stream().map(Plataforma::getNombre).collect(Collectors.joining(", "));
     }
-
 }

@@ -6,12 +6,12 @@
 <div class="navbar-fixed">
 	<nav>
 		<div class="nav-wrapper">
-			<a href="#" class="sidenav-trigger" data-target="slide-out"><i
-				class="material-icons">menu</i></a> <a
-				href="${pageContext.request.contextPath}/home" class="title-qveo">QVEO</a>
+			<a href="#" id="hamburger" class="sidenav-trigger"
+				data-target="slide-out"><i class="material-icons">menu</i></a> <a
+				href="${pageContext.request.contextPath}/home" id="title-qveo"
+				class="title-qveo">QVEO</a>
 			<ul class="right hide-on-med-and-down">
 				<li><a href="#">Inicio</a></li>
-				<li><a href="#">B&uacutesqueda</a></li>
 				<li><a href="#">Series</a></li>
 				<li><a href="#">Pel&iacuteculas</a></li>
 				<li><a href="#">M&aacutes Recientes</a></li>
@@ -26,6 +26,18 @@
 							src="${pageContext.request.contextPath}"><i
 							class="material-icons right">arrow_drop_down</i></a></li>
 				</security:authorize>
+			</ul>
+			<ul class="right">
+				<li>
+					<div id="buscar-nombre" class="input-field mostrar-ocultar">
+						<input type="text" id="autocomplete-input" class="autocomplete"
+							placeholder="B�squeda..."> <a
+							class="waves-effect waves-light btn clear" id="clear"><i
+							class="material-icons">clear</i></a>
+					</div>
+				</li>
+				<li><a id="buscar-nombre-trigger" class="scale-transition"
+					href="#!"><i class="material-icons">search</i></a></li>
 			</ul>
 		</div>
 	</nav>
@@ -55,5 +67,6 @@
 	src="${pageContext.request.contextPath}/resources/vendor/js/jquery-3.4.1.min.js"></script>
 <script
 	src="${pageContext.request.contextPath}/resources/vendor/js/materialize.js"></script>
-	<script
-	src="${pageContext.request.contextPath}/resources/js/header.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/header.js"></script>
+<script
+	src="${pageContext.request.contextPath}/resources/vendor/js/busqueda.js"></script>
