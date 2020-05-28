@@ -2,9 +2,11 @@ package com.qveo.qveoweb.model;
 
 import javax.persistence.*;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.Collection;
 import java.util.stream.Collectors;
 
@@ -67,6 +69,9 @@ public class Serie {
 
     @Basic
     @Column(name = "FECHA_INICIO")
+    @DateTimeFormat(pattern = "dd-MM-yyyy")
+    @Temporal(TemporalType.DATE)
+    
     public Date getFechaInicio() {
         return fechaInicio;
     }

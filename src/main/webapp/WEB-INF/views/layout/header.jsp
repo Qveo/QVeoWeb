@@ -1,5 +1,6 @@
 
 
+<div class="navbar-fixed">
 	<nav>
 		<div class="nav-wrapper">
 			<a href="#" id="hamburger" class="sidenav-trigger"

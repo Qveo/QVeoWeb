@@ -58,7 +58,7 @@ public class FiltroServiceImp implements FiltroService {
 
 		List<Integer> fecha = new ArrayList<Integer>();
 
-		serieAll.forEach(serieR -> fecha.add(getYear(serieR.getFechaInicio())));
+		serieAll.forEach(serieR -> fecha.add(getYear((Date)serieR.getFechaInicio())));
 
 		peliculasAll.forEach(peli -> fecha.add(getYear((Date) peli.getAnio())));
 

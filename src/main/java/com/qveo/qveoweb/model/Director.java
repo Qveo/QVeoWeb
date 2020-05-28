@@ -9,8 +9,6 @@ import java.util.Collection;
 @Entity
 public class Director {
 	private Integer id;
-	@NotNull(message = " Introduce el nombre del director, por favor")
-	@Size(max=50, message = "Su nombre no puede superar mas de 50 caracteres")
 	private String nombre;
 	private String foto;
 	private Collection<Serie> series;
