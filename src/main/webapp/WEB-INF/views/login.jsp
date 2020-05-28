@@ -14,13 +14,17 @@
 <body>
 	<main>
 		<div class="container">
-			<form name="login" action="/qveo/login" method="POST" 
+			<c:if test="${not empty SPRING_SECURITY_LAST_EXCEPTION.message}">
+				<div class="error">
+					<c:out value="Las credenciales son erroneas" />
+				</div>
+			</c:if>
+			<form id="login" name="login" action="/qveo/login" method="POST"
 				class="col s12 m12 l6 offset-l3 white-text">
 				<div class="row">
 					<div class="input-field col s12 m6 l6 offset-l3">
 						<input id="email" type="text" name="username" class="validate" />
-						<label for="email">Usuario<label> 
-						<span
+						<label for="email">Usuario<label> <span
 								class="helper-text" data-error="email inválido"
 								data-success="Perfecto!"></span>
 					</div>
@@ -31,14 +35,15 @@
 					<div>
 						<div class="row">
 							<div class="col s12 m12 l6 offset-l3">
-								<button type="submit" class="btn waves-effect waves-light botones">
+								<button type="submit"
+									class="btn waves-effect waves-light botones">
 									Entrar <i class="material-icons right">send</i>
 								</button>
 							</div>
 						</div>
 					</div>
 				</div>
-<%-- 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> --%>
+				<%-- 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> --%>
 			</form>
 		</div>
 	</main>

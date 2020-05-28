@@ -35,6 +35,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
 		Usuario user = usuarioDao.findByEmail(userName);
 				//.orElseThrow(() -> new UsernameNotFoundException("Email " + userName + " not found"));
+		if(user == null) throw new UsernameNotFoundException("User not found.");
 		//List<GrantedAuthority> authorities = getUserAuthority(user.getRol());
 		List<GrantedAuthority> authorities = new ArrayList<>();
 		authorities.add(new SimpleGrantedAuthority(user.getRol().getNombre()));
