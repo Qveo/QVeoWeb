@@ -3,7 +3,7 @@
 	<div class="modal-content">
 		<div class="row">
 			<div class="col s12 m12 l5 imagen-usuario">
-				<img src="${pageContext.request.contextPath}${serie.poster}"  width="100%"/>
+				<img src="${pageContext.request.contextPath}${serie.poster}"  class="responsive"/>
 			</div>
 			<div class="col s12 m12 l7">
 				<div class="row">

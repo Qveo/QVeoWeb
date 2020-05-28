@@ -5,6 +5,7 @@
 <html>
 <head>
 <title>QVeo web</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">
 <link rel="stylesheet"
@@ -44,10 +45,10 @@
 
 			<c:forEach items="${series}" var="serie">
 				<div id="${serie.id}" class="row cuerpo">
-					<div class="col s3">
+					<div class="col s3 l3">
 						<img alt="${serie.titulo}"
 							src="${pageContext.request.contextPath}${serie.poster}"
-							width="40%">
+							class="fotoLista">
 					</div>
 					<div class="col s3">${serie.titulo}</div>
 					<div class="col s3">${serie.fechaInicio}</div>

@@ -8,6 +8,8 @@
 <head>
 <title>Registro de una serie</title>
 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">
 <link rel="stylesheet"
@@ -31,54 +33,55 @@
 					modelAttribute="serieNueva" enctype="multipart/form-data"
 					class="col s12">
 					<div class="row">
-						<div class="col s2"></div>
-						<div class="input-field col s8">
+						<div class="col l2"></div>
+						<div class="input-field formato col s12 l8">
 							<form:label path="titulo">Titulo</form:label>
 							<form:input path="titulo" id="titulo" />
 							<form:errors path="titulo" style="color:red"></form:errors>
 						</div>
-						<div class="col s2"></div>
+						<div class="col l2"></div>
 					</div>
 
 					<div class="row">
-						<div class="col s2"></div>
-						<div class="input-field col s8">
+						<div class="col l2"></div>
+						<div class="input-field col s12 l8">
 							<form:label path="fechaInicio" for="date">Fecha de lanzamiento</form:label>
-							<form:input id="date" path="fechaInicio" class="datepicker" />
+							<form:input id="date" path="fechaInicio"
+								class="datepicker formato" />
 							<form:errors path="fechaInicio" style="color:red"></form:errors>
 						</div>
-						<div class="col s2"></div>
+						<div class="col l2"></div>
 					</div>
 
 					<div class="row">
-						<div class="col s2"></div>
-						<div class="input-field col s8">
+						<div class="col l2"></div>
+						<div class="input-field formato col s12 l8">
 							<form:label path="temporadas">Temporada</form:label>
 							<form:input path="temporadas" id="temporadas" />
 							<form:errors path="temporadas" style="color:red"></form:errors>
 						</div>
-						<div class="col s2"></div>
+						<div class="col l2"></div>
 					</div>
 
 					<div class="row">
-						<div class="col s2"></div>
-						<div class="input-field col s8">
+						<div class="col l2"></div>
+						<div class="input-field formato col s12 l8">
 							<form:label path="capitulos">Capitulos</form:label>
 							<form:input path="capitulos" id="capitulos" />
 							<form:errors path="temporadas" style="color:red"></form:errors>
 						</div>
-						<div class="col s2"></div>
+						<div class="col l2"></div>
 					</div>
 
 					<div class="row">
-						<div class="col s2"></div>
-						<div class="col s8">
-							<form:label path="poster">Poster</form:label>
+						<div class="col l2"></div>
+						<div class="col s12 l8">
+							<form:label path="poster" class="formato">Poster</form:label>
 							<input type="file" name="posters" class="boton-Foto">
 
 							<c:if test="${editar== true}">
 								<form:input path="id" type="hidden" />
-								<div class="col s4">
+								<div class="col s4 l4">
 									<img alt="${serieNueva.titulo}"
 										src="${pageContext.request.contextPath}${serieNueva.poster}"
 										width="80%">
@@ -86,85 +89,31 @@
 							</c:if>
 
 						</div>
-						<div class="col s2"></div>
+						<div class="col l2"></div>
 					</div>
 
 					<div class="row">
-						<div class="col s2"></div>
-						<div class="col s8">
-							<form:label path="sinopsis">Sinopsis</form:label>
-							<form:textarea path="sinopsis" id="sinopsis" rows="4" cols="20" />
+						<div class="col l2"></div>
+						<div class="col s12 l8">
+							<form:label path="sinopsis" class="formato">Sinopsis</form:label>
+							<form:textarea path="sinopsis" id="sinopsis" rows="26" cols="40"
+								class="especial" />
 							<form:errors path="sinopsis" style="color:red"></form:errors>
 						</div>
-						<div class="col s2"></div>
+						<div class="col l2"></div>
 					</div>
 
 					<div class="row">
-						<div class="col s2"></div>
-						<div class="col s8">
-							<form:label path="generos">Género</form:label>
+						<div class="col s2 l2"></div>
+						<div class="col s8 l8">
+							<form:label path="pais" class="formato">Pais de produccion</form:label>
 						</div>
-						<div class="col s2"></div>
-					</div>
-					<div class="row">
-						<div class="col s2"></div>
-						<div class="col s8">
-							<c:choose>
-								<c:when test="${editar}">
-									<c:forEach items="${generos}" var="genero">
-										<c:if test="${fn:contains(serieNueva.generos,genero)}">
-											<form:label for="${genero.nombre}" path="generos">
-												<form:checkbox id="${genero.nombre}" path="generos"
-													value="${genero.id}" checked="checked" />
-												<span>${genero.nombre}</span>
-											</form:label>
-										</c:if>
-										<c:if test="${not(fn:contains(serieNueva.generos,genero))}">
-											<form:label for="${genero.nombre}" path="generos">
-												<form:checkbox id="${genero.nombre}" path="generos"
-													value="${genero.id}" />
-												<span>${genero.nombre}</span>
-											</form:label>
-										</c:if>
-									</c:forEach>
-								</c:when>
-								<c:otherwise>
-									<c:forEach items="${generos}" var="genero">
-										<form:label for="${genero.nombre}" path="generos">
-											<form:checkbox id="${genero.nombre}" path="generos"
-												value="${genero.id}" />
-											<span>${genero.nombre}</span>
-										</form:label>
-									</c:forEach>
-								</c:otherwise>
-							</c:choose>
-
-						</div>
-
-						<div class="col s2"></div>
-
+						<div class="col s2 s2"></div>
 					</div>
 
 					<div class="row">
-						<div class="col s2"></div>
-						<div class="col s8">
-							<form:errors path="generos" style="color:red"></form:errors>
-						</div>
-						<div class="col s2"></div>
-					</div>
-
-
-					<div class="row">
-						<div class="col s2"></div>
-						<div class="col s8">
-							<form:label path="pais">Pais de produccion</form:label>
-						</div>
-						<div class="col s2"></div>
-					</div>
-
-					<div class="row">
-						<div class="col s2"></div>
-						<div class="col s8">
+						<div class="col l2"></div>
+						<div class="col s12 l8">
 							<form:select path="pais">
 								<c:choose>
 									<c:when test="${editar}">
@@ -193,69 +142,80 @@
 								</c:choose>
 							</form:select>
 						</div>
-						<div class="col s2"></div>
+						<div class="col l2"></div>
 					</div>
 					<div class="row">
-						<div class="col s2"></div>
-						<div class="col s8">
+						<div class="col l2"></div>
+						<div class="col s12 l8">
 							<form:errors path="pais" style="color:red"></form:errors>
 						</div>
-						<div class="col s2"></div>
-					</div>
-
-					<!-- Chips Actores Series-->
-					<%@include file="/WEB-INF/views/layout/series/chipsActores.jsp"%>
-					<div class="row">
-						<div class="col s2"></div>
-						<div class="col s6">
-							<form:errors path="actores" style="color:red"></form:errors>
-						</div>
-						<div class="col s2"></div>
+						<div class="col s2 l2"></div>
 					</div>
 
 
-					<!-- Chips directores Series-->
-					<%@include file="/WEB-INF/views/layout/series/chipsDirectores.jsp"%>
-					<div class="row">
-						<div class="col s2"></div>
-						<div class="col s6">
-							<form:errors path="directores" style="color:red"></form:errors>
-						</div>
-						<div class="col s2"></div>
-					</div>
-
-					<!--Chips plataformas de series -->
-					<%@include file="/WEB-INF/views/layout/series/chipsPlataforma.jsp"%>
+					<!-- Chips Generos Series-->
+					<%@include file="/WEB-INF/views/layout/series/chipsGeneros.jsp"%>
 
 					<div class="row">
-						<div class="col s2"></div>
-						<div class="col s6">
-							<form:errors path="plataformas" style="color:red"></form:errors>
-						</div>
-						<div class="col s2"></div>
-					</div>
 
-					<div class="row">
-						<div class="col s2"></div>
-						<div class="col s8">
-							<c:choose>
-								<c:when test="${editar}">
-									<button class="btn waves-effect waves-light" type="submit"
-										name="action">
-										Actualizar <i class="material-icons right">send</i>
-									</button>
-								</c:when>
-								<c:otherwise>
-									<button class="btn waves-effect waves-light" type="submit"
-										name="action">
-										Registrarse <i class="material-icons right">send</i>
-									</button>
-								</c:otherwise>
-							</c:choose>
-						</div>
-						<div class="col s2"></div>
+						<form:errors path="generos" style="color:red"></form:errors>
 					</div>
-				</form:form>
+			</div>
+
+
+			<!-- Chips Actores Series-->
+			<%@include file="/WEB-INF/views/layout/series/chipsActores.jsp"%>
+			<div class="row">
+				<div class="col s2 l2"></div>
+				<div class="col s8 l8">
+					<form:errors path="actores" style="color:red"></form:errors>
+				</div>
+				<div class="col s2 l2"></div>
+			</div>
+
+
+			<!-- Chips directores Series-->
+			<%@include file="/WEB-INF/views/layout/series/chipsDirectores.jsp"%>
+			<div class="row">
+				<div class="col s2 l2"></div>
+				<div class="col s6 l6">
+					<form:errors path="directores" style="color:red"></form:errors>
+				</div>
+				<div class="col s2 l2"></div>
+			</div>
+
+			<!--Chips plataformas de series -->
+			<%@include file="/WEB-INF/views/layout/series/chipsPlataforma.jsp"%>
+
+			<div class="row">
+				<div class="col s2 l2"></div>
+				<div class="col s6 l6">
+					<form:errors path="plataformas" style="color:red"></form:errors>
+				</div>
+				<div class="col s2 l2"></div>
+			</div>
+
+			<div class="row">
+				<div class="col s2 l2"></div>
+				<div class="col s8 l8">
+					<c:choose>
+						<c:when test="${editar}">
+							<button class="btn waves-effect waves-light" type="submit"
+								name="action">
+								Actualizar <i class="material-icons right">send</i>
+							</button>
+						</c:when>
+						<c:otherwise>
+							<button class="btn waves-effect waves-light" type="submit"
+								name="action">
+								Registrarse <i class="material-icons right">send</i>
+							</button>
+						</c:otherwise>
+					</c:choose>
+				</div>
+				<div class="col s2 l2"></div>
+			</div>
+			</form:form>
 			</div>
 		</section>
 	</main>

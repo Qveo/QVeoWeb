@@ -9,7 +9,7 @@
 <head>
 
 <title>${series.titulo}</title>
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">
 <link rel="stylesheet"
@@ -19,7 +19,7 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/header.css">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/serie/serie.css">
+	href="${pageContext.request.contextPath}/resources/css/serie/seriesMostar.css">
 </head>
 <body>
 	<header>
@@ -27,134 +27,102 @@
 	</header>
 
 	<main>
-		<div class="row">
-			<div class="col s1"></div>
-			<div class="col s10 derecha">
-				<div class="col s4 bord">
-					<img src="${pageContext.request.contextPath}${series.poster}"
-						alt="rick" width="80%">
-
-				</div>
-				<div class="col s8">
-					<h2>${series.titulo}
-						<span class="fechaInicio">(<fmt:formatDate pattern="yyyy"
-								value="${series.fechaInicio}" />)
-						</span>
-					</h2>
-					<div>
-						<ul>
-							<li><span>Temporada:${series.temporadas}</span></li>
-							<li><span>Capitulos:${series.capitulos}</span></li>
-							<li><span>Pais:${series.pais.nombre}</span></li>
-						</ul>
-
+		<section>
+			<div class="row">
+				<div class="col s10 l10 offset-l2">
+					<div class="col s12 l4">
+						<img src="${pageContext.request.contextPath}${series.poster}"
+							alt=">${series.titulo}" width="100%">
 					</div>
 
-					<div>
-						<ul>
-							<li><a>Agregar</a></li>
-							<li><a>Ir a la plataforma</a></li>
-						</ul>
-					</div>
+					<div class="col s12 l6">
+						<h5>T&iacute;tulo</h5>
+						<label id="tituloSerie">${series.titulo}</label>
 
-					<h5>Sinopsis</h5>
-					<p>${series.sinopsis}</p>
+						<h5>Fecha de estre&ntilde;o</h5>
+						<label class="fechaInicio">${series.fechaInicio}</label>
 
-					<div>
-						<h5>Genero:</h5>
-						<ul>
-							<c:forEach items="${series.generos}" var="genero">
+						<h5>Pa&iacute;s</h5>
+						<label>${series.pais.nombre}</label>
 
-								<li><a class="genero">${genero.nombre}</a></li>
-							</c:forEach>
-						</ul>
-					</div>
+						<h5>Temporadas</h5>
+						<label>${series.temporadas}</label>
 
+						<h5>Cap&iacute;tulos</h5>
+						<label>${series.capitulos}</label>
 
-					<div>
-						<h5>
-							Plataformas:
-							<c:forEach items="${series.plataformas}" var="plataforma">
-                     
-                     ${plataforma.nombre}
-                     
-                       </c:forEach>
-						</h5>
+						<h5>G&eacute;neros</h5>
+						<label>
+							<ul>
+								<c:forEach items="${series.generos}" var="genero">
+
+									<li>${genero.nombre}</li>
+								</c:forEach>
+							</ul>
+						</label>
+						<h5>Sinopsis</h5>
+						<label>${series.sinopsis}</label>
 					</div>
 				</div>
+
+
+			</div>
+		</section>
+		<section>
+			<div class="row">
+				<div class="col s10 l8 offset-l2 scrollmenu">
+					<h5>Reparto</h5>
+					<ul>
+						<c:forEach items="${series.actores}" var="actores">
+							<li>
+								<div class="reparto">
+									<a href="/qveo/filtro/actor/${actores.id}"> <img
+										src="${pageContext.request.contextPath}${actores.foto}"
+										alt="${actores.nombre}" class="imagenes"> 
+										<div>${actores.nombre}</div>
+									</a>
+								</div>
+							</li>
+
+						</c:forEach>
+					</ul>
+				</div>
+
 			</div>
 
-			<div class="col s1"></div>
-
-		</div>
-
-		<div class="row">
-			<div class="col s1"></div>
-			<div class="col s10 ">
-				<div class="col s4">
-
-					<h5>Director:</h5>
+			<div class="row">
+				<div class="col s10 l10 offset-l2">
+					<h5>Director</h5>
 					<ul>
 						<c:forEach items="${series.directores}" var="director">
 							<li>
-								<div class="col s3">
-									<img src="${pageContext.request.contextPath}${director.foto}"
-										alt="${director.nombre}" width="100%">
-									<div>
-										<a href="/qveo/filtro/director/${director.id}">
-											${director.nombre}</a>
-									</div>
+								<div class="reparto">
+									<a href="/qveo/filtro/director/${director.id}"> <img
+										src="${pageContext.request.contextPath}${director.foto}"
+										alt="${director.nombre}" class="imagenes">
+										<div>${director.nombre}</div>
+									</a>
 								</div>
 							</li>
 						</c:forEach>
 					</ul>
 				</div>
-				<div class="col s8">
-					<h5>Reparto:</h5>
-
+			</div>
+			<div class="row">
+				<div class="col s10 l8 offset-l2 scrollmenu">
+					<h5>Plataformas</h5>
 					<ul>
-						<c:forEach items="${series.actores}" var="actores">
-							<li>
-								<div class="col s2">
-									<img src="${pageContext.request.contextPath}${actores.foto}"
-										alt="${actores.nombre}" width="60%">
-									<div>
-										<a href="/qveo/filtro/actor/${actores.id}">${actores.nombre}</a>
-									</div>
-								</div>
-							<li>
+						<c:forEach items="${series.plataformas}" var="plataforma">
+							<li><div class="reparto">
+									<img src="${pageContext.request.contextPath}${plataforma.foto}"
+										alt="${plataforma.nombre}" class="imagenes">
+									<div id="plataforma">${plataforma.nombre}</div>
+								</div></li>
 						</c:forEach>
 					</ul>
 				</div>
 			</div>
-		</div>
-		<div class="row">
-			<div class="col s1"></div>
-			<div class="col s8">
-				<div>
-					<h4>Comentarios</h4>
-				</div>
-				<table>
-					<tr>
-						<td>Comentario 1</td>
-						<td>Fecha</td>
-					</tr>
-					<tr>
-						<td>Comentario 2</td>
-						<td>Fecha</td>
-					</tr>
-					<tr>
-						<td>Comentario 3</td>
-						<td>Fecha</td>
-					</tr>
-				</table>
-			</div>
-			<div class="col s3"></div>
-		</div>
-
-		<div class="col s1"></div>
-
-
+		</section>
 	</main>
 
 	<footer>

@@ -29,11 +29,7 @@
 	</header>
 
 	<main>
-
 		<section>
-			<div class="row"></div>
-			<div class="row"></div>
-			<div class="row"></div>
 			<form:form method="POST" action="/qveo/filtros"
 				modelAttribute="buscar">
 
@@ -60,16 +56,16 @@
 				</div>
 
 				<div class="row">
-					<div class="col l1"></div>			
-					<div class="col s11 l3">
+					<div class="col s1 l1"></div>
+					<div class="col s3 l3">
 						<label class="flow-text">A&ntilde;o</label>
 						<form:select multiple="true" path="anios">
 							<form:option value="">Fechas</form:option>
-							<form:options items="${fechas}"/>
+							<form:options items="${fechas}" />
 						</form:select>
 					</div>
-					
-					<div class="col s11 l3">
+
+					<div class="col s3 l3">
 						<label class="flow-text"> Genero</label>
 						<form:select path="generos" multiple="true">
 							<form:option value="">Genero</form:option>
@@ -77,15 +73,13 @@
 								itemLabel="nombre" />
 						</form:select>
 					</div>
-					
-					<div class="col s11 l3">
+					<div class="col s3 l3">
 						<label class="flow-text">Plataformas</label>
 						<form:select path="plataformas" multiple="true">
 							<form:options items="${plataformas}" itemLabel="nombre"
-								itemValue="id"/>
+								itemValue="id" />
 						</form:select>
 					</div>
-
 				</div>
 				<div class="row">
 					<div class="col s1 l1"></div>

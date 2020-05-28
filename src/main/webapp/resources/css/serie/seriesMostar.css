@@ -1,0 +1,53 @@
+.fechaInicio {
+	font-family: 'Source Sans Pro', Arial, sans-serif;
+}
+
+ul li {
+	display: inline;
+	padding: 5px;
+}
+
+.reparto {
+	display: inline-block;
+}
+
+.imagenes {
+	width: 150px;
+	height: 170px;
+}
+
+h5 {
+	font-weight: bold;
+	color: #00adb5;
+}
+
+label, #plataforma {
+	color: white;
+	font-weight: normal;
+	font-size: 1vw;
+}
+
+#tituloSerie {
+	font-size: 2vw;
+}
+
+a {
+	color: white;
+	font-weight: normal;
+	font-size: 1vw;
+}
+
+.scrollmenu {
+	overflow: auto;
+	white-space: nowrap;
+}
+
+@media only screen and (max-width: 768px) {
+	.imagenes {
+		width: 120px;
+		height: 90px;
+	}
+	a, label, #plataforma {
+		font-size: 3vw;
+	}
+}

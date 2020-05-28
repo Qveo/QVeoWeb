@@ -7,6 +7,8 @@
 <html>
 <head>
 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">
 <link rel="stylesheet"
@@ -30,11 +32,12 @@
 				<div class="row">
 					<c:forEach items="${serieMostrar}" var="serie">
 						<a href="/qveo/serie/${serie.id}">
-							<div class="col s10 xl2 l2">
+ 						
+							<div class="col s11 l2">
 								<img alt="${serie.titulo}"
 									src="${pageContext.request.contextPath}${serie.poster}"
-									width="100%" />
-							</div>
+									class="responsive"/>
+							</div>		
 						</a>
 
 					</c:forEach>

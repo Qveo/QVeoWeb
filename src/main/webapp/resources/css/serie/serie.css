@@ -1,38 +1,65 @@
-.boton-Foto{
-	width: 40%;
-}
-#titulo{
-	color:#00adb5;
-}
-.izq{
-	margin-left:30%;
-	margin-top:12%
-}
-.derecha{
-	float: right;
-}
-p{
-	color:white;
-}
-
-h2 {
-    text-align: center;
-}
-
 .fechaInicio {
-    font-family: 'Source Sans Pro', Arial, sans-serif;
-}
-
-.genero {
-    font-family: 'Source Sans Pro', Arial, sans-serif;
-    font-size: 1em;
+	font-family: 'Source Sans Pro', Arial, sans-serif;
 }
 
 body * {
-    box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 ul li {
-    display: inline;
-    padding: 5px;  
+	display: inline;
+	padding: 5px;
+}
+
+.input-field>label {
+	color: white;
+	font-size: 1vw;
+}
+
+.formato {
+	color: white;
+	font-size: 1vw;
+}
+
+.especial {
+	color: white;
+	font-size: 1vw;
+}
+
+.responsive {
+	width: 100%;
+}
+
+.boton-Foto {
+	width: 40%;
+}
+
+textarea {
+	height: 85px;
+}
+
+@media only screen and (max-width: 768px) {
+	/* For mobile phones: */
+	.chips .chip {
+		font-size: 2vw;
+	}
+	.responsive {
+		width: 80%;
+		height: 70%;
+	}
+	.input-field>label {
+		color: white;
+		font-size: 4vw;
+	}
+	.formato {
+		color: white;
+		font-size: 4vw;
+	}
+	.especial {
+		color: white;
+		font-size: 4vw;
+	}
+	textarea {
+		height: 187px;
+	}
 }
