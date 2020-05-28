@@ -3,7 +3,7 @@
 		<div class="modal-content">
 			<div class="row">
 				<div class="col s12 m12 l5 imagen-usuario">
-					<img id="img-usuario"
+					<img class="responsive" id="img-usuario"
 						src="${pageContext.request.contextPath}${pelicula.poster}" />
 				</div>
 				<div class="col s12 m12 l7">
