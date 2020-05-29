@@ -10,8 +10,15 @@
 	href="${pageContext.request.contextPath}/resources/css/materialize.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/general.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/header.css">
+<link rel="icon" type="image/x-icon"
+	href="${pageContext.request.contextPath}/resources/img/favicon.ico">
 </head>
 <body>
+	<header>
+		<%@include file="/WEB-INF/views/layout/header.jsp"%>
+	</header>
 	<main>
 		<div class="container">
 			<c:if test="${not empty SPRING_SECURITY_LAST_EXCEPTION.message}">
@@ -43,10 +50,12 @@
 						</div>
 					</div>
 				</div>
-				<%-- 				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> --%>
 			</form>
 		</div>
 	</main>
+	<footer>
+		<%@include file="/WEB-INF/views/layout/footer.jsp"%>
+	</footer>
 	<script
 		src="${pageContext.request.contextPath}/resources/vendor/js/jquery-3.4.1.min.js"></script>
 	<script

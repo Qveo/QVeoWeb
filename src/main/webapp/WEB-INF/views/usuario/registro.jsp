@@ -14,12 +14,14 @@
 	href="${pageContext.request.contextPath}/resources/css/general.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/usuario/registro.css">
-	<link rel="stylesheet"
+<link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/header.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/footer.css">
-	<link rel="stylesheet"
+<link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/header.css">
+<link rel="icon" type="image/x-icon"
+	href="${pageContext.request.contextPath}/resources/img/favicon.ico">
 </head>
 <body>
 	<header>
@@ -167,7 +169,7 @@
 					<div class="col s12 m12 l6 offset-l3">
 						<c:choose>
 							<c:when test="${edit}">
-								<a href="/qveo/usuario/list"
+								<a href="/qveo/admin/usuario/list"
 									class="waves-effect waves-light btn">Volver atrás</a>
 								<button class="btn waves-effect waves-light botones"
 									name="action">
@@ -196,6 +198,5 @@
 	src="${pageContext.request.contextPath}/resources/vendor/js/materialize.js"></script>
 <script
 	src="${pageContext.request.contextPath}/resources/js/usuario/registro.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/header.js"></script>
 </body>
 </html>

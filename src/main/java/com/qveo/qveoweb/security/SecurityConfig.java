@@ -7,11 +7,8 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-
-import com.qveo.qveoweb.service.UsuarioService;
 import com.qveo.qveoweb.service.Imp.UserDetailsServiceImpl;
 
 @Configuration
@@ -23,13 +20,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	 @Override
 	 public void configure(AuthenticationManagerBuilder auth) throws Exception { 
-	     auth.userDetailsService(userDetailsService).passwordEncoder(getPasswordEncoder());   
-	     /*
-		 auth.inMemoryAuthentication()
-         .withUser("user").password(getPasswordEncoder().encode("user")).roles("USER")
-         .and()
-         .withUser("admin").password(getPasswordEncoder().encode("admin")).roles("ADMIN");
-         */
+	     auth.userDetailsService(userDetailsService).passwordEncoder(getPasswordEncoder());
 	 }
 
 	@Override
@@ -51,11 +42,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.and()
 			.formLogin()
 				.loginPage("/login")
-				//.loginProcessingUrl("/login")
 				.permitAll()
 				.defaultSuccessUrl("/")
-				//.successHandler(myAuthenticationSuccessHandler())
-				//.permitAll()
 				.failureUrl("/login?error=true")
 				.and()
 			.logout()
@@ -71,11 +59,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	 public PasswordEncoder getPasswordEncoder() {
 		 return NoOpPasswordEncoder.getInstance();
 	 }
-	 
-	 /*
-	 @Bean
-	    public PasswordEncoder passwordEncoder() {
-	        return new BCryptPasswordEncoder();
-	    }
-	*/
 }

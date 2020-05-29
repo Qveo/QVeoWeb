@@ -16,13 +16,18 @@
 				<li><a href="#">Pel&iacuteculas</a></li>
 				<li><a href="#">M&aacutes Recientes</a></li>
 				<sec:authorize access="isAnonymous()">
-					<li><a href="<c:url value="/login" />">Sign in</a></li>
+					<li><a id="login" href="<c:url value="/login" />">Sign in</a></li>
 					<li><a href="<c:url value="/usuario/form" />">Sign up</a></li>
 				</sec:authorize>
-				<security:authorize access="isAuthenticated()">
-					<li><a href="#">Mi lista</a></li>
+				<security:authorize access="hasRole('USER')">
 					<li><a href="#!" class="dropdown-trigger"
 						data-target="dropdown1"><img id="foto-user" class="circle icon-user"
+							src="${pageContext.request.contextPath}"><i
+							class="material-icons right">arrow_drop_down</i></a></li>
+				</security:authorize>
+				<security:authorize access="hasRole('ADMIN')">
+					<li><a href="#!" class="dropdown-trigger"
+						data-target="dropdown2"><img id="foto-user" class="circle icon-user"
 							src="${pageContext.request.contextPath}"><i
 							class="material-icons right">arrow_drop_down</i></a></li>
 				</security:authorize>
@@ -31,7 +36,7 @@
 				<li>
 					<div id="buscar-nombre" class="input-field mostrar-ocultar">
 						<input type="text" id="autocomplete-input" class="autocomplete"
-							placeholder="Bï¿½squeda..."> <a
+							placeholder="B&uacutesqueda..."> <a
 							class="waves-effect waves-light btn clear" id="clear"><i
 							class="material-icons">clear</i></a>
 					</div>
@@ -43,11 +48,29 @@
 	</nav>
 </div>
 <ul id="dropdown1" class="dropdown-content">
-	<security:authorize access="isAuthenticated()">
-		<li>Logueado como <security:authentication
+	<security:authorize access="hasRole('USER')">
+		<li>Logueado como: <security:authentication
+				property="principal.username" /></li>
+	</security:authorize>
+	<li><a href="#">Mi lista</a></li>
+	<li><a href="#">Editar Datos</a></li>
+	<li><a href="<c:url value="/logout" />">Logout</a></li>
+</ul>
+<ul id="dropdown2" class="dropdown-content">
+	<security:authorize access="hasRole('ADMIN')">
+		<li>Logueado como: <security:authentication
 				property="principal.username" /></li>
 	</security:authorize>
 	<li><a href="#">Editar Datos</a></li>
+	<li><a href="<c:url value="/usuario/form" />">Agregar un nuevo usuario</a></li>
+	<li><a href="<c:url value="/admin/usuario/list" />">Lista usuarios</a></li>
+	<li><a href="<c:url value="/admin/serie/listar" />">Lista series</a></li>
+	<li><a href="<c:url value="/admin/peliculas/listar" />">Lista películas</a></li>
+	<li><a href="<c:url value="/admin/paises/listar" />">Lista paises</a></li>
+	<li><a href="<c:url value="/admin/genero/list" />">Lista géneros</a></li>
+	<li><a href="<c:url value="/admin/plataformas/listar" />">Lista plataformas</a></li>
+	<li><a href="<c:url value="/admin/actor/list" />">Lista actores</a></li>
+	<li><a href="<c:url value="/admin/directores/listar" />">Lista directores</a></li>
 	<li><a href="<c:url value="/logout" />">Logout</a></li>
 </ul>
 <ul id="slide-out" class="sidenav">

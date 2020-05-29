@@ -42,14 +42,14 @@ public class ActorController {
 		binder.setValidator(validador);
 	}
 
-	@GetMapping("/actor/list")
+	@GetMapping("/admin/actor/list")
 	public String listaActor(Model model) {
 		List<Actor> actores = actorService.getAllActor();
 		model.addAttribute("actores", actores);
 		return "actor/lista";
 	}
 
-	@GetMapping("/actor/form")
+	@GetMapping("/admin/actor/form")
 	public String actorForm(Model model) {
 
 		List<Pais> paises = paisService.getAllPais();
@@ -60,7 +60,7 @@ public class ActorController {
 		return "actor/registro";
 	}
 
-	@GetMapping("/actor/edit/{id}")
+	@GetMapping("/admin/actor/edit/{id}")
 	public String editarActor(Model model, @PathVariable("id") Integer id) {
 
 		Actor actor = null;
@@ -86,7 +86,7 @@ public class ActorController {
 		return "actor/registro";
 	}
 
-	@PostMapping("/actor/form/")
+	@PostMapping("/admin/actor/form/")
 	public String guardar(@Valid @ModelAttribute("actorNuevo") Actor actorNuevo, BindingResult br, Model model,
 			@RequestParam(value = "fotoActor") MultipartFile file, RedirectAttributes redirectAttrs,
 			SessionStatus status) {
@@ -105,17 +105,17 @@ public class ActorController {
 			e.printStackTrace();
 		}
 
-		return "redirect:/actor/list";
+		return "redirect:/admin/actor/list";
 	}
 
-	@GetMapping("/actor/delete/{id}")
+	@GetMapping("/admin/actor/delete/{id}")
 	public String deleteActor(@PathVariable("id") Integer id) {
 
 		if (id > 0) {
 			actorService.deleteActor(id);
 		}
 
-		return "redirect:/actor/list";
+		return "redirect:/admin/actor/list";
 
 	}
 }
