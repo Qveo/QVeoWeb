@@ -23,7 +23,7 @@ $(document).ready(function() {
 	function borrarPelicula(id) {
 		$.ajax({
 			type : 'GET',
-		url : '/qveo/peliculas/delete/' + id,
+		url : '/qveo/admin/peliculas/delete/' + id,
 		success : function(data) {
 
 			console.log("SUCCESS : ", data);

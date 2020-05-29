@@ -13,6 +13,8 @@
 	href="${pageContext.request.contextPath}/resources/css/general.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/header.css">
+	<link rel="icon" type="image/x-icon"
+	href="${pageContext.request.contextPath}/resources/img/favicon.ico">
 </head>
 <body>
 	<header>
@@ -21,7 +23,7 @@
 	<main>
 
 
-		<form:form method="POST" action="/qveo/paises/form/add"
+		<form:form method="POST" action="/qveo/admin/paises/form/add"
 			modelAttribute="paisNuevo" enctype="multipart/form-data"
 			class="col s12 white-text">
 

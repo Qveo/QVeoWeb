@@ -17,6 +17,8 @@
 	href="${pageContext.request.contextPath}/resources/css/header.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/serie/serie.css">
+<link rel="icon" type="image/x-icon"
+	href="${pageContext.request.contextPath}/resources/img/favicon.ico">
 </head>
 <body>
 	<header>
@@ -25,7 +27,7 @@
 
 	<main>
 		<section>
-			
+
 			<div class="container">
 				<div class="row">
 					<c:forEach items="${serieMostrar}" var="serie">
