@@ -35,3 +35,21 @@ ul li {
 .opciones {
 	margin: 0 !important;
 }
+
+.responsive {
+	width: 100%;
+}
+
+@media only screen and (max-width: 768px) {
+	.responsive {
+		width: 80%;
+		height: 70%;
+	}
+}
+
+@media only screen and (max-width: 992px) {
+	.responsive {
+		width: 80%;
+		height: 70%;
+	}
+}

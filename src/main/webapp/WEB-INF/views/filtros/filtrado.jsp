@@ -39,7 +39,7 @@
 							<div class="col s10 xl2 l2">
 								<img alt="${serie.titulo}"
 									src="${pageContext.request.contextPath}${serie.poster}"
-									width="100%">
+									class="responsive">
 							</div>
 
 						</a>
@@ -50,7 +50,7 @@
 							<div class="col s10 xl2 l2">
 								<img alt="${peli.titulo}"
 									src="${pageContext.request.contextPath}${peli.poster}"
-									width="100%">
+									class="responsive">
 							</div>
 						</a>
 					</c:forEach>
@@ -62,7 +62,7 @@
 								<div class="col s10 xl2 l2">
 									<img alt="${serie.titulo}"
 										src="${pageContext.request.contextPath}${serie.poster}"
-										width="100%">
+										class="responsive">
 								</div>
 							</a>
 						</c:forEach>
@@ -72,7 +72,7 @@
 								<div class="col s10 xl2 l2">
 									<img alt="${peli.titulo}"
 										src="${pageContext.request.contextPath}${peli.poster}"
-										width="100%">
+										class="responsive">
 								</div>
 							</a>
 						</c:forEach>

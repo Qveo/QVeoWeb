@@ -6,6 +6,7 @@
 
 <head>
 <title>QVeo web</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">
 <link rel="stylesheet"
@@ -39,19 +40,19 @@
 			</div>
 
 			<div class="row cabeceras">
-				<div class="col s3">Foto</div>
-				<div class="col s3">Nombre</div>
-				<div class="col s3">Opciones</div>
+				<div class="col s3 l3">Foto</div>
+				<div class="col s3 l3">Nombre</div>
+				<div class="col s3 l3">Opciones</div>
 
 			</div>
 			<c:forEach items="${actores}" var="actor">
 				<div id="${actor.id}" class="row cuerpo">
-					<div class="col s3">
+					<div class="col s3 l3">
 						<img src="${pageContext.request.contextPath}${actor.foto}"
-							alt="${actor.nombre}" width="40%">
+							alt="${actor.nombre}" class="fotoLista">
 					</div>
-					<div class="col s3">${actor.nombre}</div>
-					<div id="${actor.id}" class="col s3">
+					<div class="col s3 l3">${actor.nombre}</div>
+					<div id="${actor.id}" class="col s3 l3">
 
 						<div class="col s12 m3 l4">
 							<a href="/qveo/actor/edit/${actor.id}"
@@ -98,10 +99,11 @@
 	</footer>
 
 </body>
-	<script
-		src="${pageContext.request.contextPath}/resources/vendor/js/jquery-3.4.1.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/vendor/js/materialize.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/header.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/actor/actor.js"></script>
+<script
+	src="${pageContext.request.contextPath}/resources/vendor/js/jquery-3.4.1.min.js"></script>
+<script
+	src="${pageContext.request.contextPath}/resources/vendor/js/materialize.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/header.js"></script>
+<script
+	src="${pageContext.request.contextPath}/resources/js/actor/actor.js"></script>
 </html>

@@ -62,12 +62,18 @@
 						</label>
 						<h5>Sinopsis</h5>
 						<label>${series.sinopsis}</label>
+						<div class="col s10 l9 offset-l1 offset-s1">
+						<a href="#"><i class="waves-effect blue btn ">Agregar
+								Serie</i></a>
 					</div>
+					</div>
+					
 				</div>
 
 
 			</div>
 		</section>
+
 		<section>
 			<div class="row">
 				<div class="col s10 l8 offset-l2 scrollmenu">
@@ -78,7 +84,7 @@
 								<div class="reparto">
 									<a href="/qveo/filtro/actor/${actores.id}"> <img
 										src="${pageContext.request.contextPath}${actores.foto}"
-										alt="${actores.nombre}" class="imagenes"> 
+										alt="${actores.nombre}" class="imagenes">
 										<div>${actores.nombre}</div>
 									</a>
 								</div>

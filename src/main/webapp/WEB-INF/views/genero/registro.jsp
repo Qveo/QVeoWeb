@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<meta charset="ISO-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <c:choose>
 	<c:when test="${editar}">
 		<title>Actualizar de una genero</title>
@@ -42,11 +42,15 @@
 				<div class="col s2"></div>
 				<div class="input-field col s8">
 					<form:form method="POST" action="/qveo/genero/form"
-						modelAttribute="generoNuevo" class="col s12">
-						<form:label path="nombre">Nombre del Genero</form:label>
-						<form:input path="nombre" id="nombre" />
-						<form:errors path="nombre" style="color:red"></form:errors>
-						<div style="color: red">${errorNombre}</div>
+						modelAttribute="generoNuevo">
+						<div class="row">
+							<div class="input-field col s12 l8 formato">
+								<form:label path="nombre">Nombre del Genero</form:label>
+								<form:input path="nombre" id="nombre" />
+								<form:errors path="nombre" style="color:red"></form:errors>
+								<div style="color: red">${errorNombre}</div>
+							</div>
+						</div>
 						<c:choose>
 							<c:when test="${editar}">
 								<form:hidden path="id" />

@@ -63,3 +63,29 @@ textarea {
 		height: 187px;
 	}
 }
+@media only screen and (max-width: 992px) {
+	/* For mobile phones: */
+	.chips .chip {
+		font-size: 2vw;
+	}
+	.responsive {
+		width: 80%;
+		height: 70%;
+	}
+	.input-field>label {
+		color: white;
+		font-size: 2vw;
+	}
+	.formato {
+		color: white;
+		font-size: 2vw;
+	}
+	.especial {
+		color: white;
+		font-size: 2vw;
+	}
+	textarea {
+		height: 187px;
+	}
+}
+

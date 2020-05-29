@@ -38,20 +38,20 @@
 			</div>
 
 			<div class="row cabeceras">
-				<div class="col s3">Nombre Genero</div>
-				<div class="col s3">Opciones</div>
+				<div class="col s5 l5">Nombre Genero</div>
+				<div class="col s4 l4">Opciones</div>
 			</div>
 			<c:forEach items="${generos}" var="genero">
 				<div id="${genero.id}" class="row cuerpo">
-					<div class="col s3">${genero.nombre}</div>
-					<div id="${genero.id}" class="col s3">
+					<div class="col s5 l5">${genero.nombre}</div>
+					<div class="col s4 l4">
 
-						<div class="col s12 m3 l4">
+						<div class="col s6 m3 l4">
 							<a href="/qveo/genero/edit/${genero.id}"
 								class="btn-floating btn-large"><i
 								class="material-icons editar">edit</i></a>
 						</div>
-						<div class="col s12 m6 l4">
+						<div class="col s6 m3 l4">
 							<a href="#modal2-genero-${genero.id}"
 								class="btn-floating btn-large red modal-trigger"><i
 								class="material-icons eliminar">delete</i></a>
@@ -87,5 +87,6 @@
 <script
 	src="${pageContext.request.contextPath}/resources/vendor/js/materialize.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/header.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/genero/genero.js"></script>
+<script
+	src="${pageContext.request.contextPath}/resources/js/genero/genero.js"></script>
 </html>
