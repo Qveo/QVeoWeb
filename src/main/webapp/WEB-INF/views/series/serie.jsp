@@ -1,11 +1,12 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
 
 <title>${series.titulo}</title>
 
@@ -16,9 +17,11 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/general.css">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/serie.css">
-<link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/header.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/serie/serie.css">
+<link rel="icon" type="image/x-icon"
+	href="${pageContext.request.contextPath}/resources/img/favicon.ico">
 </head>
 <body>
 	<header>
@@ -100,7 +103,8 @@
 									<img src="${pageContext.request.contextPath}${director.foto}"
 										alt="${director.nombre}" width="100%">
 									<div>
-										<a href="#"> ${director.nombre}</a>
+										<a href="/qveo/filtro/director/${director.id}">
+											${director.nombre}</a>
 									</div>
 								</div>
 							</li>
@@ -117,7 +121,7 @@
 									<img src="${pageContext.request.contextPath}${actores.foto}"
 										alt="${actores.nombre}" width="60%">
 									<div>
-										<a href="#">${actores.nombre}</a>
+										<a href="/qveo/filtro/actor/${actores.id}">${actores.nombre}</a>
 									</div>
 								</div>
 							<li>
@@ -159,6 +163,11 @@
 		<%@include file="/WEB-INF/views/layout/footer.jsp"%>
 	</footer>
 	<script
+		src="${pageContext.request.contextPath}/resources/vendor/js/jquery-3.4.1.min.js"></script>
+	<script
 		src="${pageContext.request.contextPath}/resources/vendor/js/materialize.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/header.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/js/serie/serie.js"></script>
 </body>
 </html>

@@ -21,6 +21,8 @@
 	href="${pageContext.request.contextPath}/resources/css/header.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/modal.css">
+<link rel="icon" type="image/x-icon"
+	href="${pageContext.request.contextPath}/resources/img/favicon.ico">
 <title>${titulo}</title>
 </head>
 <body>
@@ -30,7 +32,7 @@
 	<main>
 		<div class="row">
 			<div class="input-field col s12 m6 l6 boton">
-				<a href="/qveo/plataformas/form"><i
+				<a href="/qveo/admin/plataformas/form"><i
 					class="waves-effect waves-light btn agregar-usuario">Nueva
 						plataforma</i></a>
 			</div>
@@ -58,7 +60,7 @@
 					<div id="${plataforma.id}" class="row opciones">
 
 						<div class="col s12 m3 l6">
-							<a href="/qveo/plataformas/edit/${plataforma.id}"
+							<a href="/qveo/admin/plataformas/edit/${plataforma.id}"
 								class="btn-floating btn-large"><i
 								class="material-icons editar">edit</i></a>
 						</div>
@@ -84,7 +86,7 @@
 					class="waves-effect waves-green btn-flat modal-close eliminar-plat">Aceptar</a>
 			</div>
 		</div>
-		
+
 
 
 		<div id="modal3" class="modal confirmar">
@@ -106,8 +108,7 @@
 	</footer>
 
 </body>
-<script
-	src="${pageContext.request.contextPath}/resources/js/jquery.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/jquery.js"></script>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script

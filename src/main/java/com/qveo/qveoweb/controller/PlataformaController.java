@@ -24,7 +24,7 @@ import com.qveo.qveoweb.service.UploadFileService;
 import com.qveo.qveoweb.validation.PlataformaValidador;
 
 @Controller
-@RequestMapping("/plataformas")
+@RequestMapping("/admin/plataformas")
 public class PlataformaController {
 
 	@Autowired
@@ -81,7 +81,7 @@ public class PlataformaController {
 			plataforma = platService.getPlataforma(id);
 			if (plataforma == null) {
 
-				return "redirect:/plataformas/listar";
+				return "redirect:/admin/plataformas/listar";
 			}
 		} else {
 
@@ -118,7 +118,7 @@ public class PlataformaController {
 
 		}
 
-		return "redirect:/plataformas/listar";
+		return "redirect:/admin/plataformas/listar";
 
 	}
 
@@ -131,7 +131,7 @@ public class PlataformaController {
 
 		}
 
-		return "redirect:/plataformas/listar";
+		return "redirect:/admin/plataformas/listar";
 	}
 
 }

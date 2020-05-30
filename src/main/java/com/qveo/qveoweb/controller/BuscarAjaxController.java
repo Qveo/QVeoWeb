@@ -19,7 +19,7 @@ public class BuscarAjaxController {
 	@Autowired
 	private PeliculaService peliculaService;
 	
-	@RequestMapping(value = "/ajax/series", method = RequestMethod.GET)
+	@RequestMapping(value = "/ajax/series", method = RequestMethod.POST)
 	public ResponseEntity<?> todasSeries(){	
 		ContenidoVisualDto contenidoVisual = new ContenidoVisualDto(serieService.findAllSerie(),peliculaService.findAll());
 		return ResponseEntity.ok(contenidoVisual);

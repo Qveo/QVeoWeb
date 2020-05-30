@@ -31,6 +31,8 @@
 	href="${pageContext.request.contextPath}/resources/css/genero/genero.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/modal.css">
+	<link rel="icon" type="image/x-icon"
+	href="${pageContext.request.contextPath}/resources/img/favicon.ico">
 </head>
 <body>
 	<header>
@@ -41,7 +43,7 @@
 			<div class="row">
 				<div class="col s2"></div>
 				<div class="input-field col s8">
-					<form:form method="POST" action="/qveo/genero/form"
+					<form:form method="POST" action="/qveo/admin/genero/form"
 						modelAttribute="generoNuevo" class="col s12">
 						<form:label path="nombre">Nombre del Genero</form:label>
 						<form:input path="nombre" id="nombre" />

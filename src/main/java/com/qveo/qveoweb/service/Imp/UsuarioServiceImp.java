@@ -11,6 +11,9 @@ import com.qveo.qveoweb.model.Usuario;
 import com.qveo.qveoweb.service.IUploadFileService;
 import com.qveo.qveoweb.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -86,19 +89,20 @@ public class UsuarioServiceImp implements UsuarioService {
 
     }
 
-    @Override
-    public List<Usuario> findUsuarioPorNombre(String nombre) {
+	@Override
+	public List<Usuario> findUsuarioPorNombre(String nombre) {
+		return usuarioDao.findByNombreStartingWith(nombre);
+	}
 
-        List<Usuario> usuarios = usuarioDao.findByNombreStartingWith(nombre);
+	@Override
+	public boolean usuarioExiste(Integer id) {
+		return usuarioDao.existsById(id);
+	}
 
-        return usuarios;
-    }
-
-    @Override
-    public boolean usuarioExiste(Integer id) {
-
-        return usuarioDao.existsById(id);
-    }
+	@Override
+	public Usuario findUserByEmail(String email) {
+		return usuarioDao.findByEmail(email);
+	}    
 
     @Override
     public PersonalInfoDto savePersonalInfo(PersonalInfoDto personalInfoDto, MultipartFile file) {

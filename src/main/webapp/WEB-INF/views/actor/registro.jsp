@@ -28,6 +28,8 @@
 	href="${pageContext.request.contextPath}/resources/css/actor/actor.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/modal.css">
+	<link rel="icon" type="image/x-icon"
+	href="${pageContext.request.contextPath}/resources/img/favicon.ico">
 </head>
 
 <body>
@@ -38,10 +40,10 @@
 		<div class="row">
 			<c:choose>
 				<c:when test="${editar}">
-					<c:set var="action" scope="session" value="/qveo/actor/form/" />
+					<c:set var="action" scope="session" value="/qveo/admin/actor/form/" />
 				</c:when>
 				<c:otherwise>
-					<c:set var="action" scope="session" value="/qveo/actor/form/" />
+					<c:set var="action" scope="session" value="/qveo/admin/actor/form/" />
 				</c:otherwise>
 			</c:choose>
 			<form:form method="POST" action="${action}"

@@ -19,7 +19,6 @@ public class Plataforma {
     private Set<PeliculaPlataforma> peliculaPlataformas = new HashSet<PeliculaPlataforma>();
 
     
-    
     public Plataforma() {
 	}
 

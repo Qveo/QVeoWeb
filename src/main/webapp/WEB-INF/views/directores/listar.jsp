@@ -11,6 +11,8 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/general.css">
+	<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/header.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/director/director.css">
 <link rel="stylesheet"
@@ -19,6 +21,8 @@
 	href="${pageContext.request.contextPath}/resources/css/footer.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/modal.css">
+	<link rel="icon" type="image/x-icon"
+	href="${pageContext.request.contextPath}/resources/img/favicon.ico">
 <title>${titulo}</title>
 </head>
 <body>
@@ -29,7 +33,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="input-field col s12 m6 l6 boton">
-					<a href="/qveo/directores/form"><i
+					<a href="/qveo/admin/directores/form"><i
 						class="waves-effect waves-light btn agregar-usuario">Nueva
 							director</i></a>
 				</div>
@@ -56,7 +60,7 @@
 									class="material-icons">visibility</i></a>
 							</div>
 							<div class="col s12 m3 l4">
-								<a href="/qveo/directores/edit/${director.id}"
+								<a href="/qveo/admin/directores/edit/${director.id}"
 									class="btn-floating btn-large"><i
 									class="material-icons editar">edit</i></a>
 							</div>
