@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <html>
 <head>
@@ -35,7 +36,8 @@
 
 			<div>
 				<div class="col s12">
-					<div class="carousel">
+					<div
+						class="carousel carousel_${fn:replace(plataforma.nombre,' ','_')}">
 						<c:forEach items="${plataforma.peliculaPlataformas}"
 							var="peliculaPlataformas">
 							<div class="carousel-item">
@@ -46,6 +48,7 @@
 								</a>
 							</div>
 						</c:forEach>
+
 						<c:forEach items="${plataforma.series}" var="serie">
 							<div class="carousel-item">
 								<a class="waves-effect waves-light modal-trigger"
@@ -54,6 +57,13 @@
 								</a>
 							</div>
 						</c:forEach>
+
+						<a id="carousel-prev"
+							class="movePrevCarousel Prev${fn:replace(plataforma.nombre,' ','_')} middle-indicator-text grey lighten-2 content-indicator middle-indicator left"><i
+							class="material-icons left  middle-indicator-text">chevron_left</i></a>
+						<a id="carousel-next"
+							class="moveNextCarousel Next${fn:replace(plataforma.nombre,' ','_')} middle-indicator-text grey lighten-2 content-indicator middle-indicator right"><i
+							class="material-icons right middle-indicator-text">chevron_right</i></a>
 					</div>
 				</div>
 			</div>

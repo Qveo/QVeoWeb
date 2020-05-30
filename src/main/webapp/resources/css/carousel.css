@@ -1,16 +1,57 @@
 @charset "UTF-8";
 
-.carousel .carousel-item{
+.carousel .carousel-item {
 	opacity: 1 !important;
-
 }
 
 h3 a:link, h3 a:visited {
-  text-decoration: none;
-  color:00adb5; 
+	text-decoration: none;
+	color: 00adb5;
 }
 
-.carousel .carousel-item img{
+.carousel .carousel-item img {
 	width: 100%;
-    display: inline;
+	display: inline;
+}
+
+.material-icons {
+	font-family: 'Material Icons';
+	font-weight: normal;
+	font-style: normal;
+	font-size: 24px;
+	line-height: 1;
+	letter-spacing: normal;
+	text-transform: none;
+	display: inline-block;
+	white-space: nowrap;
+	word-wrap: normal;
+	direction: ltr;
+	-moz-font-feature-settings: 'liga';
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.middle-indicator {
+	position: relative;
+	top: 50%;
+	z-index: 3;
+}
+
+.middle-indicator-text {
+	font-size: 4.2rem;
+}
+
+a.middle-indicator-text {
+	color: #0066ff !important;
+}
+
+.content-indicator {
+	width: 64px;
+	height: 64px; -moz-border-radius : 50px;
+	-webkit-border-radius: 50px;
+	border-radius: 50px;
+	-moz-border-radius: 50px;
+}
+
+.indicators {
+	visibility: hidden;
 }

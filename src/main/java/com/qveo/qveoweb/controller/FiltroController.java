@@ -58,9 +58,7 @@ public class FiltroController {
 	 * Get controller para series
 	 */
 	@GetMapping("/filtro")
-	public String buscadorSerie(Model model) {
-
-		
+	public String buscador(Model model) {
 
 		List<Genero> generos = generoService.getAllGenero();
 
@@ -120,27 +118,7 @@ public class FiltroController {
 	 * Post controler para series
 	 */
 	@PostMapping("/filtros")
-	public String filtrar(@ModelAttribute(name = "buscar") FiltroDto filtro, BindingResult br, Model model) {
-
-		
-		 if (br.hasErrors()) {
-			 System.out.println(br.getAllErrors());
-
-			model.addAttribute("buscar", filtro);
-		
-			List<Genero> generos = generoService.getAllGenero();
-
-			List<Serie> series = serieService.findAllSerie();
-			List<Plataforma> plataformas = plataformaSerice.getAllPlataformas();
-			List<Integer> fecha = filtroService.buscarAllYears();
-
-			model.addAttribute("fechas", fecha);
-			model.addAttribute("serieMostrar", series);
-			model.addAttribute("plataformas", plataformas);
-			model.addAttribute("generos", generos);
-
-			return "filtros/filtro";
-		}
+	public String filtrar(@ModelAttribute(name = "buscar") FiltroDto filtro, Model model) {
 
 		FiltroDto filtrados = filtroService.busqueda(filtro);
 		model.addAttribute("filtrado", filtrados);
