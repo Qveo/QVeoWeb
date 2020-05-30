@@ -952,7 +952,7 @@ INSERT INTO `serie_plataforma` (`ID_SERIE`, `ID_PLATAFORMA`) VALUES (21,3);
 --
 
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` (`ID`, `NOMBRE`, `APELLIDOS`, `EMAIL`, `ID_ROL`, `FOTO`, `FECHA_NACIMIENTO`, `SEXO`, `PASSWORD`, `ID_PAIS`, `FECHA_ALTA`) VALUES (2,'yuriy','mraka','yuriy@gmail.com',1,'/resources/img/usuarios/yuriy.jpg','1931-05-03','M','1234',6,'2020-05-15');
+INSERT INTO `usuario` (`ID`, `NOMBRE`, `APELLIDOS`, `EMAIL`, `ID_ROL`, `FOTO`, `FECHA_NACIMIENTO`, `SEXO`, `PASSWORD`, `ID_PAIS`, `FECHA_ALTA`) VALUES (2,'yuriy','mraka','yuriy@gmail.com',1,'/resources/img/usuarios/yuriy_16.png','1931-05-03','M','1234',6,'2020-05-15');
 INSERT INTO `usuario` (`ID`, `NOMBRE`, `APELLIDOS`, `EMAIL`, `ID_ROL`, `FOTO`, `FECHA_NACIMIENTO`, `SEXO`, `PASSWORD`, `ID_PAIS`, `FECHA_ALTA`) VALUES (3,'esther','morales','esther@gmail.com',1,'/resources/img/usuarios/esther.jpg','1932-05-09','M','1234',3,'2020-05-15');
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 

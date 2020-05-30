@@ -1,0 +1,124 @@
+main{
+    padding-top: 6vh;
+}
+
+#personal, #contrasena, #plataformas {
+    height: 70vh;
+}
+
+#contrasena, #plataformas {
+    margin-top: 25vh;
+}
+
+#plataformas{
+    margin-bottom: 20vh;
+}
+
+.mi-configuracion-section{
+    background-color: #eeeeee;
+    width: 70vw;
+    padding: 2vh;
+}
+
+input[type="text"],input[type="email"], input[type="file"],
+input[type="password"]{
+    color:#3c3c3c;
+    border-bottom: 1px solid black !important;
+}
+
+input[type="text"]:focus,input[type="email"]:focus, input[type="file"]:focus,
+input[type="password"]:focus{
+    color:#3c3c3c;
+    border-bottom: 1px solid #00adb5 !important;
+}
+
+input[type="radio"]:checked+span:after,
+input[type="radio"].with-gap:checked+span:after{
+    background-color: #00adb5;
+}
+
+.table-of-contents a.active{
+    border-left: 2px solid #00adb5;
+}
+
+.table-of-contents a:hover{
+    border-left: 1px solid #00adb5;
+}
+
+input[type="checkbox"]+span:not(.lever):before,
+input[type="checkbox"]:not(.filled-in)+span:not(.lever):after{
+ opacity: 0;
+}
+
+.img-plataforma{
+    width: 100px;
+    height: 90px;
+    margin: 10px 0 10px 0;
+}
+
+.plataforma-selected{
+    outline: 5px solid #00adb5;
+}
+
+.scroll-spy-sticky{
+    position: sticky;
+    top: 13vh;
+}
+
+.foto-perfil{
+    width:70%;
+    border-radius:150px;
+    display: block;
+    margin: 1vh auto;
+}
+
+.error-msg{
+    color:#ef0000;
+    font-weight: bold;
+    font-size: 0.75em;
+}
+
+.btn{
+    background-color: #00adb5;
+    z-index: auto;
+}
+
+.submit-conf{
+    height: 5vh;
+    width: 100%;
+    margin-top: 20px;
+}
+
+body{
+    overflow: hidden;
+}
+
+footer{
+    position: fixed;
+    bottom: 0;
+    width: 100vw;
+}
+
+@media only screen and (max-width: 600px) {
+    body{
+        overflow: auto;
+    }
+
+    main{
+        padding-top: 2vh;
+    }
+
+    .mi-configuracion-section{
+        width: 90%;
+        margin: auto;
+    }
+
+    .foto-perfil{
+        width: 40%;
+    }
+
+    #personal, #contrasena, #plataformas {
+        height: auto;
+        margin-top: auto;
+    }
+}
