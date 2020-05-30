@@ -1,36 +1,39 @@
-.cabeceras, .cuerpo{
-	margin: 0 !important;
-	padding: 5px 0; 
-	font-size: 25px;
-	text-align: left;
+.boton-Foto{
+	width: 40%;
+}
+#titulo{
+	color:#00adb5;
+}
+.izq{
+	margin-left:30%;
+	margin-top:12%
+}
+.derecha{
+	float: right;
+}
+p{
+	color:white;
 }
 
-.cabeceras{
-	font-weight: bold;
-	background-color: #00adb5;
+h2 {
+    text-align: center;
 }
 
-.cuerpo{
-	background-color: #eeeeee;
-	border-bottom: 1px solid #fff;
+.fechaInicio {
+    font-family: 'Source Sans Pro', Arial, sans-serif;
 }
 
-.cuerpo:hover{
-	background-color: #ddd;
+.genero {
+    font-family: 'Source Sans Pro', Arial, sans-serif;
+    font-size: 1em;
 }
 
-.material-icons{
-	font-size: 40px !important;
+body * {
+    box-sizing: border-box;
 }
 
-.row .boton{
-	padding: 10px 0;
+ul li {
+    display: inline;
+    padding: 5px;  
 }
 
-.opciones{
-	margin: 0 !important;
-}
-
-.imagen-director img{
-	width: 100%;
-}
