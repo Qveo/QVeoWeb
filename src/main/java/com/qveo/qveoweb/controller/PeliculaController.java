@@ -72,6 +72,15 @@ public class PeliculaController {
 	public void InitBinder(WebDataBinder binder) {
 		binder.setValidator(peliculaValid);
 	}
+	
+	@GetMapping(value= {"/",""})
+	public String listarUsuario(Model mod) {
+
+		mod.addAttribute("titulo", "Listado de peliculas");
+		mod.addAttribute("peliculas", peliculaService.findAll());
+
+		return "peliculas/estrenos";
+	}
 
 	@GetMapping("/listar")
 	public String listar(Model mod) {
