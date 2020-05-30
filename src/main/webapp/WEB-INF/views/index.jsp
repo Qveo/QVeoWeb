@@ -34,7 +34,6 @@
 					</h3>
 				</div>
 			</div>
-
 			<div>
 				<div class="col s12">
 					<div class="carousel">
@@ -64,7 +63,6 @@
 	<footer>
 		<%@include file="/WEB-INF/views/layout/footer.jsp"%>
 	</footer>
-
 	<c:forEach items="${plataformas}" var="plataforma">
 		<%@include file="/WEB-INF/views/layout/modalDetalleSerie.jsp"%>
 		<%@include file="/WEB-INF/views/layout/modalDetallePelicula.jsp"%>
@@ -76,4 +74,6 @@
 	src="${pageContext.request.contextPath}/resources/vendor/js/materialize.js"></script>
 <script
 	src="${pageContext.request.contextPath}/resources/js/carousel.js"></script>
+<script
+	src="${pageContext.request.contextPath}/resources/js/usuario/add-to-list.js"></script>
 </html>

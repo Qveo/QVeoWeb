@@ -4,14 +4,20 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.qveo.qveoweb.dto.AddToListDto;
+import com.qveo.qveoweb.model.Pelicula;
+import com.qveo.qveoweb.model.Serie;
 import com.qveo.qveoweb.model.Usuario;
 import com.qveo.qveoweb.service.IUploadFileService;
+import com.qveo.qveoweb.service.PeliculaService;
+import com.qveo.qveoweb.service.SerieService;
 import com.qveo.qveoweb.service.UsuarioService;
 
 @RestController
@@ -22,6 +28,12 @@ public class UsuarioAjaxController {
 	
 	@Autowired
 	private IUploadFileService uploadFileService;
+	
+	@Autowired
+	private SerieService serieService;
+	
+	@Autowired
+	private PeliculaService peliculaService;
 	
 	@RequestMapping(value = "/ajax/usuario/{id}", method = RequestMethod.GET)
     public ResponseEntity<?> getSearchResultViaAjax(@PathVariable("id") Integer id) {
@@ -55,6 +67,31 @@ public class UsuarioAjaxController {
 
 		return ResponseEntity.ok(usuarios);
 
+	}
+	
+	@RequestMapping(value = "/ajax/add/serie", method = RequestMethod.POST)
+	@Transactional
+	public boolean addSerieToUserList(@RequestBody AddToListDto addResource){
+		
+		
+		Usuario usuario = usuarioService.getUsuario(addResource.getIdUser());
+		List<Serie> series = (List<Serie>) usuario.getSeries();
+		series.add(serieService.getSerie(addResource.getIdResource()));
+		usuario.setSeries(series);
+		
+		return true;
+	}
+	
+	@RequestMapping(value = "/ajax/add/movie", method = RequestMethod.POST)
+	@Transactional
+	public boolean addMovieToUserList(@RequestBody AddToListDto addResource){
+		
+		Usuario usuario = usuarioService.getUsuario(addResource.getIdUser());
+		List<Pelicula> peliculas = (List<Pelicula>) usuario.getPeliculas();
+		peliculas.add(peliculaService.getPelicula(addResource.getIdResource()));
+		usuario.setPeliculas(peliculas);
+		
+		return true;
 	}
 
 }

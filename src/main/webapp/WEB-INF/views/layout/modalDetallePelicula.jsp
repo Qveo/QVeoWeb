@@ -22,8 +22,10 @@
 				<h5 class="contenido">${peliculaPlataformas.pelicula.sinopsis}</h5>
 				<h4 class="titulo">Plataformas</h4>
 				<h5 class="contenido">${peliculaPlataformas.pelicula.plataformasConcatenadas()}</h5>
-				<a class="waves-effect waves-light btn-large">A&ntildeadir a mi
-					lista</a>
+				<security:authorize access="hasRole('USER')">
+                        	<a class="waves-effect waves-light btn-large add-movie">Agregar a mi lista</a>
+                        	<p style="display:none">${peliculaPlataformas.pelicula.id}</p>
+                </security:authorize>
 			</div>
 		</div>
 	</div>

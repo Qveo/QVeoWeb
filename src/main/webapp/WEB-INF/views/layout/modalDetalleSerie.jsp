@@ -19,7 +19,10 @@
                         <h5 class="contenido">${serie.sinopsis}</h5>
                         <h4 class="titulo">Plataformas</h4>
                         <h5 class="contenido">${serie.plataformasConcatenadas()}</h5>
-                        <a class="waves-effect waves-light btn-large">A&ntildeadir a mi lista</a>
+                        <security:authorize access="hasRole('USER')">
+                        	<a class="waves-effect waves-light btn-large add-serie">Agregar a mi lista</a>
+                        	<p style="display:none">${serie.id}</p>
+                        </security:authorize>
                     </div>
                 </div>
             </div>
