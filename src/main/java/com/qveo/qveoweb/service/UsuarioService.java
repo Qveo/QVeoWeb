@@ -24,4 +24,5 @@ public interface UsuarioService {
     public ContrasenaDto saveContrasena(ContrasenaDto contrasenaDto);
     PersonalInfoDto savePersonalInfo(PersonalInfoDto personalInfoDto, MultipartFile file);
     PlataformaDto savePlataformas(PlataformaDto plataformaDto);
+    Usuario getUsuarioLogueado();
 }

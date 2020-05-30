@@ -13,4 +13,35 @@ $(document).ready(function(){
             weekdaysAbbrev: ["D","L", "M", "M", "J", "V", "S"]
         }
     });
+
+    $(document).on("click", ".img-plataforma", changePlataformaSeleccionada);
+
+    deleteSpringFormUnusedTags();
+
+    markPlataformasSeleccionadas();
+
 });
+
+function markPlataformasSeleccionadas() {
+    $('#plataformas').find("input[type='checkbox']").each(function () {
+        if(!$(this).prop("checked")){
+            $(this).parent().find(".img-plataforma").addClass("plataforma-selected");
+        }
+        if($(this).prop("checked")){
+            $(this).parent().find(".img-plataforma").removeClass("plataforma-selected");
+        }
+    });
+}
+
+function deleteSpringFormUnusedTags() {
+    $('.check-label > input[type="hidden"]').remove();
+}
+
+function changePlataformaSeleccionada(event) {
+    var check = $(event.target).parent().parent().find("input[type='checkbox']");
+    if(check.prop("checked")){
+        $(event.target).addClass("plataforma-selected");
+    } else {
+        $(event.target).removeClass("plataforma-selected");
+    }
+}

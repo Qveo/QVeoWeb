@@ -3,6 +3,7 @@ package com.qveo.qveoweb.controller;
 import com.qveo.qveoweb.dto.ContrasenaDto;
 import com.qveo.qveoweb.dto.PersonalInfoDto;
 import com.qveo.qveoweb.dto.PlataformaDto;
+import com.qveo.qveoweb.model.Usuario;
 import com.qveo.qveoweb.service.PlataformaService;
 import com.qveo.qveoweb.service.UsuarioService;
 import com.qveo.qveoweb.validation.ContrasenaDtoValidator;
@@ -37,9 +38,10 @@ public class MiConfiguracionController {
 
     @RequestMapping(value = "/mi-configuracion")
     public String usuario(Model model) {
-        model.addAttribute("personalDto", new PersonalInfoDto(usuarioService.getUsuario(2)));
-        model.addAttribute("contrasenaDto", new ContrasenaDto(usuarioService.getUsuario(2)));
-        model.addAttribute("plataformaDto", new PlataformaDto(usuarioService.getUsuario(2)));
+        Usuario usuario = usuarioService.getUsuarioLogueado();
+        model.addAttribute("personalDto", new PersonalInfoDto(usuario));
+        model.addAttribute("contrasenaDto", new ContrasenaDto(usuario));
+        model.addAttribute("plataformaDto", new PlataformaDto(usuario));
         model.addAttribute("plataformas", plataformaService.getAllPlataformas());
         return "adminUsuario";
     }
@@ -48,19 +50,20 @@ public class MiConfiguracionController {
     public String editarUsuario(@Valid @ModelAttribute("personalDto") PersonalInfoDto personalInfoDto,
                                 @RequestParam(value = "file") MultipartFile file,
                                 BindingResult bindingResult, Model model) {
+        Usuario usuario = usuarioService.getUsuarioLogueado();
         personalnfoDtoValidator.validate(personalInfoDto, bindingResult);
         if (bindingResult.hasErrors()) {
             model.addAttribute("personalDto", personalInfoDto);
-            model.addAttribute("contrasenaDto", new ContrasenaDto(usuarioService.getUsuario(2)));
-            model.addAttribute("plataformaDto", new PlataformaDto(usuarioService.getUsuario(2)));
+            model.addAttribute("contrasenaDto", new ContrasenaDto(usuario));
+            model.addAttribute("plataformaDto", new PlataformaDto(usuario));
             model.addAttribute("plataformas", plataformaService.getAllPlataformas());
             return "adminUsuario";
         }
 
         personalInfoDto = usuarioService.savePersonalInfo(personalInfoDto, file);
         model.addAttribute("personalDto", personalInfoDto);
-        model.addAttribute("contrasenaDto", new ContrasenaDto(usuarioService.getUsuario(2)));
-        model.addAttribute("plataformaDto", new PlataformaDto(usuarioService.getUsuario(2)));
+        model.addAttribute("contrasenaDto", new ContrasenaDto(usuario));
+        model.addAttribute("plataformaDto", new PlataformaDto(usuario));
         model.addAttribute("plataformas", plataformaService.getAllPlataformas());
         return "adminUsuario";
     }
@@ -69,10 +72,11 @@ public class MiConfiguracionController {
     public String editarContrasena(@Valid @ModelAttribute("contrasenaDto") ContrasenaDto contrasenaDto,
                                    BindingResult bindingResult, Model model) {
         contrasenaDtoValidator.validate(contrasenaDto, bindingResult);
+        Usuario usuario = usuarioService.getUsuarioLogueado();
         if (bindingResult.hasErrors()) {
             model.addAttribute("contrasenaDto", contrasenaDto);
-            model.addAttribute("personalDto", new PersonalInfoDto(usuarioService.getUsuario(2)));
-            model.addAttribute("plataformaDto", new PlataformaDto(usuarioService.getUsuario(2)));
+            model.addAttribute("personalDto", new PersonalInfoDto(usuario));
+            model.addAttribute("plataformaDto", new PlataformaDto(usuario));
             model.addAttribute("plataformas", plataformaService.getAllPlataformas());
             return "adminUsuario";
         }
@@ -87,14 +91,13 @@ public class MiConfiguracionController {
 
     @RequestMapping(value = "/mi-configuracion/editar-plataformas", method = RequestMethod.POST)
     public String editarPlataformas(@ModelAttribute("plataformaDto") PlataformaDto plataformaDto, Model model) {
-
+        Usuario usuario = usuarioService.getUsuarioLogueado();
         plataformaDto = usuarioService.savePlataformas(plataformaDto);
 
         model.addAttribute("plataformaDto", plataformaDto);
-        model.addAttribute("personalDto", new PersonalInfoDto(usuarioService.getUsuario(2)));
-        model.addAttribute("contrasenaDto", new ContrasenaDto(usuarioService.getUsuario(2)));
+        model.addAttribute("personalDto", new PersonalInfoDto(usuario));
+        model.addAttribute("contrasenaDto", new ContrasenaDto(usuario));
         model.addAttribute("plataformas", plataformaService.getAllPlataformas());
         return "adminUsuario";
     }
-
 }

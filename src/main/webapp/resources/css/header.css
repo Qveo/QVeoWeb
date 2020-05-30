@@ -48,3 +48,12 @@ input {
     top: -55px;
     transition: opacity 0.2s linear
 }
+
+.nav-logo{
+    height: 100%;
+}
+
+.logo-link-sidenav{
+    margin: auto;
+    display: block;
+}

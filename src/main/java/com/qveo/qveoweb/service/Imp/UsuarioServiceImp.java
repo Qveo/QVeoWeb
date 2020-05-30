@@ -6,14 +6,14 @@ import com.qveo.qveoweb.dao.UsuarioDao;
 import com.qveo.qveoweb.dto.ContrasenaDto;
 import com.qveo.qveoweb.dto.PersonalInfoDto;
 import com.qveo.qveoweb.dto.PlataformaDto;
+import com.qveo.qveoweb.dto.UserDetailsDto;
 import com.qveo.qveoweb.model.Rol;
 import com.qveo.qveoweb.model.Usuario;
 import com.qveo.qveoweb.service.IUploadFileService;
 import com.qveo.qveoweb.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -89,20 +89,20 @@ public class UsuarioServiceImp implements UsuarioService {
 
     }
 
-	@Override
-	public List<Usuario> findUsuarioPorNombre(String nombre) {
-		return usuarioDao.findByNombreStartingWith(nombre);
-	}
+    @Override
+    public List<Usuario> findUsuarioPorNombre(String nombre) {
+        return usuarioDao.findByNombreStartingWith(nombre);
+    }
 
-	@Override
-	public boolean usuarioExiste(Integer id) {
-		return usuarioDao.existsById(id);
-	}
+    @Override
+    public boolean usuarioExiste(Integer id) {
+        return usuarioDao.existsById(id);
+    }
 
-	@Override
-	public Usuario findUserByEmail(String email) {
-		return usuarioDao.findByEmail(email);
-	}    
+    @Override
+    public Usuario findUserByEmail(String email) {
+        return usuarioDao.findByEmail(email);
+    }
 
     @Override
     public PersonalInfoDto savePersonalInfo(PersonalInfoDto personalInfoDto, MultipartFile file) {
@@ -130,9 +130,9 @@ public class UsuarioServiceImp implements UsuarioService {
     public ContrasenaDto saveContrasena(ContrasenaDto contrasenaDto) {
         Usuario usuario = getUsuario(contrasenaDto.getId());
         usuario.setPassword(contrasenaDto.getNueva());
-        try{
+        try {
             usuario = saveUser(usuario, null);
-        }catch (IOException ex){
+        } catch (IOException ex) {
             ex.printStackTrace();
         }
         return new ContrasenaDto(usuario);
@@ -143,11 +143,19 @@ public class UsuarioServiceImp implements UsuarioService {
 
         Usuario usuario = getUsuario(plataformaDto.getId());
         usuario.setPlataformas(plataformaDao.findByIdIn(plataformaDto.getPlataformas()));
-        try{
+        try {
             usuario = saveUser(usuario, null);
-        }catch (IOException ex){
+        } catch (IOException ex) {
             ex.printStackTrace();
         }
         return new PlataformaDto(usuario);
+    }
+
+    @Override
+    public Usuario getUsuarioLogueado() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        UserDetailsDto userPrincipal = authentication == null || !authentication.isAuthenticated() ?
+                null : (UserDetailsDto) authentication.getPrincipal();
+        return this.findUserByEmail(Objects.nonNull(userPrincipal) ? userPrincipal.getUsername() : null);
     }
 }
