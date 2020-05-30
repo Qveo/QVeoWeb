@@ -36,7 +36,7 @@ public class UsuarioController {
 		binder.setValidator(validador);
 	}
 
-	@RequestMapping(value = "/usuario/list", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/usuario/list", method = RequestMethod.GET)
 	public String listarUsuarios(Model modelo) {
 
 		modelo.addAttribute("titulo", "Lista de usuarios");
@@ -76,10 +76,10 @@ public class UsuarioController {
 			e.printStackTrace();
 		}
 
-		return "redirect:/usuario/list";
+		return "redirect:/home";
 	}
 
-	@RequestMapping(value = "/usuario/edit/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/usuario/edit/{id}", method = RequestMethod.GET)
 	public String editUsuario(Model modelo, @PathVariable("id") Integer id, Model model) {
 
 		Usuario usuario = usuarioService.getUsuario(id);

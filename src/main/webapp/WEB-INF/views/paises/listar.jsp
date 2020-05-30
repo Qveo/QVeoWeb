@@ -22,6 +22,8 @@
 	href="${pageContext.request.contextPath}/resources/css/header.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/modal.css">
+	<link rel="icon" type="image/x-icon"
+	href="${pageContext.request.contextPath}/resources/img/favicon.ico">
 <title>${titulo}</title>
 </head>
 <body>
@@ -32,7 +34,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="input-field col s12 m6 l6 boton">
-					<a href="/qveo/paises/form"><i
+					<a href="/qveo/admin/paises/form"><i
 						class="waves-effect waves-light btn agregar-usuario">Nuevo pais</i></a>
 				</div>
 				
@@ -51,7 +53,7 @@
 						<div id="${pais.id}" class="row opciones">
 						
 							<div class="col s12 m3 l6">
-								<a href="/qveo/paises/edit/${pais.id}"
+								<a href="/qveo/admin/paises/edit/${pais.id}"
 									class="btn-floating btn-large"><i
 									class="material-icons editar">edit</i></a>
 							</div>

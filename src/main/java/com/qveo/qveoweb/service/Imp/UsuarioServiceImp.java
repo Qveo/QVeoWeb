@@ -12,6 +12,9 @@ import com.qveo.qveoweb.service.UsuarioService;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -71,9 +74,7 @@ public class UsuarioServiceImp implements UsuarioService {
 
     @Override
     public Usuario getUsuario(Integer id) {
-
-        Usuario entity = usuarioDao.findById(id).get();
-        return entity;
+        return usuarioDao.findById(id).get();
     }
 
     @Override
@@ -84,17 +85,17 @@ public class UsuarioServiceImp implements UsuarioService {
 
 	@Override
 	public List<Usuario> findUsuarioPorNombre(String nombre) {
-		
-		List<Usuario> usuarios = usuarioDao.findByNombreStartingWith(nombre);
-		
-		return usuarios;
+		return usuarioDao.findByNombreStartingWith(nombre);
 	}
 
 	@Override
 	public boolean usuarioExiste(Integer id) {
-		
 		return usuarioDao.existsById(id);
 	}
-    
+
+	@Override
+	public Usuario findUserByEmail(String email) {
+		return usuarioDao.findByEmail(email);
+	}    
 
 }

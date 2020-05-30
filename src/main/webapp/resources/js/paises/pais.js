@@ -22,7 +22,7 @@ $(document).ready(function() {
 	function borrarPelicula(id) {
 		$.ajax({
 			type : 'GET',
-		url : '/qveo/paises/delete/' + id,
+		url : '/qveo/admin/paises/delete/' + id,
 		success : function(data) {
 
 			console.log("SUCCESS : ", data);

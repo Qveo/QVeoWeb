@@ -15,9 +15,13 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/usuario/registro.css">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/footer.css">
-	<link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/header.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/footer.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/header.css">
+<link rel="icon" type="image/x-icon"
+	href="${pageContext.request.contextPath}/resources/img/favicon.ico">
 </head>
 <body>
 	<header>
@@ -132,7 +136,7 @@
 							</div>
 						</div>
 					</div>
-					
+
 				</c:if>
 				<!-- subida de foto -->
 				<div class="row">
@@ -165,7 +169,8 @@
 					<div class="col s12 m12 l6 offset-l3">
 						<c:choose>
 							<c:when test="${edit}">
-								<a href="/qveo/usuario/list" class="waves-effect waves-light btn">Volver atrás</a>
+								<a href="/qveo/admin/usuario/list"
+									class="waves-effect waves-light btn">Volver atrás</a>
 								<button class="btn waves-effect waves-light botones"
 									name="action">
 									Actualizar <i class="material-icons right">send</i>
@@ -187,7 +192,8 @@
 		<%@include file="/WEB-INF/views/layout/footer.jsp"%>
 	</footer>
 </body>
-<script src="${pageContext.request.contextPath}/resources/vendor/js/jquery-3.4.1.min.js"></script>
+<script
+	src="${pageContext.request.contextPath}/resources/vendor/js/jquery-3.4.1.min.js"></script>
 <script
 	src="${pageContext.request.contextPath}/resources/vendor/js/materialize.js"></script>
 <script

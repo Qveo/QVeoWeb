@@ -12,16 +12,16 @@
 	href="${pageContext.request.contextPath}/resources/css/materialize.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/general.css">
-<!--  <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/tabla.css">-->
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/usuario/lista.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/icon.css">
+	<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/header.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/footer.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/header.css">
+	<link rel="icon" type="image/x-icon"
+	href="${pageContext.request.contextPath}/resources/img/favicon.ico">
 </head>
 <body>
 	<header>
@@ -56,7 +56,7 @@
 									href="#modal1"><i class="material-icons">visibility</i></a>
 							</div>
 							<div class="col s12 m3 l4">
-								<a href="/qveo/usuario/edit/${usuario.id}"
+								<a href="/qveo/admin/usuario/edit/${usuario.id}"
 									class="btn-floating btn-large"><i
 									class="material-icons editar">edit</i></a>
 							</div>
@@ -71,14 +71,6 @@
 			</c:forEach>
 			<!-- Modal datos usuario -->
 			<%@include file="/WEB-INF/views/layout/modalDetalleUsuario.jsp"%>
-			<%-- <div id="modal1" class="modal info">
-				<div id="contenido" class="modal-content contenido-ajax">
-					<div class="row">
-						<div id="img-usuario" class="col s12 m12 l5 imagen-usuario"><img src="${pageContext.request.contextPath}"></div>
-						<div id="info-usuario" class="col s12 m12 l7"></div>
-					</div>
-				</div>
-			</div> --%>
 			<!-- Confirar eliminar usuario -->
 			<div id="modal2" class="modal confirmar">
 				<div class="modal-content">
@@ -96,10 +88,12 @@
 	<footer class="page-footer">
 		<%@include file="/WEB-INF/views/layout/footer.jsp"%>
 	</footer>
-	<script src="${pageContext.request.contextPath}/resources/vendor/js/jquery-3.4.1.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/vendor/js/jquery-3.4.1.min.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/resources/vendor/js/materialize.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/resources/js/usuario/lista.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/header.js"></script>
 </body>
 </html>
