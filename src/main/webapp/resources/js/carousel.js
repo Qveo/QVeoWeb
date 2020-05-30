@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var carouselInstance = M.Carousel.init(carousels, {
 		padding: 10,
 		dist: 0,
-		interval: 100
+		interval: 100,
 	});
 	
 	for(let i=0; i<carousels.length; i++){

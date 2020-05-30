@@ -5,6 +5,8 @@ import javax.persistence.*;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -126,6 +128,7 @@ public class Pelicula {
             joinColumns = @JoinColumn(name = "id_pelicula", nullable = false),
             inverseJoinColumns = @JoinColumn(name="id_actor", nullable = false)
     )
+    @JsonIgnore
     public Collection<Actor> getActores() {
         return actores;
     }
@@ -140,6 +143,7 @@ public class Pelicula {
             joinColumns = @JoinColumn(name = "id_pelicula", nullable = false),
             inverseJoinColumns = @JoinColumn(name="id_genero", nullable = false)
     )
+    @JsonIgnore
     public Collection<Genero> getGeneros() {
         return generos;
     }
@@ -150,6 +154,7 @@ public class Pelicula {
 
     @ManyToOne
     @JoinColumn(name = "ID_PAIS", referencedColumnName = "ID", nullable = false)
+    @JsonIgnore
     public Pais getPais() {
         return pais;
     }
@@ -164,6 +169,7 @@ public class Pelicula {
             joinColumns = @JoinColumn(name = "id_pelicula", nullable = false),
             inverseJoinColumns = @JoinColumn(name="id_director", nullable = false)
     )
+    @JsonIgnore
     public Collection<Director> getDirectores() {
         return directores;
     }
@@ -174,6 +180,7 @@ public class Pelicula {
     
 
     @OneToMany(mappedBy = "pelicula")
+    @JsonIgnore
 	public Set<PeliculaPlataforma> getPeliculaPlataformas() {
 		return peliculaPlataformas;
 	}
@@ -183,6 +190,7 @@ public class Pelicula {
 	}
 
 	@ManyToMany(mappedBy = "peliculas")
+	@JsonIgnore
 	public Collection<Usuario> getUsuarios() {
 		return usuarios;
 	}
