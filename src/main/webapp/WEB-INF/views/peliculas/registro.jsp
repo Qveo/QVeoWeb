@@ -18,6 +18,8 @@
 	href="${pageContext.request.contextPath}/resources/css/general.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/pelicula/registro.css">
+	<link rel="icon" type="image/x-icon"
+	href="${pageContext.request.contextPath}/resources/img/favicon.ico">
 
 
 </head>
@@ -27,7 +29,7 @@
 	</header>
 	<main>
 		<div class=row>
-			<c:set var="action" scope="session" value="/qveo/peliculas/form/add" />
+			<c:set var="action" scope="session" value="/qveo/admin/peliculas/form/add" />
 			<form:form method="POST" action="${action}"
 				modelAttribute="peliculaNueva" enctype="multipart/form-data"
 				class="col s12">

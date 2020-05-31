@@ -19,7 +19,7 @@ import com.qveo.qveoweb.service.PaisService;
 import com.qveo.qveoweb.validation.PaisValidator;
 
 @Controller
-@RequestMapping("/paises")
+@RequestMapping("/admin")
 public class PaisController {
 
 	@Autowired
@@ -33,7 +33,7 @@ public class PaisController {
 		binder.setValidator(validator);
 	}
 
-	@RequestMapping(value = "/listar", method = RequestMethod.GET)
+	@RequestMapping(value = "/paises/listar", method = RequestMethod.GET)
 	public String listado(Model mod) {
 
 		mod.addAttribute("titulo", "Listado de directores");
@@ -42,7 +42,7 @@ public class PaisController {
 		return "paises/listar";
 	}
 
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/paises/{id}", method = RequestMethod.GET)
 	public String crear(Model mod) {
 
 
@@ -53,17 +53,17 @@ public class PaisController {
 
 	}
 
-	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/paises/edit/{id}", method = RequestMethod.GET)
 	public String editar(Model mod, @PathVariable(value = "id") Integer id) {
 		Pais pais = null;
 
 		if (id > 0) {
 			pais = paisService.getPais(id);
 			if (pais == null) {
-				return "redirect:/paises/listar";
+				return "redirect:/admin/paises/listar";
 			}
 		} else {
-			return "redirect:/paises/listar";
+			return "redirect:/admin/paises/listar";
 		}
 
 		mod.addAttribute("editar", true);
@@ -73,7 +73,7 @@ public class PaisController {
 		return "paises/registro";
 	}
 
-	@RequestMapping(value = "/form/add", method = RequestMethod.POST)
+	@RequestMapping(value = "/paises/form/add", method = RequestMethod.POST)
 	public String guardar(@Valid @ModelAttribute("paisNuevo") Pais pais, BindingResult br, Model mod,
 			SessionStatus status) {
 		if (br.hasErrors()) {
@@ -88,16 +88,16 @@ public class PaisController {
 		status.setComplete();
 		
 
-		return "redirect:/paises/listar";
+		return "redirect:/admin/paises/listar";
 
 	}
 	
-	@RequestMapping(value = "/delete/{id}")
+	@RequestMapping(value = "/paises/delete/{id}")
 	public String eliminar(@PathVariable(value = "id") Integer id) {
 		if (id > 0) {
 			paisService.delete(id);
 		}
-		return "redirect:/paises/listar";
+		return "redirect:/admin/paises/listar";
 	}
 
 }

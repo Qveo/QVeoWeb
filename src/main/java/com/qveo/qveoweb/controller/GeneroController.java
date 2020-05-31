@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.qveo.qveoweb.model.Genero;
@@ -21,6 +22,7 @@ import com.qveo.qveoweb.service.GeneroService;
 import com.qveo.qveoweb.validation.GeneroValidator;
 
 @Controller
+@RequestMapping("/admin")
 public class GeneroController {
 
 	@Autowired
@@ -76,14 +78,14 @@ public class GeneroController {
 		generoService.save(generoAct);
 		status.setComplete();
 
-		return "redirect:/genero/list";
+		return "redirect:/admin/genero/list";
 	}
 
 	@GetMapping("/genero/delete/{id}")
 	public String deleteGnero(@PathVariable("id") Integer id) {
 
 		generoService.deleteGenero(id);
-		return "redirect:/genero/list";
+		return "redirect:/admin/genero/list";
 	}
 
 }

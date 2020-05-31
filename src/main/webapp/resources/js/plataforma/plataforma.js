@@ -23,7 +23,7 @@ $(document).ready(function() {
 	
 		$.ajax({
 			type : 'GET',
-		url : '/qveo/plataformas/delete/' + id,
+		url : '/qveo/admin/plataformas/delete/' + id,
 		success : function(data) {
 
 			console.log("SUCCESS : ", data);

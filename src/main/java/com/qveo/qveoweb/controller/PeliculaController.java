@@ -39,11 +39,7 @@ import com.qveo.qveoweb.service.PlataformaService;
 import com.qveo.qveoweb.validation.PeliculaValidador;
 
 @Controller
-@RequestMapping("/peliculas")
 public class PeliculaController {
-	/*
-	 * @Autowired PeliculaPlataformaDao peliculaPlat;
-	 */
 	@Autowired
 	PeliculaPlataformaService peliculaPlataformaService;
 
@@ -76,13 +72,7 @@ public class PeliculaController {
 	@GetMapping(value= {"/",""})
 	public String listarUsuario(Model mod) {
 
-		mod.addAttribute("titulo", "Listado de peliculas");
-		mod.addAttribute("peliculas", peliculaService.findAll());
-
-		return "peliculas/estrenos";
-	}
-
-	@GetMapping("/listar")
+	@GetMapping("/admin/peliculas/listar")
 	public String listar(Model mod) {
 
 		mod.addAttribute("titulo", "Listado de peliculas");
@@ -91,8 +81,8 @@ public class PeliculaController {
 		return "peliculas/listar";
 	}
 
-	@GetMapping("/{id}")
-	public String mostrar(Model mod, @PathVariable Integer id) {
+	@GetMapping("/peliculas/{id}")
+	public String mostrar(Model mod, @PathVariable String id) {
 
 		
 
@@ -104,7 +94,7 @@ public class PeliculaController {
 		return "peliculas/pelicula";
 	}
 
-	@RequestMapping("/form")
+	@RequestMapping("/admin/peliculas/form")
 	public String crear(Model mod) {
 
 		List<Genero> genero = generoService.getAllGenero();
@@ -124,7 +114,7 @@ public class PeliculaController {
 		return "peliculas/registro";
 	}
 
-	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/peliculas/edit/{id}", method = RequestMethod.GET)
 	public String editar(Model mod, @PathVariable(value = "id") Integer id) {
 
 		Pelicula pelicula = null;
@@ -135,7 +125,7 @@ public class PeliculaController {
 			pelicula = peliculaService.getPelicula(id);
 			if (pelicula == null) {
 
-				return "redirect:/peliculas/listar";
+				return "redirect:/admin/peliculas/listar";
 			}
 			peliculaPlataforma = peliculaPlataformaService.obtenerPelicula(pelicula);
 			for (PeliculaPlataforma plataforma : peliculaPlataforma) {
@@ -148,7 +138,7 @@ public class PeliculaController {
 
 		} else {
 
-			return "redirect:/peliculas/listar";
+			return "redirect:/admin/peliculas/listar";
 		}
 
 		List<Genero> generos = generoService.getAllGenero();
@@ -170,7 +160,7 @@ public class PeliculaController {
 		return "peliculas/registro";
 	}
 
-	@RequestMapping(value = "/form/add", method = RequestMethod.POST)
+	@RequestMapping(value = "/admin/peliculas/form/add", method = RequestMethod.POST)
 	public String guardar(@Valid @ModelAttribute("peliculaNueva") PeliculaDto pelicula, BindingResult br, Model mod,
 			@RequestParam("foto") MultipartFile foto, SessionStatus status) {
 		try {
@@ -200,16 +190,16 @@ public class PeliculaController {
 			e.printStackTrace();
 		}
 
-		return "redirect:/peliculas/listar";
+		return "redirect:/admin/peliculas/listar";
 	}
 
-	@RequestMapping(value = "/delete/{id}")
+	@RequestMapping(value = "/admin/peliculas/delete/{id}")
 	public String eliminar(@PathVariable(value = "id") Integer id) {
 
 		if (id > 0) {
 			peliculaService.delete(id);
 		}
-		return "redirect:/peliculas/listar";
+		return "redirect:/admin/peliculas/listar";
 	}
 
 }

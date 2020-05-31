@@ -78,14 +78,14 @@ public class SerieController {
 		return "series/serie";
 	}
 
-	@GetMapping("/serie/listar")
+	@GetMapping("/admin/serie/listar")
 	public String listaSerie(Model model) {
 		List<Serie> series = serieService.findAllSerie();
 		model.addAttribute("series", series);
 		return "series/listaSerie";
 	}
 
-	@GetMapping("/serie/form")
+	@GetMapping("/admin/serie/form")
 	public String SerieFormulario(Model model) {
 		editar = false;
 		List<Genero> generos = generoService.getAllGenero();
@@ -104,7 +104,7 @@ public class SerieController {
 		return "series/registroSerie";
 	}
 
-	@GetMapping("/serie/edit/{id}")
+	@GetMapping("/admin/serie/edit/{id}")
 	public String editarSerie(Model model, @PathVariable("id") Integer id) {
 		editar = true;
 		List<Genero> generos = generoService.getAllGenero();
@@ -133,7 +133,7 @@ public class SerieController {
 	}
 	
 
-	@PostMapping("/serie/form")
+	@PostMapping("/admin/serie/form")
 	public String guardar(@Valid @ModelAttribute("serieNueva") Serie serieNueva, BindingResult br, Model model,
 			@RequestParam("posters") MultipartFile file, RedirectAttributes redirectAttrs, SessionStatus status) {
 		try {
@@ -161,10 +161,10 @@ public class SerieController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return "redirect:/serie/listar";
+		return "redirect:/admin/serie/listar";
 	}
 
-	@GetMapping("/serie/delete/{id}")
+	@GetMapping("/admin/serie/delete/{id}")
 	public String deleteSerie(@PathVariable("id") Integer id) {
 
 		String rutaFoto = serieService.getSerie(id).getPoster();
@@ -173,7 +173,7 @@ public class SerieController {
 		serieService.deleteSerie(id);
 		uploadFileService.delete(ruta, 1);
 
-		return "redirect:/serie/listar";
+		return "redirect:/admin/serie/listar";
 	}
 
 }
