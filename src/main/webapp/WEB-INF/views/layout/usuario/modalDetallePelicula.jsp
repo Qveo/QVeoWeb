@@ -12,7 +12,7 @@
 						<h4 class="titulo-principal">${pelicula.titulo}</h4>
 						<h4 class="titulo">Estreno</h4>
 						<h5 class="contenido">${pelicula.anio}</h5>
-						<h4 class="titulo">Pais</h4>
+						<h4 class="titulo">Pais</h4>http://localhost:8080/qveo/home#modal-pelicula1-3
 						<h5 class="contenido">${pelicula.pais.nombre}</h5>
 						<h4 class="titulo">Duraci&oacuten</h4>
 						<h5 class="contenido">${pelicula.duracion}</h5>

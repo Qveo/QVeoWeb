@@ -1,5 +1,6 @@
 package com.qveo.qveoweb.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.qveo.qveoweb.dto.AddToListDto;
+import com.qveo.qveoweb.dto.AjaxResponseBody;
 import com.qveo.qveoweb.model.Pelicula;
 import com.qveo.qveoweb.model.Serie;
 import com.qveo.qveoweb.model.Usuario;
@@ -71,27 +73,14 @@ public class UsuarioAjaxController {
 	
 	@RequestMapping(value = "/ajax/add/serie", method = RequestMethod.POST)
 	@Transactional
-	public boolean addSerieToUserList(@RequestBody AddToListDto addResource){
-		
-		
-		Usuario usuario = usuarioService.getUsuario(addResource.getIdUser());
-		List<Serie> series = (List<Serie>) usuario.getSeries();
-		series.add(serieService.getSerie(addResource.getIdResource()));
-		usuario.setSeries(series);
-		
-		return true;
+	public ResponseEntity<?> addSerieToUserList(@RequestBody AddToListDto addResource){
+		return ResponseEntity.ok(usuarioService.saveSerie(addResource));
 	}
 	
 	@RequestMapping(value = "/ajax/add/movie", method = RequestMethod.POST)
 	@Transactional
-	public boolean addMovieToUserList(@RequestBody AddToListDto addResource){
-		
-		Usuario usuario = usuarioService.getUsuario(addResource.getIdUser());
-		List<Pelicula> peliculas = (List<Pelicula>) usuario.getPeliculas();
-		peliculas.add(peliculaService.getPelicula(addResource.getIdResource()));
-		usuario.setPeliculas(peliculas);
-		
-		return true;
+	public ResponseEntity<?> addMovieToUserList(@RequestBody AddToListDto addResource){
+		return ResponseEntity.ok(usuarioService.saveMovie(addResource));
 	}
 
 }
