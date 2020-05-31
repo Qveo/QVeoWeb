@@ -20,13 +20,13 @@
 					<li><a href="<c:url value="/usuario/form" />">Sign up</a></li>
 				</sec:authorize>
 				<security:authorize access="hasRole('USER')">
-					<li><a href="#!" class="dropdown-trigger"
+					<li><a href="#!" class="dropdown-trigger desplegable-user"
 						data-target="dropdown1"><img id="foto-user" class="circle icon-user"
 							src="${pageContext.request.contextPath}"><i
 							class="material-icons right">arrow_drop_down</i></a></li>
 				</security:authorize>
 				<security:authorize access="hasRole('ADMIN')">
-					<li><a href="#!" class="dropdown-trigger"
+					<li><a href="#!" class="dropdown-trigger desplegable-user"
 						data-target="dropdown2"><img id="foto-user" class="circle icon-user"
 							src="${pageContext.request.contextPath}"><i
 							class="material-icons right">arrow_drop_down</i></a></li>

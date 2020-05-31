@@ -40,7 +40,7 @@
 						<c:forEach items="${plataforma.peliculaPlataformas}"
 							var="peliculaPlataformas">
 							<div class="carousel-item">
-								<a class="waves-effect waves-light modal-trigger"
+								<a class="waves-effect waves-light modal-trigger mod-movie"
 									href="#modal-pelicula${plataforma.id}-${peliculaPlataformas.pelicula.id}">
 									<img
 									src="${pageContext.request.contextPath}${peliculaPlataformas.pelicula.poster}" />
@@ -49,7 +49,7 @@
 						</c:forEach>
 						<c:forEach items="${plataforma.series}" var="serie">
 							<div class="carousel-item">
-								<a class="waves-effect waves-light modal-trigger"
+								<a class="waves-effect waves-light modal-trigger mod-serie"
 									href="#modal-serie${plataforma.id}-${serie.id}"> <img
 									src="${pageContext.request.contextPath}${serie.poster}">
 								</a>

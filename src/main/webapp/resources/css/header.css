@@ -48,3 +48,7 @@ input {
     top: -55px;
     transition: opacity 0.2s linear
 }
+
+.icon-user{
+	background: #eeeeee;
+}

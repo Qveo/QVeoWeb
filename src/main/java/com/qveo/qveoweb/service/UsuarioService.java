@@ -8,6 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.qveo.qveoweb.dto.AddToListDto;
 import com.qveo.qveoweb.dto.AjaxResponseBody;
+import com.qveo.qveoweb.dto.UsuarioResponseBody;
 import com.qveo.qveoweb.model.Usuario;
 
 public interface UsuarioService {
@@ -21,5 +22,6 @@ public interface UsuarioService {
     public Usuario findUserByEmail(String email);
     public AjaxResponseBody saveSerie(AddToListDto addResource);
     public AjaxResponseBody saveMovie(AddToListDto addResource);
+    public UsuarioResponseBody userLogged(String email);
     
 }

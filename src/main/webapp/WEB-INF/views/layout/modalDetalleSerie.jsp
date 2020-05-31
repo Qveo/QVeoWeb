@@ -20,8 +20,8 @@
                         <h4 class="titulo">Plataformas</h4>
                         <h5 class="contenido">${serie.plataformasConcatenadas()}</h5>
                         <security:authorize access="hasRole('USER')">
-                        	<a class="waves-effect waves-light btn-large add-serie">Agregar a mi lista</a>
-                        	<p style="display:none">${serie.id}</p>
+                        	<a class="waves-effect btn-large add-serie boton-agregar">Agregar a mi lista</a>
+                        	<p class="id-series" style="display:none">${serie.id}</p>
                         </security:authorize>
                     </div>
                 </div>

@@ -174,7 +174,6 @@ public class Usuario {
 	
 	@CreatedDate
 	@Column(name = "FECHA_ALTA", updatable = false)
-	//@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Temporal(TemporalType.DATE)
 	public Date getFechaAlta() {
 		return fechaAlta;

@@ -10,6 +10,7 @@ import com.qveo.qveoweb.dao.SerieDao;
 import com.qveo.qveoweb.dao.UsuarioDao;
 import com.qveo.qveoweb.dto.AddToListDto;
 import com.qveo.qveoweb.dto.AjaxResponseBody;
+import com.qveo.qveoweb.dto.UsuarioResponseBody;
 import com.qveo.qveoweb.model.Pelicula;
 import com.qveo.qveoweb.model.Rol;
 import com.qveo.qveoweb.model.Serie;
@@ -146,6 +147,17 @@ public class UsuarioServiceImp implements UsuarioService {
 		usuario.setPeliculas(peliculas);
 		result.setMsg("agregado");
 		return result;
-	}    
+	}
+	
+	public UsuarioResponseBody userLogged(String email) {
+		Usuario usuario = findUserByEmail(email);
+		UsuarioResponseBody userLogged = new UsuarioResponseBody(
+				usuario.getId(), 
+				usuario.getEmail(), 
+				usuario.getFoto(),
+				usuario.getPeliculas(),
+				usuario.getSeries());
+		return userLogged;
+	}
 
 }
