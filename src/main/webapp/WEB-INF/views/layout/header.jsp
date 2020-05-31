@@ -8,7 +8,7 @@
 			<ul class="right hide-on-med-and-down">
 				<li><a href="#">Inicio</a></li>
 				<li><a href="#">Series</a></li>
-				<li><a href="#">Pel&iacuteculas</a></li>
+				<li><a href="/qveo/peliculas">Pel&iacuteculas</a></li>
 				<li><a href="#">M&aacutes Recientes</a></li>
 				<li><a href="#">Mi lista</a></li>
 				<li><a href="${pageContext.request.contextPath}/usuario"><img

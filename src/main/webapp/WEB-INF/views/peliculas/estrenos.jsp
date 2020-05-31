@@ -6,7 +6,7 @@
 <head>
 <meta charset="ISO-8859-1">
 
-<title>Filtro</title>
+<title>Peliculas disponibles</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">
@@ -19,7 +19,7 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/header.css">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/filtro/filtro.css">
+	href="${pageContext.request.contextPath}/resources/css/pelicula/estreno.css">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 </head>
@@ -29,17 +29,20 @@
 	</header>
 	<main>
 		<section>
-			<div class="row"></div>
-			<div class="row"></div>
+			<div class="row">
+			
+			<h2>Catalogo de peliculas</h2>
+			
+			</div>
 			<div class="container">
-				<div class="row">
+				<div class="row fila">
 					<c:forEach items="${peliculas}" var="pelicula">
 						<a href="/qveo/peliculas/${pelicula.id}">
 
 							<div class="col s10 xl2 l2">
 								<img alt="${pelicula.titulo}"
 									src="${pageContext.request.contextPath}${pelicula.poster}"
-									width="100%">
+									width="200px" height="300px" class="responsive">
 							</div>
 
 						</a>

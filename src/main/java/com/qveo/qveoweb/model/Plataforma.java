@@ -13,7 +13,7 @@ public class Plataforma {
 	
     private Integer id;
     private String nombre;
-	private String logo;
+	private String foto;
     private Collection<Serie> series;
     private Collection<Usuario> usuarios;   
     private Set<PeliculaPlataforma> peliculaPlataformas = new HashSet<PeliculaPlataforma>();
@@ -46,11 +46,11 @@ public class Plataforma {
     @Basic
     @Column(name = "LOGO")
     public String getFoto() {
-  		return logo;
+  		return foto;
   	}
 
-  	public void setFoto(String logo) {
-  		this.logo = logo;
+  	public void setFoto(String foto) {
+  		this.foto = foto;
   	}
 
     @OneToMany(mappedBy = "plataforma")

@@ -114,7 +114,7 @@
 				<ul>
 					<c:forEach items="${peliculas.peliculaPlataformas}" var="plataforma">
 						<li><div class="reparto">
-								<img src="${pageContext.request.contextPath}${plataforma.plataforma.logo}"
+								<img src="${pageContext.request.contextPath}${plataforma.plataforma.foto}"
 									alt="${plataforma.plataforma.nombre}" class="imagenes">
 								<div id="plataforma">${plataforma.plataforma.nombre}</div>
 							</div></li>
