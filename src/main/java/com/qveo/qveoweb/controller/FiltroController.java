@@ -67,18 +67,17 @@ public class FiltroController {
 		List<Serie> series = serieService.findAllSerie();
 
 		List<Integer> fecha = filtroService.buscarAllYears();
-		
-		List<Pelicula> pelis=peliculaService.findAll();
-		
+
+		List<Pelicula> pelis = peliculaService.findAll();
+
 		model.addAttribute("buscar", new FiltroDto());
 
 		model.addAttribute("fechas", fecha);
 		model.addAttribute("plataformas", plataformas);
 		model.addAttribute("generos", generos);
-		
+
 		model.addAttribute("serieMostrar", series);
 		model.addAttribute("peliculas", pelis);
-		
 
 		return "filtros/filtro";
 	}
@@ -119,11 +118,101 @@ public class FiltroController {
 	 */
 	@PostMapping("/filtros")
 	public String filtrar(@ModelAttribute(name = "buscar") FiltroDto filtro, Model model) {
+		List<Genero> generos = generoService.getAllGenero();
 
+		List<Plataforma> plataformas = plataformaSerice.getAllPlataformas();
+		
+		List<Integer> fecha = filtroService.buscarAllYears();
+		
 		FiltroDto filtrados = filtroService.busqueda(filtro);
+		
+		model.addAttribute("fechas", fecha);
+		model.addAttribute("plataformas", plataformas);
+		model.addAttribute("generos", generos);
 		model.addAttribute("filtrado", filtrados);
 
 		return "filtros/filtrado";
 	}
 
+	@GetMapping("/serie")
+	public String serieCatalogo(Model model) {
+	
+		List<Serie> series = serieService.findAllSerie();
+		List<Genero> generos = generoService.getAllGenero();
+
+		List<Plataforma> plataformas = plataformaSerice.getAllPlataformas();
+
+		List<Integer> fecha = filtroService.buscarAllYears();
+
+		model.addAttribute("buscar", new FiltroDto());
+
+		model.addAttribute("fechas", fecha);
+		model.addAttribute("plataformas", plataformas);
+		model.addAttribute("serieFiltradas", false);
+		model.addAttribute("generos", generos);
+		model.addAttribute("serieMostrar", series);
+
+		return "series/listaMostrar";
+	}
+
+	@PostMapping("/series")
+	public String serieCatalogoFiltrado(@ModelAttribute(name = "buscar") FiltroDto filtro, Model model) {
+
+		filtro.setAccionFiltro(2);
+		List<Genero> generos = generoService.getAllGenero();
+		List<Plataforma> plataformas = plataformaSerice.getAllPlataformas();
+
+		List<Integer> fecha = filtroService.buscarAllYears();
+		
+		FiltroDto filtros=filtroService.busqueda(filtro);
+		
+		model.addAttribute("buscar", filtros);
+		model.addAttribute("serieFiltradas", true);
+		model.addAttribute("fechas", fecha);
+		model.addAttribute("plataformas", plataformas);
+		model.addAttribute("generos", generos);
+		
+		return "series/listaMostrar";
+	}
+	
+	@GetMapping("/pelicula")
+	public String peliculaCatalogo(Model model) {
+		
+		List<Pelicula> pelis = peliculaService.findAll();
+		List<Genero> generos = generoService.getAllGenero();
+
+		List<Plataforma> plataformas = plataformaSerice.getAllPlataformas();
+
+		List<Integer> fecha = filtroService.buscarAllYears();
+
+		model.addAttribute("buscar", new FiltroDto());
+
+		model.addAttribute("fechas", fecha);
+		model.addAttribute("plataformas", plataformas);
+		model.addAttribute("serieFiltradas", false);
+		model.addAttribute("generos", generos);
+		model.addAttribute("peliMostrar", pelis);
+
+		return "peliculas/listadoPelicula";
+	}
+	
+	@PostMapping("/peliculas")
+	public String peliculaCatalogoFiltrado(@ModelAttribute(name = "buscar") FiltroDto filtro, Model model) {
+
+		filtro.setAccionFiltro(3);
+		List<Genero> generos = generoService.getAllGenero();
+		List<Plataforma> plataformas = plataformaSerice.getAllPlataformas();
+
+		List<Integer> fecha = filtroService.buscarAllYears();
+		
+		FiltroDto filtros=filtroService.busqueda(filtro);
+		
+		model.addAttribute("buscar", filtros);
+		model.addAttribute("pelisFiltradas", true);
+		model.addAttribute("fechas", fecha);
+		model.addAttribute("plataformas", plataformas);
+		model.addAttribute("generos", generos);
+		
+		return "peliculas/listadoPelicula";
+	}
 }

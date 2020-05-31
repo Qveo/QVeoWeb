@@ -7,16 +7,45 @@ ul li {
 	width: 100%;
 }
 
+.formato {
+	color: #1976d2;
+	font-size: 2em;
+}
+
+#formatoSpan {
+	color: #1976d2;
+	font-size: 2em;
+}
+
+input[type="radio"]+span {
+	font-size: 2em;
+}
+
 @media only screen and (max-width: 768px) {
 	.responsive {
 		width: 80%;
-		height: 70%;
 	}
+	.formato {
+		color: #1976d2;
+		font-size: 2em;
+	}
+	#formatoSpan {
+		color: #1976d2;
+		font-size: 2em;
+	}
+	
 }
 
 @media only screen and (max-width: 992px) {
 	.responsive {
 		width: 80%;
-		height: 70%;
+	}
+	.formato {
+		color: #1976d2;
+		font-size: 2em;
+	}
+	#formatoSpan {
+		color: #1976d2;
+		font-size: 2em;
 	}
 }

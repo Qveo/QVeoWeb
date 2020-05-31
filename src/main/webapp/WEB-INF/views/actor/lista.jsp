@@ -40,12 +40,14 @@
 			</div>
 
 			<div class="row cabeceras">
+				<div class="col s3 l3"></div>
 				<div class="col s3 l3">Foto</div>
 				<div class="col s3 l3">Nombre</div>
 				<div class="col s3 l3">Opciones</div>
 
 			</div>
 			<c:forEach items="${actores}" var="actor">
+				<div class="col s3 l3"></div>
 				<div id="${actor.id}" class="row cuerpo">
 					<div class="col s3 l3">
 						<img src="${pageContext.request.contextPath}${actor.foto}"
@@ -70,8 +72,6 @@
 
 				</div>
 			</c:forEach>
-
-
 			<c:forEach items="${actores}" var="actor">
 
 				<div id="modal2-actor-${actor.id}" class="modal confirmar">

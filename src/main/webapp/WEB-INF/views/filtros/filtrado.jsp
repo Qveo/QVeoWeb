@@ -29,6 +29,67 @@
 	</header>
 	<main>
 		<section>
+			<form:form method="POST" action="/qveo/filtros"
+				modelAttribute="buscar">
+
+				<div class="row">
+					<div class="col s1"></div>
+					<div class="col s12 l3">
+						<ul>
+							<li><form:label path="accionFiltro" for="todos">
+									<form:radiobutton id="todos" path="accionFiltro" value="1" />
+									<span id="formatoSpan">Todo</span>
+								</form:label></li>
+							<li><form:label path="accionFiltro" for="series">
+									<form:radiobutton id="series" path="accionFiltro" value="2" />
+									<span id="formatoSpan">Series</span>
+								</form:label></li>
+							<li><form:label path="accionFiltro" for="pelis">
+									<form:radiobutton id="pelis" path="accionFiltro" value="3" />
+									<span id="formatoSpan">Pelicula</span>
+								</form:label></li>
+						</ul>
+					</div>
+					<div class="col s1"></div>
+				</div>
+
+				<div class="row">
+					<div class="col l1"></div>
+					<div class="col s12 l3">
+						<label class="flow-text formato">A&ntilde;o</label>
+						<form:select multiple="true" path="anios">
+							<form:options items="${fechas}" />
+						</form:select>
+					</div>
+
+					<div class="col s12 l3">
+						<label class="flow-text formato""> Genero</label>
+						<form:select path="generos" multiple="true">
+							<form:options items="${generos}" itemValue="id"
+								itemLabel="nombre" />
+						</form:select>
+					</div>
+					<div class="col s12 l3">
+						<label class="flow-text formato">Plataformas</label>
+						<form:select path="plataformas" multiple="true">
+							<form:options items="${plataformas}" itemLabel="nombre"
+								itemValue="id" />
+						</form:select>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col s1 l1"></div>
+					<div class="col s11 l6">
+						<button class="btn waves-effect waves-light" type="submit"
+							name="action">
+							Buscar <i class="material-icons right">send</i>
+						</button>
+					</div>
+				</div>
+
+			</form:form>
+		</section>
+		<section>
 			<div class="row"></div>
 			<div class="row"></div>
 			<div class="container">

@@ -27,7 +27,7 @@
 		<%@include file="/WEB-INF/views/layout/header.jsp"%>
 	</header>
 	<main>
-		<div class="container">
+		<div class="container" style="width: 60%">
 			<div class="row">
 				<div class="input-field col s12 m6 l6 boton">
 					<a href="/qveo/genero/form"><i
@@ -38,13 +38,13 @@
 			</div>
 
 			<div class="row cabeceras">
-				<div class="col s5 l5">Nombre Genero</div>
-				<div class="col s4 l4">Opciones</div>
+				<div class="col s6 l6">Nombre Genero</div>
+				<div class="col s6 l6">Opciones</div>
 			</div>
 			<c:forEach items="${generos}" var="genero">
 				<div id="${genero.id}" class="row cuerpo">
-					<div class="col s5 l5">${genero.nombre}</div>
-					<div class="col s4 l4">
+					<div class="col s6 l6">${genero.nombre}</div>
+					<div class="col s6 l6">
 
 						<div class="col s6 m3 l4">
 							<a href="/qveo/genero/edit/${genero.id}"
