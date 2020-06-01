@@ -1,18 +1,18 @@
+
+var modalsSerie=[];
 document.addEventListener('DOMContentLoaded', function() {
 	var addSerie=[];
-	var modalsSerie=[];
 	var addMovie=[];
 	var modalsMovie=[];
-	var seriesUser=[];
-	var moviesUser=[];
+	var seriesUser=null;
+	var moviesUser=null;
 	$('.modal').modal();
 	addEventListenSerie();
-	addEventListenMovie();
-});
+	addEventListenMovie();	
 
 	function addSerieToList(e){
 		idSerie = e.target.nextElementSibling.innerHTML;
-		var addResource = {};
+		let addResource = {};
 		console.log(userLogin.series);
 		addResource['idUser']=userLogin.id;
 		addResource['idResource']=idSerie;
@@ -20,10 +20,8 @@ document.addEventListener('DOMContentLoaded', function() {
 	}
 	
 	function addMovieToList(e){
-		console.log(e.target.nextElementSibling.innerHTML);
 		idPelicula = e.target.nextElementSibling.innerHTML;
-		var addResource = {};
-		
+		let addResource = {};
 		addResource['idUser']=userLogin.id;
 		addResource['idResource']=idPelicula;
 		ajaxMovie(addResource);
@@ -61,11 +59,10 @@ document.addEventListener('DOMContentLoaded', function() {
 		        data: JSON.stringify(dataAdd),
 		        dataType: 'json',
 		        success: (data) => {
-		            console.log("SUCCESS : ", data);
+		        	seriesUser=data.series;
+		        	console.log("SUCCESS : ", data)
 		        },
-		        error: (e) => {
-		            console.log("ERROR : ", e);
-		        }
+		        error: (e) => console.log("ERROR : ", e)
 		    });
 	}
 	
@@ -77,12 +74,10 @@ document.addEventListener('DOMContentLoaded', function() {
 		        data: JSON.stringify(dataAdd),
 		        dataType: 'json',
 		        success: (data) => {
-		        	peliculasUser=data.peliculas;
+		        	moviesUser=data.peliculas;
 		            console.log("SUCCESS : ", data);
 		        },
-		        error: (e) => {
-		            console.log("ERROR : ", e);
-		        }
+		        error: (e) => console.log("ERROR : ", e)
 		    });
 	}
 	
@@ -92,6 +87,17 @@ document.addEventListener('DOMContentLoaded', function() {
 			e.currentTarget.classList.add("boton-eliminar");
 			e.currentTarget.innerHTML = "Eliminar de mi lista";
 		}else{
+			let idCurrent = e.currentTarget.nextElementSibling.innerHTML;
+			console.log(e.currentTarget.nextElementSibling.classList.contains("id-series"));
+			if(e.currentTarget.nextElementSibling.classList.contains("id-series")){
+				let positions = checkPositionsModalButton(modalsSerie, idCurrent);
+				for(let i=0; i<positions.length; i++){
+					console.log(modalsSerie[positions[i]]);
+					modalsSerie[positions[i]].classList.remove("boton-eliminar");
+					modalsSerie[positions[i]].classList.add("boton-agregar");
+					modalsSerie[positions[i]].innerHTML = "Agregar de mi lista"
+				}
+			}
 			e.currentTarget.classList.remove("boton-eliminar");
 			e.currentTarget.classList.add("boton-agregar");
 			e.currentTarget.innerHTML = "Agregar de mi lista"
@@ -102,27 +108,32 @@ document.addEventListener('DOMContentLoaded', function() {
 		var series = document.getElementsByClassName('id-series');
 		var posicion = e.currentTarget.href.lastIndexOf('-')+1;
 		var idSer = e.currentTarget.href.substring(posicion);
-		if(findId(userLogin.series, idSer)){
-			var position = checkPosition(series, idSer);
-			series[position].previousElementSibling.classList.remove("boton-agregar");
-			series[position].previousElementSibling.classList.add("boton-eliminar");
-			series[position].previousElementSibling.innerHTML = "Eliminar de mi lista";
+		//console.log(e.currentTarget);
+		if(seriesUser == null) seriesUser = userLogin.series;
+		if(findId(seriesUser, idSer)){
+			let positions = checkPosition(series, idSer);
+			for(let i = 0; i<positions.length; i++){
+				series[positions[i]].previousElementSibling.classList.remove("boton-agregar");
+				series[positions[i]].previousElementSibling.classList.add("boton-eliminar");
+				series[positions[i]].previousElementSibling.innerHTML = "Eliminar de mi lista";
+			}
 		}
 		
 	}
 	
 	function setMoviesOfUser(e){
-		console.log(e.currentTarget);
 		var movies = document.getElementsByClassName('id-movies');
 		var posicion = e.currentTarget.href.lastIndexOf('-')+1;
 		var idMov = e.currentTarget.href.substring(posicion);
-		if(findId(userLogin.peliculas, idMov)){
-			var position = checkPosition(movies, idMov);
-			movies[position].previousElementSibling.classList.remove("boton-agregar");
-			movies[position].previousElementSibling.classList.add("boton-eliminar");
-			movies[position].previousElementSibling.innerHTML = "Eliminar de mi lista";
+		if(moviesUser == null) moviesUser = userLogin.peliculas;
+		if(findId(moviesUser, idMov)){
+			var positions = checkPosition(movies, idMov);
+			for(let i = 0; i<positions.length; i++){
+				movies[positions[i]].previousElementSibling.classList.remove("boton-agregar");
+				movies[positions[i]].previousElementSibling.classList.add("boton-eliminar");
+				movies[positions[i]].previousElementSibling.innerHTML = "Eliminar de mi lista";
+			}	
 		}
-		
 	}
 	
 	function findId(userCollection, currentId){
@@ -135,10 +146,22 @@ document.addEventListener('DOMContentLoaded', function() {
 	}
 	
 	function checkPosition(userCollection,currentId){
+		let posiciones = [];
 		for(let i=0; i<userCollection.length; i++){
 			if(userCollection[i].innerHTML == currentId){
-				return i;
+				posiciones.push(i);
 			}
 		}
-		return -1;
+		return posiciones;
 	}
+	
+	function checkPositionsModalButton(buttonsCollection, currentId){
+		let buttons=[];
+		for(let i=0; i<buttonsCollection.length; i++){
+			if(buttonsCollection[i].href.lastIndexOf('-')+1 == currentId){
+				buttons.push(i);
+			}
+		}
+		return buttons;
+	}
+});

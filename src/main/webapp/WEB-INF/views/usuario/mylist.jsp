@@ -63,7 +63,5 @@
 	<script
 		src="${pageContext.request.contextPath}/resources/vendor/js/materialize.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/js/header.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/js/usuario/add-to-list.js"></script>
 </body>
 </html>

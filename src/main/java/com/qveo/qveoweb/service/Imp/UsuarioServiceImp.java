@@ -124,11 +124,13 @@ public class UsuarioServiceImp implements UsuarioService {
 			series.remove(serieService.getSerie(addResource.getIdResource()));
 			usuario.setSeries(series);
 			result.setMsg("eliminado");
+			result.setSeries(series);
 			return result;
 		}
 		series.add(serieService.getSerie(addResource.getIdResource()));
 		usuario.setSeries(series);
 		result.setMsg("agregado");
+		result.setSeries(series);
 		return result;
 	}
 
@@ -141,11 +143,13 @@ public class UsuarioServiceImp implements UsuarioService {
 			peliculas.remove(peliculaService.getPelicula(addResource.getIdResource()));
 			usuario.setPeliculas(peliculas);
 			result.setMsg("eliminado");
+			result.setPeliculas(peliculas);
 			return result;
 		}
 		peliculas.add(peliculaService.getPelicula(addResource.getIdResource()));
 		usuario.setPeliculas(peliculas);
 		result.setMsg("agregado");
+		result.setPeliculas(peliculas);
 		return result;
 	}
 	
