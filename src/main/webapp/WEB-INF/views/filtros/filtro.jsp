@@ -21,7 +21,7 @@
 	href="${pageContext.request.contextPath}/resources/css/header.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/filtro/filtro.css">
-	<link rel="icon" type="image/x-icon"
+<link rel="icon" type="image/x-icon"
 	href="${pageContext.request.contextPath}/resources/img/favicon.ico">
 
 </head>
@@ -37,10 +37,11 @@
 
 				<div class="row">
 					<div class="col s1"></div>
-					<div class="col s12 l3">
+					<div class="col s12 l4">
 						<ul>
 							<li><form:label path="accionFiltro" for="todos">
-									<form:radiobutton id="todos" path="accionFiltro" value="1" checked="checked"/>
+									<form:radiobutton id="todos" path="accionFiltro" value="1"
+										checked="checked" />
 									<span id="formatoSpan">Todo</span>
 								</form:label></li>
 							<li><form:label path="accionFiltro" for="series">

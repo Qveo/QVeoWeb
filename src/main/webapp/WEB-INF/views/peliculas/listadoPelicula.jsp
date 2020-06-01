@@ -69,22 +69,22 @@
 					<c:choose>
 						<c:when test="${pelisFiltradas == true}">
 							<c:forEach items="${buscar.pelicula}" var="peli">
-								<a href="/qveo/serie/${peli.id}">
-									<div class="col s11 l2">
+								<a href="/qveo/peliculas/${peli.id}">
+									<div class="col s6 l2">
 										<img alt="${peli.titulo}"
 											src="${pageContext.request.contextPath}${peli.poster}"
-											class="responsive" />
+											class="responsiveP" />
 									</div>
 								</a>
 							</c:forEach>
 						</c:when>
 						<c:otherwise>
 							<c:forEach items="${peliMostrar}" var="pelis">
-								<a href="/qveo/serie/${pelis.id}">
-									<div class="col s11 l2">
+								<a href="/qveo/peliculas/${pelis.id}">
+									<div class="col s6 l2">
 										<img alt="${pelis.titulo}"
 											src="${pageContext.request.contextPath}${pelis.poster}"
-											class="responsive" />
+											class="responsiveP" />
 									</div>
 								</a>
 							</c:forEach>

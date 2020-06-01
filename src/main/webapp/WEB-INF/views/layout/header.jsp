@@ -5,28 +5,28 @@
 	uri="http://www.springframework.org/security/tags"%>
 <div class="navbar-fixed">
 	<nav>
-		<div class="nav-wrapper navbar-fixed">
+		<div class="nav-wrapper">
 			<a href="#" class="sidenav-trigger" data-target="slide-out"><i
 				class="material-icons">menu</i></a> <a
 				href="${pageContext.request.contextPath}/home" class="title-qveo"><img class="nav-logo" src="${pageContext.request.contextPath}/resources/img/logo-line.png" /></a>
 			<ul class="right hide-on-med-and-down">
 				<li><a href="${pageContext.request.contextPath}/">Inicio</a></li>
-				<li><a href="#">B&uacutesqueda</a></li>
-				<li><a href="#">Pel&iacuteculas</a></li>
-				<li><a href="#">Series</a></li>
+				<li><a href="/qveo/filtro">B&uacutesqueda</a></li>
+				<li><a href="/qveo/peliculas">Pel&iacuteculas</a></li>
+				<li><a href="/qveo/serie">Series</a></li>
 				<li><a href="#">M&aacutes Recientes</a></li>
 				<sec:authorize access="isAnonymous()">
 					<li><a id="login" href="<c:url value="/login" />">Sign in</a></li>
 					<li><a href="<c:url value="/usuario/form" />">Sign up</a></li>
 				</sec:authorize>
 				<security:authorize access="hasRole('USER')">
-					<li><a href="#!" class="dropdown-trigger"
+					<li><a href="#!" class="dropdown-trigger desplegable-user"
 						data-target="dropdown1"><img id="foto-user" class="circle icon-user"
 							src="${pageContext.request.contextPath}"><i
 							class="material-icons right">arrow_drop_down</i></a></li>
 				</security:authorize>
 				<security:authorize access="hasRole('ADMIN')">
-					<li><a href="#!" class="dropdown-trigger"
+					<li><a href="#!" class="dropdown-trigger desplegable-user"
 						data-target="dropdown2"><img id="foto-user" class="circle icon-user"
 							src="${pageContext.request.contextPath}"><i
 							class="material-icons right">arrow_drop_down</i></a></li>
@@ -53,9 +53,9 @@
 		src="${pageContext.request.contextPath}/resources/img/logo.png"></a>
 	</div>
 	<li><a href="${pageContext.request.contextPath}/" class="font-color-sidenav">Inicio</a></li>
-	<li><a href="#" class="font-color-sidenav">B&uacutesqueda</a></li>
-	<li><a href="#" class="font-color-sidenav">Series</a></li>
-	<li><a href="#" class="font-color-sidenav">Pel&iacuteculas</a></li>
+	<li><a href="/qveo/filtro" class="font-color-sidenav">B&uacutesqueda</a></li>
+	<li><a href="/qveo/serie" class="font-color-sidenav">Series</a></li>
+	<li><a href="/qveo/peliculas" class="font-color-sidenav">Pel&iacuteculas</a></li>
 	<li><a href="#" class="font-color-sidenav">M&aacutes Recientes</a></li>
 	<li><a href="#" class="font-color-sidenav">Mi lista</a></li>
 	<li><div class="divider"></div></li>

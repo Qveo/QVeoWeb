@@ -159,8 +159,11 @@
 					<%@include file="/WEB-INF/views/layout/series/chipsGeneros.jsp"%>
 
 					<div class="row">
-
-						<form:errors path="generos" style="color:red"></form:errors>
+						<div class="col s2 l2"></div>
+						<div class="col s8 l8">
+							<form:errors path="generos" style="color:red"></form:errors>
+						</div>
+						<div class="col s2 l2"></div>
 					</div>
 			</div>
 

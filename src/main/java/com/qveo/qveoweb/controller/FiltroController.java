@@ -175,7 +175,7 @@ public class FiltroController {
 		return "series/listaMostrar";
 	}
 	
-	@GetMapping("/pelicula")
+	@GetMapping("/peliculas")
 	public String peliculaCatalogo(Model model) {
 		
 		List<Pelicula> pelis = peliculaService.findAll();

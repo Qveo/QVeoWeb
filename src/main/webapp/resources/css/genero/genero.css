@@ -31,24 +31,16 @@
 	margin: 0 !important;
 }
 
-.formato {
-	color: white;
-	font-size: 1vw;
-}
 
 .input-field>label {
 	color: white;
-	font-size: 2vw;
+	font-size: 1vw;
 	font-weight: bold;
 }
 
 
 @media only screen and (max-width: 768px) {
-	.formato {
-		color: white;
-		font-size: 4vw;
-	}
-	
+		
 	.input-field>label {
 		color: white;
 		font-size: 4vw;

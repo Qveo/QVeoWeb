@@ -21,6 +21,7 @@
 	href="${pageContext.request.contextPath}/resources/css/serie/serie.css">
 <link rel="icon" type="image/x-icon"
 	href="${pageContext.request.contextPath}/resources/img/favicon.ico">
+<link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/filtro/filtro.css">
 </head>
 <body>
@@ -73,7 +74,7 @@
 						<c:when test="${serieFiltradas == true}">
 							<c:forEach items="${buscar.series}" var="serie">
 								<a href="/qveo/serie/${serie.id}">
-									<div class="col s11 l2">
+									<div class="col s6 l2">
 										<img alt="${serie.titulo}"
 											src="${pageContext.request.contextPath}${serie.poster}"
 											class="responsive" />
@@ -87,7 +88,7 @@
 							<c:forEach items="${serieMostrar}" var="serie">
 								<a href="/qveo/serie/${serie.id}">
 
-									<div class="col s11 l2">
+									<div class="col s6 l2">
 										<img alt="${serie.titulo}"
 											src="${pageContext.request.contextPath}${serie.poster}"
 											class="responsive" />

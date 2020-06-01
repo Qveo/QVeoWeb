@@ -7,6 +7,11 @@ ul li {
 	width: 100%;
 }
 
+.responsiveP {
+	width: 100%;
+	height: 286.25px;
+}
+
 .formato {
 	color: #1976d2;
 	font-size: 2em;
@@ -33,12 +38,14 @@ input[type="radio"]+span {
 		color: #1976d2;
 		font-size: 2em;
 	}
-	
 }
 
 @media only screen and (max-width: 992px) {
 	.responsive {
 		width: 80%;
+	}
+	.responsiveP {
+		width: 60%;
 	}
 	.formato {
 		color: #1976d2;

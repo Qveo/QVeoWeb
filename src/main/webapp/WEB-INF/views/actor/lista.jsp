@@ -21,7 +21,7 @@
 	href="${pageContext.request.contextPath}/resources/css/actor/actor.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/modal.css">
-	<link rel="icon" type="image/x-icon"
+<link rel="icon" type="image/x-icon"
 	href="${pageContext.request.contextPath}/resources/img/favicon.ico">
 </head>
 
@@ -49,8 +49,8 @@
 
 			</div>
 			<c:forEach items="${actores}" var="actor">
-				<div class="col s3 l3"></div>
 				<div id="${actor.id}" class="row cuerpo">
+					<div class="col s3 l3"></div>
 					<div class="col s3 l3">
 						<img src="${pageContext.request.contextPath}${actor.foto}"
 							alt="${actor.nombre}" class="fotoLista">
@@ -68,10 +68,7 @@
 								class="btn-floating btn-large red modal-trigger"><i
 								class="material-icons eliminar">delete</i></a>
 						</div>
-
 					</div>
-
-
 				</div>
 			</c:forEach>
 			<c:forEach items="${actores}" var="actor">

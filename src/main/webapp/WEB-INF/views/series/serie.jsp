@@ -22,6 +22,7 @@
 	href="${pageContext.request.contextPath}/resources/css/serie/serie.css">
 <link rel="icon" type="image/x-icon"
 	href="${pageContext.request.contextPath}/resources/img/favicon.ico">
+<link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/serie/seriesMostar.css">
 </head>
 <body>
@@ -66,11 +67,11 @@
 						<h5>Sinopsis</h5>
 						<label>${series.sinopsis}</label>
 						<div class="col s10 l9 offset-l1 offset-s1">
-						<a href="#"><i class="waves-effect blue btn ">Agregar
-								Serie</i></a>
+							<a href="#"><i class="waves-effect blue btn ">Agregar
+									Serie</i></a>
+						</div>
 					</div>
-					</div>
-					
+
 				</div>
 
 
