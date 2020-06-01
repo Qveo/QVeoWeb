@@ -24,7 +24,6 @@ import com.qveo.qveoweb.service.UploadFileService;
 import com.qveo.qveoweb.validation.DirectorValidador;
 
 @Controller
-@RequestMapping("/directores")
 public class DirectorController {
 
 
@@ -41,7 +40,7 @@ public class DirectorController {
 		binder.setValidator(validador);
 	}
 
-	@RequestMapping(value = "/listar", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/directores/listar", method = RequestMethod.GET)
 	public String listado(Model mod) {
 
 		mod.addAttribute("titulo", "Listado de directores");
@@ -50,7 +49,7 @@ public class DirectorController {
 		return "directores/listar";
 	}
 
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/directores/{id}", method = RequestMethod.GET)
 	public String mostrar(Model mod, @PathVariable String id) {
 
 		int idI = Integer.parseInt(id);
@@ -64,7 +63,7 @@ public class DirectorController {
 
 	}
 
-	@RequestMapping(value = "/form", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/directores/form", method = RequestMethod.GET)
 	public String crear(Model mod) {
 	
 		Director director = new Director();
@@ -75,7 +74,7 @@ public class DirectorController {
 
 	}
 
-	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin/directores/edit/{id}", method = RequestMethod.GET)
 	public String editar(Model mod, @PathVariable(value = "id") Integer id) {
 	
 		Director director = null;
@@ -84,11 +83,11 @@ public class DirectorController {
 			director = dirService.getDirector(id);
 			if (director == null) {
 
-				return "redirect:/directores/listar";
+				return "redirect:/admin/directores/listar";
 			}
 		} else {
 
-			return "redirect:/directores/listar";
+			return "redirect:/admin/directores/listar";
 		}
 
 		mod.addAttribute("editar", true);
@@ -99,7 +98,7 @@ public class DirectorController {
 
 	}
 
-	@RequestMapping(value = "/form/add", method = RequestMethod.POST)
+	@RequestMapping(value = "/admin/directores/form/add", method = RequestMethod.POST)
 	public String guardar(@Valid @ModelAttribute("directorNuevo") Director director, BindingResult br, Model mod,
 			@RequestParam("retrato") MultipartFile foto, SessionStatus status) {
 
@@ -121,17 +120,17 @@ public class DirectorController {
 
 		}
 
-		return "redirect:/directores/listar";
+		return "redirect:/admin/directores/listar";
 
 	}
 
-	@RequestMapping(value = "/delete/{id}")
+	@RequestMapping(value = "/admin/directores/delete/{id}")
 	public String eliminar(@PathVariable(value = "id") Integer id) {
 		if (id > 0) {
 			dirService.delete(id);
 		}
 
-		return "redirect:/directores/listar";
+		return "redirect:/admin/directores/listar";
 	}
 
 }

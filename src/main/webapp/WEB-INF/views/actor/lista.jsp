@@ -21,6 +21,8 @@
 	href="${pageContext.request.contextPath}/resources/css/actor/actor.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/modal.css">
+	<link rel="icon" type="image/x-icon"
+	href="${pageContext.request.contextPath}/resources/img/favicon.ico">
 </head>
 
 <body>
@@ -32,7 +34,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="input-field col s12 m6 l6 boton">
-					<a href="/qveo/actor/form"><i
+					<a href="/qveo/admin/actor/form"><i
 						class="waves-effect waves-light btn agregar-usuario">Nuevo
 							Actor</i></a>
 				</div>
@@ -57,7 +59,7 @@
 					<div id="${actor.id}" class="col s3 l3">
 
 						<div class="col s12 m3 l4">
-							<a href="/qveo/actor/edit/${actor.id}"
+							<a href="/qveo/admin/actor/edit/${actor.id}"
 								class="btn-floating btn-large"><i
 								class="material-icons editar">edit</i></a>
 						</div>
@@ -81,7 +83,7 @@
 					</div>
 					<div class="modal-footer">
 						<a href="#!" class="waves-effect waves-green btn-flat modal-close">Cancelar</a>
-						<a href="/qveo/actor/delete/${actor.id}"
+						<a href="/qveo/admin/actor/delete/${actor.id}"
 							class="waves-effect waves-green btn-flat modal-close eliminar-usuario">Aceptar</a>
 					</div>
 				</div>

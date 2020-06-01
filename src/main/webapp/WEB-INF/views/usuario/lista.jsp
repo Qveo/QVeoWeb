@@ -16,12 +16,12 @@
 	href="${pageContext.request.contextPath}/resources/css/usuario/lista.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/icon.css">
-<link rel="stylesheet"
+	<link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/header.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/footer.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/header.css">
+	<link rel="icon" type="image/x-icon"
+	href="${pageContext.request.contextPath}/resources/img/favicon.ico">
 </head>
 <body>
 	<header>
@@ -56,7 +56,7 @@
 									href="#modal1"><i class="material-icons">visibility</i></a>
 							</div>
 							<div class="col s12 m3 l4">
-								<a href="/qveo/usuario/edit/${usuario.id}"
+								<a href="/qveo/admin/usuario/edit/${usuario.id}"
 									class="btn-floating btn-large"><i
 									class="material-icons editar">edit</i></a>
 							</div>
@@ -88,7 +88,8 @@
 	<footer class="page-footer">
 		<%@include file="/WEB-INF/views/layout/footer.jsp"%>
 	</footer>
-	<script src="${pageContext.request.contextPath}/resources/vendor/js/jquery-3.4.1.min.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/vendor/js/jquery-3.4.1.min.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/resources/vendor/js/materialize.js"></script>
 	<script

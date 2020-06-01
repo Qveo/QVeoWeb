@@ -15,14 +15,14 @@
 	href="${pageContext.request.contextPath}/resources/css/pelicula/lista.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/icon.css">
-<!-- <link rel="stylesheet" -->
-<%-- 	href="${pageContext.request.contextPath}/resources/css/menu.css"> --%>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/footer.css">
 	<link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/modal.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/header.css">
+	<link rel="icon" type="image/x-icon"
+	href="${pageContext.request.contextPath}/resources/img/favicon.ico">
 <title>${titulo}</title>
 </head>
 <body>
@@ -33,7 +33,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="input-field col s12 m6 l6 boton">
-					<a href="/qveo/peliculas/form"><i
+					<a href="/qveo/admin/peliculas/form"><i
 						class="waves-effect waves-light btn agregar-usuario">Nueva
 							pelicula</i></a>
 				</div>
@@ -59,7 +59,7 @@
 									class="material-icons">visibility</i></a>
 							</div>
 							<div class="col s12 m3 l4">
-								<a href="/qveo/peliculas/edit/${pelicula.id}"
+								<a href="/qveo/admin/peliculas/edit/${pelicula.id}"
 									class="btn-floating btn-large"><i
 									class="material-icons editar">edit</i></a>
 							</div>

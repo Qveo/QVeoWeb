@@ -20,6 +20,8 @@
 	href="${pageContext.request.contextPath}/resources/css/serie/listaSerie.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/modal.css">
+<link rel="icon" type="image/x-icon"
+	href="${pageContext.request.contextPath}/resources/img/favicon.ico">
 </head>
 <body>
 	<header>
@@ -29,7 +31,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="input-field col s12 m6 l6 boton">
-					<a href="/qveo/serie/form"><i
+					<a href="/qveo/admin/serie/form"><i
 						class="waves-effect waves-light btn agregar-usuario">Nueva
 							Serie</i></a>
 				</div>
@@ -60,7 +62,7 @@
 									href="#modal-serie-${serie.id}"><i class="material-icons">visibility</i></a>
 							</div>
 							<div class="col s12 m3 l4">
-								<a href="/qveo/serie/edit/${serie.id}"
+								<a href="/qveo/admin/serie/edit/${serie.id}"
 									class="btn-floating btn-large"><i
 									class="material-icons editar">edit</i></a>
 							</div>
@@ -87,7 +89,7 @@
 					</div>
 					<div class="modal-footer">
 						<a href="#!" class="waves-effect waves-green btn-flat modal-close">Cancelar</a>
-						<a href="/qveo/serie/delete/${serie.id}"
+						<a href="/qveo/admin/serie/delete/${serie.id}"
 							class="waves-effect waves-green btn-flat modal-close eliminar-usuario">Aceptar</a>
 					</div>
 				</div>
@@ -102,7 +104,8 @@
 		<%@include file="/WEB-INF/views/layout/footer.jsp"%>
 	</footer>
 </body>
-<script src="${pageContext.request.contextPath}/resources/vendor/js/jquery-3.4.1.min.js"></script>
+<script
+	src="${pageContext.request.contextPath}/resources/vendor/js/jquery-3.4.1.min.js"></script>
 <script
 	src="${pageContext.request.contextPath}/resources/vendor/js/materialize.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/header.js"></script>

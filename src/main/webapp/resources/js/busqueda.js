@@ -10,17 +10,16 @@
 	const lupa = document.getElementById('buscar-nombre-trigger');
 	const boton = document.getElementById('clear');
 	const inputBusqueda = document.getElementById('autocomplete-input');
-	
-	lupa.addEventListener('click',mostrarInput);
+
+	lupa.addEventListener('click', mostrarInput);
 	inputBusqueda.addEventListener('input', mostrarLimpiar);
 	boton.addEventListener('click', limpiarInput);
-	
-	function dataAutocomplete(data){
-			seriesAutocomplete[data.titulo] = '/qveo'+data.poster;
-	}
 
+	function dataAutocomplete(data) {
+		seriesAutocomplete[data.titulo] = '/qveo' + data.poster;
+	}
 	$.ajax({
-		type : 'GET',
+		type : 'POST',
 		url : '/qveo/ajax/series',
 		success : function(data) {
 			contenidoVisual = data;
@@ -46,21 +45,21 @@
 
 		}
 	});
-	
-	function showResource(ruta){
-		if(ruta != 'error'){
+
+	function showResource(ruta) {
+		if (ruta != 'error') {
 			let posicion = window.location.href.indexOf('/qveo');
 			window.location.href = window.location.href.substring(0, posicion)
-			+ '/qveo/'+ ruta + idContenido;			
+					+ '/qveo/' + ruta + idContenido;
 		}
 	}
-	
-	function ifEmpty(serie, pelicula){
+
+	function ifEmpty(serie, pelicula) {
 		if (serie.length != 0) {
-			idContenido=serie[0].id;
+			idContenido = serie[0].id;
 			return 'serie/';
-		}else if (pelicula.length != 0){
-			idContenido=pelicula[0].id;
+		} else if (pelicula.length != 0) {
+			idContenido = pelicula[0].id;
 			return 'peliculas/';
 		}
 		return 'error';
@@ -77,15 +76,15 @@
 		hideLogo();
 		hideHamburger();
 	}
-	
-	function hideLogo(){
+
+	function hideLogo() {
 		document.getElementById('title-qveo').classList
-		.toggle('mostrar-ocultar');
+				.toggle('mostrar-ocultar');
 	}
-	
-	function hideHamburger(){
+
+	function hideHamburger() {
 		document.getElementById('hamburger').classList
-		.toggle('mostrar-ocultar');
+				.toggle('mostrar-ocultar');
 	}
 
 	function mostrarLimpiar() {

@@ -11,6 +11,8 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/general.css">
+	<link rel="icon" type="image/x-icon"
+	href="${pageContext.request.contextPath}/resources/img/favicon.ico">
 </head>
 <body>
 	<header>
@@ -19,7 +21,7 @@
 	<main>
 
 
-		<form:form method="POST" action="/qveo/directores/form/add"
+		<form:form method="POST" action="/qveo/admin/directores/form/add"
 			modelAttribute="directorNuevo" enctype="multipart/form-data"
 			class="col s12 white-text">
 
@@ -100,7 +102,7 @@
 	</main>
 
 </body>
+<script src="${pageContext.request.contextPath}/resources/js/jquery.js"></script>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/jquery.js"></script>
 </html>

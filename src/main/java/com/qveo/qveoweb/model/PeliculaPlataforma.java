@@ -21,7 +21,6 @@ public class PeliculaPlataforma {
 	
 	
 	private PeliculaPlataformaId id = new PeliculaPlataformaId();
-
 	
 	private Date fechaCaducidad;
 

@@ -20,6 +20,8 @@
 	href="${pageContext.request.contextPath}/resources/css/general.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/serie/serie.css">
+<link rel="icon" type="image/x-icon"
+	href="${pageContext.request.contextPath}/resources/img/favicon.ico">
 </head>
 <body>
 	<header>
@@ -29,7 +31,7 @@
 	<main>
 		<section>
 			<div class="row">
-				<form:form method="POST" action="/qveo/serie/form"
+				<form:form method="POST" action="/qveo/admin/serie/form"
 					modelAttribute="serieNueva" enctype="multipart/form-data"
 					class="col s12">
 					<div class="row">

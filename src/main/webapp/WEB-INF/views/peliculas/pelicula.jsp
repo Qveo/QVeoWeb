@@ -17,7 +17,8 @@
 	href="${pageContext.request.contextPath}/resources/css/menu.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/header.css">
-
+<link rel="icon" type="image/x-icon"
+	href="${pageContext.request.contextPath}/resources/img/favicon.ico">
 </head>
 
 <header>
