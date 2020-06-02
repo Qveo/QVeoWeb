@@ -52,7 +52,7 @@
 		<li>Logueado como: <security:authentication
 				property="principal.username" /></li>
 	</security:authorize>
-	<li><a id="mylist" href="${pageContext.request.contextPath}/usuario/mylist">Mi lista</a></li>
+	<li><a id="mylist" href="${pageContext.request.contextPath}/usuario/mylist/">Mi lista</a></li>
 	<li><a href="#">Editar Datos</a></li>
 	<li><a href="<c:url value="/logout" />">Logout</a></li>
 </ul>

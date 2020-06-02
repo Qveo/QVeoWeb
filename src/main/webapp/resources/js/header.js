@@ -29,7 +29,9 @@ $(document).ready(function() {
 
 	function addIdForRedirect() {
 		let mylist = document.getElementById('mylist');
-		mylist.href += `/${userLogin.id}`;
+		let cutPosition = mylist.href.lastIndexOf('/');
+		let cutHref = mylist.href.substring(0,cutPosition);
+		mylist.href = `${cutHref}/${userLogin.id}`;
 	}
 
 });

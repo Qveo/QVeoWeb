@@ -22,9 +22,9 @@
 				<h5 class="contenido">${peliculaPlataformas.pelicula.sinopsis}</h5>
 				<h4 class="titulo">Plataformas</h4>
 				<h5 class="contenido">${peliculaPlataformas.pelicula.plataformasConcatenadas()}</h5>
-				<a class="waves-effect btn-large boton-ver" href="${pageContext.request.contextPath}/peliculas/${peliculaPlataformas.pelicula.id}">Ver información</a>
+				<a class="waves-effect btn-large boton-ver z-depth-2" href="${pageContext.request.contextPath}/peliculas/${peliculaPlataformas.pelicula.id}">Ver información</a>
 				<security:authorize access="hasRole('USER')">
-                        	<a class="waves-effect waves-light btn-large add-movie boton-agregar">Agregar a mi lista</a>
+                        	<a class="waves-effect waves-light btn-large add-movie boton-agregar z-depth-2">Agregar a mi lista</a>
                         	<p class="id-movies" style="display:none">${peliculaPlataformas.pelicula.id}</p>
                 </security:authorize>
 			</div>
