@@ -10,6 +10,7 @@ import com.qveo.qveoweb.model.Plataforma;
 @Repository
 public interface PlataformaDao extends JpaRepository<Plataforma, Integer> {
     List<Plataforma> findAll();
+    List<Plataforma> findByIdIn(List<Integer> ids);
     
     Plataforma findTopByOrderByIdDesc();
 }
