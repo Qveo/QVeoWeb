@@ -11,7 +11,7 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/general.css">
-	<link rel="icon" type="image/x-icon"
+<link rel="icon" type="image/x-icon"
 	href="${pageContext.request.contextPath}/resources/img/favicon.ico">
 </head>
 <body>
@@ -47,28 +47,28 @@
 								width="80%"> <span style="color: red">${fotoerror}</span>
 						</div>
 					</c:if>
-					
+
 					<div class="col s12 m12 l6 offset-l3">
-							<div class="file-field input-field">
-								<div class="btn">
-									<form:label path="foto">
-										<span>Retrato del director</span>
-									</form:label>
-									<input type="file" name="retrato" /> 
-								</div>
-								<div class="file-path-wrapper">
-									<input class="file-path validate" type="text"
-										placeholder="Suba aqui su foto">
-								</div>
+						<div class="file-field input-field">
+							<div class="btn">
+								<form:label path="foto">
+									<span>Retrato del director</span>
+								</form:label>
+								<input type="file" name="retrato" />
+							</div>
+							<div class="file-path-wrapper">
+								<input class="file-path validate" type="text"
+									placeholder="Suba aqui su foto">
 							</div>
 						</div>
-
-
 					</div>
-					
+
 
 				</div>
-				<div class="col s2"></div>
+
+
+			</div>
+			<div class="col s2"></div>
 			</div>
 
 			<c:choose>

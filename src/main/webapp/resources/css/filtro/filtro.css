@@ -3,35 +3,56 @@ ul li {
 	padding: 3px;
 }
 
-.cabeceras, .cuerpo {
-	margin: 0 !important;
-	padding: 5px 0;
-	font-size: 25px;
-	text-align: left;
+.responsive {
+	width: 100%;
 }
 
-.cabeceras {
-	font-weight: bold;
-	background-color: #00adb5;
+.responsiveP {
+	width: 100%;
+	height: 286.25px;
 }
 
-.cuerpo {
-	background-color: #eeeeee;
-	border-bottom: 1px solid #fff;
+.formato {
+	color: #1976d2;
+	font-size: 2em;
 }
 
-.cuerpo:hover {
-	background-color: #ddd;
+#formatoSpan {
+	color: #1976d2;
+	font-size: 2em;
 }
 
-.material-icons {
-	font-size: 40px !important;
+input[type="radio"]+span {
+	font-size: 2em;
 }
 
-.row .boton {
-	padding: 10px 0;
+@media only screen and (max-width: 768px) {
+	.responsive {
+		width: 80%;
+	}
+	.formato {
+		color: #1976d2;
+		font-size: 2em;
+	}
+	#formatoSpan {
+		color: #1976d2;
+		font-size: 2em;
+	}
 }
 
-.opciones {
-	margin: 0 !important;
+@media only screen and (max-width: 992px) {
+	.responsive {
+		width: 80%;
+	}
+	.responsiveP {
+		width: 60%;
+	}
+	.formato {
+		color: #1976d2;
+		font-size: 2em;
+	}
+	#formatoSpan {
+		color: #1976d2;
+		font-size: 2em;
+	}
 }

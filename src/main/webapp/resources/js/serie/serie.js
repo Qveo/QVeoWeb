@@ -106,6 +106,35 @@ document.addEventListener('DOMContentLoaded', function() {
 	         },
 	         data: predefinidos,
 	     });
+		 
+		//Chips Generos
+			let generos = $('input[name="generos"]');
+			let generosSerie = $('input[name="generos"]:not(:disabled)');
+			
+			let tagsG = {};
+			for(let i=0; i<generos.length; i++){
+				tagsG[generos[i].className] = null;           	
+		    }
+			
+			let predefinidosG = [];
+			for(let i=0; i<generosSerie.length; i++){
+				predefinidosG[i] = {tag: generosSerie[i].className};
+			}
+			
+			 $('.chipsG').chips({
+		         placeholder: 'Generos',
+		         secondaryPlaceholder: '+otra',
+		         autocompleteOptions: {
+		        	 data: tagsG
+		         },
+		         onChipAdd: function(e, chip){
+		             $("."+chip.textContent.replace('close','').replace(' ','.')).removeAttr('disabled');
+		         },
+		         onChipDelete: function(e, chip){
+		        	 $("."+chip.textContent.replace('close','').replace(' ','.')).attr('disabled', 'disabled');
+		         },
+		         data: predefinidosG,
+		     });
 		 		 
 		 //Modals
 		 var modals = document.querySelectorAll('.modal');

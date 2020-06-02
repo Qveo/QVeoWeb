@@ -28,7 +28,7 @@
 	href="${pageContext.request.contextPath}/resources/css/actor/actor.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/modal.css">
-	<link rel="icon" type="image/x-icon"
+<link rel="icon" type="image/x-icon"
 	href="${pageContext.request.contextPath}/resources/img/favicon.ico">
 </head>
 
@@ -51,26 +51,25 @@
 				class="col s12 white-text">
 
 				<div class="row">
-					<div class="col s2"></div>
-					<div class="input-field col s8">
-						<form:label path="nombre">Nombre</form:label>
+					<div class="col l2"></div>
+					<div class="input-field col s12 l8">
+						<form:label path="nombre" class="formato">Nombre</form:label>
 						<form:input path="nombre" id="nombre" class="validate" />
 						<form:errors path="nombre" style="color:red"></form:errors>
-						<div style="color: red">${errorNombre}</div>
 					</div>
-					<div class="col s2"></div>
+					<div class="col l2"></div>
 				</div>
 				<div class="row">
-					<div class="col s2"></div>
-					<div class="col s8">
+					<div class="col l2"></div>
+					<div class="input-field formato col s12 l8">
 						<form:label path="pais">Pais de origen</form:label>
 					</div>
-					<div class="col s2"></div>
+					<div class="col l2"></div>
 				</div>
 
 				<div class="row">
-					<div class="col s2"></div>
-					<div class="col s8">
+					<div class="col l2"></div>
+					<div class="input-field formato col s12 l8">
 						<form:select path="pais">
 							<c:choose>
 								<c:when test="${editar}">
@@ -93,37 +92,36 @@
 							</c:choose>
 						</form:select>
 						<form:errors path="pais" style="color:red"></form:errors>
-						<div style="color: red">${errorPais}</div>
 					</div>
 				</div>
 				<div class="row">
-					<div class="col s2"></div>
-					<div class="input-field col s8">
+					<div class="col l2"></div>
+					<div class="input-field col s12 l8">
 						<form:label path="sexo">Género</form:label>
 					</div>
-					<div class="col s2"></div>
+					<div class="col l2"></div>
 				</div>
 				<div class="row">
-					<div class="col s2"></div>
-					<div class="col s8">
-						<form:label for="mas" path="sexo">
+					<div class="col l2"></div>
+					<div class="col s12 l8">
+						<form:label for="mas" path="sexo" class="formato">
 							<form:radiobutton id="mas" path="sexo" value="H" class="validate" />
 							<span>Masculino</span>
 						</form:label>
-						<form:label for="fem" path="sexo">
+						<form:label for="fem" path="sexo" class="formato">
 							<form:radiobutton id="fem" path="sexo" value="M" class="validate" />
 							<span>Femenino</span>
 						</form:label>
 						<form:errors path="sexo" style="color:red"></form:errors>
-						<div style="color: red">${errorSexo}</div>
+
 					</div>
-					<div class="col s2"></div>
+					<div class="col l2"></div>
 				</div>
 				<div class="row">
-					<div class="col s2"></div>
-					<div class="col s8">
-						<form:label path="foto">Foto</form:label>
-						<input type="file" name="fotoActor">
+					<div class="col l2"></div>
+					<div class="col s12 l8">
+						<form:label path="foto" class="especial">Foto</form:label>
+						<input type="file" name="fotoActor" class="boton-Foto">
 						<c:if test="${editar == true}">
 							<div class="col s4">
 								<form:input path="id" type="hidden" />
@@ -133,11 +131,11 @@
 							</div>
 						</c:if>
 					</div>
-					<div class="col s2"></div>
+					<div class="col l2"></div>
 				</div>
 				<div class="row">
-					<div class="col s2"></div>
-					<div class="col s8">
+					<div class="col l2"></div>
+					<div class="col s12 l8">
 						<c:choose>
 							<c:when test="${editar}">
 								<button class="btn waves-effect waves-light" type="submit"
@@ -153,7 +151,7 @@
 							</c:otherwise>
 						</c:choose>
 					</div>
-					<div class="col s2"></div>
+					<div class="col l2"></div>
 				</div>
 			</form:form>
 		</div>
