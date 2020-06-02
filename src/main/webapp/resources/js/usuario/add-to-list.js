@@ -1,14 +1,16 @@
 
-var modalsSerie=[];
 document.addEventListener('DOMContentLoaded', function() {
 	var addSerie=[];
 	var addMovie=[];
 	var modalsMovie=[];
+	var modalsSerie=[];
 	var seriesUser=null;
 	var moviesUser=null;
 	$('.modal').modal();
-	addEventListenSerie();
-	addEventListenMovie();	
+	if(userLogin.id != 'undefined'){
+		addEventListenSerie();
+		addEventListenMovie();			
+	}
 
 	function addSerieToList(e){
 		idSerie = e.target.nextElementSibling.innerHTML;
@@ -86,21 +88,10 @@ document.addEventListener('DOMContentLoaded', function() {
 			e.currentTarget.classList.remove("boton-agregar");
 			e.currentTarget.classList.add("boton-eliminar");
 			e.currentTarget.innerHTML = "Eliminar de mi lista";
-		}else{
-			let idCurrent = e.currentTarget.nextElementSibling.innerHTML;
-			console.log(e.currentTarget.nextElementSibling.classList.contains("id-series"));
-			if(e.currentTarget.nextElementSibling.classList.contains("id-series")){
-				let positions = checkPositionsModalButton(modalsSerie, idCurrent);
-				for(let i=0; i<positions.length; i++){
-					console.log(modalsSerie[positions[i]]);
-					modalsSerie[positions[i]].classList.remove("boton-eliminar");
-					modalsSerie[positions[i]].classList.add("boton-agregar");
-					modalsSerie[positions[i]].innerHTML = "Agregar de mi lista"
-				}
-			}
+		}else if(e.currentTarget.classList.contains("boton-eliminar")) {
 			e.currentTarget.classList.remove("boton-eliminar");
 			e.currentTarget.classList.add("boton-agregar");
-			e.currentTarget.innerHTML = "Agregar de mi lista"
+			e.currentTarget.innerHTML = "Agregar a mi lista"
 		}
 	}
 	
@@ -108,15 +99,16 @@ document.addEventListener('DOMContentLoaded', function() {
 		var series = document.getElementsByClassName('id-series');
 		var posicion = e.currentTarget.href.lastIndexOf('-')+1;
 		var idSer = e.currentTarget.href.substring(posicion);
-		//console.log(e.currentTarget);
 		if(seriesUser == null) seriesUser = userLogin.series;
 		if(findId(seriesUser, idSer)){
 			let positions = checkPosition(series, idSer);
-			for(let i = 0; i<positions.length; i++){
-				series[positions[i]].previousElementSibling.classList.remove("boton-agregar");
-				series[positions[i]].previousElementSibling.classList.add("boton-eliminar");
-				series[positions[i]].previousElementSibling.innerHTML = "Eliminar de mi lista";
-			}
+			setButton(series,positions);
+		}else{
+			let currentModal = document.getElementById(e.currentTarget.href.substring(e.currentTarget.href.indexOf('#')+1));
+			let buttonM = currentModal.firstElementChild.lastElementChild.lastElementChild.previousElementSibling
+			buttonM.classList.remove("boton-eliminar");
+			buttonM.classList.add("boton-agregar");
+			buttonM.innerHTML = "Agregar a mi lista";
 		}
 		
 	}
@@ -128,11 +120,21 @@ document.addEventListener('DOMContentLoaded', function() {
 		if(moviesUser == null) moviesUser = userLogin.peliculas;
 		if(findId(moviesUser, idMov)){
 			var positions = checkPosition(movies, idMov);
-			for(let i = 0; i<positions.length; i++){
-				movies[positions[i]].previousElementSibling.classList.remove("boton-agregar");
-				movies[positions[i]].previousElementSibling.classList.add("boton-eliminar");
-				movies[positions[i]].previousElementSibling.innerHTML = "Eliminar de mi lista";
-			}	
+			setButton(movies,positions);
+		}else{
+			let currentModal = document.getElementById(e.currentTarget.href.substring(e.currentTarget.href.indexOf('#')+1));
+			let buttonM = currentModal.firstElementChild.lastElementChild.lastElementChild.previousElementSibling
+			buttonM.classList.remove("boton-eliminar");
+			buttonM.classList.add("boton-agregar");
+			buttonM.innerHTML = "Agregar a mi lista";
+		}
+	}
+	
+	function setButton(resourceArr,positionsArr){
+		for(let i = 0; i<positionsArr.length; i++){
+			resourceArr[positionsArr[i]].previousElementSibling.classList.remove("boton-agregar");
+			resourceArr[positionsArr[i]].previousElementSibling.classList.add("boton-eliminar");
+			resourceArr[positionsArr[i]].previousElementSibling.innerHTML = "Eliminar de mi lista";
 		}
 	}
 	

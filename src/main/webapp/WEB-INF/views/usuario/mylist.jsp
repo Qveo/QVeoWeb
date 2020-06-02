@@ -22,7 +22,7 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/header.css">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/modal.css">
+	href="${pageContext.request.contextPath}/resources/css/usuario/mylist.css">
 </head>
 <body>
 	<header>
@@ -32,22 +32,10 @@
 		<div class="container">
 			<div class="row">
 				<c:forEach items="${series}" var="serie">
-					<div class="col s6 l3">
-						<a class="waves-effect waves-light modal-trigger"
-							href="#modal-serie-${serie.id}"> <img
-							src="${pageContext.request.contextPath}${serie.poster}"
-							width="100%" />
-						</a>
-					</div>
+					<%@include file="/WEB-INF/views/layout/usuario/cardsMyListSerie.jsp"%>
 				</c:forEach>
 				<c:forEach items="${peliculas}" var="pelicula">
-					<div class="col s6 l3">
-						<a class="waves-effect waves-light modal-trigger"
-							href="#modal-pelicula-${pelicula.id}"> <img
-							src="${pageContext.request.contextPath}${pelicula.poster}"
-							width="100%" />
-						</a>
-					</div>
+					<%@include file="/WEB-INF/views/layout/usuario/cardsMyListPelicula.jsp"%>
 				</c:forEach>
 			</div>
 		</div>
@@ -55,13 +43,10 @@
 	<footer>
 		<%@include file="/WEB-INF/views/layout/footer.jsp"%>
 	</footer>
-	<%@include file="/WEB-INF/views/layout/usuario/modalDetalleSerie.jsp"%>
-	<%@include
-		file="/WEB-INF/views/layout/usuario/modalDetallePelicula.jsp"%>
 	<script
 		src="${pageContext.request.contextPath}/resources/vendor/js/jquery-3.4.1.min.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/resources/vendor/js/materialize.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/header.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/usuario/mylist.js"></script>
 </body>
 </html>
