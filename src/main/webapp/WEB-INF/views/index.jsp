@@ -26,6 +26,43 @@
 		<%@include file="/WEB-INF/views/layout/header.jsp"%>
 	</header>
 	<main>
+		<div class="container">
+			<div class="carousel carousel-slider center caja "
+				data-indicators="true">
+				<div class="flecha">
+					<div class="left">
+						<a href="Previo"
+							class="movePrevCarousel middle-indicator-text waves-effect waves-light content-indicator"><i
+							class="material-icons left  middle-indicator-text">chevron_left</i></a>
+					</div>
+
+					<div class="right">
+						<a href="Siguiente"
+							class=" moveNextCarousel middle-indicator-text waves-effect waves-light content-indicator"><i
+							class="material-icons right middle-indicator-text">chevron_right</i></a>
+					</div>
+				</div>
+				<div class="carousel-item red white-text">
+					<a class="modal-trigger waves-effect waves-light" href="/qveo/peliculas/22"> <img
+						src="${pageContext.request.contextPath}/resources/img/portada/infinity-war-big.jpg" />
+					</a>
+				</div>
+				<div class="carousel-item amber white-text">
+					<a class="modal-trigger enl" href="/qveo/serie/19"> <img
+						src="${pageContext.request.contextPath}/resources/img/portada/Mr-Robot.jpg" /></a>
+				</div>
+				<div class="carousel-item green white-text">
+					<a class="modal-trigger enl" href="/qveo/peliculas/1"> <img
+						src="${pageContext.request.contextPath}/resources/img/portada/madagascar.jpg" /></a>
+				</div>
+				<div class="carousel-item blue white-text">
+					<a class="modal-trigger enl" href="/qveo/peliculas/20"> <img
+						src="${pageContext.request.contextPath}/resources/img/portada/spiderman.jpeg" /></a>
+				</div>
+			</div>
+
+		</div>
+
 		<c:forEach items="${plataformas}" var="plataforma">
 			<div class="row">
 				<div class="col s12">
@@ -76,4 +113,6 @@
 	src="${pageContext.request.contextPath}/resources/vendor/js/materialize.js"></script>
 <script
 	src="${pageContext.request.contextPath}/resources/js/carousel.js"></script>
+<script
+	src="${pageContext.request.contextPath}/resources/js/carousel2.js"></script>
 </html>

@@ -69,9 +69,6 @@ public class PeliculaController {
 		binder.setValidator(peliculaValid);
 	}
 	
-	@GetMapping(value= {"/",""})
-	public String listarUsuario(Model mod) {
-
 	@GetMapping("/admin/peliculas/listar")
 	public String listar(Model mod) {
 
@@ -84,9 +81,9 @@ public class PeliculaController {
 	@GetMapping("/peliculas/{id}")
 	public String mostrar(Model mod, @PathVariable String id) {
 
-		
+		int idI = Integer.parseInt(id);
 
-		Pelicula pelicula = peliculaService.getPelicula(id);
+		Pelicula pelicula = peliculaService.getPelicula(idI);
 
 		mod.addAttribute("peliculas", pelicula);
 		mod.addAttribute("Titulo", "Datos de la pelicula");

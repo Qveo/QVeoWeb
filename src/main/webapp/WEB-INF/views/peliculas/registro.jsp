@@ -18,7 +18,7 @@
 	href="${pageContext.request.contextPath}/resources/css/general.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/pelicula/registro.css">
-	<link rel="icon" type="image/x-icon"
+<link rel="icon" type="image/x-icon"
 	href="${pageContext.request.contextPath}/resources/img/favicon.ico">
 
 
@@ -29,7 +29,8 @@
 	</header>
 	<main>
 		<div class=row>
-			<c:set var="action" scope="session" value="/qveo/admin/peliculas/form/add" />
+			<c:set var="action" scope="session"
+				value="/qveo/admin/peliculas/form/add" />
 			<form:form method="POST" action="${action}"
 				modelAttribute="peliculaNueva" enctype="multipart/form-data"
 				class="col s12">
@@ -89,7 +90,7 @@
 
 
 				<div class="row">
-					
+
 					<div class="col s10 l8 offset-l2">
 						<form:label path="pais" class="formato">Pais de produccion</form:label>
 					</div>
@@ -154,7 +155,7 @@
 
 				<div class="row">
 
-					<div class="col s12 l6 m12 offset-l3">
+					<div class="col s10 l6 m12 offset-l3">
 						<div class="file-field input-field">
 							<div class="btn">
 								<form:label path="poster">
@@ -178,26 +179,34 @@
 
 				<%@include file="/WEB-INF/views/layout/pelicula/chipsDirectores.jsp"%>
 				<div class="row">
-					<form:errors path="directores" style="color:red" />
+					<div class="col s8 m10 l8 offset-l2 ">
+						<form:errors path="directores" style="color:red" />
+					</div>
 				</div>
 
 				<%@include file="/WEB-INF/views/layout/pelicula/chipsActores.jsp"%>
 
 				<div class="row">
+				<div class="col s8 m10 l8 offset-l2 ">
 					<form:errors path="actores" style="color:red" />
+				</div>
 				</div>
 
 				<%@include file="/WEB-INF/views/layout/pelicula/chipsGeneros.jsp"%>
 
 				<div class="row">
+				<div class="col s8 m10 l8 offset-l2 ">
 					<form:errors path="generos" style="color:red" />
+				</div>
 				</div>
 
 				<%@include
 					file="/WEB-INF/views/layout/pelicula/chipsPlataformas.jsp"%>
 
 				<div class="row">
+				<div class="col s8 m10 l8 offset-l2">
 					<form:errors path="plataformas" style="color:red" />
+					</div>
 				</div>
 
 				<c:choose>

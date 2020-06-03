@@ -13,6 +13,8 @@
 	href="${pageContext.request.contextPath}/resources/css/general.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/header.css">
+	<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/paises/registro.css">
 	<link rel="icon" type="image/x-icon"
 	href="${pageContext.request.contextPath}/resources/img/favicon.ico">
 </head>
@@ -30,7 +32,7 @@
 			<div class="row">
 				<div class="col s3"></div>
 				<div class="input-field col s6">
-					<form:input path="nombre" id="nombre" type="text" class="validate" />
+					<form:input path="nombre" id="nombre" type="text" class="validate formato" />
 					<form:label for="nombre" path="nombre">Nombre</form:label>
 					<form:errors path="nombre" style="color:red"></form:errors>
 				</div>

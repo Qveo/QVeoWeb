@@ -20,6 +20,8 @@
 				<h5 class="contenido">${peliculaPlataformas.pelicula.duracion}</h5>
 				<h4 class="titulo">Sinopsis</h4>
 				<h5 class="contenido">${peliculaPlataformas.pelicula.sinopsis}</h5>
+				<h4 class="titulo">Sinopsis</h4>
+				<h5 class="contenido">${peliculaPlataformas.pelicula.generosConcatenadas()}</h5>
 				<h4 class="titulo">Plataformas</h4>
 				<h5 class="contenido">${peliculaPlataformas.pelicula.plataformasConcatenadas()}</h5>
 				<a class="waves-effect waves-light btn-large">A&ntildeadir a mi

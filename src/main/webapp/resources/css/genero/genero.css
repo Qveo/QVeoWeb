@@ -14,7 +14,9 @@
 	background-color: #eeeeee;
 	border-bottom: 1px solid #fff;
 }
-
+main{
+	height:79.3%;
+}
 .cuerpo:hover{
 	background-color: #ddd;
 }

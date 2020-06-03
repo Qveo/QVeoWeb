@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
+		
 	var modals = document.querySelectorAll('.modal');
     var modalInstance = M.Modal.init(modals);
 	
@@ -14,3 +15,4 @@ document.addEventListener('DOMContentLoaded', function() {
 	}
 	
 });
+
