@@ -42,20 +42,17 @@
 			</div>
 
 			<div class="row cabeceras">
-				<div class="col s3 l3"></div>
-				<div class="col s3 l3">Foto</div>
+ 				<div class="col s3 l3"></div> 
 				<div class="col s3 l3">Nombre</div>
+				<div class="col s1 l1"></div> 
 				<div class="col s3 l3">Opciones</div>
 
 			</div>
 			<c:forEach items="${actores}" var="actor">
 				<div id="${actor.id}" class="row cuerpo">
-					<div class="col s3 l3"></div>
-					<div class="col s3 l3">
-						<img src="${pageContext.request.contextPath}${actor.foto}"
-							alt="${actor.nombre}" class="fotoLista">
-					</div>
+					<div class="col s3 l3"></div> 
 					<div class="col s3 l3">${actor.nombre}</div>
+					<div class="col s1 l1"></div> 
 					<div id="${actor.id}" class="col s3 l3">
 
 						<div class="col s12 m3 l4">

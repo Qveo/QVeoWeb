@@ -29,6 +29,7 @@ input[type="radio"]+span {
 @media only screen and (max-width: 768px) {
 	.responsive {
 		width: 80%;
+		height: 150px;
 	}
 	.formato {
 		color: #1976d2;
@@ -43,6 +44,7 @@ input[type="radio"]+span {
 @media only screen and (max-width: 992px) {
 	.responsive {
 		width: 80%;
+		height: 150px;
 	}
 	.responsiveP {
 		width: 60%;
