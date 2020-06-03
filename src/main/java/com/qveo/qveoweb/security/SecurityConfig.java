@@ -1,5 +1,4 @@
 package com.qveo.qveoweb.security;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -34,6 +33,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers(resources).permitAll()
 				.antMatchers("/","/home").permitAll()
 				.antMatchers("/ajax/series").permitAll()
+				.antMatchers("/filtro/**").permitAll()
+				.antMatchers("/peliculas/**").permitAll()
+				.antMatchers("/serie/**").permitAll()
 				.antMatchers("/login*").permitAll()
 				.antMatchers("/admin/**").hasRole("ADMIN")
 				.antMatchers("/usuario/form*").permitAll()

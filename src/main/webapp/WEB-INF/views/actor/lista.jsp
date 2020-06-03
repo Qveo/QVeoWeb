@@ -6,6 +6,7 @@
 
 <head>
 <title>QVeo web</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">
 <link rel="stylesheet"
@@ -20,7 +21,7 @@
 	href="${pageContext.request.contextPath}/resources/css/actor/actor.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/modal.css">
-	<link rel="icon" type="image/x-icon"
+<link rel="icon" type="image/x-icon"
 	href="${pageContext.request.contextPath}/resources/img/favicon.ico">
 </head>
 
@@ -41,19 +42,21 @@
 			</div>
 
 			<div class="row cabeceras">
-				<div class="col s3">Foto</div>
-				<div class="col s3">Nombre</div>
-				<div class="col s3">Opciones</div>
+				<div class="col s3 l3"></div>
+				<div class="col s3 l3">Foto</div>
+				<div class="col s3 l3">Nombre</div>
+				<div class="col s3 l3">Opciones</div>
 
 			</div>
 			<c:forEach items="${actores}" var="actor">
 				<div id="${actor.id}" class="row cuerpo">
-					<div class="col s3">
+					<div class="col s3 l3"></div>
+					<div class="col s3 l3">
 						<img src="${pageContext.request.contextPath}${actor.foto}"
-							alt="${actor.nombre}" width="40%">
+							alt="${actor.nombre}" class="fotoLista">
 					</div>
-					<div class="col s3">${actor.nombre}</div>
-					<div id="${actor.id}" class="col s3">
+					<div class="col s3 l3">${actor.nombre}</div>
+					<div id="${actor.id}" class="col s3 l3">
 
 						<div class="col s12 m3 l4">
 							<a href="/qveo/admin/actor/edit/${actor.id}"
@@ -65,14 +68,9 @@
 								class="btn-floating btn-large red modal-trigger"><i
 								class="material-icons eliminar">delete</i></a>
 						</div>
-
 					</div>
-
-
 				</div>
 			</c:forEach>
-
-
 			<c:forEach items="${actores}" var="actor">
 
 				<div id="modal2-actor-${actor.id}" class="modal confirmar">
@@ -100,10 +98,11 @@
 	</footer>
 
 </body>
-	<script
-		src="${pageContext.request.contextPath}/resources/vendor/js/jquery-3.4.1.min.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/vendor/js/materialize.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/header.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/actor/actor.js"></script>
+<script
+	src="${pageContext.request.contextPath}/resources/vendor/js/jquery-3.4.1.min.js"></script>
+<script
+	src="${pageContext.request.contextPath}/resources/vendor/js/materialize.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/header.js"></script>
+<script
+	src="${pageContext.request.contextPath}/resources/js/actor/actor.js"></script>
 </html>
