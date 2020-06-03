@@ -7,6 +7,8 @@
 <html>
 <head>
 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">
 <link rel="stylesheet"
@@ -19,6 +21,8 @@
 	href="${pageContext.request.contextPath}/resources/css/serie/serie.css">
 <link rel="icon" type="image/x-icon"
 	href="${pageContext.request.contextPath}/resources/img/favicon.ico">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/filtro/filtro.css">
 </head>
 <body>
 	<header>
@@ -27,19 +31,73 @@
 
 	<main>
 		<section>
+			<form:form method="POST" action="/qveo/series"
+				modelAttribute="buscar">
+				<div class="row">
+					<div class="col l1"></div>
+					<div class="col s12 l3">
+						<label class="flow-text formato">A&ntilde;o</label>
+						<form:select multiple="true" path="anios">
+							<form:options items="${fechas}" />
+						</form:select>
+					</div>
 
+					<div class="col s12 l3">
+						<label class="flow-text formato""> Genero</label>
+						<form:select path="generos" multiple="true">
+							<form:options items="${generos}" itemValue="id"
+								itemLabel="nombre" />
+						</form:select>
+					</div>
+					<div class="col s12 l3">
+						<label class="flow-text formato">Plataformas</label>
+						<form:select path="plataformas" multiple="true">
+							<form:options items="${plataformas}" itemLabel="nombre"
+								itemValue="id" />
+						</form:select>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col s1 l1"></div>
+					<div class="col s11 l6">
+						<button class="btn waves-effect waves-light" type="submit"
+							name="action">
+							Buscar <i class="material-icons right">send</i>
+						</button>
+					</div>
+				</div>
+
+			</form:form>
 			<div class="container">
 				<div class="row">
-					<c:forEach items="${serieMostrar}" var="serie">
-						<a href="/qveo/serie/${serie.id}">
-							<div class="col s10 xl2 l2">
-								<img alt="${serie.titulo}"
-									src="${pageContext.request.contextPath}${serie.poster}"
-									width="100%" />
-							</div>
-						</a>
+					<c:choose>
+						<c:when test="${serieFiltradas == true}">
+							<c:forEach items="${buscar.series}" var="serie">
+								<a href="/qveo/serie/${serie.id}">
+									<div class="col s6 l2">
+										<img alt="${serie.titulo}"
+											src="${pageContext.request.contextPath}${serie.poster}"
+											class="responsive" />
+									</div>
+								</a>
 
-					</c:forEach>
+							</c:forEach>
+
+						</c:when>
+						<c:otherwise>
+							<c:forEach items="${serieMostrar}" var="serie">
+								<a href="/qveo/serie/${serie.id}">
+
+									<div class="col s6 l2">
+										<img alt="${serie.titulo}"
+											src="${pageContext.request.contextPath}${serie.poster}"
+											class="responsive" />
+									</div>
+								</a>
+
+							</c:forEach>
+						</c:otherwise>
+					</c:choose>
 
 				</div>
 			</div>

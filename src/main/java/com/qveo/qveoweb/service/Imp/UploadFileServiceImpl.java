@@ -125,7 +125,7 @@ public class UploadFileServiceImpl implements IUploadFileService {
 
 		switch (accion) {
 		case 1:
-			ruta = UPLOADS_FOLDER + "/serie";
+			ruta = UPLOADS_FOLDER + "/series";
 			break;
 
 		case 2:

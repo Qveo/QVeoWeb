@@ -20,7 +20,7 @@
 	href="${pageContext.request.contextPath}/resources/css/genero/genero.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/modal.css">
-	<link rel="icon" type="image/x-icon"
+<link rel="icon" type="image/x-icon"
 	href="${pageContext.request.contextPath}/resources/img/favicon.ico">
 </head>
 
@@ -29,7 +29,7 @@
 		<%@include file="/WEB-INF/views/layout/header.jsp"%>
 	</header>
 	<main>
-		<div class="container">
+		<div class="container" style="width: 60%">
 			<div class="row">
 				<div class="input-field col s12 m6 l6 boton">
 					<a href="/qveo/admin/genero/form"><i
@@ -40,20 +40,20 @@
 			</div>
 
 			<div class="row cabeceras">
-				<div class="col s3">Nombre Genero</div>
-				<div class="col s3">Opciones</div>
+				<div class="col s6 l6">Nombre Genero</div>
+				<div class="col s6 l6">Opciones</div>
 			</div>
 			<c:forEach items="${generos}" var="genero">
 				<div id="${genero.id}" class="row cuerpo">
-					<div class="col s3">${genero.nombre}</div>
-					<div id="${genero.id}" class="col s3">
+					<div class="col s6 l6">${genero.nombre}</div>
+					<div class="col s6 l6">
 
 						<div class="col s12 m3 l4">
 							<a href="/qveo/admin/genero/edit/${genero.id}"
 								class="btn-floating btn-large"><i
 								class="material-icons editar">edit</i></a>
 						</div>
-						<div class="col s12 m6 l4">
+						<div class="col s6 m3 l4">
 							<a href="#modal2-genero-${genero.id}"
 								class="btn-floating btn-large red modal-trigger"><i
 								class="material-icons eliminar">delete</i></a>
@@ -89,5 +89,6 @@
 <script
 	src="${pageContext.request.contextPath}/resources/vendor/js/materialize.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/header.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/genero/genero.js"></script>
+<script
+	src="${pageContext.request.contextPath}/resources/js/genero/genero.js"></script>
 </html>

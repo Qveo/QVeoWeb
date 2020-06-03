@@ -21,7 +21,7 @@
 	href="${pageContext.request.contextPath}/resources/css/header.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/filtro/filtro.css">
-	<link rel="icon" type="image/x-icon"
+<link rel="icon" type="image/x-icon"
 	href="${pageContext.request.contextPath}/resources/img/favicon.ico">
 
 </head>
@@ -31,30 +31,26 @@
 	</header>
 
 	<main>
-
 		<section>
-			<div class="row"></div>
-			<div class="row"></div>
-			<div class="row"></div>
 			<form:form method="POST" action="/qveo/filtros"
 				modelAttribute="buscar">
 
 				<div class="row">
 					<div class="col s1"></div>
-					<div class="col s10 l3">
+					<div class="col s12 l4">
 						<ul>
 							<li><form:label path="accionFiltro" for="todos">
 									<form:radiobutton id="todos" path="accionFiltro" value="1"
 										checked="checked" />
-									<span class="flow-text">Todo</span>
+									<span id="formatoSpan">Todo</span>
 								</form:label></li>
 							<li><form:label path="accionFiltro" for="series">
 									<form:radiobutton id="series" path="accionFiltro" value="2" />
-									<span>Series</span>
+									<span id="formatoSpan">Series</span>
 								</form:label></li>
 							<li><form:label path="accionFiltro" for="pelis">
 									<form:radiobutton id="pelis" path="accionFiltro" value="3" />
-									<span>Pelicula</span>
+									<span id="formatoSpan">Pelicula</span>
 								</form:label></li>
 						</ul>
 					</div>
@@ -62,32 +58,30 @@
 				</div>
 
 				<div class="row">
-					<div class="col l1"></div>			
-					<div class="col s11 l3">
-						<label class="flow-text">A&ntilde;o</label>
+					<div class="col l1"></div>
+					<div class="col s12 l3">
+						<label class="flow-text formato">A&ntilde;o</label>
 						<form:select multiple="true" path="anios">
 							<form:option value="">Fechas</form:option>
-							<form:options items="${fechas}"/>
+							<form:options items="${fechas}" />
 						</form:select>
 					</div>
-					
-					<div class="col s11 l3">
-						<label class="flow-text"> Genero</label>
+
+					<div class="col s12 l3">
+						<label class="flow-text formato""> Genero</label>
 						<form:select path="generos" multiple="true">
 							<form:option value="">Genero</form:option>
 							<form:options items="${generos}" itemValue="id"
 								itemLabel="nombre" />
 						</form:select>
 					</div>
-					
-					<div class="col s11 l3">
-						<label class="flow-text">Plataformas</label>
+					<div class="col s12 l3">
+						<label class="flow-text formato">Plataformas</label>
 						<form:select path="plataformas" multiple="true">
 							<form:options items="${plataformas}" itemLabel="nombre"
-								itemValue="id"/>
+								itemValue="id" />
 						</form:select>
 					</div>
-
 				</div>
 				<div class="row">
 					<div class="col s1 l1"></div>
@@ -107,10 +101,10 @@
 				<div class="row">
 					<c:forEach items="${serieMostrar}" var="serie">
 						<a href="/qveo/serie/${serie.id}">
-							<div class="col s10 xl2 l2">
+							<div class="col s6 l2">
 								<img alt="${serie.titulo}"
 									src="${pageContext.request.contextPath}${serie.poster}"
-									width="100%" />
+									class="responsive" />
 							</div>
 						</a>
 
@@ -119,10 +113,10 @@
 
 					<c:forEach items="${peliculas}" var="peli">
 						<a href="/qveo/peliculas/${peli.id}">
-							<div class="col s10 xl2 l2">
+							<div class="col s6 l2">
 								<img alt="${peli.titulo}"
 									src="${pageContext.request.contextPath}${peli.poster}"
-									width="100%">
+									class="responsive">
 							</div>
 						</a>
 					</c:forEach>

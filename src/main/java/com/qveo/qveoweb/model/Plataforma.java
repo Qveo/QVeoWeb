@@ -84,4 +84,5 @@ public class Plataforma {
 	public void setUsuarios(Collection<Usuario> usuarios) {
 		this.usuarios = usuarios;
 	}	
+	
 }

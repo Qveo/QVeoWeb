@@ -66,14 +66,19 @@
 										placeholder="Suba aqui su foto">
 								</div>
 							</div>
+							<div class="file-path-wrapper">
+								<input class="file-path validate" type="text"
+									placeholder="Suba aqui su foto">
+							</div>
 						</div>
-
-
 					</div>
 
 
 				</div>
-				<div class="col s2"></div>
+
+
+			</div>
+			<div class="col s2"></div>
 			</div>
 
 			<c:choose>
