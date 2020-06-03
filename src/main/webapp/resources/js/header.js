@@ -28,10 +28,11 @@ $(document).ready(function() {
 	}
 
 	function addIdForRedirect() {
-		let mylist = document.getElementById('mylist');
-		let cutPosition = mylist.href.lastIndexOf('/');
-		let cutHref = mylist.href.substring(0,cutPosition);
-		mylist.href = `${cutHref}/${userLogin.id}`;
+		let mylist = document.querySelectorAll('.mylist');
+		let cutPosition = mylist[0].href.lastIndexOf('/');
+		let cutHref = mylist[0].href.substring(0,cutPosition);
+		for(let i=0; i<mylist.length; i++){
+			mylist[i].href = `${cutHref}/${userLogin.id}`;			
+		}
 	}
-
 });

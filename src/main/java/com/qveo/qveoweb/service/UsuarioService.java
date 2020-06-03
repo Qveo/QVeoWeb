@@ -17,7 +17,7 @@ import com.qveo.qveoweb.model.Usuario;
 public interface UsuarioService {
 
 	public List<Usuario> findAllUsuarios();
-    public void saveUser(Usuario usuario, MultipartFile foto) throws IOException;
+    public Usuario saveUser(Usuario usuario, MultipartFile foto) throws IOException;
     public Usuario getUsuario(Integer id);
     public void deleteUser(Integer id);
     public List<Usuario> findUsuarioPorNombre(String nombre);

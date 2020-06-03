@@ -17,7 +17,7 @@
 			<div class="row">
 				<div class="col s12 m6 l6">
 					<a class="waves-effect btn boton-ver boton-anchura z-depth-2"
-						href="${pageContext.request.contextPath}/serie/${pelicula.id}">Ver
+						href="${pageContext.request.contextPath}/peliculas/${pelicula.id}">Ver
 						información</a>
 				</div>
 				<div class="col s12 m6 l6">

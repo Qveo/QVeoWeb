@@ -26,7 +26,7 @@
 	<header>
 		<%@include file="/WEB-INF/views/layout/header.jsp"%>
 	</header>
-	<main>
+	<main class="animated fadeIn fast">
 		<c:forEach items="${plataformas}" var="plataforma">
 			<div class="row">
 				<div class="col s12">

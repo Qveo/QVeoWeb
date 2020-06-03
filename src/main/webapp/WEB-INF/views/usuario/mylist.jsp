@@ -29,7 +29,7 @@
 		<%@include file="/WEB-INF/views/layout/header.jsp"%>
 	</header>
 	<main>
-		<div class="container">
+		<div class="container animated fadeIn">
 			<div class="row">
 				<c:forEach items="${series}" var="serie">
 					<%@include file="/WEB-INF/views/layout/usuario/cardsMyListSerie.jsp"%>
