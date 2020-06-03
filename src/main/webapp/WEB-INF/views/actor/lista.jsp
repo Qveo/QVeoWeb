@@ -43,19 +43,14 @@
 
 			<div class="row cabeceras">
 				<div class="col s3 l3"></div>
-				<div class="col s3 l3">Foto</div>
-				<div class="col s3 l3">Nombre</div>
+				<div class="col s6 l6">Nombre</div>
 				<div class="col s3 l3">Opciones</div>
 
 			</div>
 			<c:forEach items="${actores}" var="actor">
 				<div id="${actor.id}" class="row cuerpo">
 					<div class="col s3 l3"></div>
-					<div class="col s3 l3">
-						<img src="${pageContext.request.contextPath}${actor.foto}"
-							alt="${actor.nombre}" class="fotoLista">
-					</div>
-					<div class="col s3 l3">${actor.nombre}</div>
+					<div class="col s6 l6">${actor.nombre}</div>
 					<div id="${actor.id}" class="col s3 l3">
 
 						<div class="col s12 m3 l4">
@@ -81,7 +76,7 @@
 					<div class="modal-footer">
 						<a href="#!" class="waves-effect waves-green btn-flat modal-close">Cancelar</a>
 						<a href="/qveo/admin/actor/delete/${actor.id}"
-							class="waves-effect waves-green btn-flat modal-close eliminar-usuario">Aceptar</a>
+							class="waves-effect waves-green btn-flat modal-close">Aceptar</a>
 					</div>
 				</div>
 
