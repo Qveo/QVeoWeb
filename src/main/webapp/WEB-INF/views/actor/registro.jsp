@@ -17,13 +17,13 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">
 <link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+	href="${pageContext.request.contextPath}/resources/css/materialize.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/general.css">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/icon.css">
-<link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/header.css">
+	<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/footer.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/actor/registro.css">
 <link rel="icon" type="image/x-icon"

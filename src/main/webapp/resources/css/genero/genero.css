@@ -17,6 +17,10 @@
 main{
 	height:79.3%;
 }
+
+.container{
+	padding-bottom: 40px;
+}
 .cuerpo:hover{
 	background-color: #ddd;
 }
@@ -33,19 +37,64 @@ main{
 	margin: 0 !important;
 }
 
-
 .input-field>label {
 	color: white;
 	font-size: 1vw;
 	font-weight: bold;
 }
 
+.formato {
+	color: white;
+	font-size: 1vw;
+}
+
+.especial {
+	color: white;
+	font-size: 1vw;
+}
+
+.boton-Foto {
+	width: 40%;
+}
+
+.fotoLista {
+	width: 50%;
+}
 
 @media only screen and (max-width: 768px) {
-		
+	/* For mobile phones: */
 	.input-field>label {
 		color: white;
 		font-size: 4vw;
-		font-weight: normal;
+	}
+	.formato {
+		color: white;
+		font-size: 4vw;
+	}
+	.especial {
+		color: white;
+		font-size: 4vw;
+	}
+	.fotoLista {
+		width: 100%;
+	}
+}
+
+@media only screen and (max-width: 992px) {
+	/* For mobile phones: */
+	.input-field>label {
+		color: white;
+		font-size: 2vw;
+	}
+	.formato {
+		color: white;
+		font-size: 2vw;
+	}
+	.especial {
+		color: white;
+		font-size: 2vw;
+	}
+	.fotoLista {
+		width: 100%;
 	}
 }

@@ -15,13 +15,9 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/usuario/lista.css">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/icon.css">
-<link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/footer.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/header.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/modal.css">
 	<link rel="icon" type="image/x-icon"
 	href="${pageContext.request.contextPath}/resources/img/favicon.ico">
 <title>${titulo}</title>

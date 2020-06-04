@@ -60,14 +60,18 @@
 					</label>
 					<h5>Sinopsis</h5>
 					<label>${peliculas.sinopsis}</label>
-					<div class="col s10 l9 offset-l1 offset-s1">
-						<a href="#"><i class="waves-effect blue btn ">Agregar
-								Pelicula</i></a>
+					<security:authorize access="hasRole('USER')">
+						<div class="col s12 l9 offset-l1 offset-s1">
+							<a id="btn-movie"
+								class="waves-effect btn-large add-serie boton-agregar z-depth-2 btn-oculto">Agregar
+								a mi lista</a>
+							<p id="id-movie" style="display: none">${peliculas.id}</p>
+						</div>
+					</security:authorize>
 				</div>
+
+
 			</div>
-
-
-		</div>
 	</section>
 	<section>
 		<div class="row">
@@ -113,9 +117,11 @@
 			<div class="col s10 l8 offset-l2 scrollmenu">
 				<h5>Plataformas</h5>
 				<ul>
-					<c:forEach items="${peliculas.peliculaPlataformas}" var="plataforma">
+					<c:forEach items="${peliculas.peliculaPlataformas}"
+						var="plataforma">
 						<li><div class="reparto">
-								<img src="${pageContext.request.contextPath}${plataforma.plataforma.foto}"
+								<img
+									src="${pageContext.request.contextPath}${plataforma.plataforma.foto}"
 									alt="${plataforma.plataforma.nombre}" class="imagenes">
 								<div id="plataforma">${plataforma.plataforma.nombre}</div>
 							</div></li>

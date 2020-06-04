@@ -18,6 +18,8 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/header.css">
 <link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/footer.css">
+<link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/actor/actor.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/modal.css">
@@ -38,22 +40,21 @@
 						class="waves-effect waves-light btn agregar-usuario">Nuevo
 							Actor</i></a>
 				</div>
-
 			</div>
 
 			<div class="row cabeceras">
-				<div class="col s3 l3"></div>
+				<div class="col s1 l3"></div>
 				<div class="col s6 l6">Nombre</div>
-				<div class="col s3 l3">Opciones</div>
+				<div class="col s5 l3">Opciones</div>
 
 			</div>
 			<c:forEach items="${actores}" var="actor">
 				<div id="${actor.id}" class="row cuerpo">
-					<div class="col s3 l3"></div>
+					<div class="col s1 l3"></div>
 					<div class="col s6 l6">${actor.nombre}</div>
 					<div id="${actor.id}" class="col s3 l3">
 
-						<div class="col s12 m3 l4">
+						<div class="col s12 m6 l4">
 							<a href="/qveo/admin/actor/edit/${actor.id}"
 								class="btn-floating btn-large"><i
 								class="material-icons editar">edit</i></a>
@@ -79,8 +80,8 @@
 							class="waves-effect waves-green btn-flat modal-close">Aceptar</a>
 					</div>
 				</div>
-
 			</c:forEach>
+
 
 		</div>
 
