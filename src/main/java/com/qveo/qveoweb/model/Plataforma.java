@@ -3,6 +3,8 @@ package com.qveo.qveoweb.model;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;

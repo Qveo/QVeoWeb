@@ -11,7 +11,7 @@
 				href="${pageContext.request.contextPath}/home" class="title-qveo"><img class="nav-logo" src="${pageContext.request.contextPath}/resources/img/logo-line.png" /></a>
 			<ul class="right hide-on-med-and-down">
 				<li><a href="${pageContext.request.contextPath}/">Inicio</a></li>
-				<li><a href="/qveo/filtro">B&uacutesqueda</a></li>
+				<li><a href="/qveo/filtro">Cat&aacutelogo</a></li>
 				<li><a href="/qveo/peliculas">Pel&iacuteculas</a></li>
 				<li><a href="/qveo/serie">Series</a></li>
 				<li><a href="#">M&aacutes Recientes</a></li>
@@ -36,7 +36,7 @@
 				<li>
 					<div id="buscar-nombre" class="input-field mostrar-ocultar">
 						<input type="text" id="autocomplete-input" class="autocomplete"
-							placeholder="B&uacutesqueda..."> <a
+							placeholder="Buscar..."> <a
 							class="waves-effect waves-light btn clear" id="clear"><i
 							class="material-icons">clear</i></a>
 					</div>
@@ -57,7 +57,9 @@
 	<li><a href="/qveo/serie" class="font-color-sidenav">Series</a></li>
 	<li><a href="/qveo/peliculas" class="font-color-sidenav">Pel&iacuteculas</a></li>
 	<li><a href="#" class="font-color-sidenav">M&aacutes Recientes</a></li>
-	<li><a href="#" class="font-color-sidenav">Mi lista</a></li>
+	<security:authorize access="hasRole('USER')">
+	<li><a id="" href="${pageContext.request.contextPath}/usuario/mylist/" class="font-color-sidenav mylist">Mi lista</a></li>
+	</security:authorize>
 	<li><div class="divider"></div></li>
 	<sec:authorize access="isAnonymous()">
 		<li><a id="login" href="<c:url value="/login" />">Sign in</a></li>
@@ -81,7 +83,7 @@
 		<li>Logueado como: <security:authentication
 			property="principal.username" /></li>
 	</security:authorize>
-	<li><a href="#">Mi lista</a></li>
+	<li><a class="mylist" href="${pageContext.request.contextPath}/usuario/mylist/">Mi lista</a></li>
 	<li><a href="<c:url value="/mi-configuracion" />">Editar Datos</a></li>
 	<li><a href="<c:url value="/logout" />">Logout</a></li>
 	</ul>

@@ -80,17 +80,28 @@ public class UsuarioController {
 	}
 
 	@RequestMapping(value = "/admin/usuario/edit/{id}", method = RequestMethod.GET)
-	public String editUsuario(Model modelo, @PathVariable("id") Integer id, Model model) {
+	public String editUsuario(@PathVariable("id") Integer id, Model model) {
 
 		Usuario usuario = usuarioService.getUsuario(id);
 		model.addAttribute("paises", paisService.getAllPais());
 		model.addAttribute("plataformas", plataformaService.getAllPlataformas());
 
-		modelo.addAttribute("nuevoUsuario", usuario);
-		modelo.addAttribute("edit", true);
+		model.addAttribute("nuevoUsuario", usuario);
+		model.addAttribute("edit", true);
 		model.addAttribute("titulo", "Editar Usuario");
 		
 		return "usuario/registro";
+	}
+	
+	@RequestMapping(value = "/usuario/mylist/{id}", method = RequestMethod.GET)
+	public String mylist(@PathVariable("id") Integer id, Model model) {
+
+		Usuario usuario = usuarioService.getUsuario(id);
+		model.addAttribute("series", usuario.getSeries());
+		model.addAttribute("peliculas", usuario.getPeliculas());
+		model.addAttribute("titulo", "Mi lista");
+		
+		return "usuario/mylist";
 	}
 
 }

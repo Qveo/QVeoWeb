@@ -38,6 +38,28 @@ textarea {
 	height: 85px;
 }
 
+.boton-agregar{
+	background: #00adb5;
+}
+
+.boton-agregar:hover{
+opacity: 0.9 !important;
+	color: #eeeeee !important;
+}
+
+.boton-eliminar{
+	background: #d92027;
+}
+
+.boton-eliminar:hover{
+	opacity: 0.9 !important;
+	color: #eeeeee !important;
+}
+
+.btn-oculto{
+	display:none;
+}
+
 @media only screen and (max-width: 768px) {
 	/* For mobile phones: */
 	.chips .chip {

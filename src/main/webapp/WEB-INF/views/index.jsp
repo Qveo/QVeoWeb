@@ -26,7 +26,7 @@
 	<header>
 		<%@include file="/WEB-INF/views/layout/header.jsp"%>
 	</header>
-	<main>
+	<main class="animated fadeIn fast">
 		<c:forEach items="${plataformas}" var="plataforma">
 			<div class="row">
 				<div class="col s12">
@@ -35,7 +35,6 @@
 					</h3>
 				</div>
 			</div>
-
 			<div>
 				<div class="col s12">
 					<div
@@ -43,7 +42,7 @@
 						<c:forEach items="${plataforma.peliculaPlataformas}"
 							var="peliculaPlataformas">
 							<div class="carousel-item">
-								<a class="waves-effect waves-light modal-trigger"
+								<a class="waves-effect waves-light modal-trigger mod-movie"
 									href="#modal-pelicula${plataforma.id}-${peliculaPlataformas.pelicula.id}">
 									<img
 									src="${pageContext.request.contextPath}${peliculaPlataformas.pelicula.poster}" />
@@ -53,7 +52,7 @@
 
 						<c:forEach items="${plataforma.series}" var="serie">
 							<div class="carousel-item">
-								<a class="waves-effect waves-light modal-trigger"
+								<a class="waves-effect waves-light modal-trigger mod-serie"
 									href="#modal-serie${plataforma.id}-${serie.id}"> <img
 									src="${pageContext.request.contextPath}${serie.poster}">
 								</a>
@@ -74,7 +73,6 @@
 	<footer>
 		<%@include file="/WEB-INF/views/layout/footer.jsp"%>
 	</footer>
-
 	<c:forEach items="${plataformas}" var="plataforma">
 		<%@include file="/WEB-INF/views/layout/modalDetalleSerie.jsp"%>
 		<%@include file="/WEB-INF/views/layout/modalDetallePelicula.jsp"%>
@@ -86,4 +84,6 @@
 	src="${pageContext.request.contextPath}/resources/vendor/js/materialize.js"></script>
 <script
 	src="${pageContext.request.contextPath}/resources/js/carousel.js"></script>
+<script
+	src="${pageContext.request.contextPath}/resources/js/usuario/add-to-list.js"></script>
 </html>
