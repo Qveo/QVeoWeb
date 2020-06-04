@@ -5,7 +5,6 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-
 <title>${titulo}</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -32,10 +31,12 @@
 		<div class="container animated fadeIn">
 			<div class="row">
 				<c:forEach items="${series}" var="serie">
-					<%@include file="/WEB-INF/views/layout/usuario/cardsMyListSerie.jsp"%>
+					<%@include
+						file="/WEB-INF/views/layout/usuario/cardsMyListSerie.jsp"%>
 				</c:forEach>
 				<c:forEach items="${peliculas}" var="pelicula">
-					<%@include file="/WEB-INF/views/layout/usuario/cardsMyListPelicula.jsp"%>
+					<%@include
+						file="/WEB-INF/views/layout/usuario/cardsMyListPelicula.jsp"%>
 				</c:forEach>
 			</div>
 		</div>
@@ -47,6 +48,7 @@
 		src="${pageContext.request.contextPath}/resources/vendor/js/jquery-3.4.1.min.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/resources/vendor/js/materialize.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/usuario/mylist.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/js/usuario/mylist.js"></script>
 </body>
 </html>
