@@ -12,11 +12,12 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/general.css">
-
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/pelicula/pelicula.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/header.css">
+	<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/pelicula/pelicula-btn.css">
 <link rel="icon" type="image/x-icon"
 	href="${pageContext.request.contextPath}/resources/img/favicon.ico">
 </head>
@@ -132,3 +133,6 @@
 	</section>
 
 </main>
+
+<script
+		src="${pageContext.request.contextPath}/resources/js/pelicula/pelicula-btn.js"></script>

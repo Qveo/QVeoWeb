@@ -1,10 +1,8 @@
 -- MySQL dump 10.13  Distrib 8.0.18, for Win64 (x86_64)
 --
--- Host: localhost    Database: qveo2
+-- Host: localhost    Database: qveo
 -- ------------------------------------------------------
 -- Server version	8.0.18
-
-USE qveo;
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -17,10 +15,13 @@ USE qveo;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
+USE qveo;
+
 --
 -- Dumping data for table `actor`
 --
 
+LOCK TABLES `actor` WRITE;
 /*!40000 ALTER TABLE `actor` DISABLE KEYS */;
 INSERT INTO `actor` (`ID`, `NOMBRE`, `SEXO`, `FOTO`, `ID_PAIS`) VALUES (1,'Ben Stiller','H','/resources/img/actores/ben_stiller.jpg',1);
 INSERT INTO `actor` (`ID`, `NOMBRE`, `SEXO`, `FOTO`, `ID_PAIS`) VALUES (2,'Chris Rock','H','/resources/img/actores/chris_rock.jpg',1);
@@ -214,11 +215,13 @@ INSERT INTO `actor` (`ID`, `NOMBRE`, `SEXO`, `FOTO`, `ID_PAIS`) VALUES (190,'Tay
 INSERT INTO `actor` (`ID`, `NOMBRE`, `SEXO`, `FOTO`, `ID_PAIS`) VALUES (191,'Monica Raymund','M','/resources/img/actores/monica_raymund.jpg',1);
 INSERT INTO `actor` (`ID`, `NOMBRE`, `SEXO`, `FOTO`, `ID_PAIS`) VALUES (192,'Charlie Barnett','M','/resources/img/actores/charlie_barnett.jpg',1);
 /*!40000 ALTER TABLE `actor` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Dumping data for table `actor_pelicula`
 --
 
+LOCK TABLES `actor_pelicula` WRITE;
 /*!40000 ALTER TABLE `actor_pelicula` DISABLE KEYS */;
 INSERT INTO `actor_pelicula` (`ID_ACTOR`, `ID_PELICULA`) VALUES (14,2);
 INSERT INTO `actor_pelicula` (`ID_ACTOR`, `ID_PELICULA`) VALUES (15,2);
@@ -303,8 +306,6 @@ INSERT INTO `actor_pelicula` (`ID_ACTOR`, `ID_PELICULA`) VALUES (10,1);
 INSERT INTO `actor_pelicula` (`ID_ACTOR`, `ID_PELICULA`) VALUES (11,1);
 INSERT INTO `actor_pelicula` (`ID_ACTOR`, `ID_PELICULA`) VALUES (12,1);
 INSERT INTO `actor_pelicula` (`ID_ACTOR`, `ID_PELICULA`) VALUES (13,1);
-INSERT INTO `actor_pelicula` (`ID_ACTOR`, `ID_PELICULA`) VALUES (16,14);
-INSERT INTO `actor_pelicula` (`ID_ACTOR`, `ID_PELICULA`) VALUES (121,14);
 INSERT INTO `actor_pelicula` (`ID_ACTOR`, `ID_PELICULA`) VALUES (141,15);
 INSERT INTO `actor_pelicula` (`ID_ACTOR`, `ID_PELICULA`) VALUES (142,15);
 INSERT INTO `actor_pelicula` (`ID_ACTOR`, `ID_PELICULA`) VALUES (143,15);
@@ -337,11 +338,13 @@ INSERT INTO `actor_pelicula` (`ID_ACTOR`, `ID_PELICULA`) VALUES (157,21);
 INSERT INTO `actor_pelicula` (`ID_ACTOR`, `ID_PELICULA`) VALUES (167,23);
 INSERT INTO `actor_pelicula` (`ID_ACTOR`, `ID_PELICULA`) VALUES (168,23);
 /*!40000 ALTER TABLE `actor_pelicula` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Dumping data for table `actor_serie`
 --
 
+LOCK TABLES `actor_serie` WRITE;
 /*!40000 ALTER TABLE `actor_serie` DISABLE KEYS */;
 INSERT INTO `actor_serie` (`ID_ACTOR`, `ID_SERIE`) VALUES (83,1);
 INSERT INTO `actor_serie` (`ID_ACTOR`, `ID_SERIE`) VALUES (84,1);
@@ -390,7 +393,6 @@ INSERT INTO `actor_serie` (`ID_ACTOR`, `ID_SERIE`) VALUES (123,11);
 INSERT INTO `actor_serie` (`ID_ACTOR`, `ID_SERIE`) VALUES (124,11);
 INSERT INTO `actor_serie` (`ID_ACTOR`, `ID_SERIE`) VALUES (125,11);
 INSERT INTO `actor_serie` (`ID_ACTOR`, `ID_SERIE`) VALUES (126,11);
-INSERT INTO `actor_serie` (`ID_ACTOR`, `ID_SERIE`) VALUES (6,12);
 INSERT INTO `actor_serie` (`ID_ACTOR`, `ID_SERIE`) VALUES (127,14);
 INSERT INTO `actor_serie` (`ID_ACTOR`, `ID_SERIE`) VALUES (132,14);
 INSERT INTO `actor_serie` (`ID_ACTOR`, `ID_SERIE`) VALUES (133,14);
@@ -429,11 +431,13 @@ INSERT INTO `actor_serie` (`ID_ACTOR`, `ID_SERIE`) VALUES (190,21);
 INSERT INTO `actor_serie` (`ID_ACTOR`, `ID_SERIE`) VALUES (191,21);
 INSERT INTO `actor_serie` (`ID_ACTOR`, `ID_SERIE`) VALUES (192,21);
 /*!40000 ALTER TABLE `actor_serie` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Dumping data for table `director`
 --
 
+LOCK TABLES `director` WRITE;
 /*!40000 ALTER TABLE `director` DISABLE KEYS */;
 INSERT INTO `director` (`ID`, `NOMBRE`, `FOTO`) VALUES (1,'Eric Darnell','/resources/img/directores/eric_darnell.jpg');
 INSERT INTO `director` (`ID`, `NOMBRE`, `FOTO`) VALUES (2,'Tom McGrath','/resources/img/directores/tom_mcgrath.jpg');
@@ -481,11 +485,13 @@ INSERT INTO `director` (`ID`, `NOMBRE`, `FOTO`) VALUES (43,'Sam Esmail','/resour
 INSERT INTO `director` (`ID`, `NOMBRE`, `FOTO`) VALUES (44,'Frank Darabont','/resources/img/directores/frank_darabont.jpg');
 INSERT INTO `director` (`ID`, `NOMBRE`, `FOTO`) VALUES (45,'Michael Brandt','/resources/img/directores/michael_brandt.jpg');
 /*!40000 ALTER TABLE `director` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Dumping data for table `director_serie`
 --
 
+LOCK TABLES `director_serie` WRITE;
 /*!40000 ALTER TABLE `director_serie` DISABLE KEYS */;
 INSERT INTO `director_serie` (`ID_SERIE`, `ID_DIRECTOR`) VALUES (1,18);
 INSERT INTO `director_serie` (`ID_SERIE`, `ID_DIRECTOR`) VALUES (2,19);
@@ -498,7 +504,6 @@ INSERT INTO `director_serie` (`ID_SERIE`, `ID_DIRECTOR`) VALUES (8,25);
 INSERT INTO `director_serie` (`ID_SERIE`, `ID_DIRECTOR`) VALUES (9,26);
 INSERT INTO `director_serie` (`ID_SERIE`, `ID_DIRECTOR`) VALUES (10,27);
 INSERT INTO `director_serie` (`ID_SERIE`, `ID_DIRECTOR`) VALUES (11,28);
-INSERT INTO `director_serie` (`ID_SERIE`, `ID_DIRECTOR`) VALUES (12,4);
 INSERT INTO `director_serie` (`ID_SERIE`, `ID_DIRECTOR`) VALUES (13,29);
 INSERT INTO `director_serie` (`ID_SERIE`, `ID_DIRECTOR`) VALUES (14,30);
 INSERT INTO `director_serie` (`ID_SERIE`, `ID_DIRECTOR`) VALUES (15,31);
@@ -509,11 +514,13 @@ INSERT INTO `director_serie` (`ID_SERIE`, `ID_DIRECTOR`) VALUES (19,43);
 INSERT INTO `director_serie` (`ID_SERIE`, `ID_DIRECTOR`) VALUES (20,44);
 INSERT INTO `director_serie` (`ID_SERIE`, `ID_DIRECTOR`) VALUES (21,45);
 /*!40000 ALTER TABLE `director_serie` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Dumping data for table `genero`
 --
 
+LOCK TABLES `genero` WRITE;
 /*!40000 ALTER TABLE `genero` DISABLE KEYS */;
 INSERT INTO `genero` (`ID`, `NOMBRE`) VALUES (1,'Animación');
 INSERT INTO `genero` (`ID`, `NOMBRE`) VALUES (2,'Comedia');
@@ -534,11 +541,13 @@ INSERT INTO `genero` (`ID`, `NOMBRE`) VALUES (16,'Terror');
 INSERT INTO `genero` (`ID`, `NOMBRE`) VALUES (17,'Histórico');
 INSERT INTO `genero` (`ID`, `NOMBRE`) VALUES (18,'Romance');
 /*!40000 ALTER TABLE `genero` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Dumping data for table `genero_pelicula`
 --
 
+LOCK TABLES `genero_pelicula` WRITE;
 /*!40000 ALTER TABLE `genero_pelicula` DISABLE KEYS */;
 INSERT INTO `genero_pelicula` (`ID_GENERO`, `ID_PELICULA`) VALUES (1,2);
 INSERT INTO `genero_pelicula` (`ID_GENERO`, `ID_PELICULA`) VALUES (3,2);
@@ -592,8 +601,6 @@ INSERT INTO `genero_pelicula` (`ID_GENERO`, `ID_PELICULA`) VALUES (15,1);
 INSERT INTO `genero_pelicula` (`ID_GENERO`, `ID_PELICULA`) VALUES (16,1);
 INSERT INTO `genero_pelicula` (`ID_GENERO`, `ID_PELICULA`) VALUES (17,1);
 INSERT INTO `genero_pelicula` (`ID_GENERO`, `ID_PELICULA`) VALUES (18,1);
-INSERT INTO `genero_pelicula` (`ID_GENERO`, `ID_PELICULA`) VALUES (4,14);
-INSERT INTO `genero_pelicula` (`ID_GENERO`, `ID_PELICULA`) VALUES (5,14);
 INSERT INTO `genero_pelicula` (`ID_GENERO`, `ID_PELICULA`) VALUES (8,15);
 INSERT INTO `genero_pelicula` (`ID_GENERO`, `ID_PELICULA`) VALUES (13,15);
 INSERT INTO `genero_pelicula` (`ID_GENERO`, `ID_PELICULA`) VALUES (18,15);
@@ -628,11 +635,13 @@ INSERT INTO `genero_pelicula` (`ID_GENERO`, `ID_PELICULA`) VALUES (6,23);
 INSERT INTO `genero_pelicula` (`ID_GENERO`, `ID_PELICULA`) VALUES (12,23);
 INSERT INTO `genero_pelicula` (`ID_GENERO`, `ID_PELICULA`) VALUES (8,23);
 /*!40000 ALTER TABLE `genero_pelicula` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Dumping data for table `genero_serie`
 --
 
+LOCK TABLES `genero_serie` WRITE;
 /*!40000 ALTER TABLE `genero_serie` DISABLE KEYS */;
 INSERT INTO `genero_serie` (`ID_GENERO`, `ID_SERIE`) VALUES (5,1);
 INSERT INTO `genero_serie` (`ID_GENERO`, `ID_SERIE`) VALUES (6,1);
@@ -676,8 +685,6 @@ INSERT INTO `genero_serie` (`ID_GENERO`, `ID_SERIE`) VALUES (10,11);
 INSERT INTO `genero_serie` (`ID_GENERO`, `ID_SERIE`) VALUES (11,11);
 INSERT INTO `genero_serie` (`ID_GENERO`, `ID_SERIE`) VALUES (12,11);
 INSERT INTO `genero_serie` (`ID_GENERO`, `ID_SERIE`) VALUES (13,11);
-INSERT INTO `genero_serie` (`ID_GENERO`, `ID_SERIE`) VALUES (1,12);
-INSERT INTO `genero_serie` (`ID_GENERO`, `ID_SERIE`) VALUES (2,12);
 INSERT INTO `genero_serie` (`ID_GENERO`, `ID_SERIE`) VALUES (2,15);
 INSERT INTO `genero_serie` (`ID_GENERO`, `ID_SERIE`) VALUES (18,15);
 INSERT INTO `genero_serie` (`ID_GENERO`, `ID_SERIE`) VALUES (13,15);
@@ -709,11 +716,13 @@ INSERT INTO `genero_serie` (`ID_GENERO`, `ID_SERIE`) VALUES (6,21);
 INSERT INTO `genero_serie` (`ID_GENERO`, `ID_SERIE`) VALUES (5,21);
 INSERT INTO `genero_serie` (`ID_GENERO`, `ID_SERIE`) VALUES (13,21);
 /*!40000 ALTER TABLE `genero_serie` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Dumping data for table `pais`
 --
 
+LOCK TABLES `pais` WRITE;
 /*!40000 ALTER TABLE `pais` DISABLE KEYS */;
 INSERT INTO `pais` (`ID`, `NOMBRE`) VALUES (1,'EE.UU');
 INSERT INTO `pais` (`ID`, `NOMBRE`) VALUES (2,'Reino Unido');
@@ -735,15 +744,17 @@ INSERT INTO `pais` (`ID`, `NOMBRE`) VALUES (17,'Corea del Sur');
 INSERT INTO `pais` (`ID`, `NOMBRE`) VALUES (18,'Chile');
 INSERT INTO `pais` (`ID`, `NOMBRE`) VALUES (19,'Irán');
 /*!40000 ALTER TABLE `pais` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Dumping data for table `pelicula`
 --
 
+LOCK TABLES `pelicula` WRITE;
 /*!40000 ALTER TABLE `pelicula` DISABLE KEYS */;
-INSERT INTO `pelicula` (`ID`, `TITULO`, `DURACION`, `GUION`, `POSTER`, `SINOPSIS`, `ANIO`, `ID_PAIS`) VALUES (1,'Madagascar','01:26:00','Mark Burton','/resources/img/peliculas/defaultFoto.png','Cuatro animales muy mimados del zoo de Nueva York naufragan en la isla de Madagascar y deben aprender a sobrevivir en un mundo salvaje.','2005-07-13',2);
+INSERT INTO `pelicula` (`ID`, `TITULO`, `DURACION`, `GUION`, `POSTER`, `SINOPSIS`, `ANIO`, `ID_PAIS`) VALUES (1,'Madagascar','01:26:00','Mark Burton','/resources/img/peliculas/madagascar.png','Cuatro animales muy mimados del zoo de Nueva York naufragan en la isla de Madagascar y deben aprender a sobrevivir en un mundo salvaje.','2005-07-13',2);
 INSERT INTO `pelicula` (`ID`, `TITULO`, `DURACION`, `GUION`, `POSTER`, `SINOPSIS`, `ANIO`, `ID_PAIS`) VALUES (2,'Cómo entrenar a tu dragón ','01:38:00','Dean DeBlois','/resources/img/peliculas/como_entrenar_a_tu_dragon.png','Hipo, un vikingo adolescente, comienza las clases de entrenamiento con dragones y ve por fin una oportunidad para demostrar que es capaz de convertirse en guerrero cuando hace amistad con un dragón herido.','2010-03-26',1);
-INSERT INTO `pelicula` (`ID`, `TITULO`, `DURACION`, `GUION`, `POSTER`, `SINOPSIS`, `ANIO`, `ID_PAIS`) VALUES (3,'Guerra mundial Z ','01:55:00','Damon Lindelof','/resources/img/peliculas/madagascar.png','Cuando una pandemia de zombis amenaza con destruir a la humanidad, un exinvestigador de Naciones Unidas es obligado a regresar al servicio para intentar descubrir la fuente de la infección.','2013-06-21',1);
+INSERT INTO `pelicula` (`ID`, `TITULO`, `DURACION`, `GUION`, `POSTER`, `SINOPSIS`, `ANIO`, `ID_PAIS`) VALUES (3,'Guerra mundial Z ','01:55:00','Damon Lindelof','/resources/img/peliculas/guerra_mundial_z.png','Cuando una pandemia de zombis amenaza con destruir a la humanidad, un exinvestigador de Naciones Unidas es obligado a regresar al servicio para intentar descubrir la fuente de la infección.','2013-06-21',1);
 INSERT INTO `pelicula` (`ID`, `TITULO`, `DURACION`, `GUION`, `POSTER`, `SINOPSIS`, `ANIO`, `ID_PAIS`) VALUES (4,'Project X','01:28:00','Matt Drake','/resources/img/peliculas/project_x.png','Tres estudiantes de secundaria deciden organizar una fiesta salvaje en casa de uno de ellos.Sin embargo, una serie de complicaciones imprevistas harán que la fiesta se descontrole.','2012-03-02',1);
 INSERT INTO `pelicula` (`ID`, `TITULO`, `DURACION`, `GUION`, `POSTER`, `SINOPSIS`, `ANIO`, `ID_PAIS`) VALUES (5,'Deep Blue Sea','01:45:00','Duncan Kennedy','/resources/img/peliculas/deep_blue_sea.png','Una bióloga marina trata de encontrar la clave de la regeneración de los tejidos del cerebro humano que modifica el ADN de unos tiburones y los convierte en monstruos depredadores que pondrán en peligro a todo el equipo.','1999-07-28',1);
 INSERT INTO `pelicula` (`ID`, `TITULO`, `DURACION`, `GUION`, `POSTER`, `SINOPSIS`, `ANIO`, `ID_PAIS`) VALUES (6,'Godzilla (película de 2014)','02:03:00','Max Borenstein','/resources/img/peliculas/godzilla_2014.jpg','Godzilla, Rey de los Monstruos, surge para combatir a enemigos enormes y malos que se han estado alimentando con los reactores de una planta nuclear y ahora amenazan a la humanidad con aniquilarla.','2014-05-16',10);
@@ -754,7 +765,6 @@ INSERT INTO `pelicula` (`ID`, `TITULO`, `DURACION`, `GUION`, `POSTER`, `SINOPSIS
 INSERT INTO `pelicula` (`ID`, `TITULO`, `DURACION`, `GUION`, `POSTER`, `SINOPSIS`, `ANIO`, `ID_PAIS`) VALUES (11,'Spider-Man','02:02:00','David Koepp','/resources/img/peliculas/spider_man.jpg','Un tímido estudiante se vuelve en un luchador contra el crimen, desde que la picadura de una araña mutante le da poderes extraordinarios.','2002-06-24',1);
 INSERT INTO `pelicula` (`ID`, `TITULO`, `DURACION`, `GUION`, `POSTER`, `SINOPSIS`, `ANIO`, `ID_PAIS`) VALUES (12,'Election: La noche de las bestias','01:49:00','James DeMonaco','/resources/img/peliculas/la_purga_election_2016.jpg','Hace 18 años, Charlie Roan presenció el asesinato de su familia durante la noche de la Purga. En el presente, Charlie es candidata a la presidencia y quiere acabar con el régimen impuesto hace 20 años, que utiliza este día para eliminar a los más pobres y recortar el gasto público, pero antes deberá sobrevivir a doce horas de terror absoluto.','2016-07-01',1);
 INSERT INTO `pelicula` (`ID`, `TITULO`, `DURACION`, `GUION`, `POSTER`, `SINOPSIS`, `ANIO`, `ID_PAIS`) VALUES (13,'El hobbit: la desolación de Smaug','02:41:00','Fran Walsh','/resources/img/peliculas/el_hobbit_la_desolacion_de_smaug.jpg','Bilbo y sus compañeros continúan su viaje hacia el este y enfrentan muchos peligros de camino a la Montaña Solitaria. Su recorrido culmina con un encuentro con el temible dragón Smaug.','2013-12-13',1);
-INSERT INTO `pelicula` (`ID`, `TITULO`, `DURACION`, `GUION`, `POSTER`, `SINOPSIS`, `ANIO`, `ID_PAIS`) VALUES (14,'peliucla de alexz','00:30:00','dsadsa','/resources/img/peliculas/peliucla_de_alexz_14.jpg','dsadsadsa','2000-12-11',6);
 INSERT INTO `pelicula` (`ID`, `TITULO`, `DURACION`, `GUION`, `POSTER`, `SINOPSIS`, `ANIO`, `ID_PAIS`) VALUES (15,'Her','02:06:00','Spike Jonze','/resources/img/peliculas/her.jpg','En un futuro cercano, Theodore, un hombre solitario a punto de divorciarse que trabaja en una empresa como escritor de cartas para terceras personas, compra un día un nuevo sistema operativo basado en el modelo de Inteligencia Artificial, diseñado para satisfacer todas las necesidades del usuario. Para su sorpresa, se crea una relación romántica entre él y Samantha','2014-02-21',1);
 INSERT INTO `pelicula` (`ID`, `TITULO`, `DURACION`, `GUION`, `POSTER`, `SINOPSIS`, `ANIO`, `ID_PAIS`) VALUES (16,'El secreto de sus ojos','02:10:00','Eduardo Sacheri','/resources/img/peliculas/el_secreto_de_sus_ojos.jpg','Benjamín Espósito es oficial de un Juzgado de Instrucción de Buenos Aires recién retirado. Obsesionado por un brutal asesinato ocurrido veinticinco años antes, en 1974, decide escribir una novela sobre el caso, del cual fue testigo y protagonista. Reviviendo el pasado, viene también a su memoria el recuerdo de una mujer, a quien ha amado en silencio durante todos esos años.','2009-09-25',16);
 INSERT INTO `pelicula` (`ID`, `TITULO`, `DURACION`, `GUION`, `POSTER`, `SINOPSIS`, `ANIO`, `ID_PAIS`) VALUES (17,'Cinema Paradiso ','02:35:00','Giuseppe Tornatore','/resources/img/peliculas/cinema_paradiso.jpg','Cinema Paradiso es una historia de amor por el cine. Narra la historia de Salvatore, un niño de un pueblecito italiano en el que el único pasatiempo es ir al cine. ','1989-12-18',12);
@@ -765,11 +775,13 @@ INSERT INTO `pelicula` (`ID`, `TITULO`, `DURACION`, `GUION`, `POSTER`, `SINOPSIS
 INSERT INTO `pelicula` (`ID`, `TITULO`, `DURACION`, `GUION`, `POSTER`, `SINOPSIS`, `ANIO`, `ID_PAIS`) VALUES (22,'Vengadores: Infinity War','02:29:00','Christopher Markus','/resources/img/peliculas/avengers_infinity_war.jpg','Los superhéroes se alían para vencer al poderoso Thanos, el peor enemigo al que se han enfrentado. Si Thanos logra reunir las seis gemas del infinito: poder, tiempo, alma, realidad, mente y espacio, nadie podrá detenerlo.','2018-04-27',1);
 INSERT INTO `pelicula` (`ID`, `TITULO`, `DURACION`, `GUION`, `POSTER`, `SINOPSIS`, `ANIO`, `ID_PAIS`) VALUES (23,'Ant-Man','01:57:00','Edgar Wright','/resources/img/peliculas/ant_man.jpg','Un ladrón con la habilidad de encogerse de tamaño pero crecer en fuerza debe sacar su héroe interior y ayudar a su mentor a llevar a cabo un plan para salvar al mundo.','2015-06-29',1);
 /*!40000 ALTER TABLE `pelicula` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Dumping data for table `pelicula_director`
 --
 
+LOCK TABLES `pelicula_director` WRITE;
 /*!40000 ALTER TABLE `pelicula_director` DISABLE KEYS */;
 INSERT INTO `pelicula_director` (`ID_PELICULA`, `ID_DIRECTOR`) VALUES (2,3);
 INSERT INTO `pelicula_director` (`ID_PELICULA`, `ID_DIRECTOR`) VALUES (2,4);
@@ -787,7 +799,6 @@ INSERT INTO `pelicula_director` (`ID_PELICULA`, `ID_DIRECTOR`) VALUES (12,15);
 INSERT INTO `pelicula_director` (`ID_PELICULA`, `ID_DIRECTOR`) VALUES (13,17);
 INSERT INTO `pelicula_director` (`ID_PELICULA`, `ID_DIRECTOR`) VALUES (1,1);
 INSERT INTO `pelicula_director` (`ID_PELICULA`, `ID_DIRECTOR`) VALUES (1,2);
-INSERT INTO `pelicula_director` (`ID_PELICULA`, `ID_DIRECTOR`) VALUES (14,15);
 INSERT INTO `pelicula_director` (`ID_PELICULA`, `ID_DIRECTOR`) VALUES (15,32);
 INSERT INTO `pelicula_director` (`ID_PELICULA`, `ID_DIRECTOR`) VALUES (16,33);
 INSERT INTO `pelicula_director` (`ID_PELICULA`, `ID_DIRECTOR`) VALUES (17,34);
@@ -798,11 +809,13 @@ INSERT INTO `pelicula_director` (`ID_PELICULA`, `ID_DIRECTOR`) VALUES (21,37);
 INSERT INTO `pelicula_director` (`ID_PELICULA`, `ID_DIRECTOR`) VALUES (22,38);
 INSERT INTO `pelicula_director` (`ID_PELICULA`, `ID_DIRECTOR`) VALUES (23,39);
 /*!40000 ALTER TABLE `pelicula_director` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Dumping data for table `pelicula_plataforma`
 --
 
+LOCK TABLES `pelicula_plataforma` WRITE;
 /*!40000 ALTER TABLE `pelicula_plataforma` DISABLE KEYS */;
 INSERT INTO `pelicula_plataforma` (`ID_PELICULA`, `ID_PLATAFORMA`, `CADUCA`) VALUES (1,6,NULL);
 INSERT INTO `pelicula_plataforma` (`ID_PELICULA`, `ID_PLATAFORMA`, `CADUCA`) VALUES (2,1,NULL);
@@ -827,8 +840,6 @@ INSERT INTO `pelicula_plataforma` (`ID_PELICULA`, `ID_PLATAFORMA`, `CADUCA`) VAL
 INSERT INTO `pelicula_plataforma` (`ID_PELICULA`, `ID_PLATAFORMA`, `CADUCA`) VALUES (11,1,NULL);
 INSERT INTO `pelicula_plataforma` (`ID_PELICULA`, `ID_PLATAFORMA`, `CADUCA`) VALUES (12,2,NULL);
 INSERT INTO `pelicula_plataforma` (`ID_PELICULA`, `ID_PLATAFORMA`, `CADUCA`) VALUES (13,3,NULL);
-INSERT INTO `pelicula_plataforma` (`ID_PELICULA`, `ID_PLATAFORMA`, `CADUCA`) VALUES (14,4,NULL);
-INSERT INTO `pelicula_plataforma` (`ID_PELICULA`, `ID_PLATAFORMA`, `CADUCA`) VALUES (14,5,NULL);
 INSERT INTO `pelicula_plataforma` (`ID_PELICULA`, `ID_PLATAFORMA`, `CADUCA`) VALUES (15,3,NULL);
 INSERT INTO `pelicula_plataforma` (`ID_PELICULA`, `ID_PLATAFORMA`, `CADUCA`) VALUES (15,5,NULL);
 INSERT INTO `pelicula_plataforma` (`ID_PELICULA`, `ID_PLATAFORMA`, `CADUCA`) VALUES (16,5,NULL);
@@ -844,11 +855,13 @@ INSERT INTO `pelicula_plataforma` (`ID_PELICULA`, `ID_PLATAFORMA`, `CADUCA`) VAL
 INSERT INTO `pelicula_plataforma` (`ID_PELICULA`, `ID_PLATAFORMA`, `CADUCA`) VALUES (22,4,NULL);
 INSERT INTO `pelicula_plataforma` (`ID_PELICULA`, `ID_PLATAFORMA`, `CADUCA`) VALUES (23,4,NULL);
 /*!40000 ALTER TABLE `pelicula_plataforma` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Dumping data for table `plataforma`
 --
 
+LOCK TABLES `plataforma` WRITE;
 /*!40000 ALTER TABLE `plataforma` DISABLE KEYS */;
 INSERT INTO `plataforma` (`ID`, `NOMBRE`, `LOGO`) VALUES (1,'HBO','/resources/img/plataforma/hbo.jpg');
 INSERT INTO `plataforma` (`ID`, `NOMBRE`, `LOGO`) VALUES (2,'Netflix','/resources/img/plataforma/netflix.jpg');
@@ -857,20 +870,24 @@ INSERT INTO `plataforma` (`ID`, `NOMBRE`, `LOGO`) VALUES (4,'Disney Plus','/reso
 INSERT INTO `plataforma` (`ID`, `NOMBRE`, `LOGO`) VALUES (5,'Filmin','/resources/img/plataforma/filmin.jpg');
 INSERT INTO `plataforma` (`ID`, `NOMBRE`, `LOGO`) VALUES (6,'Movistar','/resources/img/plataforma/movistar.jpg');
 /*!40000 ALTER TABLE `plataforma` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Dumping data for table `rol`
 --
 
+LOCK TABLES `rol` WRITE;
 /*!40000 ALTER TABLE `rol` DISABLE KEYS */;
-INSERT INTO `rol` (`ID`, `NOMBRE`) VALUES (1,'user');
-INSERT INTO `rol` (`ID`, `NOMBRE`) VALUES (2,'admin');
+INSERT INTO `rol` (`ID`, `NOMBRE`) VALUES (1,'ROLE_USER');
+INSERT INTO `rol` (`ID`, `NOMBRE`) VALUES (2,'ROLE_ADMIN');
 /*!40000 ALTER TABLE `rol` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Dumping data for table `serie`
 --
 
+LOCK TABLES `serie` WRITE;
 /*!40000 ALTER TABLE `serie` DISABLE KEYS */;
 INSERT INTO `serie` (`ID`, `TITULO`, `FECHA_INICIO`, `SINOPSIS`, `POSTER`, `TEMPORADAS`, `CAPITULOS`, `ID_PAIS`) VALUES (1,'Knightfall','2017-12-06','Los Templarios dedicaron su vida a cuidar del Santo Grial. Knightfall es un drama histórico que recrea las cruzadas y la vida de esta hermandad, una mirada a los últimos días de los Caballeros Templarios durante el siglo XIV.','/resources/img/series/knightfall.jpg',1,10,1);
 INSERT INTO `serie` (`ID`, `TITULO`, `FECHA_INICIO`, `SINOPSIS`, `POSTER`, `TEMPORADAS`, `CAPITULOS`, `ID_PAIS`) VALUES (2,'Rick and Morty','2013-12-02','Rick & Morty relata las aventuras de un científico loco, mal encarado y alcohólico que vive en casa de su hija, Beth, junto a Jerry, el marido de ésta y los dos hijos de la pareja, Summer y Morty, compañero de su abuelo en sus andanzas.','/resources/img/series/rick_and_morty.jpg',4,41,1);
@@ -883,7 +900,6 @@ INSERT INTO `serie` (`ID`, `TITULO`, `FECHA_INICIO`, `SINOPSIS`, `POSTER`, `TEMP
 INSERT INTO `serie` (`ID`, `TITULO`, `FECHA_INICIO`, `SINOPSIS`, `POSTER`, `TEMPORADAS`, `CAPITULOS`, `ID_PAIS`) VALUES (9,'El Ministerio del Tiempo','2015-02-24','El Ministerio del Tiempo es una institución gubernamental secreta que depende directamente de la Presidencia del Gobierno español. Solo monarcas, presidentes y un número exclusivo de personas saben de él. El paso hacia otras épocas se realiza a través de puertas vigiladas por las patrullas del ministerio.','/resources/img/series/el_ministerio_del_tiempo.jpg',3,34,14);
 INSERT INTO `serie` (`ID`, `TITULO`, `FECHA_INICIO`, `SINOPSIS`, `POSTER`, `TEMPORADAS`, `CAPITULOS`, `ID_PAIS`) VALUES (10,'Ozark','2017-07-21','La historia gira en torno a la familia Byrde, formada por el matrimonio de Marty y Wendy y sus dos hijos adolescentes, Charlotte y Jonah. ... Los Byrde se verán envueltos en el mundo clandestino del blanqueo de dinero ilegal para un cártel de drogas mexicano.','/resources/img/series/ozark.jpg',3,30,1);
 INSERT INTO `serie` (`ID`, `TITULO`, `FECHA_INICIO`, `SINOPSIS`, `POSTER`, `TEMPORADAS`, `CAPITULOS`, `ID_PAIS`) VALUES (11,'Código Negro','2015-09-30','Basada en un documental de Ryan McGarry, Code Black es un drama médico que tiene lugar en la sala de emergencias más conocida del país, donde la cantidad de pacientes es mucho mayor que los medios y recursos con los que cuentan los sanitarios.','/resources/img/series/code_black.jpg',3,47,1);
-INSERT INTO `serie` (`ID`, `TITULO`, `FECHA_INICIO`, `SINOPSIS`, `POSTER`, `TEMPORADAS`, `CAPITULOS`, `ID_PAIS`) VALUES (12,'nueva serie','1933-05-16','dsadsdsadsadsa','/resources/img/series/nueva_serie.png',1,12,4);
 INSERT INTO `serie` (`ID`, `TITULO`, `FECHA_INICIO`, `SINOPSIS`, `POSTER`, `TEMPORADAS`, `CAPITULOS`, `ID_PAIS`) VALUES (13,'Homeland','2011-10-02','El sargento de la Marina Nicholas Brody (Damian Lewis) regresa a casa ocho años después de su desaparición en Irak, donde vivió encarcelado y sometido a tortura. Finalmente, un comando de las fuerzas especiales lo localiza durante una misión. La joven Carrie Mathison (Claire Danes), una impulsiva e intuitiva agente de la CIA, sospecha que Brody se ha pasado al enemigo durante su cautiverio, pues unos meses antes un terrorista condenado a muerte le habló de un soldado norteamericano que había cambiado de bando.','/resources/img/series/homeland.jpg',8,96,1);
 INSERT INTO `serie` (`ID`, `TITULO`, `FECHA_INICIO`, `SINOPSIS`, `POSTER`, `TEMPORADAS`, `CAPITULOS`, `ID_PAIS`) VALUES (14,'El Príncipe de Bel-Air','1990-09-10','Will Smith interpreta a un joven de Philadelphia que se traslada a vivir con sus ricos parientes al lujoso barrio de Bel-Air, en California. La familia la forman sus tíos y sus primos Carlton, Hilary y Ashley; además está el mayordomo Geoffrey. El incorregible y avispado Will deberá adaptarse a su nueva familia, a un nivel de vida al que no estaba acostumbrado y a las reglas de convivencia impuestas por su tío Phil, un juez muy preocupado por su reputación.','/resources/img/series/el_principe_bel_air.jpg',6,148,1);
 INSERT INTO `serie` (`ID`, `TITULO`, `FECHA_INICIO`, `SINOPSIS`, `POSTER`, `TEMPORADAS`, `CAPITULOS`, `ID_PAIS`) VALUES (15,'Merlí','2015-09-14','Merlí es un profesor de una materia denostada y apreciada a partes iguales, filosofía. Un tipo contradictorio, y con virtudes y defectos a la par. La producción se centra en la relación del maestro con sus alumnos y, sobre todo, en «los conflictos entre padres e hijos, estudiantes y profesores...»','/resources/img/series/merli.jpg',3,40,14);
@@ -894,11 +910,13 @@ INSERT INTO `serie` (`ID`, `TITULO`, `FECHA_INICIO`, `SINOPSIS`, `POSTER`, `TEMP
 INSERT INTO `serie` (`ID`, `TITULO`, `FECHA_INICIO`, `SINOPSIS`, `POSTER`, `TEMPORADAS`, `CAPITULOS`, `ID_PAIS`) VALUES (20,'The Walking Dead','2010-10-31','Rick Grimes es un oficial de policía que despierta de un largo estado de coma y se da cuenta que el mundo que conocía ya no existe. Ahora está devastado e invadido por zombis.','/resources/img/series/the_walking_dead.jpg',10,146,1);
 INSERT INTO `serie` (`ID`, `TITULO`, `FECHA_INICIO`, `SINOPSIS`, `POSTER`, `TEMPORADAS`, `CAPITULOS`, `ID_PAIS`) VALUES (21,'Chicago Fire','2012-10-10','Chicago Fire intenta profundizar en una de las profesiones más peligrosas y altruistas de la actualidad. El teniente Matthew Casey está en pleno proceso de divorcio y trata de afrontar el día a día y su profesión con normalidad.','/resources/img/series/chicago_fire.jpg',8,179,1);
 /*!40000 ALTER TABLE `serie` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Dumping data for table `serie_plataforma`
 --
 
+LOCK TABLES `serie_plataforma` WRITE;
 /*!40000 ALTER TABLE `serie_plataforma` DISABLE KEYS */;
 INSERT INTO `serie_plataforma` (`ID_SERIE`, `ID_PLATAFORMA`) VALUES (1,1);
 INSERT INTO `serie_plataforma` (`ID_SERIE`, `ID_PLATAFORMA`) VALUES (1,2);
@@ -921,8 +939,6 @@ INSERT INTO `serie_plataforma` (`ID_SERIE`, `ID_PLATAFORMA`) VALUES (8,3);
 INSERT INTO `serie_plataforma` (`ID_SERIE`, `ID_PLATAFORMA`) VALUES (9,1);
 INSERT INTO `serie_plataforma` (`ID_SERIE`, `ID_PLATAFORMA`) VALUES (10,2);
 INSERT INTO `serie_plataforma` (`ID_SERIE`, `ID_PLATAFORMA`) VALUES (11,3);
-INSERT INTO `serie_plataforma` (`ID_SERIE`, `ID_PLATAFORMA`) VALUES (12,3);
-INSERT INTO `serie_plataforma` (`ID_SERIE`, `ID_PLATAFORMA`) VALUES (12,4);
 INSERT INTO `serie_plataforma` (`ID_SERIE`, `ID_PLATAFORMA`) VALUES (13,2);
 INSERT INTO `serie_plataforma` (`ID_SERIE`, `ID_PLATAFORMA`) VALUES (13,5);
 INSERT INTO `serie_plataforma` (`ID_SERIE`, `ID_PLATAFORMA`) VALUES (13,3);
@@ -946,39 +962,72 @@ INSERT INTO `serie_plataforma` (`ID_SERIE`, `ID_PLATAFORMA`) VALUES (20,3);
 INSERT INTO `serie_plataforma` (`ID_SERIE`, `ID_PLATAFORMA`) VALUES (21,6);
 INSERT INTO `serie_plataforma` (`ID_SERIE`, `ID_PLATAFORMA`) VALUES (21,3);
 /*!40000 ALTER TABLE `serie_plataforma` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Dumping data for table `usuario`
 --
 
+LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` (`ID`, `NOMBRE`, `APELLIDOS`, `EMAIL`, `ID_ROL`, `FOTO`, `FECHA_NACIMIENTO`, `SEXO`, `PASSWORD`, `ID_PAIS`, `FECHA_ALTA`) VALUES (2,'yuriy','mraka','yuriy@gmail.com',1,'/resources/img/usuarios/yuriy.jpg','1931-05-03','M','1234',6,'2020-05-15');
-INSERT INTO `usuario` (`ID`, `NOMBRE`, `APELLIDOS`, `EMAIL`, `ID_ROL`, `FOTO`, `FECHA_NACIMIENTO`, `SEXO`, `PASSWORD`, `ID_PAIS`, `FECHA_ALTA`) VALUES (3,'esther','morales','esther@gmail.com',1,'/resources/img/usuarios/esther.jpg','1932-05-09','M','1234',3,'2020-05-15');
+INSERT INTO `usuario` (`ID`, `NOMBRE`, `APELLIDOS`, `EMAIL`, `ID_ROL`, `FOTO`, `FECHA_NACIMIENTO`, `SEXO`, `PASSWORD`, `ID_PAIS`, `FECHA_ALTA`) VALUES (16,'yuriy','mraka','yuriy@correo.com',1,'/resources/img/usuarios/defaultFoto.png','1948-05-06','M','1234',10,'2020-05-19');
+INSERT INTO `usuario` (`ID`, `NOMBRE`, `APELLIDOS`, `EMAIL`, `ID_ROL`, `FOTO`, `FECHA_NACIMIENTO`, `SEXO`, `PASSWORD`, `ID_PAIS`, `FECHA_ALTA`) VALUES (17,'estherr','morales','esther@gmail.com',1,'/resources/img/usuarios/esther_17.jpg','1933-05-13','F','1234',16,'2020-05-19');
+INSERT INTO `usuario` (`ID`, `NOMBRE`, `APELLIDOS`, `EMAIL`, `ID_ROL`, `FOTO`, `FECHA_NACIMIENTO`, `SEXO`, `PASSWORD`, `ID_PAIS`, `FECHA_ALTA`) VALUES (18,'achraf','arazouk','achraf@gmail.com',1,'/resources/img/usuarios/defaultFoto.png','1933-05-13','M','1234',8,'2020-05-20');
+INSERT INTO `usuario` (`ID`, `NOMBRE`, `APELLIDOS`, `EMAIL`, `ID_ROL`, `FOTO`, `FECHA_NACIMIENTO`, `SEXO`, `PASSWORD`, `ID_PAIS`, `FECHA_ALTA`) VALUES (19,'alex','navaroli','alex@gmail.com',1,'/resources/img/usuarios/alex_null.png','1933-05-15','M','1234',8,'2020-05-20');
+INSERT INTO `usuario` (`ID`, `NOMBRE`, `APELLIDOS`, `EMAIL`, `ID_ROL`, `FOTO`, `FECHA_NACIMIENTO`, `SEXO`, `PASSWORD`, `ID_PAIS`, `FECHA_ALTA`) VALUES (20,'marta','morales','marta@gmail.com',1,'/resources/img/usuarios/defaultFoto.png','1933-05-13','M','1234',4,'2020-05-20');
+INSERT INTO `usuario` (`ID`, `NOMBRE`, `APELLIDOS`, `EMAIL`, `ID_ROL`, `FOTO`, `FECHA_NACIMIENTO`, `SEXO`, `PASSWORD`, `ID_PAIS`, `FECHA_ALTA`) VALUES (21,'marta','morales','marta@gmail.com',1,'/resources/img/usuarios/defaultFoto.png','1932-05-16','F','1234',10,'2020-05-20');
+INSERT INTO `usuario` (`ID`, `NOMBRE`, `APELLIDOS`, `EMAIL`, `ID_ROL`, `FOTO`, `FECHA_NACIMIENTO`, `SEXO`, `PASSWORD`, `ID_PAIS`, `FECHA_ALTA`) VALUES (22,'mari','feito','majefema@gmail.com',1,'/resources/img/usuarios/defaultFoto.png','1932-05-16','M','1234',4,'2020-05-21');
+INSERT INTO `usuario` (`ID`, `NOMBRE`, `APELLIDOS`, `EMAIL`, `ID_ROL`, `FOTO`, `FECHA_NACIMIENTO`, `SEXO`, `PASSWORD`, `ID_PAIS`, `FECHA_ALTA`) VALUES (23,'pepito','grillo','pepito@gmail.com',1,'/resources/img/usuarios/pepito_23.png','1929-05-14','M','1234',3,'2020-05-24');
+INSERT INTO `usuario` (`ID`, `NOMBRE`, `APELLIDOS`, `EMAIL`, `ID_ROL`, `FOTO`, `FECHA_NACIMIENTO`, `SEXO`, `PASSWORD`, `ID_PAIS`, `FECHA_ALTA`) VALUES (24,'cris','lorenzo','cris@gmail.com',1,'/resources/img/usuarios/cris_24.png','1930-05-12','F','1234',4,'2020-05-24');
+INSERT INTO `usuario` (`ID`, `NOMBRE`, `APELLIDOS`, `EMAIL`, `ID_ROL`, `FOTO`, `FECHA_NACIMIENTO`, `SEXO`, `PASSWORD`, `ID_PAIS`, `FECHA_ALTA`) VALUES (25,'cuca','cuca','cuca@gmail.com',1,'/resources/img/usuarios/defaultFoto.png','1932-05-16','F','1234',3,'2020-05-24');
+INSERT INTO `usuario` (`ID`, `NOMBRE`, `APELLIDOS`, `EMAIL`, `ID_ROL`, `FOTO`, `FECHA_NACIMIENTO`, `SEXO`, `PASSWORD`, `ID_PAIS`, `FECHA_ALTA`) VALUES (26,'admin','admin','admin@admin.com',2,'/resources/img/usuarios/defaultFoto.png',NULL,NULL,'1234',1,NULL);
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Dumping data for table `usuario_pelicula`
 --
 
+LOCK TABLES `usuario_pelicula` WRITE;
 /*!40000 ALTER TABLE `usuario_pelicula` DISABLE KEYS */;
+INSERT INTO `usuario_pelicula` (`ID_USUARIO`, `ID_PELICULA`) VALUES (16,18);
+INSERT INTO `usuario_pelicula` (`ID_USUARIO`, `ID_PELICULA`) VALUES (16,12);
+INSERT INTO `usuario_pelicula` (`ID_USUARIO`, `ID_PELICULA`) VALUES (16,4);
 /*!40000 ALTER TABLE `usuario_pelicula` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Dumping data for table `usuario_plataforma`
 --
 
+LOCK TABLES `usuario_plataforma` WRITE;
 /*!40000 ALTER TABLE `usuario_plataforma` DISABLE KEYS */;
-INSERT INTO `usuario_plataforma` (`ID_USUARIO`, `ID_PLATAFORMA`) VALUES (3,2);
-INSERT INTO `usuario_plataforma` (`ID_USUARIO`, `ID_PLATAFORMA`) VALUES (3,3);
-INSERT INTO `usuario_plataforma` (`ID_USUARIO`, `ID_PLATAFORMA`) VALUES (2,3);
+INSERT INTO `usuario_plataforma` (`ID_USUARIO`, `ID_PLATAFORMA`) VALUES (17,3);
+INSERT INTO `usuario_plataforma` (`ID_USUARIO`, `ID_PLATAFORMA`) VALUES (19,3);
+INSERT INTO `usuario_plataforma` (`ID_USUARIO`, `ID_PLATAFORMA`) VALUES (20,3);
+INSERT INTO `usuario_plataforma` (`ID_USUARIO`, `ID_PLATAFORMA`) VALUES (18,4);
+INSERT INTO `usuario_plataforma` (`ID_USUARIO`, `ID_PLATAFORMA`) VALUES (21,3);
+INSERT INTO `usuario_plataforma` (`ID_USUARIO`, `ID_PLATAFORMA`) VALUES (22,3);
+INSERT INTO `usuario_plataforma` (`ID_USUARIO`, `ID_PLATAFORMA`) VALUES (23,3);
+INSERT INTO `usuario_plataforma` (`ID_USUARIO`, `ID_PLATAFORMA`) VALUES (24,3);
+INSERT INTO `usuario_plataforma` (`ID_USUARIO`, `ID_PLATAFORMA`) VALUES (25,3);
+INSERT INTO `usuario_plataforma` (`ID_USUARIO`, `ID_PLATAFORMA`) VALUES (16,3);
+INSERT INTO `usuario_plataforma` (`ID_USUARIO`, `ID_PLATAFORMA`) VALUES (16,4);
 /*!40000 ALTER TABLE `usuario_plataforma` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Dumping data for table `usuario_serie`
 --
 
+LOCK TABLES `usuario_serie` WRITE;
 /*!40000 ALTER TABLE `usuario_serie` DISABLE KEYS */;
+INSERT INTO `usuario_serie` (`ID_USUARIO`, `ID_SERIE`) VALUES (16,20);
+INSERT INTO `usuario_serie` (`ID_USUARIO`, `ID_SERIE`) VALUES (16,14);
+INSERT INTO `usuario_serie` (`ID_USUARIO`, `ID_SERIE`) VALUES (16,15);
+INSERT INTO `usuario_serie` (`ID_USUARIO`, `ID_SERIE`) VALUES (16,9);
 /*!40000 ALTER TABLE `usuario_serie` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -989,4 +1038,4 @@ INSERT INTO `usuario_plataforma` (`ID_USUARIO`, `ID_PLATAFORMA`) VALUES (2,3);
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-05-19 15:29:25
+-- Dump completed on 2020-05-31 12:38:06

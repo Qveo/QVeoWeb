@@ -11,8 +11,8 @@
 	</parent>
 	<groupId>com.qveo</groupId>
 	<artifactId>qveoweb</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<version>1.0.0</version>
+	<packaging>jar</packaging>
 	<name>qveoweb</name>
 	<description>QveoWeb is a platform where you can consult all films located in multiples platforms like Nextflix or HBO</description>
 
@@ -68,11 +68,6 @@
 			<artifactId>tomcat-jasper</artifactId>
 			<version>9.0.16</version>
 		</dependency>
-		<!-- <dependency> -->
-		<!-- <groupId>org.springframework.security</groupId> -->
-		<!-- <artifactId>spring-security-test</artifactId> -->
-		<!-- <scope>test</scope> -->
-		<!-- </dependency> -->
 		<dependency>
 			<groupId>javax.servlet.jsp</groupId>
 			<artifactId>javax.servlet.jsp-api</artifactId>
