@@ -14,7 +14,7 @@
 }
 
 .modal-content {
-	display: flex;
+/* 	display: flex; */
 	background-color: #393e46;
 }
 
@@ -74,7 +74,9 @@ opacity: 0.9 !important;
 	opacity: 0.9 !important;
 	color: #eeeeee !important;
 }
-
+div a{
+	margin-bottom: 10px !important;
+}
 
 
 
