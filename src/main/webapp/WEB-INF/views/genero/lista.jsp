@@ -5,7 +5,8 @@
 <html>
 
 <head>
-<title>QVeo web</title>
+<title>Lista G&eacute;nero</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">
 <link rel="stylesheet"
@@ -29,7 +30,7 @@
 		<%@include file="/WEB-INF/views/layout/header.jsp"%>
 	</header>
 	<main>
-		<div class="container" style="width: 60%">
+		<div class="container animated fadeIn fast" style="width: 60%">
 			<div class="row">
 				<div class="input-field col s12 m6 l6 boton">
 					<a href="/qveo/admin/genero/form"><i

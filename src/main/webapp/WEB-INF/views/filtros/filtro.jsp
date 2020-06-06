@@ -50,7 +50,7 @@
 								</form:label></li>
 							<li><form:label path="accionFiltro" for="pelis">
 									<form:radiobutton id="pelis" path="accionFiltro" value="3" />
-									<span id="formatoSpan">Pelicula</span>
+									<span id="formatoSpan">Pel&iacute;cula</span>
 								</form:label></li>
 						</ul>
 					</div>
@@ -70,7 +70,7 @@
 					<div class="col s12 l3">
 						<label class="flow-text formato""> Genero</label>
 						<form:select path="generos" multiple="true">
-							<form:option value="">Genero</form:option>
+							<form:option value="">G&eacute;nero</form:option>
 							<form:options items="${generos}" itemValue="id"
 								itemLabel="nombre" />
 						</form:select>
@@ -97,7 +97,7 @@
 		</section>
 
 		<section>
-			<div class="container">
+			<div class="container animated fadeIn fast">
 				<div class="row">
 					<c:forEach items="${serieMostrar}" var="serie">
 						<a href="/qveo/serie/${serie.id}">
