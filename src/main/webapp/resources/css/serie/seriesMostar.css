@@ -24,11 +24,11 @@ h5 {
 label, #plataforma {
 	color: white;
 	font-weight: normal;
-	font-size: 1vw;
+	font-size: 1.5em;
 }
 
 #tituloSerie {
-	font-size: 2vw;
+	font-size: 1.5em;
 }
 
 a {

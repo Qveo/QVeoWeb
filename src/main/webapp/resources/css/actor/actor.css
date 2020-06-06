@@ -33,18 +33,21 @@
 
 .input-field>label {
 	color: white;
-	font-size: 1vw;
-	font-weight: bold;
+	font-size: 1.4em;
+}
+
+input {
+	font-size: 1.2em !important;
 }
 
 .formato {
 	color: white;
-	font-size: 1vw;
+	font-size: 1.4em;
 }
 
 .especial {
 	color: white;
-	font-size: 1vw;
+	font-size: 1.4em;
 }
 
 .boton-Foto {
@@ -55,22 +58,34 @@
 	width: 50%;
 }
 
+input[type="radio"]:not(:checked ) +span, input[type="radio"]:checked+span
+	{
+	font-size: 1em !important;
+}
+
+input {
+	font-size: 1em !important;
+}
+
 @media only screen and (max-width: 768px) {
 	/* For mobile phones: */
 	.input-field>label {
 		color: white;
-		font-size: 4vw;
+		font-size: 1.4em;
 	}
 	.formato {
 		color: white;
-		font-size: 4vw;
+		font-size: 1.4em;
 	}
 	.especial {
 		color: white;
-		font-size: 4vw;
+		font-size: 1.4em;
 	}
 	.fotoLista {
 		width: 100%;
+	}
+	input {
+		font-size: 1.2em !important;
 	}
 }
 
@@ -78,17 +93,24 @@
 	/* For mobile phones: */
 	.input-field>label {
 		color: white;
-		font-size: 2vw;
+		font-size: 1.4em;
 	}
 	.formato {
 		color: white;
-		font-size: 2vw;
+		font-size: 1.4em;
 	}
 	.especial {
 		color: white;
-		font-size: 2vw;
+		font-size: 1.4em;
 	}
 	.fotoLista {
 		width: 100%;
+	}
+	input[type="radio"]:not(:checked ) +span, input[type="radio"]:checked+span
+		{
+		font-size: 1.2em !important;
+	}
+	input {
+		font-size: 1.2em !important;
 	}
 }

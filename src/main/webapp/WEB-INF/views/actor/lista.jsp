@@ -5,7 +5,7 @@
 <html>
 
 <head>
-<title>QVeo web</title>
+<title>Lista Actor</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">
@@ -31,7 +31,7 @@
 	</header>
 	<main>
 
-		<div class="container">
+		<div class="container animated fadeIn fast">
 			<div class="row">
 				<div class="input-field col s12 m6 l6 boton">
 					<a href="/qveo/admin/actor/form"><i

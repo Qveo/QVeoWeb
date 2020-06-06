@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>QVeo web</title>
+<title>Lista Serie</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">
@@ -27,7 +27,7 @@
 	<header>
 		<%@include file="/WEB-INF/views/layout/header.jsp"%>
 	</header>
-	<main>
+	<main class="animated fadeIn fast">
 		<div class="container">
 			<div class="row">
 				<div class="input-field col s12 m6 l6 boton">

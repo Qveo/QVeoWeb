@@ -13,19 +13,21 @@ ul li {
 
 .input-field>label {
 	color: white;
-	font-size: 1vw;
+	font-size: 1.4em;
 }
 
 .formato {
 	color: white;
-	font-size: 1vw;
+	font-size: 1.4em;
 }
 
 .especial {
 	color: white;
-	font-size: 1vw;
+	font-size: 1.4em;
 }
-
+input{
+	font-size: 1.1em !important;
+}
 .responsive {
 	width: 100%;
 }
@@ -49,7 +51,7 @@ textarea {
 	}
 	.input-field>label {
 		color: white;
-		font-size: 4vw;
+		font-size: 1.5em;
 	}
 	.formato {
 		color: white;
@@ -74,15 +76,18 @@ textarea {
 	}
 	.input-field>label {
 		color: white;
-		font-size: 2vw;
+		font-size: 1.4em;
 	}
 	.formato {
 		color: white;
-		font-size: 2vw;
+		font-size: 1.4em;
+	}
+	input{
+	font-size: 1.1em;
 	}
 	.especial {
 		color: white;
-		font-size: 2vw;
+		font-size: 1.4em;
 	}
 	textarea {
 		height: 187px;
