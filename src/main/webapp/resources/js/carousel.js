@@ -45,52 +45,52 @@ $(document).ready(function() {
 	});
 	
 	//Boton de movimiento de carusel Amazon Prime
-	$('.PrevAmazon_Prime').click(function(e) {
+	$('.NextAmazon_Prime').click(function(e) {
 		 e.preventDefault();
 	      e.stopPropagation();
 		$('.carousel_Amazon_Prime').carousel('next');
 	});
 	
-	$('.NextAmazon_Prime').click(function(e) {
+	$('.PrevAmazon_Prime').click(function(e) {
 		 e.preventDefault();
 	      e.stopPropagation();
 		$('.carousel_Amazon_Prime').carousel('prev');
 	});
 
 	//Boton de movimiento de carusel Disney Plus
-	$('.PrevDisney_Plus').click(function(e) {
+	$('.NextDisney_Plus').click(function(e) {
 		 e.preventDefault();
 	      e.stopPropagation();
 		$('.carousel_Disney_Plus').carousel('next');
 	});
 	
-	$('.NextDisney_Plus').click(function(e) {
+	$('.PrevDisney_Plus').click(function(e) {
 		 e.preventDefault();
 	      e.stopPropagation();
 		$('.carousel_Disney_Plus').carousel('prev');
 	});
 	
 	//Boton de movimiento de carusel Filmin
-	$('.PrevFilmin').click(function(e) {
+	$('.NextFilmin').click(function(e) {
 		 e.preventDefault();
 	      e.stopPropagation();
 		$('.carousel_Filmin').carousel('next');
 	});
 	
-	$('.NextFilmin').click(function(e) {
+	$('.PrevFilmin').click(function(e) {
 		 e.preventDefault();
 	      e.stopPropagation();
 		$('.carousel_Filmin').carousel('prev');
 	});
 	
 	//Boton de movimiento de carusel Movistar
-	$('.PrevMovistar').click(function(e) {
+	$('.NextMovistar').click(function(e) {
 		 e.preventDefault();
 	      e.stopPropagation();
 		$('.carousel_Movistar').carousel('next');
 	});
 	
-	$('.NextMovistar').click(function(e) {
+	$('.PrevMovistar').click(function(e) {
 		 e.preventDefault();
 	      e.stopPropagation();
 		$('.carousel_Movistar').carousel('prev');
