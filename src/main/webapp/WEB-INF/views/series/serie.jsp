@@ -1,4 +1,3 @@
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -7,7 +6,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-
 <title>${series.titulo}</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -29,8 +27,7 @@
 	<header>
 		<%@include file="/WEB-INF/views/layout/header.jsp"%>
 	</header>
-
-	<main>
+	<main class="animated fadeIn">
 		<section>
 			<div class="row">
 				<div class="col s10 l10 offset-l2">
@@ -38,7 +35,6 @@
 						<img src="${pageContext.request.contextPath}${series.poster}"
 							alt=">${series.titulo}" width="100%">
 					</div>
-
 					<div class="col s12 l6">
 						<h5>T&iacute;tulo</h5>
 						<label id="tituloSerie">${series.titulo}</label>
@@ -66,18 +62,18 @@
 						</label>
 						<h5>Sinopsis</h5>
 						<label>${series.sinopsis}</label>
-						<div class="col s10 l9 offset-l1 offset-s1">
-							<a href="#"><i class="waves-effect blue btn ">Agregar
-									Serie</i></a>
-						</div>
 					</div>
-
+					<security:authorize access="hasRole('USER')">
+						<div class="col s12 l9 offset-l1 offset-s1">
+							<a id="btn-serie"
+								class="waves-effect btn-large add-serie boton-agregar z-depth-2 btn-oculto">Agregar
+								a mi lista</a>
+							<p id="id-serie" style="display: none">${series.id}</p>
+						</div>
+					</security:authorize>
 				</div>
-
-
 			</div>
 		</section>
-
 		<section>
 			<div class="row">
 				<div class="col s10 l8 offset-l2 scrollmenu">
@@ -134,7 +130,6 @@
 			</div>
 		</section>
 	</main>
-
 	<footer>
 		<%@include file="/WEB-INF/views/layout/footer.jsp"%>
 	</footer>
@@ -142,8 +137,9 @@
 		src="${pageContext.request.contextPath}/resources/vendor/js/jquery-3.4.1.min.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/resources/vendor/js/materialize.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/header.js"></script>
 	<script
 		src="${pageContext.request.contextPath}/resources/js/serie/serie.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/js/serie/serie-btn.js"></script>
 </body>
 </html>

@@ -1,4 +1,4 @@
-//document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() {
 
 	var seriesAutocomplete = {};
 	var contenidoVisual = [];
@@ -48,7 +48,7 @@
 
 	function showResource(ruta) {
 		if (ruta != 'error') {
-			let posicion = window.location.href.indexOf('/qveo');
+			let posicion = window.location.href.lastIndexOf('/qveo');
 			window.location.href = window.location.href.substring(0, posicion)
 					+ '/qveo/' + ruta + idContenido;
 		}
@@ -99,4 +99,4 @@
 		this.style.opacity = 0;
 	}
 
-//});
+});

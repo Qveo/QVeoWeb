@@ -32,7 +32,7 @@ $(document).ready(function() {
 
 function insertarFoto(foto){
 	let imgUsuario = document.getElementById('img-usuario');	
-	let posicion = imgUsuario.src.indexOf("/qveo");
+	let posicion = imgUsuario.src.lastIndexOf("/qveo");
 	imgUsuario.src = imgUsuario.src.substring(0,posicion+5) + foto;
 }
 

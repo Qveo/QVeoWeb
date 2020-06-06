@@ -3,7 +3,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <html>
 <head>
+<meta charset="ISO-8859-1">
 <title>QVeo web</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">
 <link
@@ -26,55 +28,53 @@
 	<header>
 		<%@include file="/WEB-INF/views/layout/header.jsp"%>
 	</header>
-	<main>
-		<c:forEach items="${plataformas}" var="plataforma">
-			<div class="row">
-				<div class="col s12">
-					<h3>
-						<a href="#">Peliculas y series de ${plataforma.nombre}</a>
-					</h3>
-				</div>
-			</div>
-
-			<div>
-				<div class="col s12">
-					<div
-						class="carousel carousel_${fn:replace(plataforma.nombre,' ','_')}">
-						<c:forEach items="${plataforma.peliculaPlataformas}"
-							var="peliculaPlataformas">
-							<div class="carousel-item">
-								<a class="waves-effect waves-light modal-trigger"
-									href="#modal-pelicula${plataforma.id}-${peliculaPlataformas.pelicula.id}">
-									<img
-									src="${pageContext.request.contextPath}${peliculaPlataformas.pelicula.poster}" />
-								</a>
-							</div>
-						</c:forEach>
-
-						<c:forEach items="${plataforma.series}" var="serie">
-							<div class="carousel-item">
-								<a class="waves-effect waves-light modal-trigger"
-									href="#modal-serie${plataforma.id}-${serie.id}"> <img
-									src="${pageContext.request.contextPath}${serie.poster}">
-								</a>
-							</div>
-						</c:forEach>
-
-						<a id="carousel-prev"
-							class="movePrevCarousel Prev${fn:replace(plataforma.nombre,' ','_')} middle-indicator-text grey lighten-2 content-indicator middle-indicator left"><i
-							class="material-icons left  middle-indicator-text">chevron_left</i></a>
-						<a id="carousel-next"
-							class="moveNextCarousel Next${fn:replace(plataforma.nombre,' ','_')} middle-indicator-text grey lighten-2 content-indicator middle-indicator right"><i
-							class="material-icons right middle-indicator-text">chevron_right</i></a>
+	<main class="animated fadeIn fast">
+			<c:forEach items="${plataformas}" var="plataforma">
+				<div class="row">
+					<div class="col s12">
+						<h3>
+							<a href="#">Peliculas y series de ${plataforma.nombre}</a>
+						</h3>
 					</div>
 				</div>
-			</div>
-		</c:forEach>
+				<div>
+					<div class="col s12">
+						<div
+							class="carousel carousel_${fn:replace(plataforma.nombre,' ','_')}">
+							<c:forEach items="${plataforma.peliculaPlataformas}"
+								var="peliculaPlataformas">
+								<div class="carousel-item">
+									<a class="waves-effect waves-light modal-trigger mod-movie"
+										href="#modal-pelicula${plataforma.id}-${peliculaPlataformas.pelicula.id}">
+										<img
+										src="${pageContext.request.contextPath}${peliculaPlataformas.pelicula.poster}" />
+									</a>
+								</div>
+							</c:forEach>
+
+							<c:forEach items="${plataforma.series}" var="serie">
+								<div class="carousel-item">
+									<a class="waves-effect waves-light modal-trigger mod-serie"
+										href="#modal-serie${plataforma.id}-${serie.id}"> <img
+										src="${pageContext.request.contextPath}${serie.poster}">
+									</a>
+								</div>
+							</c:forEach>
+
+							<a id="carousel-prev"
+								class="movePrevCarousel Prev${fn:replace(plataforma.nombre,' ','_')} middle-indicator-text grey lighten-2 content-indicator middle-indicator left"><i
+								class="material-icons left  middle-indicator-text">chevron_left</i></a>
+							<a id="carousel-next"
+								class="moveNextCarousel Next${fn:replace(plataforma.nombre,' ','_')} middle-indicator-text grey lighten-2 content-indicator middle-indicator right"><i
+								class="material-icons right middle-indicator-text">chevron_right</i></a>
+						</div>
+					</div>
+				</div>
+			</c:forEach>
 	</main>
 	<footer>
 		<%@include file="/WEB-INF/views/layout/footer.jsp"%>
 	</footer>
-
 	<c:forEach items="${plataformas}" var="plataforma">
 		<%@include file="/WEB-INF/views/layout/modalDetalleSerie.jsp"%>
 		<%@include file="/WEB-INF/views/layout/modalDetallePelicula.jsp"%>
@@ -86,4 +86,6 @@
 	src="${pageContext.request.contextPath}/resources/vendor/js/materialize.js"></script>
 <script
 	src="${pageContext.request.contextPath}/resources/js/carousel.js"></script>
+<script
+	src="${pageContext.request.contextPath}/resources/js/usuario/add-to-list.js"></script>
 </html>

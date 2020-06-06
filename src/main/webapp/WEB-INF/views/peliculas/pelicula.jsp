@@ -12,11 +12,12 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/general.css">
-
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/menu.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/header.css">
+	<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/pelicula/pelicula-btn.css">
 <link rel="icon" type="image/x-icon"
 	href="${pageContext.request.contextPath}/resources/img/favicon.ico">
 </head>
@@ -27,6 +28,14 @@
 
 <main>
 	<div class="row">
+		<security:authorize access="hasRole('USER')">
+			<div class="col s12 l9 offset-l1 offset-s1">
+				<a id="btn-movie"
+					class="waves-effect btn-large add-serie boton-agregar z-depth-2 btn-oculto">Agregar
+					a mi lista</a>
+				<p id="id-movie" style="display: none">${peliculas.id}</p>
+			</div>
+		</security:authorize>
 		<div class="col s1"></div>
 		<div class="col s10 derecha ">
 			<div class="col s4 bord">
@@ -100,7 +109,8 @@
 								<img src="${pageContext.request.contextPath}${director.foto}"
 									alt="${director.nombre}" width="60%">
 								<div>
-									<a href="/qveo/filtro/director/${director.id}"> ${director.nombre}</a>
+									<a href="/qveo/filtro/director/${director.id}">
+										${director.nombre}</a>
 								</div>
 							</div>
 						</li>
@@ -148,3 +158,6 @@
 	</div>
 
 </main>
+
+<script
+		src="${pageContext.request.contextPath}/resources/js/pelicula/pelicula-btn.js"></script>
