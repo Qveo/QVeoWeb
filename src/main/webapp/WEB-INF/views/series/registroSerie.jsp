@@ -6,7 +6,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Registro de una serie</title>
+<c:choose>
+	<c:when test="${editar}">
+		<title>Actualizar Serie</title>
+	</c:when>
+	<c:otherwise>
+		<title>Serie Formulario</title>
+	</c:otherwise>
+</c:choose>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 

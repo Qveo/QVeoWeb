@@ -8,7 +8,7 @@
 <head>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<title>C&aacute;talago Pel&iacute;cula</title>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">
 <link rel="stylesheet"
@@ -39,7 +39,7 @@
 					</div>
 
 					<div class="col s12 l3">
-						<label class="flow-text formato""> Genero</label>
+						<label class="flow-text formato""> G&eacute;nero</label>
 						<form:select path="generos" multiple="true">
 							<form:options items="${generos}" itemValue="id"
 								itemLabel="nombre" />

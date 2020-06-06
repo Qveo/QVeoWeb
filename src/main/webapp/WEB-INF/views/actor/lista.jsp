@@ -5,7 +5,7 @@
 <html>
 
 <head>
-<title>QVeo web</title>
+<title>Lista Actor</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">
@@ -33,7 +33,7 @@
 	</header>
 	<main>
 
-		<div class="container">
+		<div class="container animated fadeIn fast">
 			<div class="row">
 				<div class="input-field col s12 m6 l6 boton">
 					<a href="/qveo/admin/actor/form"><i
@@ -43,15 +43,17 @@
 			</div>
 
 			<div class="row cabeceras">
-				<div class="col s1 l3"></div>
-				<div class="col s6 l6">Nombre</div>
-				<div class="col s5 l3">Opciones</div>
+ 				<div class="col s3 l3"></div> 
+				<div class="col s3 l3">Nombre</div>
+				<div class="col s1 l1"></div> 
+				<div class="col s3 l3">Opciones</div>
 
 			</div>
 			<c:forEach items="${actores}" var="actor">
 				<div id="${actor.id}" class="row cuerpo">
-					<div class="col s1 l3"></div>
-					<div class="col s6 l6">${actor.nombre}</div>
+					<div class="col s3 l3"></div> 
+					<div class="col s3 l3">${actor.nombre}</div>
+					<div class="col s1 l1"></div> 
 					<div id="${actor.id}" class="col s3 l3">
 
 						<div class="col s12 m6 l4">

@@ -94,7 +94,7 @@
 		<section>
 			<div class="row"></div>
 			<div class="row"></div>
-			<div class="container">
+			<div class="container animated fadeIn fast">
 				<div class="row">
 					<c:forEach items="${filtrado.series}" var="serie">
 						<a href="/qveo/serie/${serie.id}">

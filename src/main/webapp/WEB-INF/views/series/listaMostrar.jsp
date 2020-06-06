@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+<title>C&aacute;talogo serie</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -43,7 +43,7 @@
 					</div>
 
 					<div class="col s12 l3">
-						<label class="flow-text formato""> Genero</label>
+						<label class="flow-text formato""> G&eacute;nero</label>
 						<form:select path="generos" multiple="true">
 							<form:options items="${generos}" itemValue="id"
 								itemLabel="nombre" />
@@ -68,7 +68,7 @@
 				</div>
 
 			</form:form>
-			<div class="container">
+			<div class="container animated fadeIn fast">
 				<div class="row">
 					<c:choose>
 						<c:when test="${serieFiltradas == true}">
