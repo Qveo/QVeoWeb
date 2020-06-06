@@ -7,14 +7,14 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // move next carousel
-$('.moveNextCarousel').click(function(e) {
+$('.moveNextCaja').click(function(e) {
 	e.preventDefault();
 	e.stopPropagation();
 	$('.caja').carousel('next');
 });
 
 // move prev carousel
-$('.movePrevCarousel').click(function(e) {
+$('.movePrevCaja').click(function(e) {
 	e.preventDefault();
 	e.stopPropagation();
 	$('.caja').carousel('prev');
