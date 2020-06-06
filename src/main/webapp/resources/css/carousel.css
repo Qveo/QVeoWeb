@@ -60,9 +60,11 @@ main {
 	-moz-osx-font-smoothing: grayscale;
 }
 
+
 .middle-indicator {
-	position: absolute;
+	position: relative;
 	top: 50%;
+	z-index: 3;
 }
 
 .middle-indicator-text {
@@ -70,16 +72,15 @@ main {
 }
 
 a.middle-indicator-text {
-	color: white !important;
+	color: #0066ff !important;
 }
 
 .content-indicator {
 	width: 64px;
-	height: 64px;
-	background: none;
-	-moz-border-radius: 50px;
+	height: 64px; -moz-border-radius : 50px;
 	-webkit-border-radius: 50px;
 	border-radius: 50px;
+	-moz-border-radius: 50px;
 }
 
 .indicators {
