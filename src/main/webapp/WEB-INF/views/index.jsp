@@ -34,13 +34,13 @@
 				data-indicators="true">
 					<div class="left">
 						<a id="4" href="Previo"
-							class="movePrevCaja middle-indicator-text flecha content-indicator"><i
+							class="movePrevCarousel middle-indicator-text flecha content-indicator"><i
 							class="material-icons left  middle-indicator-text">chevron_left</i></a>
 					</div>
 
 					<div class="right">
 						<a id="4" href="Siguiente"
-							class=" moveNextCaja middle-indicator-text flecha content-indicator"><i
+							class=" moveNextCarousel middle-indicator-text flecha content-indicator"><i
 							class="material-icons right middle-indicator-text">chevron_right</i></a>
 					</div>
 				<div class="carousel-item red white-text">

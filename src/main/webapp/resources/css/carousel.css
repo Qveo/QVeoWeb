@@ -35,7 +35,6 @@ main {
 	display: inline;
 }
 
-
 @font-face {
 	font-family: 'Material Icons';
 	font-style: normal;
@@ -62,9 +61,8 @@ main {
 }
 
 .middle-indicator {
-	position: relative;
+	position: absolute;
 	top: 50%;
-	z-index: 3;
 }
 
 .middle-indicator-text {
@@ -77,10 +75,11 @@ a.middle-indicator-text {
 
 .content-indicator {
 	width: 64px;
-	height: 64px; -moz-border-radius : 50px;
+	height: 64px;
+	background: none;
+	-moz-border-radius: 50px;
 	-webkit-border-radius: 50px;
 	border-radius: 50px;
-	-moz-border-radius: 50px;
 }
 
 .indicators {
