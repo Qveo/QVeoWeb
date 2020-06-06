@@ -35,13 +35,13 @@
 					<div class="left">
 						<a id="4" href="Previo"
 							class="prevCaja middle-indicator-text flecha content-indicator"><i
-							class="material-icons left  middle-indicator-text">chevron_left</i></a>
+							class="material-icons left  middle-indicator-text portada">chevron_left</i></a>
 					</div>
 
 					<div class="right">
 						<a id="4" href="Siguiente"
 							class=" nextCaja middle-indicator-text flecha content-indicator"><i
-							class="material-icons right middle-indicator-text">chevron_right</i></a>
+							class="material-icons right middle-indicator-text portada">chevron_right</i></a>
 					</div>
 				<div class="carousel-item red white-text">
 					<a class="modal-trigger waves-effect waves-light"
