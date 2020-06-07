@@ -29,6 +29,18 @@
 		<%@include file="/WEB-INF/views/layout/header.jsp"%>
 	</header>
 	<main class="animated fadeIn fast">
+			<c:if test="${empty plataformas}">
+				<sec:authorize access="isAnonymous()">
+					<div class="container">
+						<h3 class="text">Un error ha ocurrido y no se pueden recuperar las películas y series de las plataformas. Por favor, pruebe de nuevo más tarde.</h3>
+					</div>
+				</sec:authorize>
+				<sec:authorize access="isAuthenticated()">
+					<div class="container">
+						<h3 class="text">Por favor, seleccione las plataformas a las que está suscritas en su <a href="<c:url value="/mi-configuracion"/>">perfil</a>.</h3>
+					</div>
+				</sec:authorize>
+			</c:if>
 			<c:forEach items="${plataformas}" var="plataforma">
 				<div class="row">
 					<div class="col s12">

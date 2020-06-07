@@ -25,10 +25,10 @@ $(document).ready(function(){
 function markPlataformasSeleccionadas() {
     $('#plataformas').find("input[type='checkbox']").each(function () {
         if(!$(this).prop("checked")){
-            $(this).parent().find(".img-plataforma").addClass("plataforma-selected");
+            $(this).parent().find(".img-plataforma").removeClass("plataforma-selected");
         }
         if($(this).prop("checked")){
-            $(this).parent().find(".img-plataforma").removeClass("plataforma-selected");
+            $(this).parent().find(".img-plataforma").addClass("plataforma-selected");
         }
     });
 }
@@ -40,8 +40,8 @@ function deleteSpringFormUnusedTags() {
 function changePlataformaSeleccionada(event) {
     var check = $(event.target).parent().parent().find("input[type='checkbox']");
     if(check.prop("checked")){
-        $(event.target).addClass("plataforma-selected");
-    } else {
         $(event.target).removeClass("plataforma-selected");
+    } else {
+        $(event.target).addClass("plataforma-selected");
     }
 }
