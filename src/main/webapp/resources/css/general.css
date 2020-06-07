@@ -66,3 +66,7 @@ to {
 .fadeIn {
 	animation-name: fadeIn;
 }
+
+.text{
+	color:#eeeeee;
+}

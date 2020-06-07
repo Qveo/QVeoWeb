@@ -34,14 +34,9 @@ public class HomeController {
 
     @GetMapping({"/", "/home"})
     public String home(Model model) {
+        logger.debug("Executing home() method via Get");
 
-        //logger.debug("Executing home() method via Get");
-
-        List<Plataforma> plataformas = plataformaService.findAll();
-//        List<Serie> series = serieServ.findAllSerie();
-//        List<Pelicula> pelicula = peliculaServ.findAll();
-//        
-//        Stream<Object> combined = Stream.concat(series.stream(), pelicula.stream());
+        List<Plataforma> plataformas = plataformaService.findPlataformasHome();
 
         model.addAttribute("plataformas", plataformas);
 

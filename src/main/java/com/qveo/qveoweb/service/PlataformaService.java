@@ -9,15 +9,14 @@ import java.util.List;
 import org.springframework.web.multipart.MultipartFile;
 
 public interface PlataformaService {
-	public List<Plataforma> findAll();
 
-	public Plataforma getPlataforma(Integer id);
+	Plataforma getPlataforma(Integer id);
 
-	public void save(Plataforma Plataforma, MultipartFile foto) throws IOException;
+	void save(Plataforma Plataforma, MultipartFile foto) throws IOException;
 
-	public void delete(Integer id);
+	void delete(Integer id);
 
 	List<Plataforma> getAllPlataformas();
-	
-	//public Integer last (Plataforma Plataforma);
+
+	List<Plataforma> findPlataformasHome();
 }
