@@ -1,19 +1,10 @@
-ul li {
+.display-inline li {
 	display: inline;
-	padding: 3px;
 }
 
 .responsive {
-	margin-left: 20%;
-	height: 30%;
-	margin-bottom: 10%;
-}
-
-.responsiveP {
-/* 	width: 100%; */
-	margin-left: 20%;
+	margin: 10px 10px;
 	height: 200px;
-	margin-bottom: 10%;
 }
 
 .formato {
@@ -30,62 +21,13 @@ input[type="radio"]+span {
 	font-size: 2em;
 }
 
-@media only screen and (max-width: 768px) {
-	.responsive {
-		height: 30%;
-		margin-left: 20%;
-		margin-bottom: 10%;
-	}
-	.responsiveP {
- 		width: auto; 
-		height: 190px;
-		margin-left: 20%;
-		margin-bottom: 10%;
-	}
-	
-	.formato {
-		font-size: 2em;
-	}
-	#formatoSpan {
-		font-size: 2em;
-	}
-}
-@media only screen and (max-width: 600px) {
-	.responsiveP {
-		height: 150px;
-		margin-left: 20%;
-		margin-bottom: 10%;
-	}
-	}
-@media only screen and (min-width: 796px) and (max-width: 992px) {
-	.responsive {
-		height: 30%;
-		margin-left: 20%;
-		margin-bottom: 10%;
-	}
-	.responsiveP {
- 		width: auto; 
-		height: 240px;
-		margin-left: 20%;
-		margin-bottom: 10%;
-	}
-	.formato {
-		font-size: 2em;
-	}
-	#formatoSpan {
-		font-size: 2em;
-	}
-}
+.boton-filtrar {
+    width: 200px;
+    background: 00adb5;
+  }
 
-@media only screen and (min-width: 200px) and (max-width: 500px) {
-	.responsive {
-		height: 20%;
-		margin-bottom: 10%;
-	}
-	.responsiveP {
-/* 		width: 80%; */
-		height: 100%;
-		margin-left: 20%;
-		margin-bottom: 10%;
-	}
-	}
+@media only screen and (max-width: 600px) {
+  .boton-filtrar {
+    width: 100%;
+  }
+}
