@@ -12,7 +12,22 @@ h3 a:link, h3 a:visited {
 main {
 	padding-top: 5vh !important;
 }
+.left a:hover  {
+	opacity: 0.5 !important;
+	background-color: black;
 
+}
+
+.right a:hover  {
+	opacity: 0.5 !important;
+	background-color: black;
+
+}
+
+#carousel-prev:hover , #carousel-next:hover{
+		opacity: 0.5 !important;
+	background-color: black;
+}
 .carousel-slider {
 	padding-top: 0 !important;
 }
@@ -30,6 +45,9 @@ main {
 	width: 100% !important;
 }
 
+i.left {
+    margin-right: 0px;
+}
 .carousel .carousel-item img {
 	width: 100%;
 	display: inline;
@@ -67,8 +85,7 @@ main {
 }
 
 
-
-.middle-indicator {
+#carousel-prev, #carousel-next {
 	position: relative;
 	top: 50%;
 	z-index: 3;
@@ -79,16 +96,12 @@ main {
 }
 
 a.middle-indicator-text {
-	color: #00adb5 !important;
+	color: white !important;
 }
 
 .content-indicator {
 	width: 64px;
 	height: 64px;
-	-moz-border-radius: 50px;
-	-webkit-border-radius: 50px;
-	border-radius: 50px;
-	-moz-border-radius: 50px;
 }
 
 .indicators {
@@ -101,7 +114,6 @@ a.middle-indicator-text {
 
 .flecha {
 	position: relative;
-	cursor: pointer;
 	display: inline-block;
 	overflow: hidden;
 	-webkit-user-select: none;

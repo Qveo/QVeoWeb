@@ -9,6 +9,11 @@ document.addEventListener('DOMContentLoaded', function() {
 		dist : 0,
 		interval : 100,
 	});
+	
+	$('.caja').carousel({
+		fullWidth : true,
+		indicators : false
+	});
 
 	for (let i = 0; i < carousels.length; i++) {
 		carousels[i].removeEventListener('click',
@@ -95,6 +100,20 @@ $(document).ready(function() {
 		 e.preventDefault();
 	      e.stopPropagation();
 		$('.carousel_Movistar').carousel('prev');
+	});
+	
+	// move next carousel
+	$('.nextCaja').click(function(e) {
+		e.preventDefault();
+		e.stopPropagation();
+		$('.caja').carousel('next');
+	});
+
+	// move prev carousel
+	$('.prevCaja').click(function(e) {
+		e.preventDefault();
+		e.stopPropagation();
+		$('.caja').carousel('prev');
 	});
 	
 });

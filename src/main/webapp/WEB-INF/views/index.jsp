@@ -32,7 +32,7 @@
 		<div class="container">
 			<div class="carousel carousel-slider center caja "
 				data-indicators="true">
-					<div class="left">
+					<div class="left" >
 						<a id="4" href="Previo"
 							class="prevCaja middle-indicator-text flecha content-indicator"><i
 							class="material-icons left  middle-indicator-text portada">chevron_left</i></a>
@@ -97,10 +97,10 @@
 							</c:forEach>
 
 							<a id="carousel-prev"
-								class="movePrevCarousel Prev${fn:replace(plataforma.nombre,' ','_')} middle-indicator-text content-indicator middle-indicator left"><i
+								class="movePrevCarousel Prev${fn:replace(plataforma.nombre,' ','_')} middle-indicator-text content-indicator flecha left"><i
 								class="material-icons left  middle-indicator-text">chevron_left</i></a>
 							<a id="carousel-next"
-								class="moveNextCarousel Next${fn:replace(plataforma.nombre,' ','_')} middle-indicator-text content-indicator middle-indicator right"><i
+								class="moveNextCarousel Next${fn:replace(plataforma.nombre,' ','_')} middle-indicator-text content-indicator flecha right"><i
 								class="material-icons right middle-indicator-text">chevron_right</i></a>
 						</div>
 					</div>
@@ -123,6 +123,5 @@
 	src="${pageContext.request.contextPath}/resources/js/carousel.js"></script>
 <script
 	src="${pageContext.request.contextPath}/resources/js/usuario/add-to-list.js"></script>
-<script
-	src="${pageContext.request.contextPath}/resources/js/carousel2.js"></script>
+
 </html>
