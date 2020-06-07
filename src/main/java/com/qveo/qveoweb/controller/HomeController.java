@@ -22,10 +22,9 @@ public class HomeController {
 
     @GetMapping({"/", "/home"})
     public String home(Model model) {
+        logger.debug("Executing home() method via Get");
 
-        //logger.debug("Executing home() method via Get");
-
-        List<Plataforma> plataformas = plataformaService.findAll();
+        List<Plataforma> plataformas = plataformaService.findPlataformasHome();
 
         model.addAttribute("plataformas", plataformas);
 

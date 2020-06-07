@@ -165,7 +165,8 @@ public class UsuarioServiceImp implements UsuarioService {
     public PlataformaDto savePlataformas(PlataformaDto plataformaDto) {
 
         Usuario usuario = getUsuario(plataformaDto.getId());
-        usuario.setPlataformas(plataformaDao.findByIdIn(plataformaDto.getPlataformas()));
+        usuario.setPlataformas(Objects.nonNull(plataformaDto.getPlataformas()) ?
+                plataformaDao.findByIdIn(plataformaDto.getPlataformas()) : new ArrayList<>());
         try {
             usuario = saveUser(usuario, null);
         } catch (IOException ex) {
@@ -177,17 +178,19 @@ public class UsuarioServiceImp implements UsuarioService {
     @Override
     public Usuario getUsuarioLogueado() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        UserDetailsDto userPrincipal = authentication == null || !authentication.isAuthenticated() ?
-                null : (UserDetailsDto) authentication.getPrincipal();
-        return this.findUserByEmail(Objects.nonNull(userPrincipal) ? userPrincipal.getUsername() : null);
-    }
-	@Override
-	public AjaxResponseBody saveSerie(AddToListDto addResource) {
-		Usuario usuario = getUsuario(addResource.getIdUser());
-		List<Serie> series = new ArrayList<Serie>(usuario.getSeries());
-		AjaxResponseBody result = new AjaxResponseBody();
-		if(series.contains(serieService.getSerie(addResource.getIdResource()))) {
-			series.remove(serieService.getSerie(addResource.getIdResource()));
+            UserDetailsDto userPrincipal = authentication == null || !authentication.isAuthenticated()
+                    || "anonymousUser".equals(authentication.getPrincipal()) ?
+                    null : (UserDetailsDto) authentication.getPrincipal();
+            return this.findUserByEmail(Objects.nonNull(userPrincipal) ? userPrincipal.getUsername() : null);
+        }
+
+        @Override
+        public AjaxResponseBody saveSerie(AddToListDto addResource) {
+            Usuario usuario = getUsuario(addResource.getIdUser());
+            List<Serie> series = new ArrayList<Serie>(usuario.getSeries());
+            AjaxResponseBody result = new AjaxResponseBody();
+            if(series.contains(serieService.getSerie(addResource.getIdResource()))) {
+                series.remove(serieService.getSerie(addResource.getIdResource()));
 			usuario.setSeries(series);
 			result.setMsg("eliminado");
 			result.setSeries(series);

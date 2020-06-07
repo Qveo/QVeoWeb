@@ -42,7 +42,7 @@ public class PlataformaController {
 	public String listado(Model mod) {
 
 		mod.addAttribute("titulo", "Listado de plataformas");
-		mod.addAttribute("plataformas", platService.findAll());
+		mod.addAttribute("plataformas", platService.getAllPlataformas());
 
 		return "plataformas/listar";
 	}
