@@ -62,6 +62,7 @@
 					</label>
 					<h5>Sinopsis</h5>
 					<label>${peliculas.sinopsis}</label>
+					
 					<security:authorize access="hasRole('USER')">
 						<div class="col s12 l9 offset-l1 offset-s1">
 							<a id="btn-movie"
@@ -134,6 +135,10 @@
 	</section>
 
 </main>
+
+<footer>
+	<%@include file="/WEB-INF/views/layout/footer.jsp"%>
+</footer>
 
 <script
 		src="${pageContext.request.contextPath}/resources/js/pelicula/pelicula-btn.js"></script>

@@ -22,8 +22,6 @@
 						<h5 class="contenido">${pelicula.generosConcatenadas()}</h5>
 						<h4 class="titulo">Plataformas</h4>
 						<h5 class="contenido">${pelicula.plataformasConcatenadas()}</h5>
-						<a class="waves-effect waves-light btn-large">A&ntildeadir a
-							mi lista</a>
 					</div>
 				</div>
 			</div>

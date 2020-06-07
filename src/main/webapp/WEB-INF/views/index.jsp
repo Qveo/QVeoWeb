@@ -19,6 +19,8 @@
 	href="${pageContext.request.contextPath}/resources/css/general.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/header.css">
+	<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/materialize-social.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/modal.css">
 <link rel="icon" type="image/x-icon"

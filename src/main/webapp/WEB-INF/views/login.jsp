@@ -32,12 +32,6 @@
 						src="${pageContext.request.contextPath}/resources/img/logo-line.png" />
 				</div>
 			</div>
-			<c:if test="${not empty SPRING_SECURITY_LAST_EXCEPTION.message}">
-				<div class="error">
-					<c:out value="Las credenciales son erroneas" />
-				</div>
-			</c:if>
-
 			<div class="row">
 				<div class="col s12 l4 m8 offset-l4 offset-m2 card-panel">
 					<form id="login" name="login" action="/qveo/login" method="POST"
@@ -61,7 +55,8 @@
 						<div class="row">
 							<div class="input-field col s12 m12 l12">
 								<button type="submit"
-									class="btn waves-effect waves-light botones" style="width:100%;">
+									class="btn waves-effect waves-light botones"
+									style="width: 100%;">
 									Login <i class="material-icons right">send</i>
 								</button>
 							</div>
@@ -70,6 +65,13 @@
 					</form>
 				</div>
 				<div class="col l4 m2"></div>
+			</div>
+			<div class="row">
+				<c:if test="${not empty SPRING_SECURITY_LAST_EXCEPTION.message}">
+					<div class="error col s12 m8 l4 offset-l4 offset-m2">
+						<c:out value="Las credenciales son erroneas" />
+					</div>
+				</c:if>
 			</div>
 		</div>
 	</main>

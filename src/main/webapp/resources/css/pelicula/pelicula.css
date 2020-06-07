@@ -24,11 +24,11 @@ h5 {
 label, #plataforma {
 	color: white;
 	font-weight: normal;
-	font-size: 1vw;
+	font-size: 1.5em;
 }
 
 #tituloSerie {
-	font-size: 2vw;
+	font-size: 1.5em;
 }
 
 a {
@@ -48,6 +48,16 @@ a {
 		height: 90px;
 	}
 	a, label, #plataforma {
-		font-size: 3vw;
+		font-size:  1.3em;;
+	}
+}
+
+@media only screen and (max-width: 992px) {
+	.imagenes {
+		width: 120px;
+		height: 90px;
+	}
+	a, label, #plataforma {
+		font-size:  1.3em;
 	}
 }

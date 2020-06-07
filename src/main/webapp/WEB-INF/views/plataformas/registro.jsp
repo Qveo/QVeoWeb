@@ -12,6 +12,8 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/general.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/header.css">
 <link rel="icon" type="image/x-icon"
 	href="${pageContext.request.contextPath}/resources/img/favicon.ico">
 </head>
@@ -101,6 +103,9 @@
 
 		</form:form>
 	</main>
+	<footer>
+		<%@include file="/WEB-INF/views/layout/footer.jsp"%>
+	</footer>
 
 </body>
 <script src="${pageContext.request.contextPath}/resources/js/jquery.js"></script>

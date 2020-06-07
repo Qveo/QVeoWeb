@@ -14,6 +14,8 @@
 	href="${pageContext.request.contextPath}/resources/css/general.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/usuario/lista.css">
+	<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/icon.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/footer.css">
 <link rel="stylesheet"

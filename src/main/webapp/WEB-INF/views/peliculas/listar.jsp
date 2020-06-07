@@ -38,10 +38,6 @@
 						class="waves-effect waves-light btn agregar-usuario">Nueva
 							pelicula</i></a>
 				</div>
-				<div class="input-field col s12 m6 l6">
-					<input id="usuario-nombre" type="text" class="validate"> <label
-						for="usuario-nombre">Introduzca un nombre de una pelicula</label>
-				</div>
 			</div>
 			<div class="row cabeceras">
 				<div class="col s4">Titulo</div>

@@ -38,23 +38,17 @@
 
 			</div>
 
-			<div class="row cabeceras">
-				<div class="col s3 l3">Poster</div>
-				<div class="col s3 l3">Titulo</div>
-				<div class="col s3 l3">Fecha de inicio</div>
-				<div class="col s3 l3">Opciones</div>
+			<div class="row cabeceras">	
+				<div class="col s4 l4">Titulo</div>
+				<div class="col s4 l4">Fecha de inicio</div>
+				<div class="col s4 l4">Opciones</div>
 			</div>
 
 			<c:forEach items="${series}" var="serie">
 				<div id="${serie.id}" class="row cuerpo">
-					<div class="col s3 l3">
-						<img alt="${serie.titulo}"
-							src="${pageContext.request.contextPath}${serie.poster}"
-							class="fotoLista">
-					</div>
-					<div class="col s3 l3">${serie.titulo}</div>
-					<div class="col s3 l3">${serie.fechaInicio}</div>
-					<div class="col s3 l3">
+					<div class="col s4 l4">${serie.titulo}</div>
+					<div class="col s4 l4">${serie.fechaInicio}</div>
+					<div class="col s4 l4">
 						<div id="${serie.id}" class="row cuerpo">
 							<div class="col s12 m3 l4">
 								<!-- Modal de detalle serie ver -->
