@@ -57,7 +57,7 @@
 	</div>
 	<li><a href="${pageContext.request.contextPath}/"
 		class="font-color-sidenav">Inicio</a></li>
-	<li><a href="/qveo/filtro" class="font-color-sidenav">B&uacutesqueda</a></li>
+	<li><a href="/qveo/filtro" class="font-color-sidenav">Cat&aacutelogo</a></li>
 	<li><a href="/qveo/serie" class="font-color-sidenav">Series</a></li>
 	<li><a href="/qveo/peliculas" class="font-color-sidenav">Pel&iacuteculas</a></li>
 	<li><a href="#" class="font-color-sidenav">M&aacutes Recientes</a></li>

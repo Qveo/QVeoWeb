@@ -6,9 +6,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>C&aacute;talago Pel&iacute;cula</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">
 <link rel="stylesheet"
@@ -24,28 +23,27 @@
 	<header>
 		<%@include file="/WEB-INF/views/layout/header.jsp"%>
 	</header>
-
 	<main>
-		<section>
+		<div class="container">
 			<form:form method="POST" action="/qveo/peliculas"
 				modelAttribute="buscar">
 				<div class="row">
-					<div class="col l1"></div>
-					<div class="col s12 l3">
+					<div class="col s12 l4">
 						<label class="flow-text formato">A&ntilde;o</label>
 						<form:select multiple="true" path="anios">
+							<form:option value="">Fechas</form:option>
 							<form:options items="${fechas}" />
 						</form:select>
 					</div>
-
-					<div class="col s12 l3">
-						<label class="flow-text formato""> G&eacute;nero</label>
+					<div class="col s12 l4">
+						<label class="flow-text formato"> Genero</label>
 						<form:select path="generos" multiple="true">
+							<form:option value="">G&eacute;nero</form:option>
 							<form:options items="${generos}" itemValue="id"
 								itemLabel="nombre" />
 						</form:select>
 					</div>
-					<div class="col s12 l3">
+					<div class="col s12 l4">
 						<label class="flow-text formato">Plataformas</label>
 						<form:select path="plataformas" multiple="true">
 							<form:options items="${plataformas}" itemLabel="nombre"
@@ -54,47 +52,41 @@
 					</div>
 				</div>
 				<div class="row">
-					<div class="col s1 l1"></div>
-					<div class="col s11 l6">
-						<button class="btn waves-effect waves-light" type="submit"
+					<div class="col s12">
+						<button class="btn waves-effect waves-light boton-filtrar" type="submit"
 							name="action">
 							Buscar <i class="material-icons right">send</i>
 						</button>
 					</div>
 				</div>
-
 			</form:form>
-			<div class="container">
-				<div class="row">
-					<c:choose>
-						<c:when test="${pelisFiltradas == true}">
-							<c:forEach items="${buscar.pelicula}" var="peli">
-								<a href="/qveo/peliculas/${peli.id}">
-									<div class="col s6 l2">
-										<img alt="${peli.titulo}"
-											src="${pageContext.request.contextPath}${peli.poster}"
-											class="responsiveP" />
-									</div>
+			<div class="row animated fadeIn">
+				<c:choose>
+					<c:when test="${pelisFiltradas == true}">
+						<c:forEach items="${buscar.pelicula}" var="peli">
+							<div class="col s6 m3 l2">
+								<a href="/qveo/peliculas/${peli.id}"> <img
+									alt="${peli.titulo}"
+									src="${pageContext.request.contextPath}${peli.poster}"
+									class="responsive" />
 								</a>
-							</c:forEach>
-						</c:when>
-						<c:otherwise>
-							<c:forEach items="${peliMostrar}" var="pelis">
-								<a href="/qveo/peliculas/${pelis.id}">
-									<div class="col s6 l2">
-										<img alt="${pelis.titulo}"
-											src="${pageContext.request.contextPath}${pelis.poster}"
-											class="responsiveP" />
-									</div>
+							</div>
+						</c:forEach>
+					</c:when>
+					<c:otherwise>
+						<c:forEach items="${peliMostrar}" var="pelis">
+							<div class="col s6 m3 l2">
+								<a href="/qveo/peliculas/${pelis.id}"> <img
+									alt="${pelis.titulo}"
+									src="${pageContext.request.contextPath}${pelis.poster}"
+									class="responsive" />
 								</a>
-							</c:forEach>
-						</c:otherwise>
-					</c:choose>
-				</div>
+							</div>
+						</c:forEach>
+					</c:otherwise>
+				</c:choose>
 			</div>
-			<div class="row"></div>
-			<div class="row"></div>
-		</section>
+		</div>
 	</main>
 
 	<footer>
