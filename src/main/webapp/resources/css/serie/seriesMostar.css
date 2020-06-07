@@ -48,7 +48,7 @@ a {
 		height: 90px;
 	}
 	a, label, #plataforma {
-		font-size: 3vw;
+		font-size:  1.3em;;
 	}
 }
 
@@ -58,6 +58,6 @@ a {
 		height: 90px;
 	}
 	a, label, #plataforma {
-		font-size: 2vw;
+		font-size:  1.3em;
 	}
 }
