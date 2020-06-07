@@ -4,12 +4,12 @@
 	<div
 		id="modal-pelicula${plataforma.id}-${peliculaPlataformas.pelicula.id}"
 		class="modal bottom-sheet">
-		<div class="modal-content">
-			<div class="flexbox">
+		<div class="modal-content row">
+			<div class="col s12 m4 l2">
 				<img class="imagen-modal"
 					src="${pageContext.request.contextPath}${peliculaPlataformas.pelicula.poster}" />
 			</div>
-			<div class="flexbox">
+			<div class="col s12 m8 l10">
 				<h4 class="titulo">T&iacutetulo</h4>
 				<h4 class="titulo-principal">${peliculaPlataformas.pelicula.titulo}</h4>
 				<h4 class="titulo">Estreno</h4>

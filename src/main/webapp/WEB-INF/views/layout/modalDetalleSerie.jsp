@@ -1,10 +1,10 @@
         <c:forEach items="${plataforma.series}" var="serie">
             <div id="modal-serie${plataforma.id}-${serie.id}" class="modal bottom-sheet">
                 <div class="modal-content row">
-                    <div class="col s12">
+                    <div class="col s12 m4 l2">
                         <img class="imagen-modal" src="${pageContext.request.contextPath}${serie.poster}"/>
                     </div>
-                    <div class="col s12">
+                    <div class="col s12 m8 l10">
                         <h4 class="titulo">T&iacutetulo</h4>
                         <h4 class="titulo-principal">${serie.titulo}</h4>
                         <h4 class="titulo">Estreno</h4>

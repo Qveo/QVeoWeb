@@ -44,7 +44,7 @@
 							class="material-icons right middle-indicator-text portada">chevron_right</i></a>
 					</div>
 				<div class="carousel-item red white-text">
-					<a class="modal-trigger waves-effect waves-light"
+					<a class="modal-trigger"
 						href="/qveo/peliculas/22"> <img
 						src="${pageContext.request.contextPath}/resources/img/portada/infinity-war-big.jpg" width="100%" />
 					</a>
@@ -79,7 +79,7 @@
 							<c:forEach items="${plataforma.peliculaPlataformas}"
 								var="peliculaPlataformas">
 								<div class="carousel-item">
-									<a class="waves-effect waves-light modal-trigger mod-movie"
+									<a class="modal-trigger mod-movie"
 										href="#modal-pelicula${plataforma.id}-${peliculaPlataformas.pelicula.id}">
 										<img
 										src="${pageContext.request.contextPath}${peliculaPlataformas.pelicula.poster}" />
@@ -89,7 +89,7 @@
 
 							<c:forEach items="${plataforma.series}" var="serie">
 								<div class="carousel-item">
-									<a class="waves-effect waves-light modal-trigger mod-serie"
+									<a class="modal-trigger mod-serie"
 										href="#modal-serie${plataforma.id}-${serie.id}"> <img
 										src="${pageContext.request.contextPath}${serie.poster}">
 									</a>
