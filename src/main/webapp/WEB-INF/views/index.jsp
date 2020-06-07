@@ -97,10 +97,10 @@
 							</c:forEach>
 
 							<a id="carousel-prev"
-								class="movePrevCarousel Prev${fn:replace(plataforma.nombre,' ','_')} middle-indicator-text grey lighten-2 content-indicator middle-indicator left"><i
+								class="movePrevCarousel Prev${fn:replace(plataforma.nombre,' ','_')} middle-indicator-text content-indicator middle-indicator left"><i
 								class="material-icons left  middle-indicator-text">chevron_left</i></a>
 							<a id="carousel-next"
-								class="moveNextCarousel Next${fn:replace(plataforma.nombre,' ','_')} middle-indicator-text grey lighten-2 content-indicator middle-indicator right"><i
+								class="moveNextCarousel Next${fn:replace(plataforma.nombre,' ','_')} middle-indicator-text content-indicator middle-indicator right"><i
 								class="material-icons right middle-indicator-text">chevron_right</i></a>
 						</div>
 					</div>
