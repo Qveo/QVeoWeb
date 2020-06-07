@@ -19,7 +19,7 @@
 	href="${pageContext.request.contextPath}/resources/css/general.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/header.css">
-	<link rel="stylesheet"
+<link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/materialize-social.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/modal.css">
@@ -30,38 +30,60 @@
 	<header>
 		<%@include file="/WEB-INF/views/layout/header.jsp"%>
 	</header>
-	<main>
+	<main class="animated fadeIn fast">
+
+		<c:if test="${empty plataformas}">
+			<sec:authorize access="isAnonymous()">
+				<div class="container">
+					<h3 class="text">Un error ha ocurrido y no se pueden recuperar
+						las películas y series de las plataformas. Por favor, pruebe de
+						nuevo más tarde.</h3>
+				</div>
+			</sec:authorize>
+			<sec:authorize access="isAuthenticated()">
+				<div class="container">
+					<h3 class="text">
+						Por favor, seleccione las plataformas a las que está suscritas en
+						su <a href="<c:url value="/mi-configuracion"/>">perfil</a>.
+					</h3>
+				</div>
+			</sec:authorize>
+		</c:if>
+
 		<div class="container">
 			<div class="carousel carousel-slider center caja "
 				data-indicators="true">
-					<div class="left" >
-						<a id="4" href="Previo"
-							class="prevCaja middle-indicator-text flecha content-indicator"><i
-							class="material-icons left  middle-indicator-text portada">chevron_left</i></a>
-					</div>
+				<div class="left">
+					<a id="4" href="Previo"
+						class="prevCaja middle-indicator-text flecha content-indicator"><i
+						class="material-icons left  middle-indicator-text portada">chevron_left</i></a>
+				</div>
 
-					<div class="right">
-						<a id="4" href="Siguiente"
-							class=" nextCaja middle-indicator-text flecha content-indicator"><i
-							class="material-icons right middle-indicator-text portada">chevron_right</i></a>
-					</div>
+				<div class="right">
+					<a id="4" href="Siguiente"
+						class=" nextCaja middle-indicator-text flecha content-indicator"><i
+						class="material-icons right middle-indicator-text portada">chevron_right</i></a>
+				</div>
 				<div class="carousel-item red white-text">
-					<a class="modal-trigger"
-						href="/qveo/peliculas/22"> <img
-						src="${pageContext.request.contextPath}/resources/img/portada/infinity-war-big.jpg" width="100%" />
+					<a class="modal-trigger" href="/qveo/peliculas/22"> <img
+						src="${pageContext.request.contextPath}/resources/img/portada/infinity-war-big.jpg"
+						width="100%" />
 					</a>
 				</div>
 				<div class="carousel-item amber white-text">
 					<a class="modal-trigger enl" href="/qveo/serie/19"> <img
-						src="${pageContext.request.contextPath}/resources/img/portada/Mr-Robot.jpg" width="100%" /></a>
+						src="${pageContext.request.contextPath}/resources/img/portada/Mr-Robot.jpg"
+						width="100%" /></a>
 				</div>
 				<div class="carousel-item green white-text">
 					<a class="modal-trigger enl" href="/qveo/peliculas/1"> <img
-						src="${pageContext.request.contextPath}/resources/img/portada/madagascar.jpg" width="100%" /></a>
+						src="${pageContext.request.contextPath}/resources/img/portada/madagascar.jpg"
+						width="100%" /></a>
 				</div>
 				<div class="carousel-item blue white-text">
 					<a class="modal-trigger enl" href="/qveo/peliculas/20"> <img
-						src="${pageContext.request.contextPath}/resources/img/portada/spiderman.jpeg" width="100%" /></a>
+						src="${pageContext.request.contextPath}/resources/img/portada/spiderman.jpeg"
+						width="100%" /></a>
 				</div>
 			</div>
 
@@ -107,6 +129,7 @@
 						</div>
 					</div>
 				</div>
+			</div>
 		</c:forEach>
 	</main>
 	<footer>
