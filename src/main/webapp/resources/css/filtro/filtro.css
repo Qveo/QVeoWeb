@@ -1,20 +1,10 @@
-ul li {
+.display-inline li {
 	display: inline;
-	padding: 3px;
 }
 
 .responsive {
-	width: 100%;
-	margin-left: 20%;
-	height: 40%;
-	margin-bottom: 10%;
-}
-
-.responsiveP {
-	width: 100%;
-	margin-left: 20%;
-	height: 286px;
-	margin-bottom: 10%;
+	margin: 10px 10px;
+	height: 200px;
 }
 
 .formato {
@@ -31,73 +21,13 @@ input[type="radio"]+span {
 	font-size: 2em;
 }
 
-/* Animaciones */
-.animated {
-	-webkit-animation-duration: 1s;
-	animation-duration: 1s;
-	-webkit-animation-fill-mode: both;
-	animation-fill-mode: both;
-}
+.boton-filtrar {
+    width: 200px;
+    background: 00adb5;
+  }
 
-.fast {
-	-webkit-animation-duration: 0.4s;
-	animation-duration: 0.4s;
-	-webkit-animation-fill-mode: both;
-	animation-fill-mode: both;
-}
-
-@
-keyframes fadeIn {from { opacity:0;
-	
-}
-
-to {
-	opacity: 1;
-}
-
-}
-.fadeIn {
-	animation-name: fadeIn;
-}
-
-@media only screen and (max-width: 768px) {
-	.responsive {
-		width: 80%;
-		height: 30%;
-		margin-left: 20%;
-		margin-bottom: 10%;
-	}
-	.responsiveP {
-		width: 80%;
-		height: 286px;
-		margin-left: 20%;
-		margin-bottom: 10%;
-	}
-	.formato {
-		font-size: 2em;
-	}
-	#formatoSpan {
-		font-size: 2em;
-	}
-}
-
-@media only screen and (min-width: 769px) and (max-width: 992px) {
-	.responsive {
-		width: 80%;
-		height: 70%;
-		margin-left: 20%;
-		margin-bottom: 10%;
-	}
-	.responsiveP {
-		width: 80%;
-		height: 260px;
-		margin-left: 20%;
-		margin-bottom: 10%;
-	}
-	.formato {
-		font-size: 2em;
-	}
-	#formatoSpan {
-		font-size: 2em;
-	}
+@media only screen and (max-width: 600px) {
+  .boton-filtrar {
+    width: 100%;
+  }
 }

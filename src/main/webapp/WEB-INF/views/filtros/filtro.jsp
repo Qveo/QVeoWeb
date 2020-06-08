@@ -8,7 +8,6 @@
 <meta charset="ISO-8859-1">
 
 <title>Registro de una serie</title>
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">
@@ -30,16 +29,13 @@
 	<header>
 		<%@include file="/WEB-INF/views/layout/header.jsp"%>
 	</header>
-
 	<main>
-		<section>
+		<div class="container">
 			<form:form method="POST" action="/qveo/filtros"
 				modelAttribute="buscar">
-
 				<div class="row">
-					<div class="col s1"></div>
-					<div class="col s12 l4">
-						<ul>
+					<div class="col s12">
+						<ul class="display-inline">
 							<li><form:label path="accionFiltro" for="todos">
 									<form:radiobutton id="todos" path="accionFiltro" value="1"
 										checked="checked" />
@@ -55,12 +51,10 @@
 								</form:label></li>
 						</ul>
 					</div>
-					<div class="col s1"></div>
 				</div>
 
 				<div class="row">
-					<div class="col l1"></div>
-					<div class="col s12 l3">
+					<div class="col s12 l4">
 						<label class="flow-text formato">A&ntilde;o</label>
 						<form:select multiple="true" path="anios">
 							<form:option value="">Fechas</form:option>
@@ -68,15 +62,15 @@
 						</form:select>
 					</div>
 
-					<div class="col s12 l3">
-						<label class="flow-text formato""> Genero</label>
+					<div class="col s12 l4">
+						<label class="flow-text formato"> Genero</label>
 						<form:select path="generos" multiple="true">
 							<form:option value="">G&eacute;nero</form:option>
 							<form:options items="${generos}" itemValue="id"
 								itemLabel="nombre" />
 						</form:select>
 					</div>
-					<div class="col s12 l3">
+					<div class="col s12 l4">
 						<label class="flow-text formato">Plataformas</label>
 						<form:select path="plataformas" multiple="true">
 							<form:options items="${plataformas}" itemLabel="nombre"
@@ -85,46 +79,35 @@
 					</div>
 				</div>
 				<div class="row">
-					<div class="col s1 l1"></div>
-					<div class="col s11 l6">
-						<button class="btn waves-effect waves-light" type="submit"
+					<div class="col s12">
+						<button class="btn waves-effect waves-light boton-filtrar" type="submit"
 							name="action">
 							Buscar <i class="material-icons right">send</i>
 						</button>
 					</div>
 				</div>
-
 			</form:form>
-		</section>
-
-		<section>
-			<div class="container animated fadeIn fast">
-				<div class="row">
-					<c:forEach items="${serieMostrar}" var="serie">
-						<a href="/qveo/serie/${serie.id}">
-							<div class="col s6 l2">
-								<img alt="${serie.titulo}"
-									src="${pageContext.request.contextPath}${serie.poster}"
-									class="responsive" />
-							</div>
+			<div class="row animated fadeIn">
+				<c:forEach items="${serieMostrar}" var="serie">
+					<div class="col s6 m3 l2">
+						<a href="/qveo/serie/${serie.id}"> <img alt="${serie.titulo}"
+							src="${pageContext.request.contextPath}${serie.poster}"
+							class="responsive" />
 						</a>
+					</div>
+				</c:forEach>
 
-					</c:forEach>
-
-
-					<c:forEach items="${peliculas}" var="peli">
-						<a href="/qveo/peliculas/${peli.id}">
-							<div class="col s6 l2">
-								<img alt="${peli.titulo}"
-									src="${pageContext.request.contextPath}${peli.poster}"
-									class="responsive">
-							</div>
+				<c:forEach items="${peliculas}" var="peli">
+					<div class="col s6 m3 l2">
+						<a href="/qveo/peliculas/${peli.id}"> <img
+							alt="${peli.titulo}"
+							src="${pageContext.request.contextPath}${peli.poster}"
+							class="responsive" />
 						</a>
-					</c:forEach>
-				</div>
+					</div>
+				</c:forEach>
 			</div>
-		</section>
-
+		</div>
 	</main>
 	<footer>
 		<%@include file="/WEB-INF/views/layout/footer.jsp"%>
