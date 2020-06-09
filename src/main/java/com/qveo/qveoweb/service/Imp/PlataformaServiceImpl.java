@@ -23,7 +23,7 @@ public class PlataformaServiceImpl implements PlataformaService {
     UsuarioService usuarioService;
 
     @Autowired
-    UploadFileServiceImp fotoService;
+    UploadFileServiceImpl fotoService;
 
     @Override
     @Transactional(readOnly = true)

@@ -15,7 +15,7 @@ import java.util.List;
 public class DirectorServiceImp implements DirectorService {
 
     @Autowired
-    IUploadFileServiceImp fotoService;
+    UploadFileServiceImpl fotoService;
 
     @Autowired
     DirectorDao directorDao;
