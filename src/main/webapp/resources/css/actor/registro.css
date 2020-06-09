@@ -5,13 +5,13 @@ ul li {
 }
 
 .input-field>label {
-	color: white;
-	font-size: 1vw;
+	color: white !important;
+	font-size: 1.2em;
 }
 
 .formato {
-	color: white;
-	font-size: 1vw;
+	color: white !important;
+	font-size:1.2em;
 }
 main{
 	height:79.3% !important;
@@ -24,7 +24,9 @@ main{
 textarea {
 	height: 85px;
 }
-
+.select-wrapper input.select-dropdown{
+	color:white;
+}
 @media only screen and (max-width: 768px) {
 	.responsive {
 		width: 80%;
@@ -32,15 +34,15 @@ textarea {
 	}
 	.input-field>label {
 		color: white;
-		font-size: 5vw;
+		font-size: 1.3em;
 	}
 	.formato {
 		color: white;
-		font-size: 5vw;
+		font-size: 1.3em;
 	}
 	.especial {
 		color: white;
-		font-size: 5vw;
+		font-size: 1.3em;
 	}
 	textarea {
 		height: 187px;
@@ -51,15 +53,15 @@ textarea {
 	/* For mobile phones: */
 	.input-field>label {
 		color: white;
-		font-size: 3vw;
+		font-size:1.3em;
 	}
 	.formato {
 		color: white;
-		font-size: 3vw;
+		font-size: 1.3em;
 	}
 	.especial {
 		color: white;
-		font-size: 3vw;
+		font-size: 1.3em;
 	}
 	.fotoLista {
 		width: 100%;

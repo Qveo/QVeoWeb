@@ -25,7 +25,9 @@ ul li {
 	color: white;
 	font-size: 1vw;
 }
-
+.select-wrapper input.select-dropdown{
+	color:white;
+}
 .responsive {
 	width: 100%;
 }

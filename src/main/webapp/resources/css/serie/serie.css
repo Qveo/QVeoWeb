@@ -13,17 +13,19 @@ ul li {
 
 .input-field>label {
 	color: white;
-	font-size: 1.4em;
+	font-size: 1.1em;
 }
 
 .formato {
 	color: white;
 	font-size: 1.4em;
 }
-
+.select-wrapper input.select-dropdown{
+	color:white;
+}
 .especial {
 	color: white;
-	font-size: 1.4em;
+	font-size: 1.1em;
 }
 input{
 	font-size: 1.1em !important;
@@ -34,10 +36,6 @@ input{
 
 .boton-Foto {
 	width: 40%;
-}
-
-textarea {
-	height: 85px;
 }
 
 .boton-agregar{
@@ -73,18 +71,15 @@ opacity: 0.9 !important;
 	}
 	.input-field>label {
 		color: white;
-		font-size: 1.5em;
+		font-size: 1.1em;
 	}
 	.formato {
 		color: white;
-		font-size: 1.4em;
+		font-size: 1.1em;
 	}
 	.especial {
 		color: white;
-		font-size: 1.4em;
-	}
-	textarea {
-		height: 187px;
+		font-size: 1.1em;
 	}
 }
 @media only screen and (max-width: 992px) {
@@ -98,21 +93,18 @@ opacity: 0.9 !important;
 	}
 	.input-field>label {
 		color: white;
-		font-size: 1.4em;
+		font-size: 1.1em;
 	}
 	.formato {
 		color: white;
-		font-size: 1.4em;
+		font-size: 1.1em;
 	}
 	input{
 	font-size: 1.1em;
 	}
 	.especial {
 		color: white;
-		font-size: 1.4em;
-	}
-	textarea {
-		height: 187px;
+		font-size: 1.1em;
 	}
 }
 

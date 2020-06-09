@@ -52,7 +52,7 @@
 					<div class="col l2"></div>
 					<div class="input-field col s12 l8">
 						<form:label path="nombre" class="formato">Nombre</form:label>
-						<form:input path="nombre" id="nombre" class="validate" />
+						<form:input path="nombre" id="nombre" class="formato validate"/>
 						<form:errors path="nombre" style="color:red"></form:errors>
 					</div>
 					<div class="col l2"></div>
@@ -71,10 +71,10 @@
 						<form:select path="pais">
 							<c:choose>
 								<c:when test="${editar}">
-									<form:option value="0">Elija un pais</form:option>
+									<form:option value="0" class="formato">Elija un pais</form:option>
 									<c:forEach items="${paises}" var="pais">
 										<c:if test="${pais.id ==actorNuevo.pais.id}">
-											<form:option value="${pais.id}" selected="selected">${pais.nombre}</form:option>
+											<form:option value="${pais.id}" selected="selected" class="formato">${pais.nombre}</form:option>
 										</c:if>
 										<c:if test="${pais.id !=actorNuevo.pais.id}">
 											<form:option value="${pais.id}">${pais.nombre}</form:option>
@@ -82,7 +82,7 @@
 									</c:forEach>
 								</c:when>
 								<c:otherwise>
-									<form:option value="0" selected="selected">Elija un pais</form:option>
+									<form:option value="0" selected="selected" class="formato">Elija un pais</form:option>
 									<c:forEach items="${paises}" var="pais">
 										<form:option value="${pais.id}">${pais.nombre}</form:option>
 									</c:forEach>
@@ -118,7 +118,7 @@
 				<div class="row">
 					<div class="col l2"></div>
 					<div class="col s12 l8">
-						<form:label path="foto" class="especial">Foto</form:label>
+						<form:label path="foto" class="formato">Foto</form:label>
 						<input type="file" name="fotoActor" class="boton-Foto">
 						<c:if test="${editar == true}">
 							<div class="col s4">

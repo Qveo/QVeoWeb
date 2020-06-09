@@ -14,6 +14,8 @@
 	href="${pageContext.request.contextPath}/resources/css/general.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/header.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/plataforma/plataforma.css">
 <link rel="icon" type="image/x-icon"
 	href="${pageContext.request.contextPath}/resources/img/favicon.ico">
 </head>
@@ -31,8 +33,8 @@
 			<div class="row">
 				<div class="col s3"></div>
 				<div class="input-field col s6">
-					<form:input path="nombre" id="nombre" type="text" class="validate" />
-					<form:label for="nombre" path="nombre">Nombre</form:label>
+					<form:input path="nombre" id="nombre" type="text" class="formato validate" />
+					<form:label for="nombre" path="nombre" class="formato">Nombre</form:label>
 					<form:errors path="nombre" style="color:red"></form:errors>
 				</div>
 				<div class="col s3"></div>
@@ -60,7 +62,7 @@
 								<input type="file" name="retrato" />
 							</div>
 							<div class="file-path-wrapper">
-								<input class="file-path validate" type="text"
+								<input class="file-path validate formato" type="text"
 									placeholder="Suba aqui su foto">
 							</div>
 						</div>

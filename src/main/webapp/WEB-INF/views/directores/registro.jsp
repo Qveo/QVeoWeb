@@ -60,16 +60,12 @@
 									<form:label path="foto">
 										<span>Retrato del director</span>
 									</form:label>
-									<input type="file" name="retrato" />
+									<input type="file" name="retrato" class="formato"/>
 								</div>
 								<div class="file-path-wrapper">
-									<input class="file-path validate" type="text"
-										placeholder="Suba aqui su foto">
+									<input class="file-path validate formato" type="text"
+										placeholder="Suba aqui su foto"/>
 								</div>
-							</div>
-							<div class="file-path-wrapper">
-								<input class="file-path validate" type="text"
-									placeholder="Suba aqui su foto">
 							</div>
 						</div>
 					</div>

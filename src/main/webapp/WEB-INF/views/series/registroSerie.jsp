@@ -45,7 +45,7 @@
 						<div class="col l2"></div>
 						<div class="input-field formato col s12 l8">
 							<form:label path="titulo">Titulo</form:label>
-							<form:input path="titulo" id="titulo" />
+							<form:input path="titulo" id="titulo" class="formato"/>
 							<form:errors path="titulo" style="color:red"></form:errors>
 						</div>
 						<div class="col l2"></div>
@@ -66,7 +66,7 @@
 						<div class="col l2"></div>
 						<div class="input-field formato col s12 l8">
 							<form:label path="temporadas">Temporada</form:label>
-							<form:input path="temporadas" id="temporadas" />
+							<form:input path="temporadas" id="temporadas" class="formato"/>
 							<form:errors path="temporadas" style="color:red"></form:errors>
 						</div>
 						<div class="col l2"></div>
@@ -76,7 +76,7 @@
 						<div class="col l2"></div>
 						<div class="input-field formato col s12 l8">
 							<form:label path="capitulos">Capitulos</form:label>
-							<form:input path="capitulos" id="capitulos" />
+							<form:input path="capitulos" id="capitulos" class="formato"/>
 							<form:errors path="temporadas" style="color:red"></form:errors>
 						</div>
 						<div class="col l2"></div>
@@ -86,7 +86,7 @@
 						<div class="col l2"></div>
 						<div class="col s12 l8">
 							<form:label path="poster" class="formato">Poster</form:label>
-							<input type="file" name="posters" class="boton-Foto">
+							<input type="file" name="posters" class="boton-Foto formato">
 
 							<c:if test="${editar== true}">
 								<form:input path="id" type="hidden" />
@@ -105,8 +105,8 @@
 						<div class="col l2"></div>
 						<div class="col s12 l8">
 							<form:label path="sinopsis" class="formato">Sinopsis</form:label>
-							<form:textarea path="sinopsis" id="sinopsis" rows="26" cols="40"
-								class="especial" />
+							<form:textarea path="sinopsis" id="sinopsis"
+								class="especial materialize-textarea" />
 							<form:errors path="sinopsis" style="color:red"></form:errors>
 						</div>
 						<div class="col l2"></div>

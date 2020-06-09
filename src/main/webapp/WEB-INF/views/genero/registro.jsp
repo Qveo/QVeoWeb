@@ -43,9 +43,9 @@
 				<div class="col s8 l8">
 					<form:form method="POST" action="/qveo/admin/genero/form"
 						modelAttribute="generoNuevo"
-						class="input-field col s12 l8 formato">
+						class="input-field col s12 l8">
 						<form:label path="nombre">Nombre del Genero</form:label>
-						<form:input path="nombre" id="nombre" />
+						<form:input path="nombre" id="nombre" class="formato"/>
 						<form:errors path="nombre" style="color:red"></form:errors>
 						<div style="color: red">${errorNombre}</div>
 						<c:choose>
