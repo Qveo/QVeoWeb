@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">
 <link rel="stylesheet"
@@ -30,30 +30,23 @@
 		<%@include file="/WEB-INF/views/layout/header.jsp"%>
 	</header>
 	<main>
+	<div class="container">
 		<div class="row">
 			<div class="input-field col s12 m6 l6 boton">
 				<a href="/qveo/admin/plataformas/form"><i
 					class="waves-effect waves-light btn agregar-usuario">Nueva
 						plataforma</i></a>
 			</div>
-			<div class="input-field col s12 m6 l6">
-				<input id="plataforma-nombre" type="text" class="validate">
-				<label for="plataforma-nombre">Introduzca un nombre de
-					plataforma</label>
-			</div>
 
 		</div>
 		<div class="row cabeceras">
-			<div class="col s4">Foto</div>
+			<div class="col s4"></div>
 			<div class="col s4">Nombre</div>
 			<div class="col s4">Opciones</div>
 		</div>
 		<c:forEach items="${plataformas}" var="plataforma">
 			<div id="${plataforma.nombre}-${plataforma.id}" class="row cuerpo">
 				<div class="col s4">
-					<img alt="${plataforma.nombre}"
-						src="${pageContext.request.contextPath}${plataforma.foto}"
-						width="30%">
 				</div>
 				<div class="col s4">${plataforma.nombre}</div>
 				<div class="col s4">
@@ -101,7 +94,7 @@
 		</div>
 
 
-
+</div>
 	</main>
 	<footer>
 		<%@include file="/WEB-INF/views/layout/footer.jsp"%>

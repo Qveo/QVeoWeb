@@ -14,8 +14,14 @@
 	background-color: #eeeeee;
 	border-bottom: 1px solid #fff;
 }
+main{
+	height:79.3%;
+}
 
-.cuerpo:hover {
+.container{
+	padding-bottom: 40px;
+}
+.cuerpo:hover{
 	background-color: #ddd;
 }
 
@@ -40,9 +46,26 @@ input{
 	font-weight: bold;
 }
 
+.formato {
+	color: white;
+	font-size: 1vw;
+}
+
+.especial {
+	color: white;
+	font-size: 1vw;
+}
+
+.boton-Foto {
+	width: 40%;
+}
+
+.fotoLista {
+	width: 50%;
+}
 
 @media only screen and (max-width: 768px) {
-		
+	/* For mobile phones: */
 	.input-field>label {
 		color: white;
 		font-size: 1.6em;

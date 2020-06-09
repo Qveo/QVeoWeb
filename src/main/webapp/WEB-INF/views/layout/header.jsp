@@ -16,7 +16,6 @@
 				<li><a href="/qveo/filtro">Cat&aacutelogo</a></li>
 				<li><a href="/qveo/peliculas">Pel&iacuteculas</a></li>
 				<li><a href="/qveo/serie">Series</a></li>
-				<li><a href="#">M&aacutes Recientes</a></li>
 				<sec:authorize access="isAnonymous()">
 					<li><a id="login" href="<c:url value="/login" />">Sign in</a></li>
 					<li><a href="<c:url value="/usuario/form" />">Sign up</a></li>
@@ -60,7 +59,6 @@
 	<li><a href="/qveo/filtro" class="font-color-sidenav">Cat&aacutelogo</a></li>
 	<li><a href="/qveo/serie" class="font-color-sidenav">Series</a></li>
 	<li><a href="/qveo/peliculas" class="font-color-sidenav">Pel&iacuteculas</a></li>
-	<li><a href="#" class="font-color-sidenav">M&aacutes Recientes</a></li>
 	<security:authorize access="hasRole('USER')">
 		<li><a id=""
 			href="${pageContext.request.contextPath}/usuario/mylist/"

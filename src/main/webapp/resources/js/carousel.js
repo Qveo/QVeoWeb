@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
+		
 	var modals = document.querySelectorAll('.modal');
 	var modalInstance = M.Modal.init(modals);
 
@@ -7,6 +8,11 @@ document.addEventListener('DOMContentLoaded', function() {
 		padding : 10,
 		dist : 0,
 		interval : 100,
+	});
+	
+	$('.caja').carousel({
+		fullWidth : true,
+		indicators : false
 	});
 
 	for (let i = 0; i < carousels.length; i++) {
@@ -96,4 +102,19 @@ $(document).ready(function() {
 		$('.carousel_Movistar').carousel('prev');
 	});
 	
+	// move next carousel
+	$('.nextCaja').click(function(e) {
+		e.preventDefault();
+		e.stopPropagation();
+		$('.caja').carousel('next');
+	});
+
+	// move prev carousel
+	$('.prevCaja').click(function(e) {
+		e.preventDefault();
+		e.stopPropagation();
+		$('.caja').carousel('prev');
+	});
+	
 });
+

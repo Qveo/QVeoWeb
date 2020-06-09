@@ -202,6 +202,10 @@ public class Pelicula {
     public String plataformasConcatenadas(){
         return peliculaPlataformas.stream().map(PeliculaPlataforma::getPlataforma).map(Plataforma::getNombre).collect(Collectors.joining(", "));
     }
+    
+    public String generosConcatenadas(){
+        return generos.stream().map(Genero::getNombre).collect(Collectors.joining(", "));
+    }
 
 	@Override
 	public String toString() {

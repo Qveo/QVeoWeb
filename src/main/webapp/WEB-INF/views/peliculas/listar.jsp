@@ -1,10 +1,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <!DOCTYPE html>
 <html>
 <head>
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">
 <link rel="stylesheet"
@@ -36,10 +37,6 @@
 					<a href="/qveo/admin/peliculas/form"><i
 						class="waves-effect waves-light btn agregar-usuario">Nueva
 							pelicula</i></a>
-				</div>
-				<div class="input-field col s12 m6 l6">
-					<input id="usuario-nombre" type="text" class="validate"> <label
-						for="usuario-nombre">Introduzca un nombre de una pelicula</label>
 				</div>
 			</div>
 			<div class="row cabeceras">

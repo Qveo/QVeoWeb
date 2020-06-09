@@ -1,0 +1,55 @@
+body * {
+	box-sizing: border-box;
+}
+
+ul li {
+	display: inline;
+	padding: 5px;
+}
+
+.input-field>label {
+	color: white;
+	font-size: 1vw;
+}
+
+.formato {
+	color: white;
+	font-size: 1vw;
+}
+main{
+	height:79.3%;
+}
+
+.boton-Foto {
+	width: 40%;
+}
+
+textarea {
+	height: 85px;
+}
+
+@media only screen and (max-width: 768px) {
+	/* For mobile phones: */
+	.chips .chip {
+		font-size: 2vw;
+	}
+	.responsive {
+		width: 80%;
+		height: 70%;
+	}
+	.input-field>label {
+		color: white;
+		font-size: 4vw;
+	}
+	.formato {
+		color: white;
+		font-size: 4vw;
+	}
+	.especial {
+		color: white;
+		font-size: 4vw;
+	}
+	textarea {
+		height: 187px;
+	}
+}

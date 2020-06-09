@@ -68,7 +68,7 @@ public class PeliculaController {
 	public void InitBinder(WebDataBinder binder) {
 		binder.setValidator(peliculaValid);
 	}
-
+	
 	@GetMapping("/admin/peliculas/listar")
 	public String listar(Model mod) {
 

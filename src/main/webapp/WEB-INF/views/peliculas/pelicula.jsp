@@ -6,6 +6,7 @@
 <meta charset="ISO-8859-1">
 
 <title>${title}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">
 <link rel="stylesheet"
@@ -13,7 +14,7 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/general.css">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/menu.css">
+	href="${pageContext.request.contextPath}/resources/css/pelicula/pelicula.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/header.css">
 	<link rel="stylesheet"
@@ -27,137 +28,117 @@
 </header>
 
 <main>
-	<div class="row">
-		<security:authorize access="hasRole('USER')">
-			<div class="col s12 l9 offset-l1 offset-s1">
-				<a id="btn-movie"
-					class="waves-effect btn-large add-serie boton-agregar z-depth-2 btn-oculto">Agregar
-					a mi lista</a>
-				<p id="id-movie" style="display: none">${peliculas.id}</p>
-			</div>
-		</security:authorize>
-		<div class="col s1"></div>
-		<div class="col s10 derecha ">
-			<div class="col s4 bord">
-				<img src="${pageContext.request.contextPath}${peliculas.poster}"
-					alt="rick" width="80%">
-			</div>
-			<div class="col s8">
-				<h2>${peliculas.titulo}
-					<span>(<fmt:formatDate value="${peliculas.anio}" />)
-					</span>
-				</h2>
-				<div>
-					<ul>
-						<li><span>Duraci&oacuten:${peliculas.duracion}</span></li>
-						<li><span>Anio:${peliculas.anio}</span></li>
-						<li><span>Gui&oacuten:${peliculas.guion}</span></li>
-						<li><span>Pais:${peliculas.pais.nombre}</span></li>
-					</ul>
+	<section>
+		<div class="row">
+			<div class="col s10 l10 offset-l2">
+				<div class="col s12 l4">
+					<img src="${pageContext.request.contextPath}${peliculas.poster}"
+						alt="rick" width="100%">
 				</div>
+				<div class="col s12 l6">
+					<h5>T&iacute;tulo</h5>
+					<label id="tituloSerie">${peliculas.titulo}</label>
 
-				<div>
-					<ul>
-						<li><a>Agregar</a></li>
-						<li><a>Ir a la plataforma</a></li>
-					</ul>
-				</div>
+					<h5>Fecha de estre&ntilde;o</h5>
+					<label class="fechaInicio">${peliculas.anio}</label>
 
-				<h5>Sinopsis</h5>
-				<p>${peliculas.sinopsis}</p>
+					<h5>Pa&iacute;s</h5>
+					<label>${peliculas.pais.nombre}</label>
 
-				<div>
-					<h5>Genero:</h5>
-					<ul>
-						<c:forEach items="${peliculas.generos}" var="genero">
+					<h5>Duraci&oacute;n</h5>
+					<label>${peliculas.duracion}</label>
 
-							<li><a class="genero">${genero.nombre}</a></li>
-						</c:forEach>
-					</ul>
+					<h5>Gui&oacute;n</h5>
+					<label>${peliculas.guion}</label>
+
+					<h5>G&eacute;neros</h5>
+					<label>
+						<ul>
+							<c:forEach items="${peliculas.generos}" var="genero">
+
+								<li>${genero.nombre}</li>
+							</c:forEach>
+						</ul>
+					</label>
+					<h5>Sinopsis</h5>
+					<label>${peliculas.sinopsis}</label>
+					
+					<security:authorize access="hasRole('USER')">
+						<div class="col s12 l9 offset-l1 offset-s1">
+							<a id="btn-movie"
+								class="waves-effect btn-large add-serie boton-agregar z-depth-2 btn-oculto">Agregar
+								a mi lista</a>
+							<p id="id-movie" style="display: none">${peliculas.id}</p>
+						</div>
+					</security:authorize>
 				</div>
 
 
 			</div>
+	</section>
+	<section>
+		<div class="row">
+			<div class="col s10 l8 offset-l2 scrollmenu">
+				<h5>Reparto</h5>
+				<ul>
+					<c:forEach items="${peliculas.actores}" var="actores">
+						<li>
+							<div class="reparto">
+								<a href="/qveo/filtro/actor/${actores.id}"> <img
+									src="${pageContext.request.contextPath}${actores.foto}"
+									alt="${actores.nombre}" class="imagenes">
+									<div>${actores.nombre}</div>
+								</a>
+							</div>
+						</li>
 
-			<table>
-				<tr>
-					<td>Comentario 1</td>
-					<td>Fecha</td>
-				</tr>
-				<tr>
-					<td>Comentario 2</td>
-					<td>Fecha</td>
-				</tr>
-				<tr>
-					<td>Comentario 3</td>
-					<td>Fecha</td>
-				</tr>
-			</table>
+					</c:forEach>
+				</ul>
+			</div>
+
 		</div>
-		<div class="col s1"></div>
-	</div>
 
-	<div class="row">
-		<div class="col s1"></div>
-		<div class="col s10">
-			<div class="col s4">
-				<label>Director:</label>
+		<div class="row">
+			<div class="col s10 l10 offset-l2">
+				<h5>Director</h5>
 				<ul>
 					<c:forEach items="${peliculas.directores}" var="director">
 						<li>
-							<div class="col s4">
-								<img src="${pageContext.request.contextPath}${director.foto}"
-									alt="${director.nombre}" width="60%">
-								<div>
-									<a href="/qveo/filtro/director/${director.id}">
-										${director.nombre}</a>
-								</div>
+							<div class="reparto">
+								<a href="/qveo/filtro/director/${director.id}"> <img
+									src="${pageContext.request.contextPath}${director.foto}"
+									alt="${director.nombre}" class="imagenes">
+									<div>${director.nombre}</div>
+								</a>
 							</div>
 						</li>
 					</c:forEach>
 				</ul>
 			</div>
-
-
-			<div class="col s4">
-				<label>Reparto:</label>
-				<ul>
-					<c:forEach items="${peliculas.actores}" var="actores">
-						<li>
-							<div class="col s4">
-								<img src="${pageContext.request.contextPath}${actores.foto}"
-									alt="${actores.nombre}" width="60%">
-								<div>
-									<a href="/qveo/filtro/actor/${actores.id}">${actores.nombre}</a>
-								</div>
-							</div>
-						<li>
-					</c:forEach>
-				</ul>
-			</div>
-			<div class="col s4">
-				<label>Plataformas:</label>
+		</div>
+		<div class="row">
+			<div class="col s10 l8 offset-l2 scrollmenu">
+				<h5>Plataformas</h5>
 				<ul>
 					<c:forEach items="${peliculas.peliculaPlataformas}"
-						var="peliculaPlataformas">
-						<li>
-							<div class="col s3">
+						var="plataforma">
+						<li><div class="reparto">
 								<img
-									src="${pageContext.request.contextPath}${peliculaPlataformas.plataforma.foto}"
-									alt="${peliculaPlataformas.plataforma.nombre}" width="80%">
-								<div>
-									<a href="${peliculaPlataformas.plataforma.id}">${peliculaPlataformas.plataforma.nombre}</a>
-								</div>
-							</div>
-						<li>
+									src="${pageContext.request.contextPath}${plataforma.plataforma.foto}"
+									alt="${plataforma.plataforma.nombre}" class="imagenes">
+								<div id="plataforma">${plataforma.plataforma.nombre}</div>
+							</div></li>
 					</c:forEach>
 				</ul>
 			</div>
-			<div class="col s1"></div>
 		</div>
-	</div>
+	</section>
 
 </main>
+
+<footer>
+	<%@include file="/WEB-INF/views/layout/footer.jsp"%>
+</footer>
 
 <script
 		src="${pageContext.request.contextPath}/resources/js/pelicula/pelicula-btn.js"></script>

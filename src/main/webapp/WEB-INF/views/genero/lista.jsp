@@ -14,13 +14,11 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/general.css">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/icon.css">
-<link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/header.css">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/genero/genero.css">
+	href="${pageContext.request.contextPath}/resources/css/footer.css">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath}/resources/css/modal.css">
+	href="${pageContext.request.contextPath}/resources/css/genero/genero.css">
 <link rel="icon" type="image/x-icon"
 	href="${pageContext.request.contextPath}/resources/img/favicon.ico">
 </head>
@@ -41,7 +39,7 @@
 			</div>
 
 			<div class="row cabeceras">
-				<div class="col s6 l6">Nombre Genero</div>
+				<div class="col s6 l6">Genero</div>
 				<div class="col s6 l6">Opciones</div>
 			</div>
 			<c:forEach items="${generos}" var="genero">
