@@ -116,6 +116,10 @@ footer{
     .foto-perfil{
         width: 40%;
     }
+    
+    footer{
+    position: relative;
+}
 
     #personal, #contrasena, #plataformas {
         height: auto;

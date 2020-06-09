@@ -5,12 +5,17 @@
 <html>
 <head>
 <title>${title}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/general.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/header.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/director/registro.css">
 <link rel="icon" type="image/x-icon"
 	href="${pageContext.request.contextPath}/resources/img/favicon.ico">
 </head>
@@ -24,37 +29,43 @@
 		<form:form method="POST" action="/qveo/admin/directores/form/add"
 			modelAttribute="directorNuevo" enctype="multipart/form-data"
 			class="col s12 white-text">
-
-			<div class="row">
-				<div class="col s3"></div>
-				<div class="input-field col s6">
-					<form:input path="nombre" id="nombre" type="text" class="validate" />
-					<form:label for="nombre" path="nombre">Nombre</form:label>
-					<form:errors path="nombre" style="color:red"></form:errors>
+	
+				<div class="row">
+					<div class="col s3"></div>
+					<div class="input-field col s6">
+						<form:input path="nombre" id="nombre" type="text"
+							class="validate formato" />
+						<form:label for="nombre" path="nombre">Nombre</form:label>
+						<form:errors path="nombre" style="color:red"></form:errors>
+					</div>
+					<div class="col s3"></div>
 				</div>
-				<div class="col s3"></div>
-			</div>
 
 
-			<div class="row">
-				<div class="col s2"></div>
-				<div class="col s8">
+				<div class="row">
+					<div class="col s3"></div>
+					<div class="col s6">
 
-					<c:if test="${editar}">
-						<div class="col s4">
-							<img alt="${directorNuevo.nombre}"
-								src="${pageContext.request.contextPath}${directorNuevo.foto}"
-								width="80%"> <span style="color: red">${fotoerror}</span>
-						</div>
-					</c:if>
+						<c:if test="${editar}">
+							<div class="col s4">
+								<img alt="${directorNuevo.nombre}"
+									src="${pageContext.request.contextPath}${directorNuevo.foto}"
+									width="80%"> <span style="color: red">${fotoerror}</span>
+							</div>
+						</c:if>
 
-					<div class="col s12 m12 l6 offset-l3">
-						<div class="file-field input-field">
-							<div class="btn">
-								<form:label path="foto">
-									<span>Retrato del director</span>
-								</form:label>
-								<input type="file" name="retrato" />
+						<div class="col s12 m12 l6">
+							<div class="file-field input-field">
+								<div class="btn">
+									<form:label path="foto">
+										<span>Retrato del director</span>
+									</form:label>
+									<input type="file" name="retrato" />
+								</div>
+								<div class="file-path-wrapper">
+									<input class="file-path validate" type="text"
+										placeholder="Suba aqui su foto">
+								</div>
 							</div>
 							<div class="file-path-wrapper">
 								<input class="file-path validate" type="text"
@@ -78,7 +89,7 @@
 			</c:choose>
 
 			<div class="row">
-				<div class="col s12 m12 l6 offset-l3">
+				<div class="col s12 m9 l6 offset-s3 offset-m3 offset-l3">
 					<c:choose>
 						<c:when test="${editar}">
 							<button class="btn waves-effect waves-light" type="submit"
@@ -100,6 +111,9 @@
 
 		</form:form>
 	</main>
+	<footer>
+		<%@include file="/WEB-INF/views/layout/footer.jsp"%>
+	</footer>
 
 </body>
 <script src="${pageContext.request.contextPath}/resources/js/jquery.js"></script>

@@ -5,6 +5,7 @@
 <html>
 <head>
 <title>${title}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">
 <link rel="stylesheet"
@@ -13,7 +14,9 @@
 	href="${pageContext.request.contextPath}/resources/css/general.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/header.css">
-	<link rel="icon" type="image/x-icon"
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/paises/registro.css">
+<link rel="icon" type="image/x-icon"
 	href="${pageContext.request.contextPath}/resources/img/favicon.ico">
 </head>
 <body>
@@ -30,13 +33,14 @@
 			<div class="row">
 				<div class="col s3"></div>
 				<div class="input-field col s6">
-					<form:input path="nombre" id="nombre" type="text" class="validate" />
+					<form:input path="nombre" id="nombre" type="text"
+						class="validate formato" />
 					<form:label for="nombre" path="nombre">Nombre</form:label>
 					<form:errors path="nombre" style="color:red"></form:errors>
 				</div>
 				<div class="col s3"></div>
 			</div>
-			
+
 			<c:choose>
 				<c:when test="${editar}">
 					<form:input path="id" type="hidden" />
@@ -66,7 +70,9 @@
 
 		</form:form>
 	</main>
-
+	<footer>
+		<%@include file="/WEB-INF/views/layout/footer.jsp"%>
+	</footer>
 </body>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>

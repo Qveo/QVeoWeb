@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	var elems = document.querySelectorAll('select');
 	var instances = M.FormSelect.init(elems);
+
 	
 	 //Chips Actores
 	 let actores = $('input[name="actores"]');

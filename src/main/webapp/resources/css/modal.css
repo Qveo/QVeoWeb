@@ -1,29 +1,27 @@
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 600px) {
 	.imagen-modal {
-		width: 20rem;
-		display: block;
-		margin: auto;
+		height:400px;
 	}
 }
 
+.bottom-sheet{
+	padding-bottom: 0 !important;
+}
+
 .imagen-modal {
-	width: 16rem;
-	display: block;
-	margin-top: 1rem;
-	margin-bottom: 1rem;
+	width: 100%;
+/* 	display: block; */
+/* 	margin-top: 1rem; */
+/* 	margin-bottom: 1rem; */
 }
 
 .modal-content {
-	display: flex;
+/* 	display: flex; */
 	background-color: #393e46;
 }
 
 .modal .modal-content {
 	overflow: hidden !important;
-}
-
-.flexbox {
-	margin: 1rem;
 }
 
 .titulo-principal {
@@ -74,7 +72,9 @@ opacity: 0.9 !important;
 	opacity: 0.9 !important;
 	color: #eeeeee !important;
 }
-
+div a{
+	margin-bottom: 10px !important;
+}
 
 
 

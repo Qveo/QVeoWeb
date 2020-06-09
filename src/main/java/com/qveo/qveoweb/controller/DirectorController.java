@@ -20,7 +20,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.qveo.qveoweb.model.Director;
 import com.qveo.qveoweb.service.DirectorService;
-import com.qveo.qveoweb.service.UploadFileService;
 import com.qveo.qveoweb.validation.DirectorValidador;
 
 @Controller

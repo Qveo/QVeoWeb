@@ -1,8 +1,13 @@
 package com.qveo.qveoweb.controller;
 
 
+import com.qveo.qveoweb.model.Pelicula;
 import com.qveo.qveoweb.model.Plataforma;
+import com.qveo.qveoweb.model.Serie;
+import com.qveo.qveoweb.service.PeliculaService;
 import com.qveo.qveoweb.service.PlataformaService;
+import com.qveo.qveoweb.service.SerieService;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 @Controller
 public class HomeController {
@@ -19,6 +25,12 @@ public class HomeController {
 
     @Autowired
     PlataformaService plataformaService;
+    
+    @Autowired
+    PeliculaService peliculaServ;
+    
+    @Autowired
+    SerieService serieServ;
 
     @GetMapping({"/", "/home"})
     public String home(Model model) {

@@ -29,7 +29,7 @@ public class Pelicula {
     private Pais pais;
     private Collection<Director> directores;
     private Collection<Usuario> usuarios;
-    private Set<PeliculaPlataforma> peliculaPlataformas = new HashSet<PeliculaPlataforma>();;
+    private Set<PeliculaPlataforma> peliculaPlataformas = new HashSet<PeliculaPlataforma>();
     
     public Pelicula() {
     	
@@ -201,6 +201,10 @@ public class Pelicula {
 
     public String plataformasConcatenadas(){
         return peliculaPlataformas.stream().map(PeliculaPlataforma::getPlataforma).map(Plataforma::getNombre).collect(Collectors.joining(", "));
+    }
+    
+    public String generosConcatenadas(){
+        return generos.stream().map(Genero::getNombre).collect(Collectors.joining(", "));
     }
 
 	@Override
