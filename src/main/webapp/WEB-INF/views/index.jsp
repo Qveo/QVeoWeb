@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<%@ page import="com.qveo.qveoweb.utils.DateUtils" %>
 <html>
 <head>
 <meta charset="ISO-8859-1">
@@ -102,6 +103,8 @@
 							class="carousel carousel_${fn:replace(plataforma.nombre,' ','_')}">
 							<c:forEach items="${plataforma.peliculaPlataformas}"
 								var="peliculaPlataformas">
+								<c:if test="${peliculaPlataformas.fechaCaducidad eq null or
+									DateUtils.isDateGreaterThanToday(peliculaPlataformas.fechaCaducidad)}">
 								<div class="carousel-item">
 									<a class="modal-trigger mod-movie"
 										href="#modal-pelicula${plataforma.id}-${peliculaPlataformas.pelicula.id}">
