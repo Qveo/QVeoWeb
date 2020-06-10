@@ -4,7 +4,7 @@
 
 .imagen-modal {
 	width: auto !important;
-	height: -webkit-fill-available !important;
+	height: 45vh !important;
  	margin-bottom: 1rem;
 }
 
@@ -73,7 +73,7 @@ background-color: white !important;
 @media only screen and (max-width: 600px) {
 	.imagen-modal {
 		width: auto !important;
-		height: -webkit-fill-available !important;
+		height: 45vh !important;
 		margin: auto;
 		display: block;
 	}
