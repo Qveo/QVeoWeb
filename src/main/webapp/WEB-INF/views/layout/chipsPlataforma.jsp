@@ -3,7 +3,6 @@
 <div class="row">
 	<div class="col s12 m12 l6 offset-l3">
 		<form:label path="plataformas">Plataformas</form:label>
-		<form:errors path="plataformas" class="error"></form:errors>
 	</div>
 </div>
 <div class="row">

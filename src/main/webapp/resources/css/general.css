@@ -9,6 +9,7 @@ body {
 main {
 	padding-top: 10vh;
 	flex: 1 0 auto;
+	margin: 25px 0;
 }
 
 nav {
@@ -23,12 +24,6 @@ footer {
 	margin-top: 0 !important;
 }
 
-/*
-.carousel {
-	padding-top: -10vh;
-	height: 307px;
-}
-*/
 .page-footer {
 	background-color: #222831 !important;
 	color: #00adb5 !important;

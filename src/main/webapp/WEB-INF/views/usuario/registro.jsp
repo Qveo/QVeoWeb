@@ -89,7 +89,11 @@
 							<form:radiobutton id="fem" path="sexo" value="F" />
 							<span>Femenino</span>
 						</form:label>
-						<form:errors path="sexo" class="error"></form:errors>
+					</div>
+					<div class="row">
+						<div class="col s12 m8 offset-m2 l6 offset-l3">
+							<form:errors path="sexo" class="error"></form:errors>
+						</div>
 					</div>
 				</div>
 				<!--  fecha nacimiento usuario -->
@@ -118,6 +122,11 @@
 
 				<!-- plataformas de usuario -->
 				<%@include file="/WEB-INF/views/layout/chipsPlataforma.jsp"%>
+				<div class="row">
+					<div class="col s12 m8 offset-m2 l6 offset-l3">
+						<form:errors path="plataformas" class="error"></form:errors>
+					</div>
+				</div>
 
 				<!-- Imagen de usuario -->
 				<c:if test="${edit}">

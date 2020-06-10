@@ -73,8 +73,8 @@ document.addEventListener('DOMContentLoaded', function() {
 		document.getElementById('buscar-nombre').classList
 				.toggle('mostrar-ocultar');
 		inputBusqueda.focus();
-		hideLogo();
-		hideHamburger();
+		//hideLogo();
+		//hideHamburger();
 	}
 
 	function hideLogo() {

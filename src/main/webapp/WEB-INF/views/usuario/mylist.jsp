@@ -29,6 +29,13 @@
 	</header>
 	<main>
 		<div class="container animated fadeIn">
+		<c:if test="${empty series && empty peliculas}">
+			<sec:authorize access="isAuthenticated()">
+					<h3 class="text">
+						No tiene ninguna película en su lista personal.
+					</h3>
+			</sec:authorize>
+		</c:if>
 			<div class="row">
 				<c:forEach items="${series}" var="serie">
 					<%@include

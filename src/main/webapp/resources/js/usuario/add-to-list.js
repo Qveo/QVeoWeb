@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	}
 
 	function addSerieToList(e){
-		idSerie = e.target.nextElementSibling.innerHTML;
+		idSerie = e.currentTarget.nextElementSibling.innerHTML;
 		let addResource = {};
 		console.log(userLogin.series);
 		addResource['idUser']=userLogin.id;
@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	}
 	
 	function addMovieToList(e){
-		idPelicula = e.target.nextElementSibling.innerHTML;
+		idPelicula = e.currentTarget.nextElementSibling.innerHTML;
 		let addResource = {};
 		addResource['idUser']=userLogin.id;
 		addResource['idResource']=idPelicula;
