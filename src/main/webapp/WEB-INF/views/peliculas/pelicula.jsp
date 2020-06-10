@@ -17,7 +17,7 @@
 	href="${pageContext.request.contextPath}/resources/css/pelicula/pelicula.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/header.css">
-	<link rel="stylesheet"
+<link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/pelicula/pelicula-btn.css">
 <link rel="icon" type="image/x-icon"
 	href="${pageContext.request.contextPath}/resources/img/favicon.ico">
@@ -62,11 +62,11 @@
 					</label>
 					<h5>Sinopsis</h5>
 					<label>${peliculas.sinopsis}</label>
-					
+
 					<security:authorize access="hasRole('USER')">
 						<div class="col s12 l9 offset-l1 offset-s1">
 							<a id="btn-movie"
-								class="waves-effect btn-large add-serie boton-agregar z-depth-2 btn-oculto">Agregar
+								class="waves-effect btn-large add-movie boton-agregar z-depth-2 btn-oculto">Agregar
 								a mi lista</a>
 							<p id="id-movie" style="display: none">${peliculas.id}</p>
 						</div>
@@ -139,6 +139,9 @@
 <footer>
 	<%@include file="/WEB-INF/views/layout/footer.jsp"%>
 </footer>
-
 <script
-		src="${pageContext.request.contextPath}/resources/js/pelicula/pelicula-btn.js"></script>
+	src="${pageContext.request.contextPath}/resources/vendor/js/jquery-3.4.1.min.js"></script>
+<script
+	src="${pageContext.request.contextPath}/resources/vendor/js/materialize.js"></script>
+<script
+	src="${pageContext.request.contextPath}/resources/js/pelicula/pelicula-btn.js"></script>
