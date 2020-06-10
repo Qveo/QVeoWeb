@@ -8,7 +8,7 @@
 		<div class="nav-wrapper">
 			<a href="#" class="sidenav-trigger" data-target="slide-out"><i
 				class="material-icons">menu</i></a> <a
-				href="${pageContext.request.contextPath}/home" class="title-qveo"><img
+				href="${pageContext.request.contextPath}/home" id="title-qveo"><img
 				class="nav-logo"
 				src="${pageContext.request.contextPath}/resources/img/logo-line.png" /></a>
 			<ul class="right hide-on-med-and-down">
