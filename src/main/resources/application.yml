@@ -22,16 +22,16 @@ spring:
       prefix: /WEB-INF/views/
       suffix: .jsp
   datasource:
-#    url: jdbc:mysql://localhost:3306/qveo?serverTimezone=UTC
-#    username: root
-#    password: root
+    url: jdbc:mysql://localhost:3306/qveo?serverTimezone=UTC
+    username: root
+    password: root
 #    url: jdbc:mysql://eu-cdbr-west-03.cleardb.net/heroku_3cb0eedb8952cc9?reconnect=true
 #    username: b676bcf5e00839
 #    password: a25efb39
     
-    url: jdbc:mysql://eu-cdbr-west-03.cleardb.net/heroku_ea451e6eb00a875?reconnect=true
-    username: ba69676c7f1e53
-    password: 5cb86e24
+#    url: jdbc:mysql://eu-cdbr-west-03.cleardb.net/heroku_ea451e6eb00a875?reconnect=true
+#    username: ba69676c7f1e53
+#    password: 5cb86e24
 #    driver.class-name: com.mysql.jdbc.Driver
 #  jpa:
 #    hibernate:
