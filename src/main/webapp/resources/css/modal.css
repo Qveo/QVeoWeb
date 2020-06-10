@@ -1,18 +1,11 @@
-@media only screen and (max-width: 600px) {
-	.imagen-modal {
-		height:400px;
-	}
-}
-
 .bottom-sheet{
 	padding-bottom: 0 !important;
 }
 
 .imagen-modal {
-	width: 100%;
-/* 	display: block; */
-/* 	margin-top: 1rem; */
-/* 	margin-bottom: 1rem; */
+	width: auto !important;
+	height: -webkit-fill-available !important;
+ 	margin-bottom: 1rem;
 }
 
 .modal-content {
@@ -48,11 +41,38 @@
 }
 .boton-ver{
 	background: #00adb5;
+	margin-top: 10px;
+}
+
+.container {
+	width: 95% !important;
+}
+
+.sinopsis{
+	font-size: initial !important;
 }
 
 @media only screen and (max-width: 768px) {
 	.responsive {
 		width: 50%;
+	}
+
+	.modal.bottom-sheet{
+		overflow: auto;
+	}
+
+	.imagen-modal{
+		width: 25vw !important;
+		height: auto !important;
+	}
+}
+
+@media only screen and (max-width: 600px) {
+	.imagen-modal {
+		width: auto !important;
+		height: -webkit-fill-available !important;
+		margin: auto;
+		display: block;
 	}
 }
 .boton-agregar{

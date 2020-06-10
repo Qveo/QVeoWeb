@@ -1,21 +1,10 @@
 package com.qveo.qveoweb.service.Imp;
 
+import com.qveo.qveoweb.controller.MiConfiguracionController;
 import com.qveo.qveoweb.dao.PlataformaDao;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
-import com.qveo.qveoweb.dao.PeliculaDao;
 import com.qveo.qveoweb.dao.RolDao;
-import com.qveo.qveoweb.dao.SerieDao;
 import com.qveo.qveoweb.dao.UsuarioDao;
-import com.qveo.qveoweb.dto.ContrasenaDto;
-import com.qveo.qveoweb.dto.PersonalInfoDto;
-import com.qveo.qveoweb.dto.PlataformaDto;
-import com.qveo.qveoweb.dto.UserDetailsDto;
-import com.qveo.qveoweb.dto.AddToListDto;
-import com.qveo.qveoweb.dto.AjaxResponseBody;
-import com.qveo.qveoweb.dto.UsuarioResponseBody;
+import com.qveo.qveoweb.dto.*;
 import com.qveo.qveoweb.model.Pelicula;
 import com.qveo.qveoweb.model.Rol;
 import com.qveo.qveoweb.model.Serie;
@@ -24,11 +13,9 @@ import com.qveo.qveoweb.service.IUploadFileService;
 import com.qveo.qveoweb.service.PeliculaService;
 import com.qveo.qveoweb.service.SerieService;
 import com.qveo.qveoweb.service.UsuarioService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -36,12 +23,15 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 @Service
 @Transactional
 public class UsuarioServiceImp implements UsuarioService {
+
+    private static final Logger logger = LoggerFactory.getLogger(UsuarioServiceImp.class);
 
     @Autowired
     UsuarioDao usuarioDao;
@@ -50,11 +40,11 @@ public class UsuarioServiceImp implements UsuarioService {
     RolDao rolDao;
 
     @Autowired
-	IUploadFileService uploadFileService;
-    
+    IUploadFileService uploadFileService;
+
     @Autowired
     SerieService serieService;
-    
+
     @Autowired
     PeliculaService peliculaService;
 
@@ -122,10 +112,10 @@ public class UsuarioServiceImp implements UsuarioService {
         return usuarioDao.existsById(id);
     }
 
-	@Override
-	public Usuario findUserByEmail(String email) {
-		return usuarioDao.findByEmail(email);
-	}
+    @Override
+    public Usuario findUserByEmail(String email) {
+        return usuarioDao.findByEmail(email);
+    }
 
     @Override
     public PersonalInfoDto savePersonalInfo(PersonalInfoDto personalInfoDto, MultipartFile file) {
@@ -137,6 +127,8 @@ public class UsuarioServiceImp implements UsuarioService {
         usuario.setFechaNacimiento(personalInfoDto.getFechaNacimiento());
         try {
             usuario = saveUser(usuario, file);
+            logger.debug("Usuario {} actualizado correctamente.", usuario.toString());
+            updateAuthInSession(usuario);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -178,59 +170,71 @@ public class UsuarioServiceImp implements UsuarioService {
     @Override
     public Usuario getUsuarioLogueado() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-            UserDetailsDto userPrincipal = authentication == null || !authentication.isAuthenticated()
-                    || "anonymousUser".equals(authentication.getPrincipal()) ?
-                    null : (UserDetailsDto) authentication.getPrincipal();
-            return this.findUserByEmail(Objects.nonNull(userPrincipal) ? userPrincipal.getUsername() : null);
+        UserDetailsDto userPrincipal = authentication == null || !authentication.isAuthenticated()
+                || "anonymousUser".equals(authentication.getPrincipal()) ?
+                null : (UserDetailsDto) authentication.getPrincipal();
+        return this.findUserByEmail(Objects.nonNull(userPrincipal) ? userPrincipal.getUsername() : null);
+    }
+
+    @Override
+    public AjaxResponseBody saveSerie(AddToListDto addResource) {
+        Usuario usuario = getUsuario(addResource.getIdUser());
+        List<Serie> series = new ArrayList<Serie>(usuario.getSeries());
+        AjaxResponseBody result = new AjaxResponseBody();
+        if (series.contains(serieService.getSerie(addResource.getIdResource()))) {
+            series.remove(serieService.getSerie(addResource.getIdResource()));
+            usuario.setSeries(series);
+            result.setMsg("eliminado");
+            result.setSeries(series);
+            return result;
         }
+        series.add(serieService.getSerie(addResource.getIdResource()));
+        usuario.setSeries(series);
+        result.setMsg("agregado");
+        result.setSeries(series);
+        return result;
+    }
 
-        @Override
-        public AjaxResponseBody saveSerie(AddToListDto addResource) {
-            Usuario usuario = getUsuario(addResource.getIdUser());
-            List<Serie> series = new ArrayList<Serie>(usuario.getSeries());
-            AjaxResponseBody result = new AjaxResponseBody();
-            if(series.contains(serieService.getSerie(addResource.getIdResource()))) {
-                series.remove(serieService.getSerie(addResource.getIdResource()));
-			usuario.setSeries(series);
-			result.setMsg("eliminado");
-			result.setSeries(series);
-			return result;
-		}
-		series.add(serieService.getSerie(addResource.getIdResource()));
-		usuario.setSeries(series);
-		result.setMsg("agregado");
-		result.setSeries(series);
-		return result;
-	}
+    @Override
+    public AjaxResponseBody saveMovie(AddToListDto addResource) {
+        Usuario usuario = getUsuario(addResource.getIdUser());
+        List<Pelicula> peliculas = new ArrayList<Pelicula>(usuario.getPeliculas());
+        AjaxResponseBody result = new AjaxResponseBody();
+        if (peliculas.contains(peliculaService.getPelicula(addResource.getIdResource()))) {
+            peliculas.remove(peliculaService.getPelicula(addResource.getIdResource()));
+            usuario.setPeliculas(peliculas);
+            result.setMsg("eliminado");
+            result.setPeliculas(peliculas);
+            return result;
+        }
+        peliculas.add(peliculaService.getPelicula(addResource.getIdResource()));
+        usuario.setPeliculas(peliculas);
+        result.setMsg("agregado");
+        result.setPeliculas(peliculas);
+        return result;
+    }
 
-	@Override
-	public AjaxResponseBody saveMovie(AddToListDto addResource) {
-		Usuario usuario = getUsuario(addResource.getIdUser());
-		List<Pelicula> peliculas = new ArrayList<Pelicula>(usuario.getPeliculas());
-		AjaxResponseBody result = new AjaxResponseBody();
-		if(peliculas.contains(peliculaService.getPelicula(addResource.getIdResource()))) {
-			peliculas.remove(peliculaService.getPelicula(addResource.getIdResource()));
-			usuario.setPeliculas(peliculas);
-			result.setMsg("eliminado");
-			result.setPeliculas(peliculas);
-			return result;
-		}
-		peliculas.add(peliculaService.getPelicula(addResource.getIdResource()));
-		usuario.setPeliculas(peliculas);
-		result.setMsg("agregado");
-		result.setPeliculas(peliculas);
-		return result;
-	}
-	
-	public UsuarioResponseBody userLogged(String email) {
-		Usuario usuario = findUserByEmail(email);
-		UsuarioResponseBody userLogged = new UsuarioResponseBody(
-				usuario.getId(), 
-				usuario.getEmail(), 
-				usuario.getFoto(),
-				usuario.getPeliculas(),
-				usuario.getSeries());
-		return userLogged;
-	}
+    public UsuarioResponseBody userLogged(String email) {
+        Usuario usuario = findUserByEmail(email);
+        UsuarioResponseBody userLogged = new UsuarioResponseBody(
+                usuario.getId(),
+                usuario.getEmail(),
+                usuario.getFoto(),
+                usuario.getPeliculas(),
+                usuario.getSeries());
+        return userLogged;
+    }
+
+    private void updateAuthInSession(Usuario usuario) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        UserDetailsDto userPrincipal = authentication == null || !authentication.isAuthenticated()
+                || "anonymousUser".equals(authentication.getPrincipal()) ?
+                null : (UserDetailsDto) authentication.getPrincipal();
+        if (Objects.nonNull(userPrincipal)) {
+            ((UserDetailsDto) authentication.getPrincipal()).setUserName(usuario.getEmail());
+            SecurityContextHolder.getContext().setAuthentication(authentication);
+            logger.info("Sesion actualizada con el cambio de dato del usuario");
+        }
+    }
 
 }

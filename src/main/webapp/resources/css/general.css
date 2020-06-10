@@ -32,6 +32,16 @@ li p{
 	display: inline;
 }
 
+.modal-botones{
+	margin-top: 10vh;
+}
+
+.modal.bottom-sheet{
+	max-height: 50% !important;
+	overflow: hidden;
+	background-color: #393e46;
+}
+
 /* Animaciones */
 .animated {
 	-webkit-animation-duration: 1s;

@@ -2,7 +2,7 @@ $(document).ready(function(){
     $('.scrollspy').scrollSpy();
     $('.datepicker').datepicker({
         autoClose: true,
-        format: 'dd/mm/yyyy',
+        format: 'dd-mm-yyyy',
         defaultDate: new Date(),
         firstDay: 1,
         i18n: {

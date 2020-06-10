@@ -8,6 +8,8 @@ import com.qveo.qveoweb.service.PlataformaService;
 import com.qveo.qveoweb.service.UsuarioService;
 import com.qveo.qveoweb.validation.ContrasenaDtoValidator;
 import com.qveo.qveoweb.validation.PersonalnfoDtoValidator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,6 +24,8 @@ import javax.validation.Valid;
 
 @Controller
 public class MiConfiguracionController {
+
+    private static final Logger logger = LoggerFactory.getLogger(MiConfiguracionController.class);
 
     @Autowired
     UsuarioService usuarioService;
@@ -50,16 +54,17 @@ public class MiConfiguracionController {
     public String editarUsuario(@Valid @ModelAttribute("personalDto") PersonalInfoDto personalInfoDto,
                                 @RequestParam(value = "file") MultipartFile file,
                                 BindingResult bindingResult, Model model) {
+        logger.info("Ejecutando editar datos personales...");
         Usuario usuario = usuarioService.getUsuarioLogueado();
         personalnfoDtoValidator.validate(personalInfoDto, bindingResult);
         if (bindingResult.hasErrors()) {
+            logger.warn("Formulario de datos personales con errores...");
             model.addAttribute("personalDto", personalInfoDto);
             model.addAttribute("contrasenaDto", new ContrasenaDto(usuario));
             model.addAttribute("plataformaDto", new PlataformaDto(usuario));
             model.addAttribute("plataformas", plataformaService.getAllPlataformas());
             return "adminUsuario";
         }
-
         personalInfoDto = usuarioService.savePersonalInfo(personalInfoDto, file);
         model.addAttribute("personalDto", personalInfoDto);
         model.addAttribute("contrasenaDto", new ContrasenaDto(usuario));
