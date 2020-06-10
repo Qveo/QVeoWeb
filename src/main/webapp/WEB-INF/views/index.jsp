@@ -31,8 +31,7 @@
 	<header>
 		<%@include file="/WEB-INF/views/layout/header.jsp"%>
 	</header>
-	<main class="animated fadeIn fast">
-
+	<main class="animated fadeIn">
 		<c:if test="${empty plataformas}">
 			<sec:authorize access="isAnonymous()">
 				<div class="container">
@@ -104,16 +103,15 @@
 							<c:forEach items="${plataforma.peliculaPlataformas}"
 								var="peliculaPlataformas">
 								<c:if test="${peliculaPlataformas.fechaCaducidad eq null or
-									DateUtils.isDateGreaterThanToday(peliculaPlataformas.fechaCaducidad)}">
-									
-								<div class="carousel-item">
-									<a class="modal-trigger mod-movie"
-										href="#modal-pelicula${plataforma.id}-${peliculaPlataformas.pelicula.id}">
-										<img
-										src="${pageContext.request.contextPath}${peliculaPlataformas.pelicula.poster}" />
-									</a>
-								</div> 
-								</c:if>
+ 									DateUtils.isDateGreaterThanToday(peliculaPlataformas.fechaCaducidad)}">
+									<div class="carousel-item">
+										<a class="modal-trigger mod-movie"
+											href="#modal-pelicula${plataforma.id}-${peliculaPlataformas.pelicula.id}">
+											<img
+											src="${pageContext.request.contextPath}${peliculaPlataformas.pelicula.poster}" />
+										</a>
+									</div>
+ 								</c:if>
 							</c:forEach>
 
 							<c:forEach items="${plataforma.series}" var="serie">

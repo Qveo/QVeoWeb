@@ -68,7 +68,7 @@
 			</div>
 			<div class="row">
 				<c:if test="${not empty SPRING_SECURITY_LAST_EXCEPTION.message}">
-					<div class="error col s12 m8 l4 offset-l4 offset-m2">
+					<div class="error col s12 m8 l4 offset-l4 offset-m2" style="color:red;">
 						<c:out value="Las credenciales son erroneas" />
 					</div>
 				</c:if>
