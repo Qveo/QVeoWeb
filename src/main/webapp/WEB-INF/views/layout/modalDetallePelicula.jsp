@@ -1,10 +1,7 @@
-<c:forEach items="${plataforma.peliculaPlataformas}"
-	var="peliculaPlataformas">
+<c:forEach items="${plataforma.peliculaPlataformas}" var="peliculaPlataformas">
 	<c:if test="${peliculaPlataformas.fechaCaducidad eq null or
-			DateUtils.isDateGreaterThanToday(peliculaPlataformas.fechaCaducidad)}">
-	<div
-		id="modal-pelicula${plataforma.id}-${peliculaPlataformas.pelicula.id}"
-		class="modal bottom-sheet">
+			DateUtils.isDateGreaterThanToday(peliculaPlataformas.fechaCaducidad)}"></c:if>
+	<div id="modal-pelicula${plataforma.id}-${peliculaPlataformas.pelicula.id}" class="modal bottom-sheet">
 		<div class="modal-content row">
 			<div class="col s12 m4 l2">
 				<img class="imagen-modal"
@@ -32,5 +29,5 @@
                 </security:authorize>
 			</div>
 		</div>
-	</c:if>
+		</div>
 </c:forEach>

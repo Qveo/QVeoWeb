@@ -155,7 +155,7 @@
 
 				<div class="row">
 
-					<div class="col s10 l6 m12 offset-l3">
+					<div class="col s11 l8 m12 offset-l2">
 						<div class="file-field input-field">
 							<div class="btn">
 								<form:label path="poster">

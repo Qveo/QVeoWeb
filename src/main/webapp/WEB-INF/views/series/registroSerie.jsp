@@ -45,7 +45,7 @@
 						<div class="col l2"></div>
 						<div class="input-field formato col s12 l8">
 							<form:label path="titulo">Titulo</form:label>
-							<form:input path="titulo" id="titulo" class="formato"/>
+							<form:input path="titulo" id="titulo" class="formato" />
 							<form:errors path="titulo" style="color:red" class="error"></form:errors>
 						</div>
 						<div class="col l2"></div>
@@ -66,7 +66,7 @@
 						<div class="col l2"></div>
 						<div class="input-field formato col s12 l8">
 							<form:label path="temporadas">Temporada</form:label>
-							<form:input path="temporadas" id="temporadas" class="formato"/>
+							<form:input path="temporadas" id="temporadas" class="formato" />
 							<form:errors path="temporadas" style="color:red" class="error"></form:errors>
 						</div>
 						<div class="col l2"></div>
@@ -76,30 +76,46 @@
 						<div class="col l2"></div>
 						<div class="input-field formato col s12 l8">
 							<form:label path="capitulos">Capitulos</form:label>
-							<form:input path="capitulos" id="capitulos" class="formato"/>
+							<form:input path="capitulos" id="capitulos" class="formato" />
 							<form:errors path="temporadas" style="color:red" class="error"></form:errors>
 						</div>
 						<div class="col l2"></div>
 					</div>
 
 					<div class="row">
-						<div class="col l2"></div>
-						<div class="col s12 l8">
-							<form:label path="poster" class="formato">Poster</form:label>
-							<input type="file" name="posters" class="boton-Foto formato">
 
-							<c:if test="${editar== true}">
-								<form:input path="id" type="hidden" />
-								<div class="col s4 l4">
+						<div class="col s12 m12 l8 ">
+							
+						
+							<c:if test="${editar}">
+								<div class="col s4 l4 offset-l4">
 									<img alt="${serieNueva.titulo}"
 										src="${pageContext.request.contextPath}${serieNueva.poster}"
 										width="80%">
 								</div>
 							</c:if>
-
+												
+							<div class="row">
+							<div class="col s12 m12 l8 offset-l3">
+								<div class="file-field input-field">
+									<div class="btn">
+										<form:label path="poster">
+											<span>Retrato del director</span>
+										</form:label>
+										<input type="file" name="posters" class="formato" />
+									</div>
+									<div class="file-path-wrapper">
+										<input class="file-path validate formato" type="text"
+											placeholder="Suba aqui su foto" />
+									</div>
+								</div>
+							</div>
+							</div>
 						</div>
-						<div class="col l2"></div>
+
+
 					</div>
+
 
 					<div class="row">
 						<div class="col l2"></div>
@@ -206,6 +222,12 @@
 				</div>
 				<div class="col s2 l2"></div>
 			</div>
+
+			<c:choose>
+				<c:when test="${editar}">
+					<form:input path="id" type="hidden" />
+				</c:when>
+			</c:choose>
 
 			<div class="row">
 				<div class="col s2 l2"></div>

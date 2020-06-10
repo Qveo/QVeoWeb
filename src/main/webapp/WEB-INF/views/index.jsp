@@ -105,6 +105,7 @@
 								var="peliculaPlataformas">
 								<c:if test="${peliculaPlataformas.fechaCaducidad eq null or
 									DateUtils.isDateGreaterThanToday(peliculaPlataformas.fechaCaducidad)}">
+									
 								<div class="carousel-item">
 									<a class="modal-trigger mod-movie"
 										href="#modal-pelicula${plataforma.id}-${peliculaPlataformas.pelicula.id}">

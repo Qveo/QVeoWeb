@@ -53,7 +53,7 @@
 						</div>
 					</c:if>
 
-					<div class="col s12 m12 l6 offset-l3">
+					<div class="col s12 m12 l8 offset-l2">
 						<div class="file-field input-field">
 							<div class="btn">
 								<form:label path="foto">

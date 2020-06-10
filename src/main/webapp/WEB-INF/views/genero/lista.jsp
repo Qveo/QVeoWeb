@@ -12,6 +12,8 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/materialize.css">
 <link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/icon.css">
+<link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/general.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/header.css">
