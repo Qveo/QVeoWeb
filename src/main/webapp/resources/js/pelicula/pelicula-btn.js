@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		setTimeout(()=>{
 			addEventListenMovie();			
 			setBtnMovieOfUser();		
-		},300);
+		},1000);
 	}
 
 	function addMovieToList(e){
