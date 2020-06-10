@@ -94,14 +94,14 @@
 				</div>
 				<div class="row">
 					<div class="col l2"></div>
-					<div class="input-field col s12 l8">
+					<div class="input-field col s8 l8">
 						<form:label path="sexo">Género</form:label>
 					</div>
 					<div class="col l2"></div>
 				</div>
 				<div class="row">
 					<div class="col l2"></div>
-					<div class="col s12 l8">
+					<div class="col s8 l8">
 						<form:label for="mas" path="sexo" class="formato">
 							<form:radiobutton id="mas" path="sexo" value="H" class="validate" />
 							<span>Masculino</span>
@@ -117,7 +117,7 @@
 				</div>
 				<div class="row">
 					<div class="col l2"></div>
-					<div class="col s12 l8">
+					<div class="col s8 l8">
 						<form:label path="foto" class="formato">Foto</form:label>
 						<input type="file" name="fotoActor" class="boton-Foto">
 						<c:if test="${editar == true}">
@@ -132,8 +132,8 @@
 					<div class="col l2"></div>
 				</div>
 				<div class="row">
-					<div class="col l2"></div>
-					<div class="col s12 l8">
+					<div class="col s3 l2"></div>
+					<div class="col s7 l8">
 						<c:choose>
 							<c:when test="${editar}">
 								<button class="btn waves-effect waves-light" type="submit"

@@ -83,7 +83,7 @@
 			</c:choose>
 
 			<div class="row">
-				<div class="col s12 m12 l6 offset-l3">
+				<div class="col s9 m9 l6 offset-l3 offset-m3 offset-s3">
 					<c:choose>
 						<c:when test="${editar}">
 							<button class="btn waves-effect waves-light" type="submit"

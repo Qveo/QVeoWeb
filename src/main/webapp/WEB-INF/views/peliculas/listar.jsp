@@ -75,7 +75,7 @@
 			
 
 			<div id="modal2" class="modal confirmar">
-				<div class="modal-content">
+				<div class="modal-content modalAdmin">
 					<h4>Por favor debes confirmar</h4>
 					<p>¿Estás seguro de querer eliminar esta pelicula?</p>
 				</div>

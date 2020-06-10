@@ -6,12 +6,12 @@ ul li {
 
 .input-field>label {
 	color: white !important;
-	font-size: 1.2em;
+	font-size: 1.5em;
 }
 
 .formato {
 	color: white !important;
-	font-size:1.2em;
+	font-size: 1.5em;
 }
 main{
 	height:79.3% !important;
@@ -34,15 +34,15 @@ textarea {
 	}
 	.input-field>label {
 		color: white;
-		font-size: 1.3em;
+		font-size: 1.5em;
 	}
 	.formato {
 		color: white;
-		font-size: 1.3em;
+		font-size:  1.5em;
 	}
 	.especial {
 		color: white;
-		font-size: 1.3em;
+		font-size:  1.5em;
 	}
 	textarea {
 		height: 187px;
@@ -53,15 +53,15 @@ textarea {
 	/* For mobile phones: */
 	.input-field>label {
 		color: white;
-		font-size:1.3em;
+		font-size: 1.5em;
 	}
 	.formato {
 		color: white;
-		font-size: 1.3em;
+		font-size:  1.5em;
 	}
 	.especial {
 		color: white;
-		font-size: 1.3em;
+		font-size:  1.5em;
 	}
 	.fotoLista {
 		width: 100%;

@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
-<%@ page import="com.qveo.qveoweb.utils.DateUtils" %>
+<%-- <%@ page import="com.qveo.qveoweb.utils.DateUtils" %> --%>
 <html>
 <head>
 <meta charset="ISO-8859-1">
@@ -111,7 +111,8 @@
 										<img
 										src="${pageContext.request.contextPath}${peliculaPlataformas.pelicula.poster}" />
 									</a>
-								</div>
+								</div> 
+								</c:if>
 							</c:forEach>
 
 							<c:forEach items="${plataforma.series}" var="serie">
