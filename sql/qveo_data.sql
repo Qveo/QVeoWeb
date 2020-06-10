@@ -56,7 +56,7 @@ INSERT INTO `actor` (`ID`, `NOMBRE`, `SEXO`, `FOTO`, `ID_PAIS`) VALUES (30,'Thom
 INSERT INTO `actor` (`ID`, `NOMBRE`, `SEXO`, `FOTO`, `ID_PAIS`) VALUES (31,'Saffron Dominique Burrows ','M','/resources/img/actores/saffron_dominique_burrows.jpg',2);
 INSERT INTO `actor` (`ID`, `NOMBRE`, `SEXO`, `FOTO`, `ID_PAIS`) VALUES (32,'Jacqueline Susan McKenzie','M','/resources/img/actores/jacqueline_susan_mckenzie.jpg',7);
 INSERT INTO `actor` (`ID`, `NOMBRE`, `SEXO`, `FOTO`, `ID_PAIS`) VALUES (33,'Stellan John Skarsgård ','H','/resources/img/actores/stellan_john_skarsgard.jpg',8);
-INSERT INTO `actor` (`ID`, `NOMBRE`, `SEXO`, `FOTO`, `ID_PAIS`) VALUES (34,'Samuel L. Jackson','H','/resources/img/actores/samuel_l_jackson.jpg',1);
+INSERT INTO `actor` (`ID`, `NOMBRE`, `SEXO`, `FOTO`, `ID_PAIS`) VALUES (34,'Samuel L Jackson','H','/resources/img/actores/samuel_l_jackson.jpg',1);
 INSERT INTO `actor` (`ID`, `NOMBRE`, `SEXO`, `FOTO`, `ID_PAIS`) VALUES (35,'James Todd Smith III','H','/resources/img/actores/james_todd_smith_III.jpg',1);
 INSERT INTO `actor` (`ID`, `NOMBRE`, `SEXO`, `FOTO`, `ID_PAIS`) VALUES (36,'Michael David Rapaport','H','/resources/img/actores/michael_david_rapaport.jpg',1);
 INSERT INTO `actor` (`ID`, `NOMBRE`, `SEXO`, `FOTO`, `ID_PAIS`) VALUES (37,'Aaron Johnson','H','/resources/img/actores/aaron_johnson.jpg',2);
@@ -76,7 +76,7 @@ INSERT INTO `actor` (`ID`, `NOMBRE`, `SEXO`, `FOTO`, `ID_PAIS`) VALUES (50,'Rach
 INSERT INTO `actor` (`ID`, `NOMBRE`, `SEXO`, `FOTO`, `ID_PAIS`) VALUES (51,'Billy Magnussen','H','/resources/img/actores/billy_magnussen.jpg',1);
 INSERT INTO `actor` (`ID`, `NOMBRE`, `SEXO`, `FOTO`, `ID_PAIS`) VALUES (52,'Kylie Bunbury','M','/resources/img/actores/kylie_bunbury.jpg',2);
 INSERT INTO `actor` (`ID`, `NOMBRE`, `SEXO`, `FOTO`, `ID_PAIS`) VALUES (53,'Jesse Plemons','H','/resources/img/actores/jesse_plemons.jpg',1);
-INSERT INTO `actor` (`ID`, `NOMBRE`, `SEXO`, `FOTO`, `ID_PAIS`) VALUES (54,'Michael C. Hall','H','/resources/img/actores/michael_c_hall.jpg',1);
+INSERT INTO `actor` (`ID`, `NOMBRE`, `SEXO`, `FOTO`, `ID_PAIS`) VALUES (54,'Michael C Hall','H','/resources/img/actores/michael_c_hall.jpg',1);
 INSERT INTO `actor` (`ID`, `NOMBRE`, `SEXO`, `FOTO`, `ID_PAIS`) VALUES (55,'Kyle Chandler','H','/resources/img/actores/kyle_chandler.jpg',1);
 INSERT INTO `actor` (`ID`, `NOMBRE`, `SEXO`, `FOTO`, `ID_PAIS`) VALUES (56,'Jason Bateman','H','/resources/img/actores/jason_bateman.jpg',1);
 INSERT INTO `actor` (`ID`, `NOMBRE`, `SEXO`, `FOTO`, `ID_PAIS`) VALUES (57,'Sharon Horgan','M','/resources/img/actores/sharon_horgan.jpg',2);

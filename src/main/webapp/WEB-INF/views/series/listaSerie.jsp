@@ -77,7 +77,7 @@
 			<c:forEach items="${series}" var="serie">
 				<!-- Confirar eliminar usuario -->
 				<div id="modal2-serie-${serie.id}" class="modal confirmar">
-					<div class="modal-content">
+					<div class="modal-content modalAdmin">
 						<h4>Por favor debes confirmar</h4>
 						<p>¿Estás seguro de querer eliminar a este usuario?</p>
 					</div>

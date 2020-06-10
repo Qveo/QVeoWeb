@@ -89,12 +89,25 @@ public class FiltroController {
 		filtro.setAccionFiltro(1);
 		Director director = filtroService.findByDirectorid(Integer.parseInt(id));
 
+		List<Genero> generos = generoService.getAllGenero();
+		List<Plataforma> plataformas = plataformaSerice.getAllPlataformas();
+		List<Integer> fecha = filtroService.buscarAllYears();
+		
 		if (director == null) {
 			return "redirect:/filtro";
 		}
+		
+		
+		model.addAttribute("fechas", fecha);
+		model.addAttribute("plataformas", plataformas);
+		model.addAttribute("generos", generos);
+		
 		model.addAttribute("reparto", director);
 		model.addAttribute("pintar", true);
 		model.addAttribute("buscar", filtro);
+		
+		
+		
 		return "filtros/filtrado";
 	}
 
@@ -103,12 +116,21 @@ public class FiltroController {
 	public String filtrActor(@PathVariable Integer id, Model model) {
 		FiltroDto filtro = new FiltroDto();
 		filtro.setAccionFiltro(1);
+		List<Genero> generos = generoService.getAllGenero();
+		List<Plataforma> plataformas = plataformaSerice.getAllPlataformas();
+		List<Integer> fecha = filtroService.buscarAllYears();
 
 		Actor actor = filtroService.findByActorid(id);
 
 		if (actor == null)
 			return "redirect:/filtro";
 
+		
+		
+		model.addAttribute("fechas", fecha);
+		model.addAttribute("plataformas", plataformas);
+		model.addAttribute("generos", generos);
+		
 		model.addAttribute("pintar", true);
 		model.addAttribute("reparto", actor);
 		model.addAttribute("buscar", filtro);

@@ -26,3 +26,6 @@ label {
 .input-field input[type="text"][disabled]{
 	color: #eeeeee;
 }
+.datepicker-controls .select-wrapper input {
+    color: black;
+}

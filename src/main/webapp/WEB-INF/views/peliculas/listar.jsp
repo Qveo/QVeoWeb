@@ -31,7 +31,7 @@
 		<%@include file="/WEB-INF/views/layout/header.jsp"%>
 	</header>
 	<main>
-		<div class="container">
+		<div class="container animated fadeIn fast">
 			<div class="row">
 				<div class="input-field col s12 m6 l6 boton">
 					<a href="/qveo/admin/peliculas/form"><i
@@ -75,7 +75,7 @@
 			
 
 			<div id="modal2" class="modal confirmar">
-				<div class="modal-content">
+				<div class="modal-content modalAdmin">
 					<h4>Por favor debes confirmar</h4>
 					<p>¿Estás seguro de querer eliminar esta pelicula?</p>
 				</div>

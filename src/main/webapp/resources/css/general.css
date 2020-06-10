@@ -31,7 +31,9 @@ footer {
 li p{
 	display: inline;
 }
-
+.error{
+	font-size: 1.2em;
+}
 /* Animaciones */
 .animated {
 	-webkit-animation-duration: 1s;

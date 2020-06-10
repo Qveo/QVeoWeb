@@ -72,7 +72,7 @@
 			<c:forEach items="${actores}" var="actor">
 
 				<div id="modal2-actor-${actor.id}" class="modal confirmar">
-					<div class="modal-content">
+					<div class="modal-content modalAdmin">
 						<h4>Por favor debes confirmar</h4>
 						<p>¿Estás seguro de querer eliminar a este Actor?</p>
 					</div>
