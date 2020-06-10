@@ -31,7 +31,7 @@
 		<%@include file="/WEB-INF/views/layout/header.jsp"%>
 	</header>
 	<main>
-		<div class="container">
+		<div class="container animated fadeIn fast">
 			<div class="row">
 				<div class="input-field col s12 m6 l6 boton">
 					<a href="/qveo/admin/directores/form"><i
@@ -67,7 +67,7 @@
 			</c:forEach>
 			<c:forEach items="${directores}" var="director">
 				<div id="modal2-director-${director.id}" class="modal confirmar">
-					<div class="modal-content">
+					<div class="modal-content modalAdmin">
 						<h4>Por favor debes confirmar</h4>
 						<p>¿Estás seguro de querer eliminar este director?</p>
 					</div>

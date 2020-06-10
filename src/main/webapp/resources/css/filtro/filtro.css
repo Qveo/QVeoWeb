@@ -16,7 +16,10 @@
 	color: #00adb5;
 	font-size: 2em;
 }
-
+.select-wrapper input.select-dropdown{
+	color: #00adb5 !important;
+	
+}
 input[type="radio"]+span {
 	font-size: 2em;
 }

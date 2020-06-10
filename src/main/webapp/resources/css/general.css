@@ -31,6 +31,9 @@ footer {
 li p{
 	display: inline;
 }
+.error{
+	font-size: 1.2em;
+}
 
 .modal-botones{
 	margin-top: 10vh;

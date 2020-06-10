@@ -30,7 +30,7 @@
 		<%@include file="/WEB-INF/views/layout/header.jsp"%>
 	</header>
 	<main>
-		<div class="container">
+		<div class="container animated fadeIn fast">
 			<form:form method="POST" action="/qveo/filtros"
 				modelAttribute="buscar">
 
@@ -58,14 +58,12 @@
 					<div class="col s12 l4">
 						<label class="flow-text formato">A&ntilde;o</label>
 						<form:select multiple="true" path="anios">
-							<form:option value="">Fechas</form:option>
 							<form:options items="${fechas}" />
 						</form:select>
 					</div>
 					<div class="col s12 l4">
 						<label class="flow-text formato"> Genero</label>
 						<form:select path="generos" multiple="true">
-							<form:option value="">G&eacute;nero</form:option>
 							<form:options items="${generos}" itemValue="id"
 								itemLabel="nombre" />
 						</form:select>

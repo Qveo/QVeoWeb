@@ -25,7 +25,12 @@ ul li {
 	color: white;
 	font-size: 1vw;
 }
-
+.select-wrapper input.select-dropdown{
+	color:white;
+}
+.datepicker-controls .select-wrapper input {
+    color: black;
+}
 .responsive {
 	width: 100%;
 }

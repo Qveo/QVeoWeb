@@ -41,7 +41,7 @@
 						<form:input path="titulo" id="titulo" type="text"
 							class="validate formato" />
 						<form:label for="titulo" path="titulo">Titulo</form:label>
-						<form:errors path="titulo" style="color:red" />
+						<form:errors path="titulo" style="color:red" class="error"/>
 					</div>
 					<div class="col l2"></div>
 				</div>
@@ -51,7 +51,7 @@
 					<div class="input-field col s12 l8">
 						<form:input path="duracion" id="duracion" class="validate formato" />
 						<form:label for="duracion" class="formato" path="duracion">Duraci&oacuten</form:label>
-						<form:errors path="duracion" style="color:red" />
+						<form:errors path="duracion" style="color:red" class="error"/>
 					</div>
 					<div class="col l2"></div>
 				</div>
@@ -61,7 +61,7 @@
 					<div class="input-field col s12 l8">
 						<form:label for="anio" path="anio">A&ntildeo</form:label>
 						<form:input id="anio" class="datepicker formato" path="anio" />
-						<form:errors path="anio" style="color:red" />
+						<form:errors path="anio" style="color:red" class="error"/>
 					</div>
 					<div class="col l2"></div>
 				</div>
@@ -71,7 +71,7 @@
 					<div class="input-field col s12 l8">
 						<form:input path="guion" id="guion" class="validate formato" />
 						<form:label for="guion" path="guion">Gui&oacuten</form:label>
-						<form:errors path="guion" style="color:red" />
+						<form:errors path="guion" style="color:red" class="error"/>
 					</div>
 					<div class="col l2"></div>
 				</div>
@@ -82,7 +82,7 @@
 						<form:textarea path="sinopsis" id="sinopsis"
 							class="materialize-textarea formato" />
 						<form:label path="sinopsis" for="sinopsis">Sinopsis</form:label>
-						<form:errors path="sinopsis" style="color:red" />
+						<form:errors path="sinopsis" style="color:red" class="error"/>
 					</div>
 					<div class="col l2"></div>
 				</div>
@@ -133,7 +133,7 @@
 				<div class="row">
 					<div class="col l2"></div>
 					<div class="col s12 l8">
-						<form:errors path="pais" style="color:red"></form:errors>
+						<form:errors path="pais" style="color:red" class="error"></form:errors>
 					</div>
 					<div class="col s2 l2"></div>
 				</div>
@@ -155,7 +155,7 @@
 
 				<div class="row">
 
-					<div class="col s10 l6 m12 offset-l3">
+					<div class="col s11 l8 m12 offset-l2">
 						<div class="file-field input-field">
 							<div class="btn">
 								<form:label path="poster">
@@ -180,7 +180,7 @@
 				<%@include file="/WEB-INF/views/layout/pelicula/chipsDirectores.jsp"%>
 				<div class="row">
 					<div class="col s8 m10 l8 offset-l2 ">
-						<form:errors path="directores" style="color:red" />
+						<form:errors path="directores" style="color:red" class="error"/>
 					</div>
 				</div>
 
@@ -188,7 +188,7 @@
 
 				<div class="row">
 				<div class="col s8 m10 l8 offset-l2 ">
-					<form:errors path="actores" style="color:red" />
+					<form:errors path="actores" style="color:red" class="error"/>
 				</div>
 				</div>
 
@@ -196,7 +196,7 @@
 
 				<div class="row">
 				<div class="col s8 m10 l8 offset-l2 ">
-					<form:errors path="generos" style="color:red" />
+					<form:errors path="generos" style="color:red" class="error"/>
 				</div>
 				</div>
 
@@ -205,7 +205,7 @@
 
 				<div class="row">
 				<div class="col s8 m10 l8 offset-l2">
-					<form:errors path="plataformas" style="color:red" />
+					<form:errors path="plataformas" style="color:red" class="error"/>
 					</div>
 				</div>
 

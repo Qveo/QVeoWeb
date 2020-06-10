@@ -36,7 +36,7 @@
 					<form:input path="nombre" id="nombre" type="text"
 						class="validate formato" />
 					<form:label for="nombre" path="nombre">Nombre</form:label>
-					<form:errors path="nombre" style="color:red"></form:errors>
+					<form:errors path="nombre" style="color:red" class="error"></form:errors>
 				</div>
 				<div class="col s3"></div>
 			</div>
@@ -75,6 +75,7 @@
 	</footer>
 </body>
 <script
+	src="${pageContext.request.contextPath}/resources/vendor/js/jquery-3.4.1.min.js"></script>
+<script
 	src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/jquery.js"></script>
 </html>

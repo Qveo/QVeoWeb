@@ -1,11 +1,7 @@
 package com.qveo.qveoweb.dto;
 
-import java.sql.Time;
 import java.util.Collection;
 import java.util.Date;
-
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -19,7 +15,6 @@ public class PeliculaDto {
 		
 		private Integer id;
 		private String titulo;
-		//@DateTimeFormat(pattern = "HH:mm:ss")
 	    private String duracion;
 	    private String guion;
 	    private String poster;

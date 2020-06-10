@@ -22,7 +22,7 @@
 	href="${pageContext.request.contextPath}/resources/css/general.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/header.css">
-	<link rel="stylesheet"
+<link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/footer.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/actor/registro.css">
@@ -52,8 +52,8 @@
 					<div class="col l2"></div>
 					<div class="input-field col s12 l8">
 						<form:label path="nombre" class="formato">Nombre</form:label>
-						<form:input path="nombre" id="nombre" class="validate" />
-						<form:errors path="nombre" style="color:red"></form:errors>
+						<form:input path="nombre" id="nombre" class="formato validate" />
+						<form:errors path="nombre" style="color:red" class="error"></form:errors>
 					</div>
 					<div class="col l2"></div>
 				</div>
@@ -71,10 +71,11 @@
 						<form:select path="pais">
 							<c:choose>
 								<c:when test="${editar}">
-									<form:option value="0">Elija un pais</form:option>
+									<form:option value="0" class="formato">Elija un pais</form:option>
 									<c:forEach items="${paises}" var="pais">
 										<c:if test="${pais.id ==actorNuevo.pais.id}">
-											<form:option value="${pais.id}" selected="selected">${pais.nombre}</form:option>
+											<form:option value="${pais.id}" selected="selected"
+												class="formato">${pais.nombre}</form:option>
 										</c:if>
 										<c:if test="${pais.id !=actorNuevo.pais.id}">
 											<form:option value="${pais.id}">${pais.nombre}</form:option>
@@ -82,26 +83,26 @@
 									</c:forEach>
 								</c:when>
 								<c:otherwise>
-									<form:option value="0" selected="selected">Elija un pais</form:option>
+									<form:option value="0" selected="selected" class="formato">Elija un pais</form:option>
 									<c:forEach items="${paises}" var="pais">
 										<form:option value="${pais.id}">${pais.nombre}</form:option>
 									</c:forEach>
 								</c:otherwise>
 							</c:choose>
 						</form:select>
-						<form:errors path="pais" style="color:red"></form:errors>
+						<form:errors path="pais" style="color:red" class="error"></form:errors>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col l2"></div>
-					<div class="input-field col s12 l8">
+					<div class="input-field col s8 l8">
 						<form:label path="sexo">Género</form:label>
 					</div>
 					<div class="col l2"></div>
 				</div>
 				<div class="row">
 					<div class="col l2"></div>
-					<div class="col s12 l8">
+					<div class="col s8 l8">
 						<form:label for="mas" path="sexo" class="formato">
 							<form:radiobutton id="mas" path="sexo" value="H" class="validate" />
 							<span>Masculino</span>
@@ -110,30 +111,55 @@
 							<form:radiobutton id="fem" path="sexo" value="M" class="validate" />
 							<span>Femenino</span>
 						</form:label>
-						<form:errors path="sexo" style="color:red"></form:errors>
+						<form:errors path="sexo" style="color:red" class="error"></form:errors>
 
 					</div>
 					<div class="col l2"></div>
 				</div>
+
 				<div class="row">
-					<div class="col l2"></div>
-					<div class="col s12 l8">
-						<form:label path="foto" class="especial">Foto</form:label>
-						<input type="file" name="fotoActor" class="boton-Foto">
-						<c:if test="${editar == true}">
-							<div class="col s4">
-								<form:input path="id" type="hidden" />
+
+					<div class="col s12 m12 l8">
+
+						<c:if test="${editar}">
+							<div class="col s4 l4 offset-l4">
 								<img alt="${actorNuevo.nombre}"
 									src="${pageContext.request.contextPath}${actorNuevo.foto}"
 									width="80%">
 							</div>
 						</c:if>
+						</div>
+					<div class="row">
+						<div class="col s12 m12 l8 offset-l2">
+							<div class="file-field input-field">
+								<div class="btn">
+									<form:label path="foto">
+										<span>Retrato del director</span>
+									</form:label>
+									<input type="file" name="fotoActor" class="formato" />
+								</div>
+								<div class="file-path-wrapper">
+									<input class="file-path validate formato" type="text"
+										placeholder="Suba aqui su foto" />
+								</div>
+							</div>
+						</div>
+						
+						</div>
 					</div>
-					<div class="col l2"></div>
+
+
 				</div>
+
+				<c:choose>
+					<c:when test="${editar}">
+						<form:input path="id" type="hidden" />
+					</c:when>
+				</c:choose>
+
 				<div class="row">
-					<div class="col l2"></div>
-					<div class="col s12 l8">
+					<div class="col s3 l2"></div>
+					<div class="col s7 l8">
 						<c:choose>
 							<c:when test="${editar}">
 								<button class="btn waves-effect waves-light" type="submit"

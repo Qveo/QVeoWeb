@@ -45,8 +45,8 @@
 						<div class="col l2"></div>
 						<div class="input-field formato col s12 l8">
 							<form:label path="titulo">Titulo</form:label>
-							<form:input path="titulo" id="titulo" />
-							<form:errors path="titulo" style="color:red"></form:errors>
+							<form:input path="titulo" id="titulo" class="formato" />
+							<form:errors path="titulo" style="color:red" class="error"></form:errors>
 						</div>
 						<div class="col l2"></div>
 					</div>
@@ -57,7 +57,7 @@
 							<form:label path="fechaInicio" for="date">Fecha de lanzamiento</form:label>
 							<form:input id="date" path="fechaInicio"
 								class="datepicker formato" />
-							<form:errors path="fechaInicio" style="color:red"></form:errors>
+							<form:errors path="fechaInicio" style="color:red" class="error"></form:errors>
 						</div>
 						<div class="col l2"></div>
 					</div>
@@ -66,8 +66,8 @@
 						<div class="col l2"></div>
 						<div class="input-field formato col s12 l8">
 							<form:label path="temporadas">Temporada</form:label>
-							<form:input path="temporadas" id="temporadas" />
-							<form:errors path="temporadas" style="color:red"></form:errors>
+							<form:input path="temporadas" id="temporadas" class="formato" />
+							<form:errors path="temporadas" style="color:red" class="error"></form:errors>
 						</div>
 						<div class="col l2"></div>
 					</div>
@@ -76,38 +76,54 @@
 						<div class="col l2"></div>
 						<div class="input-field formato col s12 l8">
 							<form:label path="capitulos">Capitulos</form:label>
-							<form:input path="capitulos" id="capitulos" />
-							<form:errors path="temporadas" style="color:red"></form:errors>
+							<form:input path="capitulos" id="capitulos" class="formato" />
+							<form:errors path="temporadas" style="color:red" class="error"></form:errors>
 						</div>
 						<div class="col l2"></div>
 					</div>
 
 					<div class="row">
-						<div class="col l2"></div>
-						<div class="col s12 l8">
-							<form:label path="poster" class="formato">Poster</form:label>
-							<input type="file" name="posters" class="boton-Foto">
 
-							<c:if test="${editar== true}">
-								<form:input path="id" type="hidden" />
-								<div class="col s4 l4">
+						<div class="col s12 m12 l8 ">
+							
+						
+							<c:if test="${editar}">
+								<div class="col s4 l4 offset-l4">
 									<img alt="${serieNueva.titulo}"
 										src="${pageContext.request.contextPath}${serieNueva.poster}"
 										width="80%">
 								</div>
 							</c:if>
-
+												
+							<div class="row">
+							<div class="col s12 m12 l8 offset-l3">
+								<div class="file-field input-field">
+									<div class="btn">
+										<form:label path="poster">
+											<span>Retrato del director</span>
+										</form:label>
+										<input type="file" name="posters" class="formato" />
+									</div>
+									<div class="file-path-wrapper">
+										<input class="file-path validate formato" type="text"
+											placeholder="Suba aqui su foto" />
+									</div>
+								</div>
+							</div>
+							</div>
 						</div>
-						<div class="col l2"></div>
+
+
 					</div>
+
 
 					<div class="row">
 						<div class="col l2"></div>
 						<div class="col s12 l8">
 							<form:label path="sinopsis" class="formato">Sinopsis</form:label>
-							<form:textarea path="sinopsis" id="sinopsis" rows="26" cols="40"
-								class="especial" />
-							<form:errors path="sinopsis" style="color:red"></form:errors>
+							<form:textarea path="sinopsis" id="sinopsis"
+								class="especial materialize-textarea" />
+							<form:errors path="sinopsis" style="color:red" class="error"></form:errors>
 						</div>
 						<div class="col l2"></div>
 					</div>
@@ -156,7 +172,7 @@
 					<div class="row">
 						<div class="col l2"></div>
 						<div class="col s12 l8">
-							<form:errors path="pais" style="color:red"></form:errors>
+							<form:errors path="pais" style="color:red" class="error"></form:errors>
 						</div>
 						<div class="col s2 l2"></div>
 					</div>
@@ -168,7 +184,7 @@
 					<div class="row">
 						<div class="col s2 l2"></div>
 						<div class="col s8 l8">
-							<form:errors path="generos" style="color:red"></form:errors>
+							<form:errors path="generos" style="color:red" class="error"></form:errors>
 						</div>
 						<div class="col s2 l2"></div>
 					</div>
@@ -180,7 +196,7 @@
 			<div class="row">
 				<div class="col s2 l2"></div>
 				<div class="col s8 l8">
-					<form:errors path="actores" style="color:red"></form:errors>
+					<form:errors path="actores" style="color:red" class="error"></form:errors>
 				</div>
 				<div class="col s2 l2"></div>
 			</div>
@@ -191,7 +207,7 @@
 			<div class="row">
 				<div class="col s2 l2"></div>
 				<div class="col s6 l6">
-					<form:errors path="directores" style="color:red"></form:errors>
+					<form:errors path="directores" style="color:red" class="error"></form:errors>
 				</div>
 				<div class="col s2 l2"></div>
 			</div>
@@ -202,10 +218,16 @@
 			<div class="row">
 				<div class="col s2 l2"></div>
 				<div class="col s6 l6">
-					<form:errors path="plataformas" style="color:red"></form:errors>
+					<form:errors path="plataformas" style="color:red" class="error"></form:errors>
 				</div>
 				<div class="col s2 l2"></div>
 			</div>
+
+			<c:choose>
+				<c:when test="${editar}">
+					<form:input path="id" type="hidden" />
+				</c:when>
+			</c:choose>
 
 			<div class="row">
 				<div class="col s2 l2"></div>

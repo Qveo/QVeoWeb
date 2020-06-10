@@ -10,8 +10,8 @@ ul li {
 }
 
 .formato {
-	color: white;
-	font-size: 1vw;
+	color: white !important;
+	font-size: 1.2em;
 }
 main{
 	height:79.3% !important;
@@ -32,15 +32,15 @@ textarea {
 	}
 	.input-field>label {
 		color: white;
-		font-size: 5vw;
+		font-size: 1.3em;
 	}
 	.formato {
 		color: white;
-		font-size: 5vw;
+		font-size: 1.3em;
 	}
 	.especial {
 		color: white;
-		font-size: 5vw;
+		font-size: 1.3em;
 	}
 	textarea {
 		height: 187px;
@@ -51,15 +51,15 @@ textarea {
 	/* For mobile phones: */
 	.input-field>label {
 		color: white;
-		font-size: 3vw;
+		font-size: 1.3em;
 	}
 	.formato {
 		color: white;
-		font-size: 3vw;
+		font-size: 1.3em;
 	}
 	.especial {
 		color: white;
-		font-size: 3vw;
+		font-size: 1.3em;
 	}
 	.fotoLista {
 		width: 100%;

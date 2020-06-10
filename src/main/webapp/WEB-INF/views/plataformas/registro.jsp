@@ -14,6 +14,8 @@
 	href="${pageContext.request.contextPath}/resources/css/general.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/header.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/resources/css/plataforma/plataforma.css">
 <link rel="icon" type="image/x-icon"
 	href="${pageContext.request.contextPath}/resources/img/favicon.ico">
 </head>
@@ -31,9 +33,9 @@
 			<div class="row">
 				<div class="col s3"></div>
 				<div class="input-field col s6">
-					<form:input path="nombre" id="nombre" type="text" class="validate" />
-					<form:label for="nombre" path="nombre">Nombre</form:label>
-					<form:errors path="nombre" style="color:red"></form:errors>
+					<form:input path="nombre" id="nombre" type="text" class="formato validate" />
+					<form:label for="nombre" path="nombre" class="formato">Nombre</form:label>
+					<form:errors path="nombre" style="color:red" class="error"></form:errors>
 				</div>
 				<div class="col s3"></div>
 			</div>
@@ -47,11 +49,11 @@
 						<div class="col s4">
 							<img alt="${plataformaNueva.nombre}"
 								src="${pageContext.request.contextPath}${plataformaNueva.foto}"
-								width="80%"> <span style="color: red">${fotoerror}</span>
+								width="80%"> <span style="color: red" class="error">${fotoerror}</span>
 						</div>
 					</c:if>
 
-					<div class="col s12 m12 l6 offset-l3">
+					<div class="col s12 m12 l8 offset-l2">
 						<div class="file-field input-field">
 							<div class="btn">
 								<form:label path="foto">
@@ -60,7 +62,7 @@
 								<input type="file" name="retrato" />
 							</div>
 							<div class="file-path-wrapper">
-								<input class="file-path validate" type="text"
+								<input class="file-path validate formato" type="text"
 									placeholder="Suba aqui su foto">
 							</div>
 						</div>
@@ -81,7 +83,7 @@
 			</c:choose>
 
 			<div class="row">
-				<div class="col s12 m12 l6 offset-l3">
+				<div class="col s9 m9 l6 offset-l3 offset-m3 offset-s3">
 					<c:choose>
 						<c:when test="${editar}">
 							<button class="btn waves-effect waves-light" type="submit"
