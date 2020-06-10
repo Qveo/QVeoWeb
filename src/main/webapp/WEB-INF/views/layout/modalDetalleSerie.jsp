@@ -21,7 +21,7 @@
                     <div class="col s12 m4 l4">
                         <h4 class="titulo">Sinopsis</h4>
                         <h5 class="contenido sinopsis">${serie.sinopsis}</h5>
-                        <a class="waves-effect btn-large boton-ver z-depth-2 col s8 offset-s2" href="${pageContext.request.contextPath}/serie/${serie.id}">Ver informaci$oacuten</a>
+                        <a class="waves-effect btn-large boton-ver z-depth-2 col s8 offset-s2" href="${pageContext.request.contextPath}/serie/${serie.id}">Ver informaci&oacuten</a>
                         <security:authorize access="hasRole('USER')">
                             <a class="waves-effect btn-large add-serie boton-agregar z-depth-2 col s8 offset-s2">Agregar a mi lista</a>
                             <p class="id-series" style="display:none">${serie.id}</p>

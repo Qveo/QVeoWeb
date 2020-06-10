@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		setTimeout(()=>{
 			addEventListenSerie();			
 			setBtnSerieOfUser();		
-		},300);
+		},1000);
 	}
 
 	function addSerieToList(e){

@@ -25,9 +25,13 @@ spring:
     url: jdbc:mysql://localhost:3306/qveo?serverTimezone=UTC
     username: root
     password: root
-#    url: jdbc:mysql://svu9w5v40ymdholz:ahtop10m3i8f5aaw@qf5dic2wzyjf1x5x.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/num0z3tijhpwzda1
-#    username: svu9w5v40ymdholz
-#    password: ahtop10m3i8f5aaw
+#    url: jdbc:mysql://eu-cdbr-west-03.cleardb.net/heroku_3cb0eedb8952cc9?reconnect=true
+#    username: b676bcf5e00839
+#    password: a25efb39
+    
+#    url: jdbc:mysql://eu-cdbr-west-03.cleardb.net/heroku_ea451e6eb00a875?reconnect=true
+#    username: ba69676c7f1e53
+#    password: 5cb86e24
 #    driver.class-name: com.mysql.jdbc.Driver
 #  jpa:
 #    hibernate:
