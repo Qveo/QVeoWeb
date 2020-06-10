@@ -53,7 +53,7 @@
 					<div class="input-field col s12 l8">
 						<form:label path="nombre" class="formato">Nombre</form:label>
 						<form:input path="nombre" id="nombre" class="formato validate"/>
-						<form:errors path="nombre" style="color:red"></form:errors>
+						<form:errors path="nombre" style="color:red" class="error"></form:errors>
 					</div>
 					<div class="col l2"></div>
 				</div>
@@ -89,7 +89,7 @@
 								</c:otherwise>
 							</c:choose>
 						</form:select>
-						<form:errors path="pais" style="color:red"></form:errors>
+						<form:errors path="pais" style="color:red" class="error"></form:errors>
 					</div>
 				</div>
 				<div class="row">
@@ -110,7 +110,7 @@
 							<form:radiobutton id="fem" path="sexo" value="M" class="validate" />
 							<span>Femenino</span>
 						</form:label>
-						<form:errors path="sexo" style="color:red"></form:errors>
+						<form:errors path="sexo" style="color:red" class="error"></form:errors>
 
 					</div>
 					<div class="col l2"></div>

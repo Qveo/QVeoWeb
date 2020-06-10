@@ -31,7 +31,7 @@
 		<%@include file="/WEB-INF/views/layout/header.jsp"%>
 	</header>
 	<main>
-		<div class="container">
+		<div class="container animated fadeIn fast">
 			<div class="row">
 				<div class="input-field col s12 m6 l6 boton">
 					<a href="/qveo/admin/peliculas/form"><i

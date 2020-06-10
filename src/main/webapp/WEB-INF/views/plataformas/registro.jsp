@@ -35,7 +35,7 @@
 				<div class="input-field col s6">
 					<form:input path="nombre" id="nombre" type="text" class="formato validate" />
 					<form:label for="nombre" path="nombre" class="formato">Nombre</form:label>
-					<form:errors path="nombre" style="color:red"></form:errors>
+					<form:errors path="nombre" style="color:red" class="error"></form:errors>
 				</div>
 				<div class="col s3"></div>
 			</div>
@@ -49,7 +49,7 @@
 						<div class="col s4">
 							<img alt="${plataformaNueva.nombre}"
 								src="${pageContext.request.contextPath}${plataformaNueva.foto}"
-								width="80%"> <span style="color: red">${fotoerror}</span>
+								width="80%"> <span style="color: red" class="error">${fotoerror}</span>
 						</div>
 					</c:if>
 

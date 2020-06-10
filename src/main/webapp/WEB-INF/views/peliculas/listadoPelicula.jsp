@@ -24,7 +24,7 @@
 		<%@include file="/WEB-INF/views/layout/header.jsp"%>
 	</header>
 	<main>
-		<div class="container">
+		<div class="container animated fadeIn fast">
 			<form:form method="POST" action="/qveo/peliculas"
 				modelAttribute="buscar">
 				<div class="row">

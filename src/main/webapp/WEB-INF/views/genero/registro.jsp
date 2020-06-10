@@ -46,8 +46,7 @@
 						class="input-field col s12 l8">
 						<form:label path="nombre">Nombre del Genero</form:label>
 						<form:input path="nombre" id="nombre" class="formato"/>
-						<form:errors path="nombre" style="color:red"></form:errors>
-						<div style="color: red">${errorNombre}</div>
+						<form:errors path="nombre" style="color:red" class="error"></form:errors>
 						<c:choose>
 							<c:when test="${editar}">
 								<form:hidden path="id" />
