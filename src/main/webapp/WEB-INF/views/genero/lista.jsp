@@ -10,7 +10,7 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
 	rel="stylesheet">
 <link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+	href="${pageContext.request.contextPath}/resources/css/materialize.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/css/general.css">
 <link rel="stylesheet"
@@ -49,7 +49,7 @@
 
 						<div class="col s12 m3 l4">
 							<a href="/qveo/admin/genero/edit/${genero.id}"
-								class="btn-floating btn-large"><i
+								class="btn-floating btn-large modal-trigger"><i
 								class="material-icons editar">edit</i></a>
 						</div>
 						<div class="col s6 m3 l4">
