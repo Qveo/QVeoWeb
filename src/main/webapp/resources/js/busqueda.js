@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function() {
 	}
 
 	function comprobarContenido(contenido) {
-		return contenido.titulo == valorComprobar;
+		return contenido.titulo.trim() == valorComprobar.trim();
 	}
 
 	function mostrarInput() {
